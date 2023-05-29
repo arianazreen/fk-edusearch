@@ -27,6 +27,15 @@
     <h1>  NURUL NAJWA  </h1>
     <p1>  Student  |  <a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> Edit Profile</p1>
 
+    <!-- 1'st content -->
+    <div class="card">
+        <div class="container">
+            <p>About Nurul Najwa</p>
+        </div>
+        <div class="header">
+            <h1>1</h1>
+        </div>
+    </div>
 
     <!--Footer -->
     <div class="footer">
