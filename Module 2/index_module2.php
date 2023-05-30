@@ -11,6 +11,7 @@
 <body>
     <!--Navigation bar -->
     <div class="topnav">
+        <img src="image/logo/fk-edusearch-logo.png" alt="" />
         <a href="#home">FK-EduSearch</a>
         <a href="#home">Home</a>
         <a href="#myquestion">My Questions</a>

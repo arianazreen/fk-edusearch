@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
+    <meta name="author" content="Bootlab">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+	<title>Manage User Profile</title>
+
+	<link href="css/M2_style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!--Navigation bar -->
+<div class="topnav">
+         
+        <a href="#home">FK-EduSearch</a>
+        <a href="#home">Home</a>
+        <a href="#myquestion">My Questions</a>
+         <a href="#complaints">Complaints</a>
+     <div class="topnav-right">
+        <a href="#"><i class="fa fa-bell" aria-hidden="true"></i></a>
+        <a href="#" class="active"><h6 class="mb-1 mt-2">Nurul Najwa</h6><small class="d-block text-muted h5 fw-normal">Student</small></a>
+        <a href="#"><i class="fa fa-caret-down" aria-hidden="true"></i></a>
+
+    </div>
+    </div>
+
+	<!-- Profile -->
+	<section class="py-6 bg-white">
+		<div class="container">
+
+			<div class="mb-4 text-left">
+            
+            <img src="img/logo/fk-edusearch-logo.png" width="48" height="48" alt="FK-EduSearch Logo" />
+			
+            <h1>Manage Profile</h1>
+				<h1> NURUL NAJWA </h1>
+				<p1>  Student  |  <a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> Edit Profile</p1>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6 col-lg-5 d-block d-md-none d-lg-block">
+					<blockquote class="card border">
+						<div class="card-body p-4">     
+							<div class="d-flex align-items-center mb-3">
+								
+								<div class="ps-3">
+									<h4 class="mb-1 mt-2">About Nurul Najwa</h4>
+								</div>
+							</div>
+							<p class="lead mb-2">Nurul Najwa Bt Husin studies at Faculty of Computing in 
+                                                    Universiti Malaysia Pahang , 
+                                                    Does research in Educational Technology, 
+                                                    Business Intelligence, Technology Adoption, 
+                                                    E-Learning, Social Media Use for Learning and Higher Education.</p>
+
+												</div>
+					
+				</div>
+				</div>
+                <!-- report -->
+				<div class="col-md-6 col-lg-8 d-block d-md-none d-lg-block">
+					<blockquote class="card border">
+						<div class="card-body p-4">
+							<div class="d-flex align-items-center mb-3">
+							<div class="ps-3">
+									<h4 class="mb-1 mt-2">Total Post</h4>
+								</div>
+							</div>
+							<p class="lead mb-2"></p>
+
+							</div>
+					</blockquote>
+					<blockquote class="card border">
+						<div class="card-body p-4">
+							<div class="d-flex align-items-center mb-3">
+								<div>
+									<img src="img/brands/b.svg" width="48" height="48" alt="Bootstrap" />
+								</div>
+								<div class="ps-3">
+									<h5 class="mb-1 mt-2">Martin</h5><small class="d-block text-muted h5 fw-normal">Bootstrap Themes</small>
+								</div>
+							</div>
+							<p class="lead mb-2">“I just began to test and use this theme and I can find that it cover my expectatives. Good support from the
+								developer.”</p>
+
+							<div class="landing-stars">
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+								<i class="fas fa-star"></i>
+							</div>
+						</div>
+					</blockquote>
+                    
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-5">
+		<div class="container text-center">
+			<div class="row">
+				<div class="col-lg-6 mx-auto">
+					<h2 class="mb-3">
+						Join over 3,000 developers who are already working with our products
+					</h2>
+					<a href="https://themes.getbootstrap.com/product/spark-responsive-admin-template/" target="_blank"
+						class="align-middle btn btn-success btn-lg mt-n1">
+						Purchase Now
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<svg width="0" height="0" style="position:absolute">
+		<defs>
+			<symbol viewBox="0 0 512 512" id="ion-ios-pulse-strong">
+				<path
+					d="M448 273.001c-21.27 0-39.296 13.999-45.596 32.999h-38.857l-28.361-85.417a15.999 15.999 0 0 0-15.183-10.956c-.112 0-.224 0-.335.004a15.997 15.997 0 0 0-15.049 11.588l-44.484 155.262-52.353-314.108C206.535 54.893 200.333 48 192 48s-13.693 5.776-15.525 13.135L115.496 306H16v31.999h112c7.348 0 13.75-5.003 15.525-12.134l45.368-182.177 51.324 307.94c1.229 7.377 7.397 11.92 14.864 12.344.308.018.614.028.919.028 7.097 0 13.406-3.701 15.381-10.594l49.744-173.617 15.689 47.252A16.001 16.001 0 0 0 352 337.999h51.108C409.973 355.999 427.477 369 448 369c26.511 0 48-22.492 48-49 0-26.509-21.489-46.999-48-46.999z">
+				</path>
+			</symbol>
+		</defs>
+	</svg>
+	<script src="js/app.js"></script>
+
+
+</body>
+
+</html>
