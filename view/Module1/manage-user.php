@@ -10,14 +10,14 @@
 
 	<title>Manage User Profile</title>
 
-	<link href="../dist/css/modern.css" rel="stylesheet">
+	<link href="../../dist/css/modern.css" rel="stylesheet">
 	
 	<style>
 		body {
 			opacity: 0;
 		}
 	</style>
-	<script src="../dist/js/settings.js"></script>
+	<script src="../../dist/js/settings.js"></script>
 	<!-- END SETTINGS -->
 </head>
 
@@ -31,7 +31,7 @@
 		<nav id="sidebar" class="sidebar">
 			<div class="sidebar-content">
 				<div class="sidebar-user">
-					<img src="img/logo/fk-edusearch-logo.png" alt="FK-EduSearch Logo" />
+					<img src="../../dist/img/logo/fk-edusearch-border.png" alt="FK-EduSearch Logo" />
 					<div class="fw-bold">FK-EDUSEARCH</div>
 				</div>
 
@@ -188,7 +188,7 @@
 			</symbol>
 		</defs>
 	</svg>
-	<script src="../dist/js/app.js"></script>
+	<script src="../../dist/js/app.js"></script>
 
 </body>
 
