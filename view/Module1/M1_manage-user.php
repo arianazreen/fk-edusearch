@@ -10,14 +10,14 @@
 
 	<title>Manage User Profile</title>
 
-	<link href="../../dist/css/modern.css" rel="stylesheet">
+	<link href="../dist/css/modern.css" rel="stylesheet">
 	
 	<style>
 		body {
 			opacity: 0;
 		}
 	</style>
-	<script src="../../dist/js/settings.js"></script>
+	<script src="../dist/js/settings.js"></script>
 	<!-- END SETTINGS -->
 </head>
 
@@ -188,7 +188,7 @@
 			</symbol>
 		</defs>
 	</svg>
-	<script src="../../dist/js/app.js"></script>
+	<script src="../dist/js/app.js"></script>
 
 </body>
 

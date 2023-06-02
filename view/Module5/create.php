@@ -8,7 +8,7 @@
 	<meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
 	<meta name="author" content="Bootlab">
 
-	<title>Complaint Dashboard</title>
+	<title>Create Complaint</title>
 
 	<link href="../../dist/css/modern.css" rel="stylesheet">
 
@@ -100,128 +100,75 @@
 					</ul>
 				</div>
 			</nav>
-
 			<main class="content">
 				<div class="container-fluid">
-
 					<div class="header">
 						<h1 class="header-title">
-							Complain History
+							Complaint Application
 						</h1>
 					</div>
-					<div class="col-12">
+					<div class="col-md-10" style="float:none;margin:auto;">
 						<div class="card">
-							<div class="card-header">
-								<h5 class="card-title">Detail Complaint</h5>
-								<h6 class="card-subtitle text-muted">
-									<a href='../Module5/create.php' role="button" class="btn" style=" color: white; position: absolute; right:1%; margin-top:-2%; background-color: #07A492; font-weight: 400;">CREATE NEW</a>
-								</h6>
+
+							<br>
+							<h2 style="float:none;margin:auto;">We are Here to Help You!</h2>
+
+							<div class="card-header" style="float:none;margin:auto;">
+								<h6 class="card-subtitle">
+									<span>Fields marked with</span><span style="color: red;"> (*) </span><span>are mandatory</span>
 							</div>
-
 							<div class="card-body">
-								<table id="datatables-basic" class="table table-striped" style="width:100%">
-									<thead>
-										<tr>
-											<th>No</th>
-											<th>Date</th>
-											<th>Time</th>
-											<th>Complain Type</th>
-											<th>Status</th>
-											<th>Action</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Lael Greer</td>
-											<td>Systems Administrator</td>
-											<td>London</td>
-											<td>21</td>
-											<td>2009/02/27</td>
-											<td class="table-action">
-
-												<a data-bs-toggle="modal" data-bs-target="#view-"><i class="align-middle fas fa-fw fa-search"></i></a>
-												<a data-bs-toggle="modal" data-bs-target="#update-" ><i class="align-middle fas fa-fw fa-pen"></i></a>
-												<a href="#"><i class="align-middle fas fa-fw fa-trash"></i></a>
-											</td>
-										</tr>
-										<tr>
-											<td>Donna Snider</td>
-											<td>Customer Support</td>
-											<td>New York</td>
-											<td>27</td>
-											<td>2011/01/25</td>
-											<td class="table-action">
-
-												<a data-bs-toggle="modal" data-bs-target="#view-"><i class="align-middle fas fa-fw fa-search"></i></a>
-												<a data-bs-toggle="modal" data-bs-target="#update-" ><i class="align-middle fas fa-fw fa-pen"></i></a>
-												<a href="#"><i class="align-middle fas fa-fw fa-trash"></i></a>
-											</td>
-										</tr>
-									</tbody>
-									<!-- Modal View -->
-									<div class="modal fade" id="view-" tabindex="-1" role="dialog" aria-hidden="true">
-										<div class="modal-dialog modal-md" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title">Advertisment Details</h5>
-													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-												</div>
-												<div class="modal-body m-3">
-													<div class="col-12 col-md-12 col-lg-12">
-														<div class="row g-0">
-															<div class="col-sm-9 col-xl-12 col-xxl-8">
-																<div class="modal-body m-3">
-																	<div class="row">
-																		<div class="col-md-6">
-																			<label><b>Category</b></label>
-																		</div>
-																		<div class="col-md-6" style="text-align: right;">
-																			{{$asset->category}}
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-														<button type="button" class="btn btn-primary">Dismiss</button>
-													</div>
-												</div>
-											</div>
+								<form method="POST" action="../Module5/main.php" onsubmit="alert('The Form has been Submitted.')">
+									<div class="row">
+										<div class="mb-3 col-md-12">
+											<label for="complain">Complaint Type</label>
+											<select class="form-select" name="complaintType" value="complaintType" aria-label="Default select example">
+												<option hidden="">Please Select</option>
+												<option value="Unsatisfied Expert’s Feedback">Unsatisfied Expert’s Feedbackd</option>
+												<option value="Unanswered Question">Unanswered Questioned</option>
+												<option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
+											</select>
 										</div>
-									</div>
-									<!--Modal Kemaskini-->
-									<div class="modal fade" id="update-" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-										<div class="modal-dialog modal-dialog-scrollable">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title" id="staticBackdropLabel">View History</h5>
-												</div>
-												<div class="modal-body">
-													<form method="POST" action="/StatusAdmin/{{$asset->id}}">
-														<div class="form-group">
-															<label for="exampleFormControlInput1" class="form-label">Update Status</label>
-															<select class="form-select" name="status" value="{{$asset->status}}" aria-label="Default select example">
-																<option value="" selected>Please Select</option>
-																<option value="Approve">Approved</option>
-																<option value="Reject">Rejected</option>
-
-															</select>
-														</div>
-														<br>
-														<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-														<button type="submit" class="btn btn-primary">Save</button>
-													</form>
-												</div>
-											</div>
+										<div class="mb-3 col-md-6">
+											<label for="DateComplaint">Date Complaint</label>
+											<input type="date" class="form-control" name="complaintDate" id="complaintDate">
 										</div>
+										<div class="mb-3 col-md-6">
+											<label for="TimeComplaint">Time Complaint</label>
+											<input type="time" class="form-control" name="complaintTime" id="complaintTime">
+										</div>
+										<div class="mb-3 col-md-12">
+											<label for="complain">Choose Post</label>
+											<select class="form-select" name="postID" value="postID" aria-label="Default select example">
+												<option hidden="">Please Select</option>
+												<option value="Energy-efficient computer systems">Energy-efficient computer systemsd</option>
+												<option value="Machine learning and artificial intelligence in computer systems">Machine learning and artificial intelligence in computer systemsed</option>
+												<option value="Virtualization and containerization">Virtualization and containerization</option>
+											</select>
+										</div>
+										<div class="mb-3">
+											<label>Complaint Description</label>
+											<textarea class="form-control" id="complaintDesc" name="complaintDesc" rows="3"></textarea>
+										</div> 
+										<div class="mb-3"><br>
+											<button type="submit" class="btn" style=" color: white; position: absolute; right:55%; background-color: #07A492; font-weight: 400;">SUBMIT</button>
+											<button type="cancel" class="btn" style=" color: white; position: absolute; right:45%; background-color: #ADDCD7; font-weight: 400;">CANCEL</button>
+										</div>
+										<br><br><br>
 									</div>
 
-								</table>
+								</form>
 							</div>
 						</div>
 					</div>
+
+
+
+
+
+
+
+
 				</div>
 			</main>
 			<footer class="footer">
