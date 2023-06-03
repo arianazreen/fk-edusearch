@@ -31,7 +31,7 @@
 		<nav id="sidebar" class="sidebar">
 			<div class="sidebar-content">
 				<div class="sidebar-user">
-					<img src="img/logo/fk-edusearch-logo.png" alt="FK-EduSearch Logo" />
+					<img src="../../dist/img/logo/fk-edusearch-border.png" alt="FK-EduSearch Logo" />
 					<div class="fw-bold">FK-EDUSEARCH</div>
 				</div>
 
