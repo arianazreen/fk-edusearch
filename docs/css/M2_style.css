@@ -81,12 +81,18 @@ div.container {
 
 .footer {
   position: fixed;
+  overflow: auto;
   left: 0;
   bottom: 0;
   width: 100%;
   background-color: #07a492;
   color: white;
   text-align: center;
+}
+.footer-content{
+  text-align: center;
+  color: whhite;
+  line-height: 60px;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Hind+Vadodara:400,500&display=swap);
