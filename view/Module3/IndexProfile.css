@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .topnav {
+    overflow: hidden;
+    background-color: #07a492;
+  }
+  
+  .topnav a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #71d0c5;
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: #71d0c5;
+    color: white;
+  }
+  
+  .topnav-right {
+    float: right;
+  }
+  
+  .icon-bar {
+    width: 100%;
+    background-color: #555;
+    overflow: auto;
+  }
+  
+  .icon-bar a {
+    float: left;
+    width: 20%;
+    text-align: center;
+    padding: 12px 0;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 36px;
+  }
+  
+  .icon-bar a:hover {
+    background-color: #000;
+  }
+  
+  .active {
+    background-color: #04aa6d;
+  }
+  
+#button {
+  position: fixed;
+  left: 100px; 
+}
+
+  div.card {
+    width: 550px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: left;
+  }
+  
+  div.header {
+    background-color: #ffffff;
+    color: black;
+    padding: 25px;
+    font-size: 12px;
+  }
+  
+  div.container {
+    padding: 2px;
+  }
+  
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #07a492;
+    color: white;
+    text-align: center;
+  }
