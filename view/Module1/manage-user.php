@@ -19,8 +19,11 @@
 	<meta name="author" content="Bootlab">
 
 	<title>Manage User Profile</title>
+	<link rel="shortcut icon" href="../../dist/img/logo/fk-edusearch-border.png" type="image/x-icon">
 
-	<link href="../../dist/css/modern.css" rel="stylesheet">
+	<!-- Link to CSS file -->
+	<link href="../../dist/css/modern-admin.css" rel="stylesheet">
+	<link href="css-m1/manage-user-style.css" rel="stylesheet">
 	
 	<style>
 		body {
@@ -28,7 +31,6 @@
 		}
 	</style>
 	<script src="../../dist/js/settings.js"></script>
-	<!-- END SETTINGS -->
 </head>
 
 <body>
@@ -46,7 +48,7 @@
 				</div>
 			
 				<ul class="sidebar-nav">
-					<div class="dropdown-divider"></div>
+					<div class="dropdown-divider" style="background-color: #4b5c96;"></div>
 					<!-- REPORT -->
 					<li class="sidebar-item">
 						<a data-bs-target="#dashboards" data-bs-toggle="collapse" class="sidebar-link collapsed">
@@ -102,8 +104,8 @@
 				<div class="container-fluid">
 
 					<div class="header">
-						<h1 class="header-title">
-							TABLE
+						<h1 class="header-title" style="color: black; border: none; border-left: 14px solid #1D2F3A; padding-left: 10px;">
+							Manage User Profile
 						</h1>
 					</div>
 					<div class="row">
@@ -111,57 +113,26 @@
 							<div class="card">
 								<table class="table table-bordered">
 									<thead>
-										<tr style="background-color: rgb(12, 13, 61); color: white; text-align: center;">
-											<th style="width:40%;">Name</th>
-											<th style="width:25%">Phone Number</th>
-											<th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th>
+										<tr class="table-header">
+											<th>No.</th>
+											<th>User ID</th>
+											<th>Name</th>
+											<th>Email</th>
+											<th class="d-none d-md-table-cell" style="width:25%">Phone No.</th>
 											<th>Actions</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>Michelle Bilodeau</td>
-											<td>864-348-0485</td>
-											<td class="d-none d-md-table-cell">June 21, 1961</td>
-											<td class="table-action">
-												<a href="#"><i class="align-middle fas fa-fw fa-pen"></i></i></a>
-												<a href="#"><i class="align-middle fas fa-fw fa-trash"></i></a>
-											</td>
-										</tr>
-										<tr>
-											<td>Alexander Groves</td>
-											<td>914-939-2458</td>
-											<td class="d-none d-md-table-cell">May 15, 1948</td>
-											<td class="table-action">
-												<a href="#"><i class="align-middle fas fa-fw fa-pen"></i></i></a>
-												<a href="#"><i class="align-middle fas fa-fw fa-trash"></i></a>
-											</td>
-										</tr>
-										<tr>
-											<td>Kathie Burton</td>
-											<td>704-993-5435</td>
-											<td class="d-none d-md-table-cell">September 14, 1965</td>
-											<td class="table-action">
-												<a href="#"><i class="align-middle fas fa-fw fa-pen"></i></i></a>
-												<a href="#"><i class="align-middle fas fa-fw fa-trash"></i></a>
-											</td>
-										</tr>
-										<tr>
-											<td>Daisy Seger</td>
-											<td>765-382-8195</td>
-											<td class="d-none d-md-table-cell">April 2, 1971</td>
-											<td class="table-action">
-												<a href="#"><i class="align-middle fas fa-fw fa-pen"></i></i></a>
-												<a href="#"><i class="align-middle fas fa-fw fa-trash"></i></a>
-											</td>
-										</tr>
-										<tr>
-											<td>Amanda Jones</td>
-											<td>202-672-1407</td>
-											<td class="d-none d-md-table-cell">October 12, 1966</td>
-											<td class="table-action">
-												<a href="#"><i class="align-middle fas fa-fw fa-pen"></i></i></a>
-												<a href="#"><i class="align-middle fas fa-fw fa-trash"></i></a>
+										<tr style="text-align: center;">
+											<td>1.</td>
+											<td>CA21023</td>
+											<td style="text-align: left;">MUHAMMAD HAFIZ BIN SALLEH</td>
+											<td>hafiz01@gmail.com</td>
+											<td>018-1135859</td>
+											<td class="table-action" style="margin: auto;">
+												<a href="#"><i class="align-middle fas fa-fw fa-search" style="color: black;"></i></a>
+												<a href="#"><i class="align-middle fas fa-fw fa-edit" style="margin: 0px 10px; color: blue;"></i></a>
+												<a href="#"><i class="align-middle fas fa-fw fa-trash" style="color: red;"></i></a>
 											</td>
 										</tr>
 									</tbody>
