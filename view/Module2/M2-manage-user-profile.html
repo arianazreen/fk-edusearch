@@ -165,121 +165,122 @@
 
         <!--Content -->
         <main class="content">
-          <div class="container-fluid">
-            <div class="header">
-              <h1 class="header-title">Manage Profile</h1>
-            </div>
+            <!--1st Row-->
 
-            <!--1st container (Left Side)-->
-            <div class="col-6">
-              <div class="card">
-                <div class="card-header">
-                  <h2 class="card-title">About Nurul Najwa</h2>
-                  <p>
-                    Nurul Najwa Bt Husin studies at Faculty of Computing in
-                    Universiti Malaysia Pahang.<br />Does research in
-                    Educational Technology, Business Intelligence, Technology
-                    Adoption, E-Learning, Social Media Use for Learning and
-                    Higher Education.
-                  </p>
+            <div class="container-fluid">
+              <div class="header">
+                <h1 class="header-title">Manage Profile</h1>
+            </div>
+            <div class="row">
+              <div class="col-12 col-lg-8">
+                <div class="card flex-fill w-100">
+                  <div class="card-header">
+                    <h5 class="card-title">About Nurul Najwa </h5>
+                    <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
+                    <p>
+                      Nurul Najwa Bt Husin studies at Faculty of Computing in
+                      Universiti Malaysia Pahang.<br />Does research in
+                      Educational Technology, Business Intelligence, Technology
+                      Adoption, E-Learning, Social Media Use for Learning and
+                      Higher Education.
+                    </p>
+                  </div>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-4">
+                  <div class="card flex-fill w-100">
+                    <div class="card-header">
+    
+                      <h5 class="card-title mb-0">Total User</h5>
+    
+                    </div>
+                    <div class="card-body d-flex">
+                      <div class="align-self-center w-100">
+                        <div class="py-3">
+                          <div class="chart chart-xs">
+                            <canvas id="chartjs-dashboard-pie"></canvas>
+                          </div>
+                        </div>
+    
+                        <table class="table mb-0">
+                          <tbody>
+                            <tr>
+                              <td><i class="fas fa-circle text-primary fa-fw"></i> Chrome</td>
+                              <td class="text-end">4401</td>
+                            </tr>
+                            <tr>
+                              <td><i class="fas fa-circle text-warning fa-fw"></i> Firefox</td>
+                              <td class="text-end">4003</td>
+                            </tr>
+                            <tr>
+                              <td><i class="fas fa-circle text-danger fa-fw"></i> IE</td>
+                              <td class="text-end">1589</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    </div>
                 </div>
               </div>
-            </div>
+  
+              
+            
 
-			<!-- 1st container (Right Side)-->
-			<div class="col-6">
-				<div class="card">
-				  <div class="card-header">
-					<h2 class="card-title">About Nurul Najwa</h2>
-					<p>
-					  Nurul Najwa Bt Husin studies at Faculty of Computing in
-					  Universiti Malaysia Pahang.<br />Does research in
-					  Educational Technology, Business Intelligence, Technology
-					  Adoption, E-Learning, Social Media Use for Learning and
-					  Higher Education.
-					</p>
-				  </div>
-				</div>
-			  </div>
-			<div class="col-12 col-md-12 col-xxl-6 d-flex order-3 order-xxl-2">
-				<div class="card flex-fill w-100">
-					<div class="card-header">
-						<div class="card-actions float-end">
-							<a href="#" class="me-1">
-								<i class="align-middle" data-feather="refresh-cw"></i>
-							</a>
-							<div class="d-inline-block dropdown show">
-								<a href="#" data-bs-toggle="dropdown" data-bs-display="static">
-									<i class="align-middle" data-feather="more-vertical"></i>
-								</a>
+     
+          
 
-								<div class="dropdown-menu dropdown-menu-end">
-									<a class="dropdown-item" href="#">Action</a>
-									<a class="dropdown-item" href="#">Another action</a>
-									<a class="dropdown-item" href="#">Something else here</a>
-								</div>
-							</div>
-						</div>
-						<h5 class="card-title mb-0">Current Visitors</h5>
-					</div>
-					<div class="card-body px-4">
-						<div id="world_map" style="height:350px;"></div>
-					</div>
-				</div>
-			</div>
-			<div class="col-12 col-md-6 col-xxl-3 d-flex order-2 order-xxl-3">
-				<div class="card flex-fill w-100">
-					<div class="card-header">
-						<div class="card-actions float-end">
-							<a href="#" class="me-1">
-								<i class="align-middle" data-feather="refresh-cw"></i>
-							</a>
-							<div class="d-inline-block dropdown show">
-								<a href="#" data-bs-toggle="dropdown" data-bs-display="static">
-									<i class="align-middle" data-feather="more-vertical"></i>
-								</a>
-
-								<div class="dropdown-menu dropdown-menu-end">
-									<a class="dropdown-item" href="#">Action</a>
-									<a class="dropdown-item" href="#">Another action</a>
-									<a class="dropdown-item" href="#">Something else here</a>
-								</div>
-							</div>
-						</div>
-						<h5 class="card-title mb-0">Browser Usage</h5>
-					</div>
-					<div class="card-body d-flex">
-						<div class="align-self-center w-100">
-							<div class="py-3">
-								<div class="chart chart-xs">
-									<canvas id="chartjs-dashboard-pie"></canvas>
-								</div>
-							</div>
-
-							<table class="table mb-0">
-								<tbody>
-									<tr>
-										<td><i class="fas fa-circle text-primary fa-fw"></i> Chrome</td>
-										<td class="text-end">4401</td>
-									</tr>
-									<tr>
-										<td><i class="fas fa-circle text-warning fa-fw"></i> Firefox</td>
-										<td class="text-end">4003</td>
-									</tr>
-									<tr>
-										<td><i class="fas fa-circle text-danger fa-fw"></i> IE</td>
-										<td class="text-end">1589</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-          </div>
+		
+            <div class="row">
+              <div class="col-12 col-lg-8">
+                <div class="card flex-fill w-100">
+                  <div class="card-header">
+                    <h5 class="card-title">Total Report </h5>
+                    <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
+                  </div>
+                  <div class="card-body">
+                    <div class="chart">
+                      <canvas id="chartjs-line"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-12 col-lg-4">
+                <div class="card flex-fill w-100">
+                  <div class="card-header">
+  
+                    <h5 class="card-title mb-0">Total User</h5>
+  
+                  </div>
+                  <div class="card-body d-flex">
+                    <div class="align-self-center w-100">
+                      <div class="py-3">
+                        <div class="chart chart-xs">
+                          <canvas id="chartjs-dashboard-pie"></canvas>
+                        </div>
+                      </div>
+  
+                      <table class="table mb-0">
+                        <tbody>
+                          <tr>
+                            <td><i class="fas fa-circle text-primary fa-fw"></i> Chrome</td>
+                            <td class="text-end">4401</td>
+                          </tr>
+                          <tr>
+                            <td><i class="fas fa-circle text-warning fa-fw"></i> Firefox</td>
+                            <td class="text-end">4003</td>
+                          </tr>
+                          <tr>
+                            <td><i class="fas fa-circle text-danger fa-fw"></i> IE</td>
+                            <td class="text-end">1589</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  </div>
+              </div>
         </main>
 
         <!--Footer-->
