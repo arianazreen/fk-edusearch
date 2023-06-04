@@ -21,21 +21,21 @@
 
 		echo "<script>alert('You are now logged into the student account !'); window.location='manage-user.php'</script>";
 
-	  	if($row['role'] == "student")
-		{
-			$_SESSION['username'] = $username;
-			echo "<script>alert('You are now logged into the student account !'); window.location='manage-user.php'</script>";
-		}
-		else if($row['role'] == "expert")
-		{
-			$_SESSION['username'] = $username;
-			echo "<script>alert('You are now logged into the expert account !'); window.location='manage-user.php'</script>";
-		}
-		else
-		{
-			$_SESSION['status'] = "Username / Password is Invalid";
-			echo "<script>alert('Invalid username / password'); window.location='manage-user.php'</script>";
-		}
+	  	// if($row['role'] == "student")
+		// {
+		// 	$_SESSION['username'] = $username;
+		// 	echo "<script>alert('You are now logged into the student account !'); window.location='manage-user.php'</script>";
+		// }
+		// else if($row['role'] == "expert")
+		// {
+		// 	$_SESSION['username'] = $username;
+		// 	echo "<script>alert('You are now logged into the expert account !'); window.location='manage-user.php'</script>";
+		// }
+		// else
+		// {
+		// 	$_SESSION['status'] = "Username / Password is Invalid";
+		// 	echo "<script>alert('Invalid username / password'); window.location='manage-user.php'</script>";
+		// }
 	}
       
     	/*$count = mysqli_num_rows($result);

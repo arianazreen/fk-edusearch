@@ -9,13 +9,14 @@
   
     <title>Manage User Profile</title>
     <link rel="stylesheet" href="../../dist/css/modern.css">
+    <link href="https://kit.fontawesome.com/a076d05399.js">
     
     <style>
       body {
         opacity: 0;
       }
     </style>
-    <script src="../../dist/js/settings.js", src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="../../dist/js/settings.js"></script>
     <!-- END SETTINGS -->
   </head>
   
@@ -27,9 +28,9 @@
         <nav class="navbar navbar-expand navbar-theme">
           <div class="container-fluid">
             <!--Nav - Logo-->
-            <img />
+            <img src="../../dist/img/logo/fk-edusearch-border.png" style="width: 35px;" height="35px;" alt="FK-EduSearch Logo"/>
             <!--Nav - Home (name) -->
-            <a class="navbar-brand" href="#">FK-EDUSEARCH</a>&nbsp;
+            <a class="navbar-brand" href="#">   FK-EDUSEARCH  </a>&nbsp;
             <button
               class="navbar-toggler"
               type="button"
@@ -163,8 +164,16 @@
 
           <div class="container-fluid">
               <div class="header">
-                <h1 class="header-title"> Manage Profile </h1>
+                <h1 class="header-title"> MANAGE USER PROFILE </h1>
               </div>
+              <div class="post-box">
+                <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
+            <div class="post-info">
+                    <div class="name"> Nurul Najwa </div>
+                    <div class="date"> Student | Edit Profile </div>
+                  </div>
+                </div>
+
                <div class="row">
                  <div class="col-12 col-lg-8">
                    <div class="card flex-fill w-100">
@@ -196,6 +205,7 @@
                     </div>
                 </div>
               </div>
+             
   
            <!--2nd Row-->
 
@@ -326,5 +336,84 @@
 			});
 		});
 	</script>
+
+     <!--css-->
+
+     <style>
+      
+          .post-box {
+              position: relative;
+              display: flex;
+              margin-bottom: 20px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              padding: 10px;
+              font-size: 16px;
+              color: #fff;
+          }
+  
+          .post-box .profile-img {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              margin-right: 10px;
+          }
+  
+          .post-box .post-info {
+              flex-grow: 1;
+          }
+  
+          .post-box .post-info .name {
+              font-weight: bold;
+              margin-bottom: 5px;
+          }
+  
+          .post-box .post-info .date {
+              font-size: 14px;
+              color: #fff;
+          }
+  
+          .post-box .actions {
+              display: flex;
+              align-items: center;
+              margin-top: 10px;
+          }
+  
+          .post-box .actions .icon {
+              margin-right: 10px;
+              cursor: pointer;
+          }
+  
+          .post-box .actions .edit-btn,
+          .post-box .actions .delete-btn {
+              padding: 5px 10px;
+              background-color: #4CAF50;
+              color: #fff;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+          }
+  
+          .post-box .status {
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              font-weight: bold;
+          }
+          .post-info {
+              flex-grow: 1;
+          }
+  
+            .container-box {
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              padding: 10px;
+              margin-top: 10px;
+          }
+          .line {
+              border-top: 1px solid #ccc;
+          }
+          
+     </style>
   </body>
 </html>
