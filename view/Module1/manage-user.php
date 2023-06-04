@@ -1,3 +1,13 @@
+<?php
+	session_start();
+
+	//If session is not set, then redirect to Login Page
+	if(!isset($_SESSION['username'])) {
+		echo "<script>alert('Your session has timed out. Please log in again.'); window.location='login.php'</script>";
+	}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +44,7 @@
 					<img src="../../dist/img/logo/fk-edusearch-border.png" alt="FK-EduSearch Logo" />
 					<div class="fw-bold">FK-EDUSEARCH</div>
 				</div>
-
+			
 				<ul class="sidebar-nav">
 					<div class="dropdown-divider"></div>
 					<!-- REPORT -->
@@ -72,7 +82,7 @@
 					<!-- <div class="dropdown-divider"></div> -->
 					<!-- LOG OUT -->
 					<li class="sidebar-item" style="position: absolute; bottom: 10px; ">
-						<a class="sidebar-link" href="#">
+						<a class="sidebar-link" href="logout.php">
 							<i class="align-middle me-2 fas fa-fw fa-sign-out-alt"></i> <span class="align-middle">Log Out</span>
 						</a>
 					</li>
@@ -158,9 +168,10 @@
 								</table>
 							</div>
 						</div>
-
 					</div>
-
+						<?php
+							echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';
+						?>
 				</div>
 			</main>
 			<footer class="footer">

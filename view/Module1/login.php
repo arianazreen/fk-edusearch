@@ -1,50 +1,35 @@
 <?php
 
-$error = false;
+	$error = false; 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include 'database.php';
+   	if($_SERVER["REQUEST_METHOD"] == "POST")
+	{
+		include 'database.php';
 
-    // Retrieve form data
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
+		$username = $_POST["username"]; 
+		$password = $_POST["password"]; 
+		
+		$username = mysqli_real_escape_string($conn,$_POST['username']);
+		$password = mysqli_real_escape_string($conn,$_POST['password']); 
+		
+		$sql = "SELECT * FROM admin WHERE adminID = '$username' AND adminPass = '$password'";
+		$result = mysqli_query($conn,$sql);
+		$row = mysqli_fetch_array($result);
 
-    // Perform validation
-    if (empty($username) || empty($password)) {
-        $error = true;
-        $errorMessage = "Username and password are required.";
-    } else {
-        $sql = "SELECT * FROM admin WHERE adminID = '$username'";
-        $result = mysqli_query($conn, $sql);
-
-        if ($result && mysqli_num_rows($result) === 1) {
-            $row = mysqli_fetch_assoc($result);
-            $hashedPassword = $row['adminPass'];
-
-            // Verify the password
-            if (password_verify($password, $hashedPassword)) {
-                session_start(); // Start the session
-                $_SESSION['username'] = $username;
-                header("Location: manage-user.php");
-                exit();
-            } else {
-                $error = true;
-                $errorMessage = "Invalid username or password.";
-            }
-        } else {
-            $error = true;
-            $errorMessage = "Invalid username or password.";
-        }
-    }
-}
-
-if ($error) {
-    echo "<script>alert('$errorMessage'); window.location='login.php'</script>";
-    exit();
-}
+		$count = mysqli_num_rows($result);
+      
+		if($count == 1)
+		{
+			session_start();
+			$_SESSION['username'] = $username;
+			echo "<script>alert('Logged in as an Admin.'); window.location='manage-user.php'</script>";
+		}
+		else
+		{
+			echo "<script>alert('Invalid username or password.'); window.location='login.php'</script>";
+		}
+	}
 ?>
-
-
 
 
 <!DOCTYPE html>

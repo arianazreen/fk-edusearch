@@ -6,7 +6,6 @@
 	{
 		include 'database.php';
 
-		//username and password sent from form 
 		$username = $_POST["username"]; 
 		$password = $_POST["password"]; 
 		
@@ -16,42 +15,24 @@
 		$sql = "SELECT * FROM login WHERE username = '$username' AND password = '$password'";
 		$result = mysqli_query($conn,$sql);
 		$row = mysqli_fetch_array($result);
-		//$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-		//$active = $row['active'];
-
-		echo "<script>alert('You are now logged into the student account !'); window.location='manage-user.php'</script>";
-
-	  	if($row['role'] == "student")
+		
+	  	if($row['role'] == "genUser")
 		{
+			session_start();
 			$_SESSION['username'] = $username;
-			echo "<script>alert('You are now logged into the student account !'); window.location='manage-user.php'</script>";
+			echo "<script>alert('Logged in as a General User.'); window.location='manage-user.php'</script>";
 		}
 		else if($row['role'] == "expert")
 		{
+			session_start();
 			$_SESSION['username'] = $username;
-			echo "<script>alert('You are now logged into the expert account !'); window.location='manage-user.php'</script>";
+			echo "<script>alert('Logged in as an Expert.'); window.location='manage-user.php'</script>";
 		}
 		else
 		{
-			$_SESSION['status'] = "Username / Password is Invalid";
-			echo "<script>alert('Invalid username / password'); window.location='manage-user.php'</script>";
+			echo "<script>alert('Invalid username or password.'); window.location='login-user.php'</script>";
 		}
 	}
-      
-    	/*$count = mysqli_num_rows($result);
-      
-		if($count == 1)
-		{
-			//session_register("username");
-			$_SESSION['loginBtn'] = $username;
-			
-			header("location: index.php");
-		}
-		else
-		{
-			$error = "Your Login Username or Password is invalid";
-		}
-   }*/ 
 ?>
 
 
@@ -118,7 +99,7 @@
                                         <b><h1>LOGIN</h1></b>
                                     </div>
                                     <div class="spacing"></div>
-									<form method="post" action="login.php">
+									<form method="post" action="login-user.php">
 										<div class="mb-3">
 												<i class="align-middle me-1 fa fa-fw fa-user" style="margin-left: 10px;"></i>
 												<input class="form-input" type="text" name="username" placeholder="USERNAME"/>
