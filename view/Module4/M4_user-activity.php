@@ -42,7 +42,7 @@
 							<i class="align-middle me-2 fas fa-fw fa-file-contract"></i> <span class="align-middle">Report</span>
 						</a>
 						<ul id="dashboards" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link" href="#">User Activity</a></li>
+							<li class="sidebar-item"><a class="sidebar-link active" href="M4_user-activity.php">User Activity</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="#">User Satisfication</a></li>
 						</ul>
 					</li>
@@ -184,15 +184,15 @@
 										<table class="table mb-0">
 											<tbody>
 												<tr>
-													<td><i class="fas fa-circle text-primary fa-fw"></i> Chrome</td>
+													<td><i class="fas fa-circle text-primary fa-fw"></i> Software Engineering</td>
 													<td class="text-end">4401</td>
 												</tr>
 												<tr>
-													<td><i class="fas fa-circle text-warning fa-fw"></i> Firefox</td>
+													<td><i class="fas fa-circle text-warning fa-fw"></i> Network & Security</td>
 													<td class="text-end">4003</td>
 												</tr>
 												<tr>
-													<td><i class="fas fa-circle text-danger fa-fw"></i> IE</td>
+													<td><i class="fas fa-circle text-info fa-fw"></i> Graphic & Multimedia</td>
 													<td class="text-end">1589</td>
 												</tr>
 											</tbody>
@@ -299,7 +299,7 @@
 			new Chart(document.getElementById("chartjs-dashboard-pie"), {
 				type: 'pie',
 				data: {
-					labels: ["Chrome", "Firefox", "IE", "Other"],
+					labels: ["Software Engineering", "Network & Security", "Graphic & Multimedia", "Cybersecurity"],
 					datasets: [{
 						data: [4401, 4003, 1589],
 						backgroundColor: [
@@ -322,6 +322,24 @@
 			});
 		});
 	</script>
+
+	<!-- Js Active Sidebar Nav 
+	<script>
+
+		var nav = document.getElementById("sidebar");
+		var sidebar = nav.getElementByClassName("sidebar-link");
+
+		for(var i=0; i < sidebar.length; i++)
+		{
+			sidebar[i].addEventListener("click", function()
+			{
+				var current = document.getElementByClassName("active");
+				current[0].className = current[0].className.replace(" active", "");
+  				this.className += " active"; 
+			});
+		}
+
+	</script>-->
 
 </body>
 

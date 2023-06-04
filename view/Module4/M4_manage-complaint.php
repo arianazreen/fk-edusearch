@@ -8,7 +8,7 @@
 	<meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
 	<meta name="author" content="Bootlab">
 
-	<title>Manage User Profile</title>
+	<title>Manage Complaint</title>
 
 	<link href="../../dist/css/modern.css" rel="stylesheet">
 	
@@ -89,7 +89,7 @@
 
 					<div class="header">
 						<h1 class="header-title">
-							TABLE
+							Manage Complaint
 						</h1>
 					</div>
 					<div class="row">
@@ -98,58 +98,54 @@
 								<table class="table table-bordered">
 									<thead>
 										<tr style="background-color: rgb(12, 13, 61); color: white; text-align: center;">
-											<th style="width:40%;">Name</th>
-											<th style="width:25%">Phone Number</th>
-											<th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th>
+											<th >User ID</th>
+											<th >Name</th>
+											<th class="d-none d-md-table-cell" >Date</th>
+											<th >Complaint Type</th>
+											<th>Status</th>
 											<th>Actions</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>Michelle Bilodeau</td>
-											<td>864-348-0485</td>
-											<td class="d-none d-md-table-cell">June 21, 1961</td>
+										<tr style="text-align: center;">
+											<td>CB19021</td>
+											<td style="text-align: left;">NUR MAISARAH BINTI JAILANI</td>
+											<td class="d-none d-md-table-cell">10 Jan 2023</td>
+											<td>Unsatisfied Experts Feedback</td>
+											<td style="text-align: left;"><i class="fas fa-fw fa-check-circle" style="color:#35B421;"></i>  Resolved</td>
 											<td class="table-action">
-												<a href="#"><i class="align-middle fas fa-fw fa-pen"></i></i></a>
+												<a href="#"><i class="align-middle fas fa-fw fa-search" style="margin-right:10px;"></i></a>
+												<a href="#"><i class="align-middle fas fa-fw fa-edit" style="margin-right:10px;"></i></a>
 												<a href="#"><i class="align-middle fas fa-fw fa-trash"></i></a>
 											</td>
 										</tr>
-										<tr>
-											<td>Alexander Groves</td>
-											<td>914-939-2458</td>
-											<td class="d-none d-md-table-cell">May 15, 1948</td>
+
+										<tr style="text-align: center;">
+											<td>CA21124</td>
+											<td style="text-align: left;">AHMAD RIDUAN BIN ABU</td>
+											<td class="d-none d-md-table-cell">23 Jan 2023</td>
+											<td>Unsatisfied Experts Feedback</td>
+											<td style="text-align: left;"><i class="fas fa-fw fa-clock" style="color:#DCDB02;"></i>  In Investigation</td>
 											<td class="table-action">
-												<a href="#"><i class="align-middle fas fa-fw fa-pen"></i></i></a>
+												<a href="#"><i class="align-middle fas fa-fw fa-search" style="margin-right:10px;"></i></a>
+												<a href="#"><i class="align-middle fas fa-fw fa-edit" style="margin-right:10px;"></i></a>
 												<a href="#"><i class="align-middle fas fa-fw fa-trash"></i></a>
 											</td>
 										</tr>
-										<tr>
-											<td>Kathie Burton</td>
-											<td>704-993-5435</td>
-											<td class="d-none d-md-table-cell">September 14, 1965</td>
+
+										<tr style="text-align: center;">
+											<td>CD19976</td>
+											<td style="text-align: left;">KIM MINGYU</td>
+											<td class="d-none d-md-table-cell">6 April 2023</td>
+											<td>Unsatisfied Experts Feedback</td>
+											<td style="text-align: left;"><i class="fas fa-fw fa-exclamation-circle" style="color:#F90105;"></i>  On Hold</td>
 											<td class="table-action">
-												<a href="#"><i class="align-middle fas fa-fw fa-pen"></i></i></a>
+												<a href="#"><i class="align-middle fas fa-fw fa-search" style="margin-right:10px;"></i></a>
+												<a href="#"><i class="align-middle fas fa-fw fa-edit" style="margin-right:10px;"></i></a>
 												<a href="#"><i class="align-middle fas fa-fw fa-trash"></i></a>
 											</td>
 										</tr>
-										<tr>
-											<td>Daisy Seger</td>
-											<td>765-382-8195</td>
-											<td class="d-none d-md-table-cell">April 2, 1971</td>
-											<td class="table-action">
-												<a href="#"><i class="align-middle fas fa-fw fa-pen"></i></i></a>
-												<a href="#"><i class="align-middle fas fa-fw fa-trash"></i></a>
-											</td>
-										</tr>
-										<tr>
-											<td>Amanda Jones</td>
-											<td>202-672-1407</td>
-											<td class="d-none d-md-table-cell">October 12, 1966</td>
-											<td class="table-action">
-												<a href="#"><i class="align-middle fas fa-fw fa-pen"></i></i></a>
-												<a href="#"><i class="align-middle fas fa-fw fa-trash"></i></a>
-											</td>
-										</tr>
+										
 									</tbody>
 								</table>
 							</div>
