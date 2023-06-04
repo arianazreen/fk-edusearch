@@ -1,30 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta
-      name="description"
-      content="Responsive Bootstrap 4 Admin &amp; Dashboard Template"
-    />
-    <meta name="author" content="Bootlab" />
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
+    <meta name="author" content="Bootlab">
+  
     <title>Manage User Profile</title>
-
-    <link href="../../dist/css/modern.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="../../dist/css/modern.css">
+    
     <style>
       body {
         opacity: 0;
       }
     </style>
-    <script src="../../dist/js/settings.js"></script>
+    <script src="../../dist/js/settings.js", src="https://kit.fontawesome.com/a076d05399.js"></script>
     <!-- END SETTINGS -->
   </head>
+  
 
   <body>
     <div class="wrapper">
@@ -167,121 +161,114 @@
         <main class="content">
             <!--1st Row-->
 
-            <div class="container-fluid">
+          <div class="container-fluid">
               <div class="header">
-                <h1 class="header-title">Manage Profile</h1>
-            </div>
-            <div class="row">
-              <div class="col-12 col-lg-8">
-                <div class="card flex-fill w-100">
-                  <div class="card-header">
-                    <h5 class="card-title">About Nurul Najwa </h5>
-                    <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
-                    <p>
-                      Nurul Najwa Bt Husin studies at Faculty of Computing in
-                      Universiti Malaysia Pahang.<br />Does research in
-                      Educational Technology, Business Intelligence, Technology
-                      Adoption, E-Learning, Social Media Use for Learning and
-                      Higher Education.
-                    </p>
-                  </div>
+                <h1 class="header-title"> Manage Profile </h1>
+              </div>
+               <div class="row">
+                 <div class="col-12 col-lg-8">
+                   <div class="card flex-fill w-100">
+                      <div class="card-header">
+                       <h2 class="card-title"> About Nurul Najwa </h2>
+                         <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
+                          <p>
+                            Nurul Najwa Bt Husin studies at Faculty of Computing in
+                            Universiti Malaysia Pahang.<br />Does research in
+                            Educational Technology, Business Intelligence, Technology
+                            Adoption, E-Learning, Social Media Use for Learning and
+                            Higher Education.
+                          </p>
+                      </div>
                   </div>
                 </div>
                 <div class="col-6 col-lg-4">
-                  <div class="card flex-fill w-100">
-                    <div class="card-header">
+                    <div class="card flex-fill w-100">
+                      <div class="card-header">
     
-                      <h5 class="card-title mb-0">Related Topic Research</h5>
-    
+                          <h2 class="card-title mb-0"> Related Topic Research </h2>
+                          <p>
+                            <ul>
+                            <li> Emeging Trends in Computer System Security. </li>
+                            <li> Virtual Reality (VR) and Augmented Reality (AR) application. </li>
+                          </ul>
+                          </p>
+                      </div>
                     </div>
+                </div>
+              </div>
+  
+           <!--2nd Row-->
+
+           <div class="row">
+            <div class="col-12 col-lg-8">
+              <div class="card flex-fill w-100">
+                 <div class="card-header">
+                  <h2 class="card-title"> Total Post </h2>
+                    <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
                     <div class="card-body d-flex">
                       <div class="align-self-center w-100">
                         <div class="py-3">
                           <div class="chart chart-xs">
                             <canvas id="chartjs-dashboard-pie"></canvas>
                           </div>
+                          <table class="table mb-0">
+                            
+                              <tr>
+                                <td><i class="fas fa-circle text-primary fa-fw" style="color:#43BCAE"></i> Networking</td>
+                                <td class="text-end"> 15 </td>
+                              </tr>
+                              <tr>
+                                <td><i class="fas fa-circle text-warning fa-fw" style="color:#BBE3E5"></i> Software Engineering </td>
+                                <td class="text-end"> 7 </td>
+                              </tr>
+                              <tr>
+                                <td><i class="fas fa-circle text-danger fa-fw" style="color:#1A5D55"></i> Multimedia and Graphics </td>
+                                <td class="text-end"> 14 </td>
+                              </tr>
+                            
+                          </table>
                         </div>
-    
-                        <table class="table mb-0">
-                          <tbody>
-                            <tr>
-                              <td><i class="fas fa-circle text-primary fa-fw"></i> Chrome</td>
-                              <td class="text-end">4401</td>
-                            </tr>
-                            <tr>
-                              <td><i class="fas fa-circle text-warning fa-fw"></i> Firefox</td>
-                              <td class="text-end">4003</td>
-                            </tr>
-                            <tr>
-                              <td><i class="fas fa-circle text-danger fa-fw"></i> IE</td>
-                              <td class="text-end">1589</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                    </div>
-                </div>
-              </div>
-  
-              
-            
-
-     
-          
-
-		
-            <div class="row">
-              <div class="col-12 col-lg-8">
-                <div class="card flex-fill w-100">
-                  <div class="card-header">
-                    <h5 class="card-title">Total Report </h5>
-                    <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
-                  </div>
-                  <div class="card-body">
-                    <div class="chart">
-                      <canvas id="chartjs-line"></canvas>
-                    </div>
-                  </div>
-                </div>
-              </div>
-  
-              <div class="col-12 col-lg-4">
-                <div class="card flex-fill w-100">
-                  <div class="card-header">
-  
-                    <h5 class="card-title mb-0">Total User</h5>
-  
-                  </div>
-                  <div class="card-body d-flex">
-                    <div class="align-self-center w-100">
-                      <div class="py-3">
-                        <div class="chart chart-xs">
-                          <canvas id="chartjs-dashboard-pie"></canvas>
                         </div>
-                      </div>
-  
-                      <table class="table mb-0">
-                        <tbody>
-                          <tr>
-                            <td><i class="fas fa-circle text-primary fa-fw"></i> Chrome</td>
-                            <td class="text-end">4401</td>
-                          </tr>
-                          <tr>
-                            <td><i class="fas fa-circle text-warning fa-fw"></i> Firefox</td>
-                            <td class="text-end">4003</td>
-                          </tr>
-                          <tr>
-                            <td><i class="fas fa-circle text-danger fa-fw"></i> IE</td>
-                            <td class="text-end">1589</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                    </div>
+                 </div>
+             </div>
+           </div>
+           <div class="col-6 col-lg-4">
+               <div class="card flex-fill w-100">
+                 <div class="card-header">
+
+                     <h2 class="card-title mb-0"> Academic Qualifications </h2>
+                     <p>
+                       <ul>
+                       <li> Bachelor in Computer System </li>
+                     </ul>
+                     </p>
+                 </div>
+               </div>
+           </div>
+         </div>
+
+         <!--3rd Row-->
+              <div class="row">
+                <div class="col-12 col-lg-8">
+                  
+              </div>
+              <div class="col-6 col-lg-4">
+                  <div class="card flex-fill w-100">
+                    <div class="card-header">
+                        <h2 class="card-title mb-0"> Social Media Account </h2>
+                        <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                       <p> nurul_najwa </p> 
                     </div>
                   </div>
-                  </div>
               </div>
-        </main>
+            </div>
+         </div>
+         </div>
+         </div>
+      
+
+       </main>
 
         <!--Footer-->
         <footer class="footer">
@@ -307,5 +294,37 @@
       </defs>
     </svg>
     <script src="../../dist/js/app.js"></script>
+
+
+    <!--Script-->
+    	<!-- Js Pie Chart -->
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Pie chart
+			new Chart(document.getElementById("chartjs-dashboard-pie"), {
+				type: 'pie',
+				data: {
+					labels: ["Networking", "Software Engineering", "Multimedia and Graphics"],
+					datasets: [{
+						data: [15, 7, 14],
+						backgroundColor: [
+							"#43BCAE",
+							"#BBE3E5",
+							"#1A5D55",
+						],
+						borderColor: "transparent"
+					}]
+				},
+				options: {
+					responsive: !window.MSInputMethodContext,
+					maintainAspectRatio: false,
+					legend: {
+						display: false
+					},
+					cutoutPercentage: 75
+				}
+			});
+		});
+	</script>
   </body>
 </html>
