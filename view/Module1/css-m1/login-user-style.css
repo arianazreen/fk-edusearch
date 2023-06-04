@@ -1,0 +1,31 @@
+.spacing {
+    padding: 20px;
+}
+
+.form-input {
+    margin-left: 10px;
+    border: none; 
+    border-bottom: 2px solid rgb(205, 205, 205); 
+    width: 400px;
+    padding: 10px;
+}
+
+.button-m1 {
+    background-color: #07A492;
+    padding: 10px;
+    width: 400px;
+    color: white;
+    border: none; 
+    border-radius: 10px;
+}
+
+.button-m1:hover {
+    background-color: #71D0C5;
+}
+
+.footer {
+    margin-top: 100px;
+    border-top: 1px solid #ffffff;
+    color: #ffffff;
+    text-align: center;
+}
