@@ -9,7 +9,8 @@
   
     <title> Homepage </title>
     <link rel="stylesheet" href="../../dist/css/modern.css">
-    <link href="https://kit.fontawesome.com/a076d05399.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--<link href="https://kit.fontawesome.com/a076d05399.js">-->
     
     <style>
       body {
@@ -77,11 +78,10 @@
                 </li>
               </ul>
             </div>
-          </div>
-
+            
           <!--Nav - Notification -->
           <div class="navbar-collapse collapse">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto mt-2">
               <li class="nav-item dropdown ms-lg-2">
                 <a
                   class="nav-link dropdown-toggle position-relative"
@@ -119,14 +119,25 @@
                   </div>
                 </div>
               </li>
-              <!--Nav- Profile-->
-              <div class="post-box">
+
+              <!--Nav- Profile 
+              <div class="post-box border-0">
                         <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image" 
-                        style="width: 35px; height:35px;" >
-                           <p>Nurul Najwa</p>
-                           <p><small>Student</small></p>
+                         style="width: 35px; height: 25px;" >
+                         <h6>Nurul Najwa</h6>
+                         <p>Student</p>          
+              </div>-->
+
+              <div class="row mt-3 mx-2">
+                <div class="col-sm-4">
+                <img class="profile-img rounded-circle" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image" 
+                         style="width: 35px; height: 35px;" >
+                </div>
+                <div class="col-sm-8">
+                      <h6 class="mb-0" style="color: #fff;">Nurul Najwa</h6>
+                      <p style="color: #BBE3E5;">Student</p>
+                </div>
               </div>
-              
 
               <!--Nav - Dropdown Setting -->
               <li class="nav-item dropdown ms-lg-2">
@@ -163,6 +174,8 @@
               </li>
             </ul>
           </div>
+          </div>
+
         </nav>
 
         <!--Content -->
@@ -213,12 +226,12 @@
                                     Is this statement can be proven as true facts or not?</p>
                             </div>
                                 <div class="line"></div>
-                                <div class="actions">
-                                
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>Like</a>
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>Comment</a>
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>Share</a>
-                                
+                                <div class="actions" style="color:#888">
+                                <div class="icon-container">
+                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>257</a>
+                                    <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>123</a>
+                                    <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>78</a>
+                                  </div>
                                 </div>
                                 <div class="status">Complete</div>
                                 
@@ -242,15 +255,15 @@
                                 <div class="container-box">
                                 <h3>Virtual Reality (VR) and Augmented Reality (AR) application</h3>
                                 <div class="line"></div>
-                                <p>How can i implement AI into the Final Year Project i’m working on ?</p>
+                                <p>How can i implement AI into the Final Year Project i’m working on?</p>
                             </div>
                                 <div class="line"></div>
                                 <div class="actions">
-                                
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>Like</a>
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>Comment</a>
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>Share</a>
-                                
+                                  <div class="icon-container">
+                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>333</a>
+                                    <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>65</a>
+                                    <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>41</a>
+                                  </div>
                                 </div>
                                 <div class="status">Complete</div>
                                 
@@ -278,11 +291,11 @@
                             </div>
                                 <div class="line"></div>
                                 <div class="actions">
-                                
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>Like</a>
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>Comment</a>
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>Share</a>
-                                
+                                  <div class="icon-container">
+                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>111</a>
+                                    <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>53</a>
+                                    <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>94</a>
+                                    </div>
                                 </div>
                                 <div class="status">Complete</div>
                                 
@@ -327,6 +340,21 @@
    <!--css-->
 
    <style>
+    .icon-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-container i {
+      color: grey;
+      font-size: 14px; 
+      margin: 10px;
+      margin-bottom: 5px;
+      margin-top: 5px;
+      margin-left: 180px;
+      margin-right: 70px;
+    }
     .search-container {
             display: flex;
             justify-content: center;
