@@ -7,10 +7,10 @@
     <meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
     <meta name="author" content="Bootlab">
   
-    <title>Manage User Profile</title>
+    <title> Homepage </title>
     <link rel="stylesheet" href="../../dist/css/modern.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <!--<link href="https://kit.fontawesome.com/a076d05399.js">-->
     
     <style>
       body {
@@ -184,119 +184,130 @@
 
           <div class="container-fluid">
               <div class="header">
-                <h1 class="header-title"> MANAGE USER PROFILE </h1>
+                <h1 class="header-title"> HOMEPAGE </h1>
               </div>
-              <div class="post-box">
-                <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
-            <div class="post-info">
-                    <div class="name"> Nurul Najwa </div>
-                    <div class="date"> Student | Edit Profile </div>
-                  </div>
-                </div>
-
                <div class="row">
-                 <div class="col-12 col-lg-8">
+                 <div class="col-12">
                    <div class="card flex-fill w-100">
                       <div class="card-header">
-                       <h2 class="card-title"> About Nurul Najwa </h2>
+                       <h2 class="card-title"> </h2>
+                       <!-- Search Area-->
+                       <div class="search-container">
+                            <div class="search-box">
+                                <input type="text" placeholder="Search...">
+                                <button type="submit">Submit</button>
+                            </div>
+                        </div>
                          <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
-                          <p>
-                            Nurul Najwa Bt Husin studies at Faculty of Computing in
-                            Universiti Malaysia Pahang.<br />Does research in
-                            Educational Technology, Business Intelligence, Technology
-                            Adoption, E-Learning, Social Media Use for Learning and
-                            Higher Education.
-                          </p>
+                          
                       </div>
                   </div>
                 </div>
-                <div class="col-6 col-lg-4">
-                    <div class="card flex-fill w-100">
-                      <div class="card-header">
-    
-                          <h2 class="card-title mb-0"> Related Topic Research </h2>
-                          <p>
-                            <ul>
-                            <li> Emeging Trends in Computer System Security. </li>
-                            <li> Virtual Reality (VR) and Augmented Reality (AR) application. </li>
-                          </ul>
-                          </p>
-                      </div>
-                    </div>
-                </div>
+               
               </div>
-             
   
            <!--2nd Row-->
 
+            <!--1st Topic-->
            <div class="row">
-            <div class="col-12 col-lg-8">
+            <div class="center">
               <div class="card flex-fill w-100">
-                 <div class="card-header">
-                  <h2 class="card-title"> Total Post </h2>
-                    <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
-                    <div class="card-body d-flex">
-                      <div class="align-self-center w-100">
-                        <div class="py-3">
-                          <div class="chart chart-xs">
-                            <canvas id="chartjs-dashboard-pie"></canvas>
-                          </div>
-                          <table class="table mb-0">
-                            
-                              <tr>
-                                <td><i class="fas fa-circle text-primary fa-fw" style="color:#43BCAE"></i> Networking</td>
-                                <td class="text-end"> 15 </td>
-                              </tr>
-                              <tr>
-                                <td><i class="fas fa-circle text-warning fa-fw" style="color:#BBE3E5"></i> Software Engineering </td>
-                                <td class="text-end"> 7 </td>
-                              </tr>
-                              <tr>
-                                <td><i class="fas fa-circle text-danger fa-fw" style="color:#1A5D55"></i> Multimedia and Graphics </td>
-                                <td class="text-end"> 14 </td>
-                              </tr>
-                            
-                          </table>
+              <div class="card-header">
+    
+                        <div class="post-box">
+                        <img class="profile-img" src="../../dist/img/avatars/avatar-2.jpg" alt="Profile Image">
+                            <div class="post-info">
+                                <div class="name"> AbdulRahman Abdullah </div>
+                                <div class="date"> Article | 01 January 2023 </div>
+                                <div class="container-box">
+                                <h3>Machine learning and artificial intelligence in computer systems.</h3>
+                                <div class="line"></div>
+                                <p>Artificial Intelligence will take over the human daily work. 
+                                    Is this statement can be proven as true facts or not?</p>
+                            </div>
+                                <div class="line"></div>
+                                <div class="actions" style="color:#888">
+                                <div class="icon-container">
+                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>257</a>
+                                    <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>123</a>
+                                    <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>78</a>
+                                  </div>
+                                </div>
+                                <div class="status">Complete</div>
+                                
+                            </div>
                         </div>
                         </div>
                     </div>
-                 </div>
              </div>
            </div>
-           <div class="col-6 col-lg-4">
-               <div class="card flex-fill w-100">
-                 <div class="card-header">
-
-                     <h2 class="card-title mb-0"> Academic Qualifications </h2>
-                     <p>
-                       <ul>
-                       <li> Bachelor in Computer System </li>
-                     </ul>
-                     </p>
-                 </div>
-               </div>
-           </div>
-         </div>
-
-         <!--3rd Row-->
-              <div class="row">
-                <div class="col-12 col-lg-8">
-                  
-              </div>
-              <div class="col-6 col-lg-4">
-                  <div class="card flex-fill w-100">
-                    <div class="card-header">
-                        <h2 class="card-title mb-0"> Social Media Account </h2>
-                        <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-                       <p> nurul_najwa </p> 
+           <!--2nd Topic-->
+           <div class="row">
+            <div class="center">
+              <div class="card flex-fill w-100">
+              <div class="card-header">
+    
+                        <div class="post-box">
+                        <img class="profile-img" src="../../dist/img/avatars/avatar-3.jpg" alt="Profile Image">
+                            <div class="post-info">
+                                <div class="name"> Sumayyah Yasir </div>
+                                <div class="date"> Article | 28 December 2022 </div>
+                                <div class="container-box">
+                                <h3>Virtual Reality (VR) and Augmented Reality (AR) application</h3>
+                                <div class="line"></div>
+                                <p>How can i implement AI into the Final Year Project i’m working on?</p>
+                            </div>
+                                <div class="line"></div>
+                                <div class="actions">
+                                  <div class="icon-container">
+                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>333</a>
+                                    <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>65</a>
+                                    <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>41</a>
+                                  </div>
+                                </div>
+                                <div class="status">Complete</div>
+                                
+                            </div>
+                        </div>
+                        </div>
                     </div>
-                  </div>
-              </div>
-            </div>
-         </div>
-         </div>
-         </div>
-      
+             </div>
+           </div>
+            <!--3rd Topic-->
+           <div class="row">
+            <div class="center">
+              <div class="card flex-fill w-100">
+              <div class="card-header">
+                        <div class="post-box">
+                            <img class="profile-img" src="../../dist/img/avatars/avatar-4.jpg" alt="Profile Image">
+                        <div class="post-info">
+                                <div class="name"> Melissa Anne </div>
+                                <div class="date"> Article | 14 November 2022 </div>
+                                <div class="container-box">
+                                <h3>Machine learning and artificial intelligence in computer systems.</h3>
+                                <div class="line"></div>
+                                <p>Artificial Intelligence will take over the human daily work. 
+                                    Is this statement can be proven as true facts or not?</p>
+                            </div>
+                                <div class="line"></div>
+                                <div class="actions">
+                                  <div class="icon-container">
+                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>111</a>
+                                    <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>53</a>
+                                    <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>94</a>
+                                    </div>
+                                </div>
+                                <div class="status">Complete</div>
+                                
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+             </div>
+           </div>
+           
+           
+         
 
        </main>
 
@@ -326,42 +337,25 @@
     <script src="../../dist/js/app.js"></script>
 
 
-    <!--Script-->
-    	<!-- Js Pie Chart -->
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			// Pie chart
-			new Chart(document.getElementById("chartjs-dashboard-pie"), {
-				type: 'pie',
-				data: {
-					labels: ["Networking", "Software Engineering", "Multimedia and Graphics"],
-					datasets: [{
-						data: [15, 7, 14],
-						backgroundColor: [
-							"#43BCAE",
-							"#BBE3E5",
-							"#1A5D55",
-						],
-						borderColor: "transparent"
-					}]
-				},
-				options: {
-					responsive: !window.MSInputMethodContext,
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					cutoutPercentage: 75
-				}
-			});
-		});
-	</script>
+   <!--css-->
 
-     <!--css-->
+   <style>
+    .icon-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-     <style>
-      
-      .search-container {
+    .icon-container i {
+      color: grey;
+      font-size: 14px; 
+      margin: 10px;
+      margin-bottom: 5px;
+      margin-top: 5px;
+      margin-left: 180px;
+      margin-right: 70px;
+    }
+    .search-container {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -418,13 +412,11 @@
         .post-box .post-info .name {
             font-weight: bold;
             margin-bottom: 5px;
-            color: #fff;
-            font-size: 19px;
         }
 
         .post-box .post-info .date {
             font-size: 12px;
-            color:#BBE3E5;
+            color: #888;
         }
 
         .post-box .actions {
@@ -467,7 +459,7 @@
         .line {
             border-top: 1px solid #ccc;
         }
-          
-     </style>
+        
+   </style>
   </body>
 </html>

@@ -18,7 +18,7 @@
 	<meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
 	<meta name="author" content="Bootlab">
 
-	<title>Manage User Profile</title>
+	<title>Create General User</title>
 	<link rel="shortcut icon" href="../../dist/img/logo/fk-edusearch-border.png" type="image/x-icon">
 
 	<!-- Link to CSS file -->
@@ -55,12 +55,8 @@
 							<i class="align-middle me-2 fas fa-fw fa-file-contract"></i> <span class="align-middle">Report</span>
 						</a>
 						<ul id="dashboards" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link" href="dashboard-default.html">Default</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="dashboard-analytics.html">Analytics</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="dashboard-e-commerce.html">E-commerce</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="pages-invoice.html">Invoice</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="charts-chartjs.html">Chart.js</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="charts-apexcharts.html">ApexCharts</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="#">User Activity</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="#">System Performance</a></li>
 						</ul>
 					</li>
 					<!-- MANAGE USER PROFILE -->
@@ -96,55 +92,85 @@
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-theme">
 				<a class="sidebar-toggle d-flex me-2" style="margin-top: 10px;">
-					<i class="hamburger align-self-center"></i>
+					<i class="hamburger align-self-center" style="color: black"></i>
 				</a>
 			</nav>
-
 			<main class="content">
 				<div class="container-fluid">
-
-					<div class="header">
+					<!-- HEADER -->
+					<div class="header" style="margin-bottom: 80px;">
 						<h1 class="header-title" style="color: black; border: none; border-left: 14px solid #1D2F3A; padding-left: 10px;">
-							Manage User Profile
+							Create General User
 						</h1>
 					</div>
 					<div class="row">
 						<div class="col-12">
-							<div class="card">
-								<table class="table table-bordered">
-									<thead>
-										<tr class="table-header">
-											<th>No.</th>
-											<th>User ID</th>
-											<th>Name</th>
-											<th>Email</th>
-											<th class="d-none d-md-table-cell" style="width:25%">Phone No.</th>
-											<th>Actions</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr style="text-align: center;">
-											<td>1.</td>
-											<td>CA21023</td>
-											<td style="text-align: left;">MUHAMMAD HAFIZ BIN SALLEH</td>
-											<td>hafiz01@gmail.com</td>
-											<td>018-1135859</td>
-											<td class="table-action" style="margin: auto;">
-												<a href="#"><i class="align-middle fas fa-fw fa-search" style="color: black;"></i></a>
-												<a href="#"><i class="align-middle fas fa-fw fa-edit" style="margin: 0px 10px; color: blue;"></i></a>
-												<a href="#"><i class="align-middle fas fa-fw fa-trash" style="color: red;"></i></a>
-											</td>
-										</tr>
-									</tbody>
-								</table>
+							<div class="card" style="padding: 50px 40px 140px; border-radius: 20px; box-shadow: 5px 8px 5px lightgray;">
+                                <!-- FORM CREATE GEN USER-->
+                                <form method="POST" action="create-genUser.php" onsubmit="alert('Form Submitted.')">
+									<div class="row">
+                                        <div class="mb-3 col-md-4">
+											<label for="userRole">User Role</label>
+											<select class="form-select" name="userRole" value="userRole" aria-label="Default select example">
+												<option hidden="">Please Select</option>
+												<option value="Student">Student</option>
+												<option value="Staff">Staff</option>
+											</select>
+										</div>
+										<div class="mb-3 col-md-8">
+											<label for="course">Course</label>
+											<select class="form-select" name="course" value="course" aria-label="Default select example">
+												<option hidden="">Please Select</option>
+												<option value="BCS">BCS - Software Engineering</option>
+												<option value="BCN">BCN - Computer Systems & Networking</option>
+												<option value="BCG">BCG - Graphics & Multimedia Technology</option>
+											</select>
+										</div>
+                                        <div class="mb-3 col-md-4">
+											<label for="matricID">Matric ID</label>
+											<input type="text" class="form-control" name="matricID">
+										</div>
+										<div class="mb-3 col-md-8">
+											<label for="name">Name</label>
+											<input type="text" class="form-control" name="name">
+										</div>
+                                        <div class="mb-3 col-md-7">
+											<label for="email">Email</label>
+											<input type="email" class="form-control" name="email">
+										</div>
+										<div class="mb-3 col-md-5">
+											<label for="phoneNo">Phone No.</label>
+											<input type="text" class="form-control" name="phoneNo">
+										</div>
+										<div class="mb-3 col-md-4">
+											<label for="password">Password</label>
+											<input type="password" class="form-control" name="password">
+										</div>
+										<div class="mb-3 col-md-8">
+											<label for="assignedExpert">Assigned Expert</label>
+											<select class="form-select" name="assignedExpert" value="assignedExpert" aria-label="Default select example">
+												<option hidden="">Please Select</option>
+												<option value="EB18052">EB18052 - DR. SYAZANA BINTI HALIM</option>
+												<option value="ED19232">ED19232 - TS. ZAMRI BIN AHMAD ZAFRIL</option>
+                                                <option value="EA20113">EA20113 - TS. NURSHARIFAH BINTI JAMAL</option>
+											</select>
+										</div>
+                                        <div class="position-relative">
+                                            <div class="position-absolute top-100 start-50 translate-middle" style="margin-top: 80px;">
+                                                <div class="mb-3">
+                                                    <input id="button-submit" type="submit"value="SUBMIT">
+                                                    <input id="button-cancel" type="button" value="CANCEL" onclick="history.back()">
+                                                </div>
+                                            </div>
+                                        </div>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
-						<?php
-							echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';
-						?>
 				</div>
 			</main>
+			<!-- FOOTER -->
 			<footer class="footer">
 				<div class="container-fluid">
 					<div class="row text-muted">
