@@ -42,7 +42,7 @@
 							<i class="align-middle me-2 fas fa-fw fa-file-contract"></i> <span class="align-middle">Report</span>
 						</a>
 						<ul id="dashboards" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link active" href="M4_user-activity.php">User Activity</a></li>
+							<li class="sidebar-item"><a class="sidebar-link active" href="user-activity.php">User Activity</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="#">User Satisfication</a></li>
 						</ul>
 					</li>
@@ -54,7 +54,7 @@
 					</li>
 					<!-- MANAGE COMPLAINT -->
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="M4_manage-complaint.php">
+						<a class="sidebar-link" href="manage-complaint.php">
 							<i class="align-middle me-1 fas fa-fw fa-comments"></i> <span class="align-middle">Manage Complaint</span>
 						</a>
 					</li>
