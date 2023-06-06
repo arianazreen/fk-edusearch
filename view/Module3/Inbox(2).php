@@ -81,7 +81,7 @@
 
               <div class="row mt-3 mx-2">
                 <div class="col-sm-4">
-                <img class="profile-img rounded-circle" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image" 
+                <img src="profilecirclenew.png" alt="imageM3" style="width: 35px; height: 35px;" >
                          style="width: 35px; height: 35px;" >
                 </div>
                 <div class="col-sm-8">
