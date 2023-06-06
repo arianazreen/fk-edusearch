@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
+    <meta name="author" content="Bootlab">
+  
+    <title>INBOX</title>
+    <link rel="stylesheet" href="../../dist/css/modern.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    
+    <style>
+      body {
+        opacity: 0;
+      }
+    </style>
+    <script src="../../dist/js/settings.js"></script>
+    <!-- END SETTINGS -->
+  </head>
+  
+
+  <body>
+    <div class="wrapper">
+      <!-- CONTENT -->
+      <div class="main">
+        <nav class="navbar navbar-expand navbar-theme">
+          <div class="container-fluid">
+            <!--Nav - Logo-->
+            <img src="../../dist/img/logo/fk-edusearch-border.png" style="width: 35px;" height="35px;" alt="FK-EduSearch Logo"/>
+            <!--Nav - Home (name) -->
+            <a class="navbar-brand" href="#">FK-EDUSEARCH</a>&nbsp;
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!--Nav - Home -->
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="#">Home</a>
+                </li>
+              </ul>
+            </div>
+            
+          <!--Nav - Notification -->
+          <div class="navbar-collapse collapse">
+            <ul class="navbar-nav ms-auto mt-2">
+              <li class="nav-item dropdown ms-lg-2">
+                <a
+                  class="nav-link dropdown-toggle position-relative"
+                  href="#"
+                  id="alertsDropdown"
+                  data-bs-toggle="dropdown"
+                >
+                  <i class="align-middle fas fa-bell"></i>
+                </a>
+                <div
+                  class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+                  aria-labelledby="alertsDropdown"
+                >
+                </div>
+              </li>
+
+              <!--Nav- Profile 
+              <div class="post-box border-0">
+                        <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image" 
+                         style="width: 35px; height: 25px;" >
+                         <h6>Nurul Najwa</h6>
+                         <p>Student</p>          
+              </div>-->
+
+              <div class="row mt-3 mx-2">
+                <div class="col-sm-4">
+                <img class="profile-img rounded-circle" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image" 
+                         style="width: 35px; height: 35px;" >
+                </div>
+                <div class="col-sm-8">
+                      <h6 class="mb-0" style="color: #fff;">Dr.Muaz bin Rizal</h6>
+                      <p style="color: #BBE3E5;">Expert</p>
+                </div>
+              </div>
+
+              <!--Nav - Dropdown Setting -->
+              <li class="nav-item dropdown ms-lg-2">
+                <a
+                  class="nav-link dropdown-toggle position-relative"
+                  href="#"
+                  id="userDropdown"
+                  data-bs-toggle="dropdown"
+                >
+                  <i class="align-middle fas fa-cog"></i>
+                </a>
+                <div
+                  class="dropdown-menu dropdown-menu-end"
+                  aria-labelledby="userDropdown"
+                >
+                  <a class="dropdown-item"></a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/Profile"
+                    ><i class="align-middle me-1 fas fa-fw fa-user"></i>
+                    Profile</a
+                  >
+                  <a class="dropdown-item" href="#"
+                    ><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Report </a
+                  >
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="logout"
+                    ><i
+                      class="align-middle me-1 fas fa-fw fa-arrow-alt-circle-right"
+                    ></i>
+                    Sign out</a
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+          </div>
+
+        </nav>
+
+        <!--Content -->
+        <main class="content">
+            <!--1st Row-->
+
+          <div class="container-fluid">
+              <div class="header">
+                <h1 class="header-title"> INBOX </h1>
+              </div>
+                </div>
+
+               <div class="row">
+                 <div class="col-10 col-lg-4">
+                   <div class="card flex-fill w-100">
+                      <div class="card-header">
+                         <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
+                         <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
+                         <div class="name"> <h2>Dr.Muaz bin Rizal<h2> </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-8">
+                    <div class="card flex-fill w-100">
+                      <div class="card-header">
+                          <h2 class="card-title mb-0"> What theoretical framework could be used to study the perception of pre-service teacher students about artificial intelligence?</h2>
+                          <p>Artificial intelligence (AI) refers to the theory and development of computer systems to perform tasks that normally require human intelligence. Because of the massive, often quite unintelligible publicity that it gets, artificial intelligence is almost completely misunderstood by individuals inside the field of Education. ....</p>
+                          <div class="text-muted small mt-1">From: Nur Maisarah</div>
+                          <button type="submit" class="btn btn-primary" style=" color: white; position: left; background-color: #07A492; font-weight: 400;">Accept</button>
+                        </div>
+                    </div>
+                </div>
+              </div>
+             
+  
+       </main>
+
+        <!--Footer-->
+        <footer class="footer">
+          <div class="container-fluid">
+            <div class="row text-muted">
+              <div class="col-8 text-start"></div>
+              <div class="col-4 text-end">
+                <p class="mb-0">&copy; 2023 - UNIVERSITI MALAYSIA PAHANG</p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <svg width="0" height="0" style="position: absolute">
+      <defs>
+        <symbol viewBox="0 0 512 512" id="ion-ios-pulse-strong">
+          <path
+            d="M448 273.001c-21.27 0-39.296 13.999-45.596 32.999h-38.857l-28.361-85.417a15.999 15.999 0 0 0-15.183-10.956c-.112 0-.224 0-.335.004a15.997 15.997 0 0 0-15.049 11.588l-44.484 155.262-52.353-314.108C206.535 54.893 200.333 48 192 48s-13.693 5.776-15.525 13.135L115.496 306H16v31.999h112c7.348 0 13.75-5.003 15.525-12.134l45.368-182.177 51.324 307.94c1.229 7.377 7.397 11.92 14.864 12.344.308.018.614.028.919.028 7.097 0 13.406-3.701 15.381-10.594l49.744-173.617 15.689 47.252A16.001 16.001 0 0 0 352 337.999h51.108C409.973 355.999 427.477 369 448 369c26.511 0 48-22.492 48-49 0-26.509-21.489-46.999-48-46.999z"
+          ></path>
+        </symbol>
+      </defs>
+    </svg>
+    <script src="../../dist/js/app.js"></script>
+
+
+    <!--Script-->
+    	<!-- Time -->
+        <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("June 7, 2023 15:37:25").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+            
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+            
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+        // Output the result in an element with id="demo"
+        document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+            
+        // If the count down is over, write some text 
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+        }, 1000);
+        </script>
+
+     <!--css-->
+
+     <style>
+      
+      .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            width: 550px;
+        }
+
+        .search-box input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .search-box button {
+            padding: 10px 20px;
+            background-color: #BBE3E5;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-box button:hover {
+            background-color: #45a049;
+        }
+        .post-box {
+            position: relative;
+            display: flex;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+        }
+
+        .post-box .profile-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .post-box .post-info {
+            flex-grow: 1;
+        }
+
+        .post-box .post-info .name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #fff;
+            font-size: 19px;
+        }
+
+        .post-box .post-info .date {
+            font-size: 12px;
+            color:#BBE3E5;
+        }
+
+        .post-box .actions {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .post-box .actions .icon {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .post-box .actions .edit-btn,
+        .post-box .actions .delete-btn {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .post-box .status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-weight: bold;
+        }
+        .post-info {
+            flex-grow: 1;
+        }
+
+          .container-box {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .line {
+            border-top: 1px solid #ccc;
+        }
+          
+     </style>
+  </body>
+</html>
