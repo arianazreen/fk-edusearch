@@ -7,7 +7,7 @@
     <meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
     <meta name="author" content="Bootlab">
   
-    <title>Manage User Profile</title>
+    <title>INBOX</title>
     <link rel="stylesheet" href="../../dist/css/modern.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -49,33 +49,6 @@
                 <li class="nav-item">
                   <a class="nav-link" aria-current="page" href="#">Home</a>
                 </li>
-                <!--Nav - MY Question -->
-                <li class="nav-item">
-                  <a class="nav-link" href="#">My Questions</a>
-                </li>
-                <!--Nav - Complaint -->
-                <li class="nav-item dropdown ms-lg-2">
-                  <a
-                    class="nav-link dropdown-toggle position-relative"
-                    href="#"
-                    id="userDropdown"
-                    data-bs-toggle="dropdown"
-                    >Complaint</a
-                  >
-                  <div
-                    class="dropdown-menu dropdown-menu-right"
-                    aria-labelledby="userDropdown"
-                  >
-                    <a class="dropdown-item"></a>
-                    <a class="dropdown-item" href="../Module5/create.php"
-                      >New Application</a
-                    >
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">History</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Report</a>
-                  </div>
-                </li>
               </ul>
             </div>
             
@@ -95,28 +68,6 @@
                   class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
                   aria-labelledby="alertsDropdown"
                 >
-                  <div class="dropdown-menu-header">4 New Notifications</div>
-                  <div class="list-group">
-                    <a href="#" class="list-group-item">
-                      <div class="row g-0 align-items-center">
-                        <div class="col-2">
-                          <i
-                            class="ms-1 text-success fas fa-fw fa-bell-slash"
-                          ></i>
-                        </div>
-                        <div class="col-10">
-                          <div class="text-dark">New connection</div>
-                          <div class="text-muted small mt-1">
-                            Anna accepted your request.
-                          </div>
-                          <div class="text-muted small mt-1">12h ago</div>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="dropdown-menu-footer">
-                    <a href="#" class="text-muted">Show all notifications</a>
-                  </div>
                 </div>
               </li>
 
@@ -134,8 +85,8 @@
                          style="width: 35px; height: 35px;" >
                 </div>
                 <div class="col-sm-8">
-                      <h6 class="mb-0" style="color: #fff;">Nurul Najwa</h6>
-                      <p style="color: #BBE3E5;">Student</p>
+                      <h6 class="mb-0" style="color: #fff;">Dr.Muaz bin Rizal</h6>
+                      <p style="color: #BBE3E5;">Expert</p>
                 </div>
               </div>
 
@@ -156,12 +107,11 @@
                   <a class="dropdown-item"></a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="/Profile"
-                    ><i class="align-middle me-1 fas fa-fw fa-user"></i> My
+                    ><i class="align-middle me-1 fas fa-fw fa-user"></i>
                     Profile</a
                   >
                   <a class="dropdown-item" href="#"
-                    ><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Account
-                    Setting</a
+                    ><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Report </a
                   >
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="logout"
@@ -184,120 +134,33 @@
 
           <div class="container-fluid">
               <div class="header">
-                <h1 class="header-title"> MANAGE USER PROFILE </h1>
+                <h1 class="header-title"> INBOX </h1>
               </div>
-              <div class="post-box">
-                <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
-            <div class="post-info">
-                    <div class="name"> Nurul Najwa </div>
-                    <div class="date"> Student | Edit Profile </div>
-                  </div>
                 </div>
 
                <div class="row">
-                 <div class="col-12 col-lg-8">
+                 <div class="col-10 col-lg-4">
                    <div class="card flex-fill w-100">
                       <div class="card-header">
-                       <h2 class="card-title"> About Nurul Najwa </h2>
                          <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
-                          <p>
-                            Nurul Najwa Bt Husin studies at Faculty of Computing in
-                            Universiti Malaysia Pahang.<br />Does research in
-                            Educational Technology, Business Intelligence, Technology
-                            Adoption, E-Learning, Social Media Use for Learning and
-                            Higher Education.
-                          </p>
+                         <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
+                         <div class="name"> <h2>Dr.Muaz bin Rizal<h2> </div>
                       </div>
                   </div>
                 </div>
-                <div class="col-6 col-lg-4">
+                <div class="col-6 col-lg-8">
                     <div class="card flex-fill w-100">
                       <div class="card-header">
-    
-                          <h2 class="card-title mb-0"> Related Topic Research </h2>
-                          <p>
-                            <ul>
-                            <li> Emeging Trends in Computer System Security. </li>
-                            <li> Virtual Reality (VR) and Augmented Reality (AR) application. </li>
-                          </ul>
-                          </p>
-                      </div>
+                          <h2 class="card-title mb-0"> What theoretical framework could be used to study the perception of pre-service teacher students about artificial intelligence?</h2>
+                          <p>Artificial intelligence (AI) refers to the theory and development of computer systems to perform tasks that normally require human intelligence. Because of the massive, often quite unintelligible publicity that it gets, artificial intelligence is almost completely misunderstood by individuals inside the field of Education. ....</p>
+                          <div class="text-muted small mt-1">From: Nur Maisarah</div>
+                          <button type="submit" class="btn btn-primary" style=" color: white; position: left; background-color: #07A492; font-weight: 400;">Accept</button>
+                        </div>
                     </div>
                 </div>
               </div>
              
   
-           <!--2nd Row-->
-
-           <div class="row">
-            <div class="col-12 col-lg-8">
-              <div class="card flex-fill w-100">
-                 <div class="card-header">
-                  <h2 class="card-title"> Total Post </h2>
-                    <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
-                    <div class="card-body d-flex">
-                      <div class="align-self-center w-100">
-                        <div class="py-3">
-                          <div class="chart chart-xs">
-                            <canvas id="chartjs-dashboard-pie"></canvas>
-                          </div>
-                          <table class="table mb-0">
-                            
-                              <tr>
-                                <td><i class="fas fa-circle text-primary fa-fw" style="color:#43BCAE"></i> Networking</td>
-                                <td class="text-end"> 15 </td>
-                              </tr>
-                              <tr>
-                                <td><i class="fas fa-circle text-warning fa-fw" style="color:#BBE3E5"></i> Software Engineering </td>
-                                <td class="text-end"> 7 </td>
-                              </tr>
-                              <tr>
-                                <td><i class="fas fa-circle text-danger fa-fw" style="color:#1A5D55"></i> Multimedia and Graphics </td>
-                                <td class="text-end"> 14 </td>
-                              </tr>
-                            
-                          </table>
-                        </div>
-                        </div>
-                    </div>
-                 </div>
-             </div>
-           </div>
-           <div class="col-6 col-lg-4">
-               <div class="card flex-fill w-100">
-                 <div class="card-header">
-
-                     <h2 class="card-title mb-0"> Academic Qualifications </h2>
-                     <p>
-                       <ul>
-                       <li> Bachelor in Computer System </li>
-                     </ul>
-                     </p>
-                 </div>
-               </div>
-           </div>
-         </div>
-
-         <!--3rd Row-->
-              <div class="row">
-                <div class="col-12 col-lg-8">
-                  
-              </div>
-              <div class="col-6 col-lg-4">
-                  <div class="card flex-fill w-100">
-                    <div class="card-header">
-                        <h2 class="card-title mb-0"> Social Media Account </h2>
-                        <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-                       <p> nurul_najwa </p> 
-                    </div>
-                  </div>
-              </div>
-            </div>
-         </div>
-         </div>
-         </div>
-      
-
        </main>
 
         <!--Footer-->
@@ -327,35 +190,37 @@
 
 
     <!--Script-->
-    	<!-- Js Pie Chart -->
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			// Pie chart
-			new Chart(document.getElementById("chartjs-dashboard-pie"), {
-				type: 'pie',
-				data: {
-					labels: ["Networking", "Software Engineering", "Multimedia and Graphics"],
-					datasets: [{
-						data: [15, 7, 14],
-						backgroundColor: [
-							"#43BCAE",
-							"#BBE3E5",
-							"#1A5D55",
-						],
-						borderColor: "transparent"
-					}]
-				},
-				options: {
-					responsive: !window.MSInputMethodContext,
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					cutoutPercentage: 75
-				}
-			});
-		});
-	</script>
+    	<!-- Time -->
+        <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("June 7, 2023 15:37:25").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+            
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+            
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+        // Output the result in an element with id="demo"
+        document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+            
+        // If the count down is over, write some text 
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+        }, 1000);
+        </script>
 
      <!--css-->
 

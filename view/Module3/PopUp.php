@@ -7,7 +7,7 @@
     <meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
     <meta name="author" content="Bootlab">
   
-    <title>Manage User Profile</title>
+    <title>INBOX(2)</title>
     <link rel="stylesheet" href="../../dist/css/modern.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -49,33 +49,6 @@
                 <li class="nav-item">
                   <a class="nav-link" aria-current="page" href="#">Home</a>
                 </li>
-                <!--Nav - MY Question -->
-                <li class="nav-item">
-                  <a class="nav-link" href="#">My Questions</a>
-                </li>
-                <!--Nav - Complaint -->
-                <li class="nav-item dropdown ms-lg-2">
-                  <a
-                    class="nav-link dropdown-toggle position-relative"
-                    href="#"
-                    id="userDropdown"
-                    data-bs-toggle="dropdown"
-                    >Complaint</a
-                  >
-                  <div
-                    class="dropdown-menu dropdown-menu-right"
-                    aria-labelledby="userDropdown"
-                  >
-                    <a class="dropdown-item"></a>
-                    <a class="dropdown-item" href="../Module5/create.php"
-                      >New Application</a
-                    >
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">History</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Report</a>
-                  </div>
-                </li>
               </ul>
             </div>
             
@@ -95,28 +68,6 @@
                   class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
                   aria-labelledby="alertsDropdown"
                 >
-                  <div class="dropdown-menu-header">4 New Notifications</div>
-                  <div class="list-group">
-                    <a href="#" class="list-group-item">
-                      <div class="row g-0 align-items-center">
-                        <div class="col-2">
-                          <i
-                            class="ms-1 text-success fas fa-fw fa-bell-slash"
-                          ></i>
-                        </div>
-                        <div class="col-10">
-                          <div class="text-dark">New connection</div>
-                          <div class="text-muted small mt-1">
-                            Anna accepted your request.
-                          </div>
-                          <div class="text-muted small mt-1">12h ago</div>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="dropdown-menu-footer">
-                    <a href="#" class="text-muted">Show all notifications</a>
-                  </div>
                 </div>
               </li>
 
@@ -134,8 +85,8 @@
                          style="width: 35px; height: 35px;" >
                 </div>
                 <div class="col-sm-8">
-                      <h6 class="mb-0" style="color: #fff;">Nurul Najwa</h6>
-                      <p style="color: #BBE3E5;">Student</p>
+                      <h6 class="mb-0" style="color: #fff;">Dr.Muaz bin Rizal</h6>
+                      <p style="color: #BBE3E5;">Expert</p>
                 </div>
               </div>
 
@@ -156,12 +107,11 @@
                   <a class="dropdown-item"></a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="/Profile"
-                    ><i class="align-middle me-1 fas fa-fw fa-user"></i> My
+                    ><i class="align-middle me-1 fas fa-fw fa-user"></i>
                     Profile</a
                   >
                   <a class="dropdown-item" href="#"
-                    ><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Account
-                    Setting</a
+                    ><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Report </a
                   >
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="logout"
@@ -184,120 +134,54 @@
 
           <div class="container-fluid">
               <div class="header">
-                <h1 class="header-title"> MANAGE USER PROFILE </h1>
+                <h1 class="header-title"> INBOX </h1>
               </div>
-              <div class="post-box">
-                <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
-            <div class="post-info">
-                    <div class="name"> Nurul Najwa </div>
-                    <div class="date"> Student | Edit Profile </div>
-                  </div>
                 </div>
 
                <div class="row">
-                 <div class="col-12 col-lg-8">
+                 <div class="col-10 col-lg-4">
                    <div class="card flex-fill w-100">
                       <div class="card-header">
-                       <h2 class="card-title"> About Nurul Najwa </h2>
-                         <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
-                          <p>
-                            Nurul Najwa Bt Husin studies at Faculty of Computing in
-                            Universiti Malaysia Pahang.<br />Does research in
-                            Educational Technology, Business Intelligence, Technology
-                            Adoption, E-Learning, Social Media Use for Learning and
-                            Higher Education.
-                          </p>
+                      <h2 class="card-title mb-0"> Developing an equivalent parallel computing system for comparison of optimization algorithms.</h2>
+                      <div>I am working on a research project in which we are doing a comparative analysis of reinforcement learning (RL) with evolutionary algorithms in solving a nonconvex and nondifferentiable optimization problem with respect to solution quality and computation time.
+
+                        We are using python implementations, but one difficulty is that, although we can use GPUs for the execution of reinforcement learning algorithm, there is not much support for using GPUs with evolutionary algorithms in Python.
+
+                        On the other hand, if we want to compare the algorithms with respect to computation time, we have to execute them on the same hardware (parallel computing system).
+
+                        However, we cannot run RL algorithm on CPU based parallel system because of our resource constraints.
+                        Can anyone tell us how to establish an equivalent parallel computing systems, one based on CPUs & GPUs (for RL algorithms), and the other based on CPUs only (for evolutionary algorithms), so that we can compare them with respect to computation time.
+                        </div>
+                        <div>Thanks in advance, Best Regards</div>
                       </div>
                   </div>
                 </div>
-                <div class="col-6 col-lg-4">
+
+                <div class="col-6 col-lg-8">
+                <h5 class="title">Comments</h5>
+								<h6 class="card-subtitle text-muted">
+                                <button type="submit" class="btn btn-primary" style=" color: white; position: absolute; right:1%; margin-top:-2%; background-color: #07A492; font-weight: 400;">CREATE NEW</a>
+								</h6>
                     <div class="card flex-fill w-100">
                       <div class="card-header">
-    
-                          <h2 class="card-title mb-0"> Related Topic Research </h2>
-                          <p>
-                            <ul>
-                            <li> Emeging Trends in Computer System Security. </li>
-                            <li> Virtual Reality (VR) and Augmented Reality (AR) application. </li>
-                          </ul>
-                          </p>
-                      </div>
+                          <h2 class="card-title mb-0"> Dr. Muaz bin Rizal</h2>
+                          <p>Although you are right that predicting the optimal number of CPUs for running algorithm is tough, but I am currently building my knowledge base in parallel computing, algorithms and advanced computer architecture.
+                            In regards to compute resources, actually I am running my machine learning and other optimization algorithms on google collab and as you probably know, we have only one gup or tpu with dual core CPU here.</p>
+                        </div>
                     </div>
                 </div>
               </div>
              
-  
-           <!--2nd Row-->
-
-           <div class="row">
-            <div class="col-12 col-lg-8">
-              <div class="card flex-fill w-100">
-                 <div class="card-header">
-                  <h2 class="card-title"> Total Post </h2>
-                    <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
-                    <div class="card-body d-flex">
-                      <div class="align-self-center w-100">
-                        <div class="py-3">
-                          <div class="chart chart-xs">
-                            <canvas id="chartjs-dashboard-pie"></canvas>
-                          </div>
-                          <table class="table mb-0">
-                            
-                              <tr>
-                                <td><i class="fas fa-circle text-primary fa-fw" style="color:#43BCAE"></i> Networking</td>
-                                <td class="text-end"> 15 </td>
-                              </tr>
-                              <tr>
-                                <td><i class="fas fa-circle text-warning fa-fw" style="color:#BBE3E5"></i> Software Engineering </td>
-                                <td class="text-end"> 7 </td>
-                              </tr>
-                              <tr>
-                                <td><i class="fas fa-circle text-danger fa-fw" style="color:#1A5D55"></i> Multimedia and Graphics </td>
-                                <td class="text-end"> 14 </td>
-                              </tr>
-                            
-                          </table>
+              <button type="submit" class="btn btn-primary" style=" color: white; position: absolute; right:1%; margin-top:-2%; background-color: #DA3131; font-weight: 400;">Close Post</a>
+              
+              <div id="overlay">
+						<div class="modal">
+                            <div class = "container">
+                        <h2>Received Rating for this post</h2>
                         </div>
-                        </div>
-                    </div>
-                 </div>
-             </div>
-           </div>
-           <div class="col-6 col-lg-4">
-               <div class="card flex-fill w-100">
-                 <div class="card-header">
-
-                     <h2 class="card-title mb-0"> Academic Qualifications </h2>
-                     <p>
-                       <ul>
-                       <li> Bachelor in Computer System </li>
-                     </ul>
-                     </p>
-                 </div>
-               </div>
-           </div>
-         </div>
-
-         <!--3rd Row-->
-              <div class="row">
-                <div class="col-12 col-lg-8">
-                  
-              </div>
-              <div class="col-6 col-lg-4">
-                  <div class="card flex-fill w-100">
-                    <div class="card-header">
-                        <h2 class="card-title mb-0"> Social Media Account </h2>
-                        <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-                       <p> nurul_najwa </p> 
-                    </div>
-                  </div>
-              </div>
-            </div>
-         </div>
-         </div>
-         </div>
-      
-
+                
+					</div>
+                </div>
        </main>
 
         <!--Footer-->
@@ -327,36 +211,13 @@
 
 
     <!--Script-->
-    	<!-- Js Pie Chart -->
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			// Pie chart
-			new Chart(document.getElementById("chartjs-dashboard-pie"), {
-				type: 'pie',
-				data: {
-					labels: ["Networking", "Software Engineering", "Multimedia and Graphics"],
-					datasets: [{
-						data: [15, 7, 14],
-						backgroundColor: [
-							"#43BCAE",
-							"#BBE3E5",
-							"#1A5D55",
-						],
-						borderColor: "transparent"
-					}]
-				},
-				options: {
-					responsive: !window.MSInputMethodContext,
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					cutoutPercentage: 75
-				}
-			});
-		});
-	</script>
-
+    	<!-- Time -->
+        <script>
+       const overlay = document.querySelector("#overlay");
+      document.querySelector("submit")addEventListener("click", () => {
+        overlay.style.display = "block";
+      })
+      </script>
      <!--css-->
 
      <style>
@@ -468,6 +329,28 @@
             border-top: 1px solid #ccc;
         }
           
+        #overlay{
+            position:fixed;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            z-index:1;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        #modal{
+            max-width: 600px;
+            height: 300px;
+            margin: auto;
+            background-color: white;
+            position:absolute;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+        }
+
      </style>
   </body>
 </html>
