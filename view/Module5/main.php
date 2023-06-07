@@ -26,8 +26,11 @@
 		<!-- CONTENT -->
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-theme">
-
+				
 				<div class="container-fluid">
+				<div class="sidebar-user">
+					<img src="../../dist/img/logo/fk-edusearch-border.png" alt="FK-EduSearch Logo" />
+				</div>
 					<a class="navbar-brand" href=#>FK-EDUSEARCH</a>&nbsp;
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -140,7 +143,7 @@
 											<td class="table-action">
 
 												<a data-bs-toggle="modal" data-bs-target="#view-"><i class="align-middle fas fa-fw fa-search"></i></a>
-												<a data-bs-toggle="modal" data-bs-target="#update-" ><i class="align-middle fas fa-fw fa-pen"></i></a>
+												<a data-bs-toggle="modal" data-bs-target="#update-"><i class="align-middle fas fa-fw fa-pen"></i></a>
 												<a href="#"><i class="align-middle fas fa-fw fa-trash"></i></a>
 											</td>
 										</tr>
@@ -153,7 +156,7 @@
 											<td class="table-action">
 
 												<a data-bs-toggle="modal" data-bs-target="#view-"><i class="align-middle fas fa-fw fa-search"></i></a>
-												<a data-bs-toggle="modal" data-bs-target="#update-" ><i class="align-middle fas fa-fw fa-pen"></i></a>
+												<a data-bs-toggle="modal" data-bs-target="#update-"><i class="align-middle fas fa-fw fa-pen"></i></a>
 												<a href="#"><i class="align-middle fas fa-fw fa-trash"></i></a>
 											</td>
 										</tr>
@@ -163,7 +166,7 @@
 										<div class="modal-dialog modal-md" role="document">
 											<div class="modal-content">
 												<div class="modal-header">
-													<h5 class="modal-title">Advertisment Details</h5>
+													<h5 class="modal-title">Complaint Details</h5>
 													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 												</div>
 												<div class="modal-body m-3">
@@ -176,7 +179,7 @@
 																			<label><b>Category</b></label>
 																		</div>
 																		<div class="col-md-6" style="text-align: right;">
-																			{{$asset->category}}
+																			<!-- content -->
 																		</div>
 																	</div>
 																</div>
@@ -200,7 +203,7 @@
 												</div>
 												<div class="modal-body">
 													<form method="POST" action="/StatusAdmin/{{$asset->id}}">
-														<div class="form-group">
+														<!-- <div class="form-group">
 															<label for="exampleFormControlInput1" class="form-label">Update Status</label>
 															<select class="form-select" name="status" value="{{$asset->status}}" aria-label="Default select example">
 																<option value="" selected>Please Select</option>
@@ -208,7 +211,44 @@
 																<option value="Reject">Rejected</option>
 
 															</select>
-														</div>
+														</div> -->
+														<div class="card-body">
+								<form method="POST" action="../Module5/main.php" onsubmit="alert('The Form has been Submitted.')">
+									<div class="row">
+										<div class="mb-3 col-md-12">
+											<label for="complain">Complaint Type</label>
+											<select class="form-select" name="complaintType" value="complaintType" aria-label="Default select example">
+												<option hidden="">Please Select</option>
+												<option value="Unsatisfied Expert’s Feedback">Unsatisfied Expert’s Feedbackd</option>
+												<option value="Unanswered Question">Unanswered Questioned</option>
+												<option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
+											</select>
+										</div>
+										<div class="mb-3 col-md-6">
+											<label for="DateComplaint">Date Complaint</label>
+											<input type="date" class="form-control" name="complaintDate" id="complaintDate">
+										</div>
+										<div class="mb-3 col-md-6">
+											<label for="TimeComplaint">Time Complaint</label>
+											<input type="time" class="form-control" name="complaintTime" id="complaintTime">
+										</div>
+										<div class="mb-3 col-md-12">
+											<label for="complain">Choose Post</label>
+											<select class="form-select" name="postID" value="postID" aria-label="Default select example">
+												<option hidden="">Please Select</option>
+												<option value="Energy-efficient computer systems">Energy-efficient computer systemsd</option>
+												<option value="Machine learning and artificial intelligence in computer systems">Machine learning and artificial intelligence in computer systemsed</option>
+												<option value="Virtualization and containerization">Virtualization and containerization</option>
+											</select>
+										</div>
+										<div class="mb-3">
+											<label>Complaint Description</label>
+											<textarea class="form-control" id="complaintDesc" name="complaintDesc" rows="3"></textarea>
+										</div> 
+									</div>
+
+								</form>
+							</div>
 														<br>
 														<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
 														<button type="submit" class="btn btn-primary">Save</button>
