@@ -81,8 +81,7 @@
 
               <div class="row mt-3 mx-2">
                 <div class="col-sm-4">
-                <img src="profilecirclenew.png" alt="imageM3" style="width: 35px; height: 35px;" >
-                         style="width: 35px; height: 35px;" >
+                <img src="./imageM3/profilecirclenew.png" alt="imageM3" style="width: 35px; height: 35px;" >
                 </div>
                 <div class="col-sm-8">
                       <h6 class="mb-0" style="color: #fff;">Dr.Muaz bin Rizal</h6>
@@ -172,7 +171,33 @@
                 </div>
               </div>
              
-              <button type="submit" class="btn btn-primary" style=" color: white; position: absolute; right:1%; margin-top:-2%; background-color: #DA3131; font-weight: 400;">Close Post</a>
+              <button type="button" class="btn btn-primary" style=" color: white; position: absolute; right:1%; margin-top:-2%; background-color: #DA3131; font-weight: 400;" data-bs-toggle="modal" data-bs-target="#closePost">Close Post</a>
+              <!-- Delete Modal -->
+
+													<!-- BEGIN danger modal -->
+														
+                            <div class="modal fade" id="closePost" tabindex="-1" role="dialog" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body m-3">
+  
+                                    <div class="drop" style="width:150px; height:150px; background-color:#fff2f2; display:flex; justify-content:center; align-items:center; border-radius: 50%; margin: -25px 0 20px 200px; position:relative; box-shadow: inset 2px 7px 6px rgba(0,0,0,0.1);">
+                                      <i class="align-middle fas fa-fw fa-trash-alt" style="font-size: 65px; color: #D90000;"></i>
+                                    </div>
+                                      
+                                    <p class="mb-0" style="font-weight: 450; font-size: 18px;">You are about to delete a data <br> Are you sure?</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                  <button type="button" class="btn" style=" color: #fff; position:absolute; right: 300px; background-color: #DA3131; font-weight: 400; border-radius: 7px; width: 80px;">Delete</button>
+                                    <button type="button" class="btn" data-bs-dismiss="modal" style=" color: #000; position:relative; right: 180px; background-color: #B2B2B4; font-weight: 400; border-radius: 7px; width: 80px;">Cancel</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- END danger modal -->
               
               <div id="overlay">
 						<div class="modal">

@@ -81,8 +81,8 @@
 
               <div class="row mt-3 mx-2">
                 <div class="col-sm-4">
-                <img src="profilecirclenew.png" alt="imageM3" style="width: 35px; height: 35px;" >
-                         style="width: 35px; height: 35px;" >
+                <img src="./imageM3/profilecirclenew.png" alt="imageM3" style="width: 35px; height: 35px;" >
+  
                 </div>
                 <div class="col-sm-8">
                       <h6 class="mb-0" style="color: #fff;">Dr.Muaz bin Rizal</h6>
