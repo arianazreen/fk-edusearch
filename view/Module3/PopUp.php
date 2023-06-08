@@ -29,7 +29,7 @@
         <nav class="navbar navbar-expand navbar-theme">
           <div class="container-fluid">
             <!--Nav - Logo-->
-            <img src="../../dist/img/logo/fk-edusearch-border.png" style="width: 35px;" height="35px;" alt="FK-EduSearch Logo"/>
+            <img src="./imageM3/fk-edusearch-logo.png" alt="imageM3" style="width: 35px; height: 35px;" >
             <!--Nav - Home (name) -->
             <a class="navbar-brand" href="#">FK-EDUSEARCH</a>&nbsp;
             <button
