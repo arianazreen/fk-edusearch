@@ -109,7 +109,7 @@
                     ><i class="align-middle me-1 fas fa-fw fa-user"></i>
                     Profile</a
                   >
-                  <a class="dropdown-item" href="./ManageExpertProfile.php"
+                  <a class="dropdown-item" href="#"
                     ><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Report </a
                   >
                   <div class="dropdown-divider"></div>

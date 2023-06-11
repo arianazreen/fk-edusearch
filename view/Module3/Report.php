@@ -129,8 +129,7 @@
                   <a class="dropdown-item"></a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="./ManageExpertProfile.php"
-                    ><i class="align-middle me-1 fas fa-fw fa-user"></i>
-                    Profile</a
+                    ><i class="align-middle me-1 fas fa-fw fa-user"> Profile </i></a
                   >
                   <a class="dropdown-item" href="#"
                     ><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Report </a
@@ -376,7 +375,7 @@
     .document-wrapper {
       margin-top: 10px;
       position: relative;
-      height: 100%;
+      
     }
 
 

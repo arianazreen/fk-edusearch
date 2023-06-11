@@ -132,7 +132,7 @@
                     ><i class="align-middle me-1 fas fa-fw fa-user"></i>
                     Profile</a
                   >
-                  <a class="dropdown-item" href="#"
+                  <a class="dropdown-item" href="./Report.php"
                     ><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Report </a
                   >
                   <div class="dropdown-divider"></div>
@@ -168,7 +168,7 @@
 
                 
                <div class="row">
-                 <div class="col-12 col-lg-8">
+                 <div class="col-12 col-lg-7">
                    <div class="card flex-fill w-100">
                       <div class="card-header">
                        <h2 class="card-title"> Title </h2>
@@ -181,6 +181,7 @@
                           <div class="input-container">
                             <div class="input-box">
                             <input type="text" placeholder="Research Name">
+                            <i class="fas fa-trash-alt red-icon" ></i>
                             </div> 
                           </div>
                       </div>
@@ -206,26 +207,26 @@
            <!--2nd Row-->
 
            <div class="row">
-            <div class="col-12 col-lg-8">
+           <div class="col-12 col-lg-7">
               <div class="card flex-fill w-100">
-                 <div class="card-header">
-                  <h2 class="card-title"> List of Publications </h2>
-                    <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
-                    <div class="card-body d-flex">
-                      <div class="align-self-center w-100">
-                          <div class="document-wrapper">
-                            <!-- Document Container -->
-                            <div class="document-container">
-                              <!-- Create new button -->
-                            <button class="create-button btn btn-primary" onclick="createDocumentBox(this)">CREATE NEW</button>
-                            </div>
+                <div class="card-header">
+                  <h2 class="card-title">List of Publications</h2>
+                  <div class="card-body d-flex">
+                    <div class="align-self-center w-100">
+                      <div class="document-wrapper">
+                        <!-- Document Container -->
+                        <div class="document-container">
+                          <!-- Create new button -->
+                          <button class="create-button btn btn-primary" style=" color: white; position: absolute; left:70%; margin-top:-2%; background-color: #07A492; font-weight: 400;" onclick="createDocumentBox(this)">
+                            CREATE NEW
+                          </button>
                         </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
            <div class="col-6 col-lg-4">
                <div class="card flex-fill w-100">
                  <div class="card-header">
@@ -275,37 +276,9 @@
 
     <!--Script-->
 	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			// Pie chart
-			new Chart(document.getElementById("chartjs-dashboard-pie"), {
-				type: 'pie',
-				data: {
-					labels: ["Networking", "Software Engineering", "Multimedia and Graphics"],
-					datasets: [{
-						data: [15, 7, 14],
-						backgroundColor: [
-							"#43BCAE",
-							"#BBE3E5",
-							"#1A5D55",
-						],
-						borderColor: "transparent"
-					}]
-				},
-				options: {
-					responsive: !window.MSInputMethodContext,
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					cutoutPercentage: 75
-				}
-			});
-		});
-
-    // Get references to the button, input container, and input boxes
-    const createButton = document.querySelector(".create-button");
+ // Get references to the button, input container, and input boxes
+ const createButton = document.querySelector(".create-button");
     const inputContainer = document.querySelector(".input-container");
-    const inputBoxes = document.querySelectorAll(".input-box");
 
     // Function to create a new input box
     function createInputBox() {
@@ -316,32 +289,43 @@
       newInput.type = "text";
       newInput.placeholder = "Research Name";
 
+      const deleteIcon = document.createElement("i");
+      deleteIcon.classList.add("fas", "fa-trash-alt", "red-icon");
+      deleteIcon.addEventListener("click", function() {
+        deleteResearch(newInputBox);
+      });
+
       newInputBox.appendChild(newInput);
+      newInputBox.appendChild(deleteIcon);
       inputContainer.appendChild(newInputBox);
     }
 
     // Add event listener to the button
     createButton.addEventListener("click", createInputBox);
 
-    // Add event listener to the last input box for Enter key
-    const lastInputBox = inputBoxes[inputBoxes.length - 1];
-    lastInputBox.addEventListener("keydown", function(event) {
-      if (event.key === "Enter") {
-        createInputBox();
-      }
+    // Assign event listener to the delete icon of the first input box
+    const firstInputBox = document.querySelector(".input-box");
+    const firstDeleteIcon = firstInputBox.querySelector(".red-icon");
+    firstDeleteIcon.addEventListener("click", function() {
+      deleteResearch(firstInputBox);
     });
+
+    // Function to handle delete action
+    function deleteResearch(inputBox) {
+      inputBox.remove();
+    }
 
     // Get reference to the document container
     const documentContainer = document.querySelector(".document-container");
 
-    // Function to create a new document box with button
+    // Function to create a new document box with buttons
     function createDocumentBox(button) {
       const newDocumentBox = document.createElement("div");
       newDocumentBox.classList.add("document-box");
 
       const newButton = document.createElement("button");
       newButton.classList.add("create-button", "btn", "btn-primary");
-      newButton.textContent = "CREATE NEW DOCUMENT";
+      newButton.textContent = "CREATE NEW";
       newButton.addEventListener("click", function() {
         createDocumentBox(newButton);
       });
@@ -349,19 +333,31 @@
       const newButtonWrapper = document.createElement("div");
       newButtonWrapper.appendChild(newButton);
 
-      const newDocumentContent = document.createElement("div");
-      newDocumentContent.textContent = "New Document";
+      const deleteIcon = document.createElement("i");
+      deleteIcon.classList.add("fas", "fa-trash-alt", "delete-icon");
+      deleteIcon.addEventListener("click", function() {
+        deleteDocumentBox(newDocumentBox);
+        if (documentContainer.children.length === 0) {
+          documentContainer.appendChild(button);
+        }
+      });
 
       newDocumentBox.appendChild(newButtonWrapper);
-      newDocumentBox.appendChild(newDocumentContent);
+      newDocumentBox.appendChild(deleteIcon);
       documentContainer.appendChild(newDocumentBox);
 
       // Remove the button from the previous box
       button.remove();
 
-       // Scroll to the right
-       documentContainer.scrollLeft = documentContainer.scrollWidth;
+      // Scroll to the right
+      documentContainer.scrollLeft = documentContainer.scrollWidth;
     }
+
+    // Function to delete a document box
+    function deleteDocumentBox(documentBox) {
+      documentBox.remove();
+    }
+    
 	</script>
 
 
@@ -369,6 +365,10 @@
      <!--css-->
 
      <style>
+       .red-icon {
+      color: red;
+      margin-left: 20px; 
+      }
 
       .input-container {
         margin-top: 20px;
@@ -403,15 +403,25 @@
       position: relative;
     }
 
-    
-        .search-box input[type="text"] {
-            flex-grow: 1;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+    .document-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+    }
 
+    .document-box {
+      flex: 0 0 auto;
+      width: 200px;
+      margin-right: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .delete-icon {
+      color: red;
+    }
+
+    
         .post-box {
             position: relative;
             display: flex;

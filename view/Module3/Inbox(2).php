@@ -106,12 +106,11 @@
                 >
                   <a class="dropdown-item"></a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="/Profile"
-                    ><i class="align-middle me-1 fas fa-fw fa-user"></i>
-                    Profile</a
+                  <a class="dropdown-item" href="./ManageExpertProfile.php"
+                    ><i class="align-middle me-1 fas fa-fw fa-user"> Profile </i></a
                   >
-                  <a class="dropdown-item" href="#"
-                    ><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Report </a
+                  <a class="dropdown-item" href="./Report.php"
+                    ><i class="align-middle me-1 fas fa-fw fa-cogs"> Report </i></a
                   >
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="logout"
