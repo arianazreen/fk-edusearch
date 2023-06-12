@@ -26,11 +26,11 @@
 		<!-- CONTENT -->
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-theme">
-				
+
 				<div class="container-fluid">
-				<div class="sidebar-user">
-					<img src="../../dist/img/logo/fk-edusearch-border.png" alt="FK-EduSearch Logo" />
-				</div>
+					<div class="sidebar-user">
+						<img src="../../dist/img/logo/fk-edusearch-border.png" alt="FK-EduSearch Logo" />
+					</div>
 					<a class="navbar-brand" href=#>FK-EDUSEARCH</a>&nbsp;
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -212,43 +212,44 @@
 
 															</select>
 														</div> -->
-														<div class="card-body">
-								<form method="POST" action="../Module5/main.php" onsubmit="alert('The Form has been Submitted.')">
-									<div class="row">
-										<div class="mb-3 col-md-12">
-											<label for="complain">Complaint Type</label>
-											<select class="form-select" name="complaintType" value="complaintType" aria-label="Default select example">
-												<option hidden="">Please Select</option>
-												<option value="Unsatisfied Expert’s Feedback">Unsatisfied Expert’s Feedbackd</option>
-												<option value="Unanswered Question">Unanswered Questioned</option>
-												<option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
-											</select>
-										</div>
-										<div class="mb-3 col-md-6">
-											<label for="DateComplaint">Date Complaint</label>
-											<input type="date" class="form-control" name="complaintDate" id="complaintDate">
-										</div>
-										<div class="mb-3 col-md-6">
-											<label for="TimeComplaint">Time Complaint</label>
-											<input type="time" class="form-control" name="complaintTime" id="complaintTime">
-										</div>
-										<div class="mb-3 col-md-12">
-											<label for="complain">Choose Post</label>
-											<select class="form-select" name="postID" value="postID" aria-label="Default select example">
-												<option hidden="">Please Select</option>
-												<option value="Energy-efficient computer systems">Energy-efficient computer systemsd</option>
-												<option value="Machine learning and artificial intelligence in computer systems">Machine learning and artificial intelligence in computer systemsed</option>
-												<option value="Virtualization and containerization">Virtualization and containerization</option>
-											</select>
-										</div>
-										<div class="mb-3">
-											<label>Complaint Description</label>
-											<textarea class="form-control" id="complaintDesc" name="complaintDesc" rows="3"></textarea>
-										</div> 
-									</div>
 
-								</form>
-							</div>
+														<div class="card-body">
+															<form method="POST" action="../Module5/main.php" onsubmit="alert('The Form has been Submitted.')">
+																<div class="row">
+																	<div class="mb-3 col-md-12">
+																		<label for="complain">Complaint Type</label>
+																		<select class="form-select" name="complaintType" value="complaintType" aria-label="Default select example">
+																			<option hidden="">Please Select</option>
+																			<option value="Unsatisfied Expert’s Feedback">Unsatisfied Expert’s Feedbackd</option>
+																			<option value="Unanswered Question">Unanswered Questioned</option>
+																			<option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
+																		</select>
+																	</div>
+																	<div class="mb-3 col-md-6">
+																		<label for="DateComplaint">Date Complaint</label>
+																		<input type="date" class="form-control" name="complaintDate" id="complaintDate">
+																	</div>
+																	<div class="mb-3 col-md-6">
+																		<label for="TimeComplaint">Time Complaint</label>
+																		<input type="time" class="form-control" name="complaintTime" id="complaintTime">
+																	</div>
+																	<div class="mb-3 col-md-12">
+																		<label for="complain">Choose Post</label>
+																		<select class="form-select" name="postID" value="postID" aria-label="Default select example">
+																			<option hidden="">Please Select</option>
+																			<option value="Energy-efficient computer systems">Energy-efficient computer systemsd</option>
+																			<option value="Machine learning and artificial intelligence in computer systems">Machine learning and artificial intelligence in computer systemsed</option>
+																			<option value="Virtualization and containerization">Virtualization and containerization</option>
+																		</select>
+																	</div>
+																	<div class="mb-3">
+																		<label>Complaint Description</label>
+																		<textarea class="form-control" id="complaintDesc" name="complaintDesc" rows="3"></textarea>
+																	</div>
+																</div>
+
+															</form>
+														</div>
 														<br>
 														<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
 														<button type="submit" class="btn btn-primary">Save</button>
