@@ -1,92 +1,79 @@
-@extends('base')
-@section('Public.helpCenter')
+<!-- INSERT COMPLAINT INSIDE DATABASE -->
+<?php
+// <!-- declaration database -->
+require('../Module1/database.php');
+// 1)
+if (isset($_POST['submit'])) {
+    // $complaintID =  $_POST['complaint_ID'];
+    // $userID
+    // $postID
+    $complaintDate =  $_POST['complaintDate'];
+    $complaintTime =  $_POST['complaintTime'];
+    $complaintType =  $_POST['complaintType'];
+    $complaintDesc =  $_POST['complaintDesc'];
+    // $complaintStatus =  $_POST['complaintStatus'];
+    $sql = "INSERT INTO complaint ( complaintDate, complaintTime, complaintType, complaintDesc, complaintStatus) VALUES ( '$complaintDate', '$complaintTime', '$complaintType', '$complaintDesc', 'In Investigation')";
+    $result = mysqli_query($conn, $sql);
 
 
-<div class="container-fluid">
-    <div class="header">
-        <h1 class="header-title">
-            Help Center
-        </h1>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-                <li class="breadcrumb-item text-light"> Estate Property Help Center</li>
-                <li class="breadcrumb-item active" aria-current="page">Create a Ticket</li>
-            </ol>
-        </nav>
-    </div>
-    <div class="col-md-10" >
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title">Need Help?</h5>
-                <h6 class="card-subtitle text-muted">
-                    Fill up the form below and we'll get back to you as soon as possible.</h6>
-            </div>
-            <div class="card-body">
-                <form method="POST" action="/HelpCenter" onsubmit="alert('The Form has been Submitted.')" >
-                    @csrf
-                    <div class="row">
-                        <div class="mb-3 col-md-6">
-                            <label for="inputEmail4">Name</label>
-                            <input type="text" class="form-control" name="name" id="inputEmail4" >
-                        </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="inputPassword4">Email</label>
-                            <input type="email" class="form-control" name="email" id="inputPassword4">
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="inputContact">Contact Number</label>
-                        <input type="text" class="form-control" name="contactNo" id="inputContact" >
-                    </div>
-                    <div class="row">
-                        <div class="mb-3 col-md-6">
-                            <label for="inputState">Tell us about yourself</label>
-                                <select id="form-select" class="form-control" name="info">
-                                    <option hidden="">Please Select</option>
-                                    <option value="Property Agent/Agency">Property Agent/Agency</option>
-                                    <option value="Property Developer">Property Developer</option>
-                                    <option value="Private Property Owner">Private Property Owner</option>
-                                    <option value="Media Agency or Direct Advertiser">Media Agency or Direct Advertiser</option>
-                                    <option value="Property Buyer">Property Buyer</option>
-                                    <option value="Member of the Press/Media">Member of the Press/Media</option>
-                                    <option value="Others">Others</option>
-                                </select>
-                        </div>
-                        <div class="mb-3 col-md-6">
-                            <label for="inputAddress2">What do you need help with</label>
-                            <select id="form-select" class="form-control" name="help">
-                                <option hidden="">Please Select</option>
-                                <option value="My Acount">My Acount</option>
-                                <option value="My Advertisement">My Advertisement</option>
-                                <option value="Credits & Billings">Credits & Billings</option>
-                                <option value="Premium Service">Premium Service</option>
-                                <option value="Technical Issue">Technical Issue</option>
-                                <option value="Feedback & Suggestion">Feedback & Suggestion</option>
-                                <option value="Others">Others</option>
-                            </select>
-                        </div>
-                    </div>
-                   
-                    <div class="row">
-                        <div class="mb-3">
-                            <label>Description</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3" ></textarea> 
-                        </div>
-                    </div>
-                    <button type="submit"  class="btn btn-primary">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
+    //  2) insert data into post and generalUser table
 
-    
+    // 3) check statement successfull or not
+    if ($result) {
+        header("Location: main.php");
+        echo "<script>alert('The Form has been Submitted.')</script>";
+    } else {
+        echo "<script>alert('Error Inserting Data: " . mysqli_error($conn) . "')</script>";
+    }
+    //4 close database connection
+    mysqli_close($conn);
+}
+?>
+<!-- UPDATE COMPLAINT INSIDE DATABASE -->
+<?php
+// Declaration database
+require('../Module1/database.php');
+
+if (isset($_POST['update'])) {
+    $complaintID = $_POST['complaintID'];
+    $complaintDesc = $_POST['complaintDesc'];
+
+    $sql = "UPDATE complaint SET complaintDesc = '$complaintDesc' WHERE complaintID = $complaintID";
+    $result = mysqli_query($conn, $sql);
 
 
+    if ($result) {
+        //to close database connection
+        mysqli_close($conn);
+        header("Location: main.php");
+        exit();
+    } else {
+        mysqli_close($conn);
+        echo "<script>alert('Error updating complaint: " . mysqli_error($conn) . "')</script>";
+    }
+}
+?>
+
+<!-- DELETE COMPLAINT INSIDE THE DATABASE -->
+<?php
+// Declaration database
+require('../Module1/database.php');
+
+if (isset($_POST['delete'])) {
+    $complaintID = $_POST['complaintID'];
+
+    $sql = "DELETE FROM complaint WHERE complaintID = $complaintID";
+    $result = mysqli_query($conn, $sql);
 
 
-
-
-</div>
-
-@stop
+    if ($result) {
+        //to close database connection
+        mysqli_close($conn);
+        header("Location: main.php");
+        exit();
+    } else {
+        mysqli_close($conn);
+        echo "<script>alert('Error delete complaint: " . mysqli_error($conn) . "')</script>";
+    }
+}
+?>
