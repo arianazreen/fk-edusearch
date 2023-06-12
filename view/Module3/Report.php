@@ -7,7 +7,7 @@
     <meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
     <meta name="author" content="Bootlab">
   
-    <title>INBOX(2)</title>
+    <title> Report </title>
     <link rel="stylesheet" href="../../dist/css/modern.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -23,7 +23,7 @@
   
 
   <body>
-    <div class="wrapper">
+  <div class="wrapper">
       <!-- CONTENT -->
       <div class="main">
         <nav class="navbar navbar-expand navbar-theme">
@@ -47,7 +47,7 @@
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <!--Nav - Home -->
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#">Home</a>
+                  <a class="nav-link" aria-current="page" href="./M2-user_homepage.php">Home</a>
                 </li>
               </ul>
             </div>
@@ -68,6 +68,29 @@
                   class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
                   aria-labelledby="alertsDropdown"
                 >
+                  <div class="dropdown-menu-header">2 New Notifications</div>
+                  <div class="list-group">
+                    <a href="#" class="list-group-item">
+                      <div class="row g-0 align-items-center">
+                        <div class="col-2">
+                          <i
+                            class="ms-1 text-success fas fa-fw fa-bell-slash"
+                          ></i>
+                        </div>
+                        <div class="col-10">
+                          <div class="text-dark">New Notifications</div>
+                          <div class="text-muted small mt-1">
+                          <h2 class="card-title mb-0"> What theoretical framework could be used to study the perception of pre-service teacher students about artificial intelligence?</h2>
+                          <p>Artificial intelligence (AI) refers to the theory and development of computer systems to perform tasks that normally require human intelligence. Because of the massive, often quite unintelligible publicity that it gets, artificial intelligence is almost completely misunderstood by individuals inside the field of Education. ....</p>
+                          </div>
+                          <div class="text-muted small mt-1">4h ago</div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="dropdown-menu-footer">
+                    <a href="./Inbox.php" class="text-muted">Show all notifications</a>
+                  </div>
                 </div>
               </li>
 
@@ -105,9 +128,8 @@
                 >
                   <a class="dropdown-item"></a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="/Profile"
-                    ><i class="align-middle me-1 fas fa-fw fa-user"></i>
-                    Profile</a
+                  <a class="dropdown-item" href="./ManageExpertProfile.php"
+                    ><i class="align-middle me-1 fas fa-fw fa-user"> Profile </i></a
                   >
                   <a class="dropdown-item" href="#"
                     ><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Report </a
@@ -133,80 +155,86 @@
 
           <div class="container-fluid">
               <div class="header">
-                <h1 class="header-title"> INBOX </h1>
+                <h1 class="header-title"> REPORT </h1>
               </div>
-                </div>
+          </div>
 
                <div class="row">
-                 <div class="col-10 col-lg-4">
+                 <div class="col-12 col-lg-7">
                    <div class="card flex-fill w-100">
                       <div class="card-header">
-                      <h2 class="card-title mb-0"> Developing an equivalent parallel computing system for comparison of optimization algorithms.</h2>
-                      <div>I am working on a research project in which we are doing a comparative analysis of reinforcement learning (RL) with evolutionary algorithms in solving a nonconvex and nondifferentiable optimization problem with respect to solution quality and computation time.
-
-                        We are using python implementations, but one difficulty is that, although we can use GPUs for the execution of reinforcement learning algorithm, there is not much support for using GPUs with evolutionary algorithms in Python.
-
-                        On the other hand, if we want to compare the algorithms with respect to computation time, we have to execute them on the same hardware (parallel computing system).
-
-                        However, we cannot run RL algorithm on CPU based parallel system because of our resource constraints.
-                        Can anyone tell us how to establish an equivalent parallel computing systems, one based on CPUs & GPUs (for RL algorithms), and the other based on CPUs only (for evolutionary algorithms), so that we can compare them with respect to computation time.
+                      <img src="./imageM3/profilecirclenew.png" alt="imageM3" style="width: 200px; height: 200px;" >
+                       <h2 class="card-title"> Dr.Muaz bin Rizal </h2>
+                       <span class="rating">4.3/5.0</span>
+                        <div class="rating">
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="half">&#9733;</span>
+                            <span class="empty">&#9733;</span>
+                        <div class="text-muted small mt-1 countdown">171 ratings</div>
                         </div>
-                        <div>Thanks in advance, Best Regards</div>
                       </div>
                   </div>
                 </div>
-
-                <div class="col-6 col-lg-8">
-                <h5 class="title">Comments</h5>
-								<h6 class="card-subtitle text-muted">
-                                <button type="submit" class="btn btn-primary" style=" color: white; position: absolute; right:1%; margin-top:-2%; background-color: #07A492; font-weight: 400;">CREATE NEW</a>
-								</h6>
+                <div class="col-6 col-lg-5">
                     <div class="card flex-fill w-100">
                       <div class="card-header">
-                          <h2 class="card-title mb-0"> Dr. Muaz bin Rizal</h2>
-                          <p>Although you are right that predicting the optimal number of CPUs for running algorithm is tough, but I am currently building my knowledge base in parallel computing, algorithms and advanced computer architecture.
-                            In regards to compute resources, actually I am running my machine learning and other optimization algorithms on google collab and as you probably know, we have only one gup or tpu with dual core CPU here.</p>
+                          <h2 class="card-title mb-0"> Publications </h2>
+                            <div class="document-wrapper">
+                            <!-- Document Container -->
+                            <div class="document-container" id="documentContainer">
+                            <!-- Initial Document Box -->
+                            <div class="document-box">
+                                <div class="document-content">
+                                Document 1
+                                </div>
+                            </div>
+                            </div>
                         </div>
+                      </div>
                     </div>
                 </div>
               </div>
              
-              <button type="button" class="btn btn-primary" style=" color: white; position: absolute; right:1%; margin-top:-2%; background-color: #DA3131; font-weight: 400;" data-bs-toggle="modal" data-bs-target="#closePost">Close Post</a>
-              <!-- Delete Modal -->
-
-													<!-- BEGIN danger modal -->
-														
-                            <div class="modal fade" id="closePost" tabindex="-1" role="dialog" aria-hidden="true">
-                              <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                  </div>
-                                  <div class="modal-body m-3">
   
-                                    <div class="drop" style="width:150px; height:150px; background-color:#fff2f2; display:flex; justify-content:center; align-items:center; border-radius: 50%; margin: -25px 0 20px 200px; position:relative; box-shadow: inset 2px 7px 6px rgba(0,0,0,0.1);">
-                                      <i class="align-middle fas fa-fw fa-trash-alt" style="font-size: 65px; color: #D90000;"></i>
-                                    </div>
-                                      
-                                    <p class="mb-0" style="font-weight: 450; font-size: 18px;">You are about to delete a data <br> Are you sure?</p>
-                                  </div>
-                                  <div class="modal-footer">
-                                  <button type="button" class="btn" style=" color: #fff; position:absolute; right: 300px; background-color: #DA3131; font-weight: 400; border-radius: 7px; width: 80px;">Delete</button>
-                                    <button type="button" class="btn" data-bs-dismiss="modal" style=" color: #000; position:relative; right: 180px; background-color: #B2B2B4; font-weight: 400; border-radius: 7px; width: 80px;">Cancel</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- END danger modal -->
-              
-              <div id="overlay">
-						<div class="modal">
-                            <div class = "container">
-                        <h2>Received Rating for this post</h2>
+           <!--2nd Row-->
+
+           <div class="row">
+            <div class="col-12 col-lg-7">
+              <div class="card flex-fill w-100">
+                 <div class="card-header">
+                  <h2 class="card-title"> Total Ratings </h2>
+                    <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
+                    <div class="card-body d-flex">
+                      <div class="align-self-center w-100">
+                        <div class="py-3">
+                          <div class="chart chart-xs">
+                            <canvas id="chartjs-dashboard-pie"></canvas>
+                          </div>
+                          <table class="table mb-0">
+                            
+                              <tr>
+                                <td><i class="fas fa-circle text-primary fa-fw" style="color:#43BCAE"></i> Networking</td>
+                                <td class="text-end"> 15 </td>
+                              </tr>
+                              <tr>
+                                <td><i class="fas fa-circle text-warning fa-fw" style="color:#BBE3E5"></i> Software Engineering </td>
+                                <td class="text-end"> 7 </td>
+                              </tr>
+                              <tr>
+                                <td><i class="fas fa-circle text-danger fa-fw" style="color:#1A5D55"></i> Multimedia and Graphics </td>
+                                <td class="text-end"> 14 </td>
+                              </tr>
+                            
+                          </table>
                         </div>
-                
-					</div>
-                </div>
+                        </div>
+                    </div>
+                 </div>
+             </div>
+           </div>
+      
        </main>
 
         <!--Footer-->
@@ -236,17 +264,126 @@
 
 
     <!--Script-->
-    	<!-- Time -->
-        <script>
-       const overlay = document.querySelector("#overlay");
-      document.querySelector("submit")addEventListener("click", () => {
-        overlay.style.display = "block";
-      })
-      </script>
+    	<!-- Js Pie Chart -->
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Pie chart
+			new Chart(document.getElementById("chartjs-dashboard-pie"), {
+				type: 'pie',
+				data: {
+					labels: ["5 Star", "4 star", "3 star","2 star","1 star"],
+					datasets: [{
+						data: [30, 52, 25, 20, 15],
+						backgroundColor: [
+							"#5D8B86",
+							"#467C75",
+							"#46BDAF",
+                            "#81D3C9",
+                            "#97D6CF",
+						],
+						borderColor: "transparent"
+					}]
+				},
+				options: {
+					responsive: !window.MSInputMethodContext,
+					maintainAspectRatio: false,
+					legend: {
+						display: false
+					},
+					cutoutPercentage: 75
+				}
+			});
+		});
+
+         // Get reference to the document container
+            const documentContainer = document.querySelector("#documentContainer");
+
+        // Function to create a new document box
+        function createDocumentBox() {
+        const newDocumentBox = document.createElement("div");
+        newDocumentBox.classList.add("document-box");
+
+        const newDocumentContent = document.createElement("div");
+        newDocumentContent.textContent = "New Document";
+
+        newDocumentBox.appendChild(newDocumentContent);
+        documentContainer.appendChild(newDocumentBox);
+
+        // Scroll to the bottom
+        documentContainer.scrollTop = documentContainer.scrollHeight;
+        }
+
+        // Call the createDocumentBox function initially
+        createDocumentBox();
+	</script>
+
      <!--css-->
 
      <style>
+
+    .rating {
+      font-size: 24px;
+      font-size: 24px;
+      color: black; 
+    }
+
+    .star {
+      display: inline-block;
+      vertical-align: middle;
+      color: gold; /* Adjusts the vertical alignment */
+    }
+
+    .half {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      width: 0.5em;
+      vertical-align: middle; /* Adjusts the vertical alignment */
+    }
+
+    .half::before {
+      content: '\2605';
+      position: absolute;
+    }
+
+    .empty {
+      color: lightgray;
+    }
       
+
+    .document-container {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: nowrap; /* Prevent wrapping to the next line */
+      overflow-y: scroll; /* Enable vertical scrolling */
+      -ms-overflow-style: none; /* Hide scrollbar in Internet Explorer */
+      scrollbar-width: none; /* Hide scrollbar in Firefox */
+      display: block;
+    }
+
+    .document-box {
+      position: relative;
+      display: inline-block;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      height: 150px;
+      width: 200px;
+    }
+
+    .document-wrapper {
+      margin-top: 10px;
+      position: relative;
+      
+    }
+
+
+
+
+
+    
+    
       .search-container {
             display: flex;
             justify-content: center;
@@ -354,28 +491,6 @@
             border-top: 1px solid #ccc;
         }
           
-        #overlay{
-            position:fixed;
-            top:0;
-            bottom:0;
-            left:0;
-            right:0;
-            z-index:1;
-            background-color: rgba(0,0,0,0.5);
-        }
-
-        #modal{
-            max-width: 600px;
-            height: 300px;
-            margin: auto;
-            background-color: white;
-            position:absolute;
-            top:0;
-            bottom:0;
-            left:0;
-            right:0;
-        }
-
      </style>
   </body>
 </html>

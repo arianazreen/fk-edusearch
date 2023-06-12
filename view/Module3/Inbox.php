@@ -29,7 +29,7 @@
         <nav class="navbar navbar-expand navbar-theme">
           <div class="container-fluid">
             <!--Nav - Logo-->
-            <img src="../../dist/img/logo/fk-edusearch-border.png" style="width: 35px;" height="35px;" alt="FK-EduSearch Logo"/>
+            <img src="./imageM3/fk-edusearch-logo.png" alt="imageM3" style="width: 35px; height: 35px;" >
             <!--Nav - Home (name) -->
             <a class="navbar-brand" href="#">FK-EDUSEARCH</a>&nbsp;
             <button
@@ -81,8 +81,7 @@
 
               <div class="row mt-3 mx-2">
                 <div class="col-sm-4">
-                <img class="profile-img rounded-circle" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image" 
-                         style="width: 35px; height: 35px;" >
+                <img src="./imageM3/profilecirclenew.png" alt="imageM3" style="width: 35px; height: 35px;" >
                 </div>
                 <div class="col-sm-8">
                       <h6 class="mb-0" style="color: #fff;">Dr.Muaz bin Rizal</h6>
@@ -143,7 +142,7 @@
                    <div class="card flex-fill w-100">
                       <div class="card-header">
                          <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
-                         <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
+                         <img src="./imageM3/profilecirclenew.png" alt="imageM3" style="width: 35px; height: 35px;" >
                          <div class="name"> <h2>Dr.Muaz bin Rizal<h2> </div>
                       </div>
                   </div>
@@ -154,7 +153,13 @@
                           <h2 class="card-title mb-0"> What theoretical framework could be used to study the perception of pre-service teacher students about artificial intelligence?</h2>
                           <p>Artificial intelligence (AI) refers to the theory and development of computer systems to perform tasks that normally require human intelligence. Because of the massive, often quite unintelligible publicity that it gets, artificial intelligence is almost completely misunderstood by individuals inside the field of Education. ....</p>
                           <div class="text-muted small mt-1">From: Nur Maisarah</div>
-                          <button type="submit" class="btn btn-primary" style=" color: white; position: left; background-color: #07A492; font-weight: 400;">Accept</button>
+                          <a href="./Inbox(2).php" button type="accept" class="btn btn-primary" style=" color: white; position: left; background-color: #07A492; font-weight: 400;">Accept</a>
+                          <div class="text-muted small mt-1 countdown">
+                            <div class="countdown-container">
+                                <p class="countdown-label">Time remaining:</p>
+                                <p id="timer">24:00:00</p>
+                            </div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -191,71 +196,71 @@
 
     <!--Script-->
     	<!-- Time -->
-        <script>
-        // Set the date we're counting down to
-        var countDownDate = new Date("June 7, 2023 15:37:25").getTime();
+      <script>
+    // Set the initial time to 24 hours
+    var initialTime = 24 * 60 * 60 * 1000;
 
-        // Update the count down every 1 second
-        var x = setInterval(function() {
+    // Set the date and time to count down to
+    var countDownDate = new Date().getTime() + initialTime;
 
-        // Get today's date and time
-        var now = new Date().getTime();
-            
-        // Find the distance between now and the count down date
-        var distance = countDownDate - now;
-            
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-        // Output the result in an element with id="demo"
-        document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-        + minutes + "m " + seconds + "s ";
-            
-        // If the count down is over, write some text 
-        if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("demo").innerHTML = "EXPIRED";
-        }
-        }, 1000);
-        </script>
+    // Update the countdown every 1 second
+    var countdown = setInterval(function() {
+
+      // Get the current date and time
+      var now = new Date().getTime();
+
+      // Calculate the distance between now and the countdown date
+      var distance = countDownDate - now;
+
+      // Calculate hours, minutes, and seconds
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Convert hours to two digits format
+      if (hours < 10) {
+        hours = "0" + hours;
+      }
+
+      // Convert minutes to two digits format
+      if (minutes < 10) {
+        minutes = "0" + minutes;
+      }
+
+      // Convert seconds to two digits format
+      if (seconds < 10) {
+        seconds = "0" + seconds;
+      }
+
+      // Display the countdown timer in the "timer" element
+      document.getElementById("timer").innerHTML = hours + ":" + minutes + ":" + seconds;
+
+      // If the countdown is finished, display a message
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("timer").innerHTML = "Countdown expired";
+      }
+    }, 1000);
+
+  </script>
 
      <!--css-->
 
      <style>
       
-      .search-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 50px;
-            
-        }
+      .countdown {
+      font-size: 12px;
+      }
 
-        .search-box {
-            display: flex;
-            align-items: center;
-            width: 550px;
-        }
 
-        .search-box input[type="text"] {
-            flex-grow: 1;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+      .countdown-container {
+      display: flex;
+        align-items: center;
+      }
 
-        .search-box button {
-            padding: 10px 20px;
-            background-color: #BBE3E5;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+      .countdown-label {
+        margin-right: 10px;
+      }
 
         .search-box button:hover {
             background-color: #45a049;
@@ -332,7 +337,7 @@
         .line {
             border-top: 1px solid #ccc;
         }
-          
+
      </style>
   </body>
 </html>

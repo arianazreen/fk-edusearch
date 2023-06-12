@@ -29,7 +29,7 @@
         <nav class="navbar navbar-expand navbar-theme">
           <div class="container-fluid">
             <!--Nav - Logo-->
-            <img src="../../dist/img/logo/fk-edusearch-border.png" style="width: 35px;" height="35px;" alt="FK-EduSearch Logo"/>
+            <img src="./imageM3/fk-edusearch-logo.png" alt="imageM3" style="width: 35px; height: 35px;" >
             <!--Nav - Home (name) -->
             <a class="navbar-brand" href="#">FK-EDUSEARCH</a>&nbsp;
             <button
@@ -81,8 +81,8 @@
 
               <div class="row mt-3 mx-2">
                 <div class="col-sm-4">
-                <img class="profile-img rounded-circle" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image" 
-                         style="width: 35px; height: 35px;" >
+                <img src="./imageM3/profilecirclenew.png" alt="imageM3" style="width: 35px; height: 35px;" >
+  
                 </div>
                 <div class="col-sm-8">
                       <h6 class="mb-0" style="color: #fff;">Dr.Muaz bin Rizal</h6>
@@ -106,12 +106,11 @@
                 >
                   <a class="dropdown-item"></a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="/Profile"
-                    ><i class="align-middle me-1 fas fa-fw fa-user"></i>
-                    Profile</a
+                  <a class="dropdown-item" href="./ManageExpertProfile.php"
+                    ><i class="align-middle me-1 fas fa-fw fa-user"> Profile </i></a
                   >
-                  <a class="dropdown-item" href="#"
-                    ><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Report </a
+                  <a class="dropdown-item" href="./Report.php"
+                    ><i class="align-middle me-1 fas fa-fw fa-cogs"> Report </i></a
                   >
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="logout"
