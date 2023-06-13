@@ -1,3 +1,7 @@
+<?php
+// <!-- declaration database -->
+require('../Module1/database.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,11 +30,11 @@
 		<!-- CONTENT -->
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-theme">
-				
+
 				<div class="container-fluid">
-				<div class="sidebar-user">
-					<img src="../../dist/img/logo/fk-edusearch-border.png" alt="FK-EduSearch Logo" />
-				</div>
+					<div class="sidebar-user">
+						<img src="../../dist/img/logo/fk-edusearch-border.png" alt="FK-EduSearch Logo" />
+					</div>
 					<a class="navbar-brand" href=#>FK-EDUSEARCH</a>&nbsp;
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -134,129 +138,187 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>Lael Greer</td>
-											<td>Systems Administrator</td>
-											<td>London</td>
-											<td>21</td>
-											<td>2009/02/27</td>
-											<td class="table-action">
 
-												<a data-bs-toggle="modal" data-bs-target="#view-"><i class="align-middle fas fa-fw fa-search"></i></a>
-												<a data-bs-toggle="modal" data-bs-target="#update-"><i class="align-middle fas fa-fw fa-pen"></i></a>
-												<a href="#"><i class="align-middle fas fa-fw fa-trash"></i></a>
-											</td>
-										</tr>
-										<tr>
-											<td>Donna Snider</td>
-											<td>Customer Support</td>
-											<td>New York</td>
-											<td>27</td>
-											<td>2011/01/25</td>
-											<td class="table-action">
+										<?php
+										$sql = "SELECT * FROM complaint";
+										$result = mysqli_query($conn, $sql);
+										if (mysqli_num_rows($result) > 0) {
+											$count = 1;
+											while ($row = mysqli_fetch_assoc($result)) {
+												$complaintID = $row['complaintID'];
+												$complaintDate = $row['complaintDate'];
+												$complaintTime = $row['complaintTime'];
+												$complaintType = $row['complaintType'];
+												$complaintStatus = $row['complaintStatus'];
+												$complaintDesc = $row['complaintDesc'];
+												$postID = $row['postID'];
+										?>
+												<tr>
+													<td>
+														<?php echo "$count"; ?>
+													</td>
+													<td>
+														<?php echo "$complaintDate"; ?>
+													</td>
+													<td>
+														<?php echo "$complaintTime"; ?>
+													</td>
+													<td>
+														<?php echo "$complaintType"; ?>
+													</td>
+													<td>
+														<?php echo "$complaintStatus"; ?>
+													</td>
+													<td>
 
-												<a data-bs-toggle="modal" data-bs-target="#view-"><i class="align-middle fas fa-fw fa-search"></i></a>
-												<a data-bs-toggle="modal" data-bs-target="#update-"><i class="align-middle fas fa-fw fa-pen"></i></a>
-												<a href="#"><i class="align-middle fas fa-fw fa-trash"></i></a>
-											</td>
-										</tr>
-									</tbody>
-									<!-- Modal View -->
-									<div class="modal fade" id="view-" tabindex="-1" role="dialog" aria-hidden="true">
-										<div class="modal-dialog modal-md" role="document">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title">Complaint Details</h5>
-													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-												</div>
-												<div class="modal-body m-3">
-													<div class="col-12 col-md-12 col-lg-12">
-														<div class="row g-0">
-															<div class="col-sm-9 col-xl-12 col-xxl-8">
-																<div class="modal-body m-3">
-																	<div class="row">
-																		<div class="col-md-6">
-																			<label><b>Category</b></label>
-																		</div>
-																		<div class="col-md-6" style="text-align: right;">
-																			<!-- content -->
-																		</div>
+														<?php echo "<a data-bs-toggle='modal' data-bs-target='#view-$complaintID'><i class='align-middle fas fa-fw fa-file'></i></a>"; ?>
+														<?php echo "<a data-bs-toggle='modal' data-bs-target='#update-$complaintID'><i class='align-middle fas fa-fw fa-pen'></i></a>"; ?>
+														<?php echo "<a data-bs-toggle='modal' data-bs-target='#delete-$complaintID'><i class='align-middle fas fa-fw fa-trash'></i></a>"; ?>
+
+
+													</td>
+												</tr>
+												<!-- Modal View -->
+												<div class="modal fade" id="view-<?php echo $complaintID; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+													<div class="modal-dialog" role="document">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title">Complaint Application</h5>
+																<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+															</div>
+															<div class="modal-body m-3">
+																<div class="row mt-3">
+																	<div class="col-3">
+																		<h5 class="text-muted">Complaint Status: </h5>
 																	</div>
+																	<div class="col-3">
+																		<h5><?php echo "$complaintStatus"; ?> </h5>
+																	</div>
+																	<div class="col-3">
+																		<h5 class="text-muted">Complaint Type: </h5>
+																	</div>
+																	<div class="col-3">
+																		<h5><?php echo "$complaintType"; ?> </h5>
+																	</div>
+																</div>
+																<div class="row mt-3">
+																	<div class="col-3">
+																		<h5 class="text-muted">Complaint Date: </h5>
+																	</div>
+																	<div class="col-3">
+																		<h5><?php echo "$complaintDate"; ?> </h5>
+																	</div>
+																	<div class="col-3">
+																		<h5 class="text-muted">Complaint Time: </h5>
+																	</div>
+																	<div class="col-3">
+																		<h5><?php echo "$complaintTime"; ?> </h5>
+																	</div>
+																</div>
+																<div class="row mt-3">
+																	<div class="col-4">
+																		<h5 class="text-muted">Complaint Description: </h5>
+																	</div>
+																	<div class="col-5">
+																		<h5><?php echo "$complaintDesc"; ?> </h5>
+																	</div>
+																</div>
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+															</div>
+														</div>
+													</div>
+
+												</div>
+												<!-- end Modal View -->
+												<!--Modal Kemaskini-->
+												<div class="modal fade" id="update-<?php echo $complaintID; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+													<div class="modal-dialog modal-dialog-scrollable">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title" id="staticBackdropLabel">Update Complain</h5>
+															</div>
+															<div class="modal-body">
+																<div class="card-body">
+																	<form method="POST" action="testing.php">
+																		<input type="hidden" name="complaintID" value="<?php echo $complaintID; ?>">
+
+																		<div class="row">
+																			<div class="mb-3 col-md-6">
+																				<label for="DateComplaint">Date Complaint</label>
+																				<input type="date" class="form-control" name="complaintDate" id="complaintDate" value="<?php echo $complaintDate; ?>" disabled>
+																			</div>
+																			<div class="mb-3 col-md-6">
+																				<label for="TimeComplaint">Time Complaint</label>
+																				<input type="time" class="form-control" name="complaintTime" id="complaintTime" value="<?php echo $complaintTime; ?>" disabled>
+																			</div>
+																			<div class="mb-3 col-md-12">
+																				<label for="complain">Complaint Type</label>
+																				<select class="form-select" name="complaintType" aria-label="Default select example" disabled>
+																					<option disabled selected><?php echo $complaintType; ?></option>
+																				</select>
+																			</div>
+																			<div class="mb-3 col-md-12">
+																				<label for="complain">Post Title</label>
+																				<select class="form-select" name="postID" aria-label="Default select example" disabled>
+																					<option disabled selected><?php echo $postID; ?></option>
+																				</select>
+																			</div>
+
+
+																			<div class="mb-3">
+																				<label>Complaint Description</label>
+																				<textarea class="form-control" rows="5" name="complaintDesc"><?php echo $complaintDesc; ?></textarea>
+																			</div>
+																		</div>
+																		<br>
+
+																		<input type="hidden" name="update" value="true">
+																		<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+																		<button type="submit" class="btn btn-primary">Save</button>
+																	</form>
 																</div>
 															</div>
 														</div>
 													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-														<button type="button" class="btn btn-primary">Dismiss</button>
+												</div>
+												<!-- end Modal Kemaskini -->
+
+												<!-- Start Modal Delete -->
+												<div class="modal fade" id="delete-<?php echo $complaintID; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+													<div class="modal-dialog modal-dialog-centered" role="document">
+														<div class="modal-content">
+															<div class="modal-header">
+																<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+															</div>
+															<div class="modal-body m-3">
+																<form method="POST" action="testing.php">
+																	<input type="hidden" name="complaintID" value="<?php echo $complaintID; ?>">
+																	<div class="drop" style="width:150px; height:150px; background-color:#fff2f2; display:flex; justify-content:center; align-items:center; border-radius: 50%; margin: -25px 0 20px 200px; position:relative; box-shadow: inset 2px 7px 6px rgba(0,0,0,0.1);">
+																		<i class="align-middle fas fa-fw fa-trash-alt" style="font-size: 65px; color: #D90000;"></i>
+																	</div>
+
+																	<p class="mb-0" style="font-weight: 450; font-size: 18px; text-align:center;">You are about to delete a data <br> Are you sure?</p>
+															</div>
+															<div class="modal-footer">
+																<input type="hidden" name="delete" value="true">
+																<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+																<button type="submit" class="btn btn-primary">Delete</button>
+															</div>
+															</form>
+														</div>
 													</div>
 												</div>
-											</div>
-										</div>
-									</div>
-									<!--Modal Kemaskini-->
-									<div class="modal fade" id="update-" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-										<div class="modal-dialog modal-dialog-scrollable">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title" id="staticBackdropLabel">View History</h5>
-												</div>
-												<div class="modal-body">
-													<form method="POST" action="/StatusAdmin/{{$asset->id}}">
-														<!-- <div class="form-group">
-															<label for="exampleFormControlInput1" class="form-label">Update Status</label>
-															<select class="form-select" name="status" value="{{$asset->status}}" aria-label="Default select example">
-																<option value="" selected>Please Select</option>
-																<option value="Approve">Approved</option>
-																<option value="Reject">Rejected</option>
-
-															</select>
-														</div> -->
-														<div class="card-body">
-								<form method="POST" action="../Module5/main.php" onsubmit="alert('The Form has been Submitted.')">
-									<div class="row">
-										<div class="mb-3 col-md-12">
-											<label for="complain">Complaint Type</label>
-											<select class="form-select" name="complaintType" value="complaintType" aria-label="Default select example">
-												<option hidden="">Please Select</option>
-												<option value="Unsatisfied Expert’s Feedback">Unsatisfied Expert’s Feedbackd</option>
-												<option value="Unanswered Question">Unanswered Questioned</option>
-												<option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
-											</select>
-										</div>
-										<div class="mb-3 col-md-6">
-											<label for="DateComplaint">Date Complaint</label>
-											<input type="date" class="form-control" name="complaintDate" id="complaintDate">
-										</div>
-										<div class="mb-3 col-md-6">
-											<label for="TimeComplaint">Time Complaint</label>
-											<input type="time" class="form-control" name="complaintTime" id="complaintTime">
-										</div>
-										<div class="mb-3 col-md-12">
-											<label for="complain">Choose Post</label>
-											<select class="form-select" name="postID" value="postID" aria-label="Default select example">
-												<option hidden="">Please Select</option>
-												<option value="Energy-efficient computer systems">Energy-efficient computer systemsd</option>
-												<option value="Machine learning and artificial intelligence in computer systems">Machine learning and artificial intelligence in computer systemsed</option>
-												<option value="Virtualization and containerization">Virtualization and containerization</option>
-											</select>
-										</div>
-										<div class="mb-3">
-											<label>Complaint Description</label>
-											<textarea class="form-control" id="complaintDesc" name="complaintDesc" rows="3"></textarea>
-										</div> 
-									</div>
-
-								</form>
-							</div>
-														<br>
-														<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-														<button type="submit" class="btn btn-primary">Save</button>
-													</form>
-												</div>
-											</div>
-										</div>
-									</div>
+												<!-- end Delete modal -->
+										<?php
+												$count++; // Increment the count by 1
+											}
+										} else {
+											echo "<tr><td colspan='6'>No complaints found</td></tr>";
+										}
+										?>
+									</tbody>
 
 								</table>
 							</div>

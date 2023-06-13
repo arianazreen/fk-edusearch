@@ -12,49 +12,22 @@
 		$username = mysqli_real_escape_string($conn,$_POST['username']);
 		$password = mysqli_real_escape_string($conn,$_POST['password']); 
 		
-		$sql = "SELECT * FROM login WHERE username = '$username' AND password = '$password'";
+		$sql = "SELECT * FROM generaluser WHERE userID = '$username' AND userPass = '$password'";
 		$result = mysqli_query($conn,$sql);
 		$row = mysqli_fetch_array($result);
-<<<<<<< HEAD
-		//$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-		//$active = $row['active'];
 
-		echo "<script>alert('You are now logged into the student account !'); window.location='manage-user.php'</script>";
-
-	  	// if($row['role'] == "student")
-		// {
-		// 	$_SESSION['username'] = $username;
-		// 	echo "<script>alert('You are now logged into the student account !'); window.location='manage-user.php'</script>";
-		// }
-		// else if($row['role'] == "expert")
-		// {
-		// 	$_SESSION['username'] = $username;
-		// 	echo "<script>alert('You are now logged into the expert account !'); window.location='manage-user.php'</script>";
-		// }
-		// else
-		// {
-		// 	$_SESSION['status'] = "Username / Password is Invalid";
-		// 	echo "<script>alert('Invalid username / password'); window.location='manage-user.php'</script>";
-		// }
-=======
-		
-	  	if($row['role'] == "genUser")
+		$count = mysqli_num_rows($result);
+      
+		if($count == 1)
 		{
 			session_start();
 			$_SESSION['username'] = $username;
-			echo "<script>alert('Logged in as a General User.'); window.location='manage-user.php'</script>";
-		}
-		else if($row['role'] == "expert")
-		{
-			session_start();
-			$_SESSION['username'] = $username;
-			echo "<script>alert('Logged in as an Expert.'); window.location='manage-user.php'</script>";
+			echo "<script>alert('Logged in as a Student.'); window.location='manage-user.php'</script>";
 		}
 		else
 		{
 			echo "<script>alert('Invalid username or password.'); window.location='login-user.php'</script>";
 		}
->>>>>>> 66eb623d33e5b86fef604c37f97f9a117fbbcc90
 	}
 ?>
 
