@@ -1,3 +1,8 @@
+<?php
+	//declare database
+	require('../Module1/database.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -98,7 +103,7 @@
 								<table class="table table-bordered">
 									<thead>
 										<tr style="background-color: rgb(12, 13, 61); color: white; text-align: center;">
-											<th >User ID</th>
+											<th >Matric No.</th>
 											<th >Name</th>
 											<th class="d-none d-md-table-cell" >Date</th>
 											<th >Complaint Type</th>
@@ -107,15 +112,35 @@
 										</tr>
 									</thead>
 									<tbody>
+
+										<?php
+											
+											$sql= "SELECT generaluser.userID, generaluser.matricNum, generaluser.username, complaint.complaintDate, complaint.complaintType, complaint.complaintStatus FROM generaluser INNER JOIN complaint ON generaluser.userID=complaint.userID";
+											$result = mysqli_query($conn,$sql);
+											
+											if(mysqli_num_rows($result)>0)
+											{
+												while($row = mysqli_fetch_assoc($result))
+												{
+													$userID = $row['userID'];
+													$matricNum = $row['matricNum'];
+													$username = $row['username'];
+													$complaintDate = $row['complaintDate'];
+													$complaintType = $row['complaintType'];
+													$complaintStatus = $row['complaintStatus'];
+										?>
+										
+
 										<tr style="text-align: center;">
-											<td>CB19021</td>
-											<td style="text-align: left;">NUR MAISARAH BINTI JAILANI</td>
-											<td class="d-none d-md-table-cell">10 Jan 2023</td>
-											<td>Unsatisfied Expert's Feedback</td>
-											<td style="text-align: left;"><i class="fas fa-fw fa-check-circle" style="color:#35B421;"></i>  Resolved</td>
+											<td> <?php echo $matricNum ?> </td>
+											<td style="text-align: left;"> <?php echo $username ?> </td>
+											<td class="d-none d-md-table-cell"> <?php echo $complaintDate ?> </td>
+											<td> <?php echo $complaintType ?> </td>
+											<td style="text-align: left;"><i class="fas fa-fw fa-check-circle" style="color:#35B421;"></i>  <?php echo $complaintStatus ?> </td>
 											<td class="table-action">
 
-												<a href="view-details.php"><i class="align-middle fas fa-fw fa-search" style="margin-right:10px;  color:#000;"></i></a>
+												<a href="view-details.php? id=<?php echo $row['userID'] ?>"><i class="align-middle fas fa-fw fa-search" style="margin-right:10px;  color:#000;"></i></a>
+												
 
 												<!-- Update modal -->
 
@@ -231,7 +256,7 @@
 											</td>
 										</tr>
 
-										<tr style="text-align: center;">
+										<!-- <tr style="text-align: center;">
 											<td>CA21124</td>
 											<td style="text-align: left;">AHMAD RIDUAN BIN ABU</td>
 											<td class="d-none d-md-table-cell">23 Jan 2023</td>
@@ -242,9 +267,9 @@
 												<a href="#"><i class="align-middle fas fa-fw fa-edit" style="margin-right:10px; color:#0039D7;"></i></a>
 												<a href="#"><i class="align-middle fas fa-fw fa-trash" style="color:#D00000;"></i></a>
 											</td>
-										</tr>
+										</tr> -->
 
-										<tr style="text-align: center;">
+										<!-- <tr style="text-align: center;">
 											<td>CD19976</td>
 											<td style="text-align: left;">KIM MINGYU</td>
 											<td class="d-none d-md-table-cell">6 April 2023</td>
@@ -255,8 +280,14 @@
 												<a href="#"><i class="align-middle fas fa-fw fa-edit" style="margin-right:10px; color:#0039D7;"></i></a>
 												<a href="#"><i class="align-middle fas fa-fw fa-trash" style="color:#D00000;"></i></a>
 											</td>
-										</tr>
+										</tr> -->
 										
+										<?php
+											}
+												
+										}
+										?>
+
 									</tbody>
 								</table>
 							</div>
