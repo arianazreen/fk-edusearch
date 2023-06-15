@@ -178,48 +178,66 @@
                          <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
                           <div>
                             <!--Research Input-->
-                          <div class="input-container">
-                            <div class="input-box">
-                            <input type="text" placeholder="Research Name">
-                            <i class="fas fa-trash-alt red-icon" ></i>
+                            <div class="input-container">
+                                <div class="input-box">
+                                <input type="text" placeholder="Research Name">
+                                <i class="fas fa-trash-alt red-icon" ></i>
                             </div> 
                           </div>
                       </div>
                   </div>
                 </div>
-                <div class="col-6 col-lg-4">
-                    <div class="card flex-fill w-100">
-                      <div class="card-header">
-    
-                          <h2 class="card-title mb-0"> Publications History </h2>
-                          <p>
-                            <ul>
-                            <li> Emeging Trends in Computer System Security. </li>
-                            <li> Virtual Reality (VR) and Augmented Reality (AR) application. </li>
-                          </ul>
-                          </p>
-                      </div>
-                    </div>
-                </div>
               </div>
              
+               <!--2nd Row-->
+
+               <div class="row">
+                  <div class="col-12 col-lg-7">
+                    <div class="card flex-fill w-100">
+                      <div class="card-header">
+                        <h2 class="card-title">Publications History</h2>
+                      </div>
+                      <div class="card-body d-flex">
+                        <div class="align-self-center w-100">
+                          <div class="document-wrapper">
+                            <!-- Table Container -->
+                            <div class="table-container">
+                            <table id="myTable">
+                                <thead>
+                                  <tr>
+                                    <th>Publication Name</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Column 4</th>
+                                  </tr>
+                                </thead>
+                                <tbody></tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
   
-           <!--2nd Row-->
+           <!--3nd Row-->
 
            <div class="row">
-           <div class="col-12 col-lg-7">
-              <div class="card flex-fill w-100">
-                <div class="card-header">
-                  <h2 class="card-title">List of Publications</h2>
-                  <div class="card-body d-flex">
-                    <div class="align-self-center w-100">
-                      <div class="document-wrapper">
-                        <!-- Document Container -->
-                        <div class="document-container">
-                          <!-- Create new button -->
-                          <button class="create-button btn btn-primary" style=" color: white; position: absolute; left:70%; margin-top:-2%; background-color: #07A492; font-weight: 400;" onclick="createDocumentBox(this)">
-                            CREATE NEW
-                          </button>
+              <div class="col-12 col-lg-7">
+                <div class="card flex-fill w-100">
+                  <div class="card-header">
+                    <h2 class="card-title"> List of Publications </h2>
+                    <div class="card-body d-flex">
+                      <div class="align-self-center w-100">
+                        <div class="document-wrapper">
+                          <!-- Document Container -->
+                          <div class="document-container">
+                            <!-- Create new button -->
+                            <button class="create-button btn btn-primary" style=" color: white; position: absolute; left:70%; margin-top:-2%; background-color: #07A492; font-weight: 400;" onclick="createDocumentBox(this)">
+                              CREATE NEW
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -227,23 +245,28 @@
                 </div>
               </div>
             </div>
-           <div class="col-6 col-lg-4">
-               <div class="card flex-fill w-100">
-                 <div class="card-header">
+            </div>
 
-                     <h2 class="card-title mb-0"> Social Media Accounts </h2>
-                     <p>
-                       <ul>
-                       <li> Bachelor in Computer System </li>
-                     </ul>
-                     </p>
-                 </div>
-               </div>
-           </div>
-         </div>
-         </div>
-         </div>
-         </div>
+            <div class="col-6 col-lg-4">
+                  <div class="card flex-fill w-100">
+                    <div class="card-header">
+                      <h2 class="card-title mb-0">Social Media Accounts</h2>
+                      <h6 class="card-subtitle text-muted">
+                        <button class="create-button btn btn-primary" style="color: white; position: absolute; left: 70%; margin-top: -2%; background-color: #07A492; font-weight: 400;" onclick="createSocialMediaAccount()">CREATE NEW</button>
+                      </h6>
+                    </div>
+                    <div>
+                      <!-- Social Media Account Inputs -->
+                      <div class="input-container">
+                        <div class="input-box">
+                          <input type="text" placeholder="Social Media Account">
+                          <i class="fas fa-trash-alt red-icon"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
       
 
        </main>
@@ -315,10 +338,13 @@
       inputBox.remove();
     }
 
-    // Get reference to the document container
+     src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
+ 
+    // Get reference to the document container and table
     const documentContainer = document.querySelector(".document-container");
+    const table = document.getElementById("myTable");
 
-    // Function to create a new document box with buttons
+    // Function to create a new document box with buttons and add a row to the table
     function createDocumentBox(button) {
       const newDocumentBox = document.createElement("div");
       newDocumentBox.classList.add("document-box");
@@ -337,8 +363,9 @@
       deleteIcon.classList.add("fas", "fa-trash-alt", "delete-icon");
       deleteIcon.addEventListener("click", function() {
         deleteDocumentBox(newDocumentBox);
-        if (documentContainer.children.length === 0) {
-          documentContainer.appendChild(button);
+        if (table.rows.length > 1) {
+          table.deleteRow(newDocumentBox.dataset.rowIndex); // Delete the corresponding table row
+          updateRowNumbers(); // Update the row numbers
         }
       });
 
@@ -349,6 +376,27 @@
       // Remove the button from the previous box
       button.remove();
 
+      // Add a new row to the table
+      const rowCount = table.rows.length;
+      if (rowCount === 1 && table.rows[0].cells.length === 0) {
+        // Remove the empty row
+        table.deleteRow(0);
+      }
+      const newRow = table.insertRow(rowCount);
+      const cell1 = newRow.insertCell(0);
+      const cell2 = newRow.insertCell(1);
+      const cell3 = newRow.insertCell(2);
+      const cell4 = newRow.insertCell(3);
+
+      cell1.className = "row-number";
+      cell1.innerHTML = rowCount;
+      cell2.innerHTML = "New Row, Cell 2";
+      cell3.innerHTML = "New Row, Cell 3";
+      cell4.innerHTML = "New Row, Cell 4";
+
+      // Set the data-row-index attribute on the document box for deletion reference
+      newDocumentBox.dataset.rowIndex = rowCount;
+
       // Scroll to the right
       documentContainer.scrollLeft = documentContainer.scrollWidth;
     }
@@ -357,7 +405,17 @@
     function deleteDocumentBox(documentBox) {
       documentBox.remove();
     }
-    
+
+    // Function to update the row numbers in the table
+    function updateRowNumbers() {
+      const rows = table.getElementsByTagName("tr");
+
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        const cell = row.cells[0];
+        cell.innerHTML = i;
+      }
+    }
 	</script>
 
 
@@ -421,7 +479,22 @@
       color: red;
     }
 
-    
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .row-number {
+      font-weight: bold;
+    }
+
+
         .post-box {
             position: relative;
             display: flex;
