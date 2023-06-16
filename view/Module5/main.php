@@ -100,8 +100,14 @@ require('../Module1/database.php');
 														<?php echo "$complaintType"; ?>
 													</td>
 													<td>
-														<?php echo "$complaintStatus"; ?>
-													</td>
+														<?php if ($complaintStatus == "On Hold") : 
+															echo "<i class='fas fa-fw fa-exclamation-circle' style='color: #EA030B;'></i>On Hold";
+														elseif ($complaintStatus == "Resolved"):
+															echo "<i class='fas fa-fw fa-check-circle' style='color: #32A377;'></i>Resolved";
+														else :
+															echo "<i class='fas fa-fw fa-clock' style='color: #ECC707;'></i>Investigation";
+														 endif; ?>
+
 													<td>
 
 														<?php echo "<a data-bs-toggle='modal' data-bs-target='#view-$id'><i class='align-middle fas fa-fw fa-eye' style='color: black; '></i></a>"; ?>
@@ -125,8 +131,10 @@ require('../Module1/database.php');
 																		<h5 class="text-muted">Complaint Status: </h5>
 																	</div>
 																	<div class="col-3">
+
 																		<h5><?php echo "$complaintStatus"; ?> </h5>
 																	</div>
+
 																	<div class="col-3">
 																		<h5 class="text-muted">Complaint Type: </h5>
 																	</div>
@@ -248,7 +256,7 @@ require('../Module1/database.php');
 										<?php
 												$count++; // Increment the count by 1
 											}
-										} 
+										}
 										?>
 									</tbody>
 

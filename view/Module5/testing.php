@@ -13,10 +13,11 @@ function getLatestComplaintId($conn) {
 }
 // 1)
 if (isset($_POST['submit'])) {
+    date_default_timezone_set("Asia/Kuala_Lumpur");
     $latestId = getLatestComplaintId($conn);
     $complaintID = 'C' . sprintf("%04d", $latestId + 1);
     $complaintDate =  date("Y-m-d");
-    $complaintTime =  date("H:i");
+    $complaintTime =  date("h:i");
     $complaintType =  $_POST['complaintType'];
     // 'App_no' => 'KN/' . date("Y") . '/' . sprintf("%'.05d\n", $consultation + 1),
     $complaintDesc =  $_POST['complaintDesc'];
