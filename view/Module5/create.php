@@ -48,7 +48,6 @@ include_once('../Module1/session-check-genUser.php');
 					</div>
 					<div class="col-md-10" style="float:none;margin:auto;">
 						<div class="card">
-
 							<br>
 							<h2 style="float:none;margin:auto;">We are Here to Help You!</h2>
 
@@ -60,6 +59,15 @@ include_once('../Module1/session-check-genUser.php');
 								<form method="post" action="testing.php">
 									<div class="row">
 										<div class="mb-3 col-md-12">
+											<label for="complain">Choose Post</label>
+											<select class="form-select" name="postID" value="postID" aria-label="Default select example">
+												<option hidden="">Please Select</option>
+												<option value="Energy-efficient computer systems">Energy-efficient computer systemsd</option>
+												<option value="Machine learning and artificial intelligence in computer systems">Machine learning and artificial intelligence in computer systemsed</option>
+												<option value="Virtualization and containerization">Virtualization and containerization</option>
+											</select>
+										</div>
+										<div class="mb-3 col-md-12">
 											<label for="complain">Complaint Type</label>
 											<select class="form-select" name="complaintType" value="complaintType" aria-label="Default select example">
 												<option hidden="">Please Select</option>
@@ -68,30 +76,14 @@ include_once('../Module1/session-check-genUser.php');
 												<option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
 											</select>
 										</div>
-										<div class="mb-3 col-md-6">
-											<label for="DateComplaint">Date Complaint</label>
-											<input type="date" class="form-control" name="complaintDate" id="complaintDate">
-										</div>
-										<div class="mb-3 col-md-6">
-											<label for="TimeComplaint">Time Complaint</label>
-											<input type="time" class="form-control" name="complaintTime" id="complaintTime">
-										</div>
-										<!-- <div class="mb-3 col-md-12">
-											<label for="complain">Choose Post</label>
-											<select class="form-select" name="postID" value="postID" aria-label="Default select example">
-												<option hidden="">Please Select</option>
-												<option value="Energy-efficient computer systems">Energy-efficient computer systemsd</option>
-												<option value="Machine learning and artificial intelligence in computer systems">Machine learning and artificial intelligence in computer systemsed</option>
-												<option value="Virtualization and containerization">Virtualization and containerization</option>
-											</select>
-										</div> -->
+										
 										<div class="mb-3">
 											<label>Complaint Description</label>
 											<textarea class="form-control" id=" " name="complaintDesc" rows="3"></textarea>
 										</div>
 										<div class="mb-3"><br>
 											<button type="submit" name="submit" class="btn" style=" color: white; position: absolute; right:55%; background-color: #07A492; font-weight: 400;">SUBMIT</button>
-											<button onclick="history.back()" class="btn" style=" color: white; position: absolute; right:45%; background-color: #ADDCD7; font-weight: 400;">CANCEL</button>
+											<button type="button" onclick="history.back()" class="btn" style="color: white; position: absolute; right:45%; background-color: #ADDCD7; font-weight: 400;">CANCEL</button>
 										</div>
 										<br><br><br>
 									</div>
@@ -100,7 +92,6 @@ include_once('../Module1/session-check-genUser.php');
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</main>
 			<footer class="footer">

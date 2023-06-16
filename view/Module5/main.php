@@ -104,9 +104,9 @@ require('../Module1/database.php');
 													</td>
 													<td>
 
-														<?php echo "<a data-bs-toggle='modal' data-bs-target='#view-$id'><i class='align-middle fas fa-fw fa-file'></i></a>"; ?>
-														<?php echo "<a data-bs-toggle='modal' data-bs-target='#update-$id'><i class='align-middle fas fa-fw fa-pen'></i></a>"; ?>
-														<?php echo "<a data-bs-toggle='modal' data-bs-target='#delete-$id'><i class='align-middle fas fa-fw fa-trash'></i></a>"; ?>
+														<?php echo "<a data-bs-toggle='modal' data-bs-target='#view-$id'><i class='align-middle fas fa-fw fa-eye' style='color: black; '></i></a>"; ?>
+														<?php echo "<a data-bs-toggle='modal' data-bs-target='#update-$id'><i class='align-middle fas fa-fw fa-edit' style='color: #008080; '></i></a>"; ?>
+														<?php echo "<a data-bs-toggle='modal' data-bs-target='#delete-$id'><i class='align-middle fas fa-fw fa-trash' style='color: red; '></i></a>"; ?>
 
 
 													</td>
@@ -248,9 +248,7 @@ require('../Module1/database.php');
 										<?php
 												$count++; // Increment the count by 1
 											}
-										} else {
-											echo "<tr><td colspan='6'>No complaints found</td></tr>";
-										}
+										} 
 										?>
 									</tbody>
 
@@ -285,6 +283,21 @@ require('../Module1/database.php');
 		</defs>
 	</svg>
 	<script src="../../dist/js/app.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Datatables basic
+			$('#datatables-basic').DataTable({
+				responsive: true
+			});
+			// Datatables with Buttons
+			var datatablesButtons = $('#datatables-buttons').DataTable({
+				lengthChange: !1,
+				buttons: ["copy", "print"],
+				responsive: true
+			});
+			datatablesButtons.buttons().container().appendTo("#datatables-buttons_wrapper .col-md-6:eq(0)")
+		});
+	</script>
 
 </body>
 

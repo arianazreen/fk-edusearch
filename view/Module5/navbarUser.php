@@ -64,7 +64,7 @@
         </li>
         <li class="nav-item dropdown ms-lg-2">
             <a class="nav-link dropdown-toggle position-relative" href="#" id="userDropdown" data-bs-toggle="dropdown">
-                <i class="align-middle fas fa-cog"></i>
+                <i class="align-middle fas fa-user"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                 <a class="dropdown-item"></a>

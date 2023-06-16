@@ -2,17 +2,26 @@
 <?php
 // <!-- declaration database -->
 require('../Module1/database.php');
+
+function getLatestComplaintId($conn) {
+    $sql = "SELECT MAX(id) AS maxId FROM complaint";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $lastId = $row['maxId'];
+
+    return (int) $lastId;
+}
 // 1)
 if (isset($_POST['submit'])) {
-    // $id =  $_POST['complaint_ID'];
-    // $userID
-    // $postID
-    $complaintDate =  $_POST['complaintDate'];
-    $complaintTime =  $_POST['complaintTime'];
+    $latestId = getLatestComplaintId($conn);
+    $complaintID = 'C' . sprintf("%04d", $latestId + 1);
+    $complaintDate =  date("Y-m-d");
+    $complaintTime =  date("H:i");
     $complaintType =  $_POST['complaintType'];
+    // 'App_no' => 'KN/' . date("Y") . '/' . sprintf("%'.05d\n", $consultation + 1),
     $complaintDesc =  $_POST['complaintDesc'];
     // $complaintStatus =  $_POST['complaintStatus'];
-    $sql = "INSERT INTO complaint ( complaintDate, complaintTime, complaintType, complaintDesc, complaintStatus) VALUES ( '$complaintDate', '$complaintTime', '$complaintType', '$complaintDesc', 'In Investigation')";
+    $sql = "INSERT INTO complaint ( complaintID, complaintDate, complaintTime, complaintType, complaintDesc, complaintStatus) VALUES ( '$complaintID','$complaintDate', '$complaintTime', '$complaintType', '$complaintDesc', 'Submitted')";
     $result = mysqli_query($conn, $sql);
 
 
@@ -30,6 +39,7 @@ if (isset($_POST['submit'])) {
     mysqli_close($conn);
 }
 ?>
+
 <!-- UPDATE COMPLAINT INSIDE DATABASE -->
 <?php
 // Declaration database
