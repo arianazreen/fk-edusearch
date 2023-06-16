@@ -18,7 +18,7 @@ include_once('../Module1/session-check-genUser.php');
 	<meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
 	<meta name="author" content="Bootlab">
 
-	<title>Create Complaint</title>
+	<title>View Complaint</title>
 
 	<link href="../../dist/css/modernModule5.css" rel="stylesheet">
 
@@ -35,12 +35,14 @@ include_once('../Module1/session-check-genUser.php');
 	<div class="wrapper">
 		<!-- CONTENT -->
 		<div class="main">
-			<?php
+        <?php
 			include_once('navbarUser.php');
 			?>
 			<main class="content">
 				<div class="container-fluid">
-
+				<?php
+	echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';
+?>
 					<div class="header">
 						<h1 class="header-title">
 							Complaint Application

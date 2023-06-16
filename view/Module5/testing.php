@@ -4,7 +4,7 @@
 require('../Module1/database.php');
 // 1)
 if (isset($_POST['submit'])) {
-    // $complaintID =  $_POST['complaint_ID'];
+    // $id =  $_POST['complaint_ID'];
     // $userID
     // $postID
     $complaintDate =  $_POST['complaintDate'];
@@ -22,6 +22,7 @@ if (isset($_POST['submit'])) {
     if ($result) {
         header("Location: main.php");
         echo "<script>alert('The Form has been Submitted.')</script>";
+        // echo "<script>alert('The Form has been Submitted.')</script>";
     } else {
         echo "<script>alert('Error Inserting Data: " . mysqli_error($conn) . "')</script>";
     }
@@ -35,17 +36,18 @@ if (isset($_POST['submit'])) {
 require('../Module1/database.php');
 
 if (isset($_POST['update'])) {
-    $complaintID = $_POST['complaintID'];
+    $id = $_POST['id'];
     $complaintDesc = $_POST['complaintDesc'];
 
-    $sql = "UPDATE complaint SET complaintDesc = '$complaintDesc' WHERE complaintID = $complaintID";
+    $sql = "UPDATE complaint SET complaintDesc = '$complaintDesc' WHERE id = $id";
     $result = mysqli_query($conn, $sql);
 
 
     if ($result) {
         //to close database connection
         mysqli_close($conn);
-        header("Location: main.php");
+        echo "<script>alert('Update Successful');window.location='main.php'</script>";
+        // header("Location: main.php");
         exit();
     } else {
         mysqli_close($conn);
@@ -60,9 +62,9 @@ if (isset($_POST['update'])) {
 require('../Module1/database.php');
 
 if (isset($_POST['delete'])) {
-    $complaintID = $_POST['complaintID'];
+    $id = $_POST['id'];
 
-    $sql = "DELETE FROM complaint WHERE complaintID = $complaintID";
+    $sql = "DELETE FROM complaint WHERE id = $id";
     $result = mysqli_query($conn, $sql);
 
 

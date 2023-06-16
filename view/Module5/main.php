@@ -1,7 +1,12 @@
 <?php
+//check session
+include_once('../Module1/session-check-genUser.php');
+?>
+<?php
 // <!-- declaration database -->
 require('../Module1/database.php');
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +19,7 @@ require('../Module1/database.php');
 
 	<title>Complaint Dashboard</title>
 
-	<link href="../../dist/css/modern.css" rel="stylesheet">
+	<link href="../../dist/css/modernModule5.css" rel="stylesheet">
 
 	<style>
 		body {
@@ -29,85 +34,10 @@ require('../Module1/database.php');
 	<div class="wrapper">
 		<!-- CONTENT -->
 		<div class="main">
-			<nav class="navbar navbar-expand navbar-theme">
 
-				<div class="container-fluid">
-					<div class="sidebar-user">
-						<img src="../../dist/img/logo/fk-edusearch-border.png" alt="FK-EduSearch Logo" />
-					</div>
-					<a class="navbar-brand" href=#>FK-EDUSEARCH</a>&nbsp;
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item">
-								<a class="nav-link " aria-current="page" href="#">Home</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">My Question</a>
-							</li>
-							<li class="nav-item dropdown ms-lg-2">
-								<a class="nav-link dropdown-toggle position-relative" href="#" id="userDropdown" data-bs-toggle="dropdown">Complain</a>
-								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-									<a class="dropdown-item"></a>
-									<a class="dropdown-item" href="../Module5/create.php">New Application</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">History</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">Report</a>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="navbar-collapse collapse">
-					<ul class="navbar-nav ms-auto">
-						<li class="nav-item dropdown ms-lg-2">
-							<a class="nav-link dropdown-toggle position-relative" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
-								<i class="align-middle fas fa-bell"></i>
-							</a>
-							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
-								<div class="dropdown-menu-header">
-									4 New Notifications
-								</div>
-								<div class="list-group">
-									<a href="#" class="list-group-item">
-										<div class="row g-0 align-items-center">
-											<div class="col-2">
-												<i class="ms-1 text-success fas fa-fw fa-bell-slash"></i>
-											</div>
-											<div class="col-10">
-												<div class="text-dark">New connection</div>
-												<div class="text-muted small mt-1">Anna accepted your request.</div>
-												<div class="text-muted small mt-1">12h ago</div>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="dropdown-menu-footer">
-									<a href="#" class="text-muted">Show all notifications</a>
-								</div>
-							</div>
-						</li>
-						<li class="nav-item dropdown ms-lg-2">
-							<a class="nav-link dropdown-toggle position-relative" href="#" id="userDropdown" data-bs-toggle="dropdown">
-								<i class="align-middle fas fa-cog"></i>
-							</a>
-							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-								<a class="dropdown-item"></a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="/Profile"><i class="align-middle me-1 fas fa-fw fa-user"></i> My Profile</a>
-								<a class="dropdown-item" href="#"><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Account Setting</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="logout"><i class="align-middle me-1 fas fa-fw fa-arrow-alt-circle-right"></i> Sign out</a>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</nav>
-
+			<?php
+			include_once('navbarUser.php');
+			?>
 			<main class="content">
 				<div class="container-fluid">
 
@@ -140,18 +70,21 @@ require('../Module1/database.php');
 									<tbody>
 
 										<?php
+										// <!-- declaration database -->
+										require('../Module1/database.php');
+
 										$sql = "SELECT * FROM complaint";
 										$result = mysqli_query($conn, $sql);
 										if (mysqli_num_rows($result) > 0) {
 											$count = 1;
 											while ($row = mysqli_fetch_assoc($result)) {
-												$complaintID = $row['complaintID'];
+												$id = $row['id'];
 												$complaintDate = $row['complaintDate'];
 												$complaintTime = $row['complaintTime'];
 												$complaintType = $row['complaintType'];
 												$complaintStatus = $row['complaintStatus'];
 												$complaintDesc = $row['complaintDesc'];
-												$postID = $row['postID'];
+												// $postID = $row['postID'];
 										?>
 												<tr>
 													<td>
@@ -171,15 +104,15 @@ require('../Module1/database.php');
 													</td>
 													<td>
 
-														<?php echo "<a data-bs-toggle='modal' data-bs-target='#view-$complaintID'><i class='align-middle fas fa-fw fa-file'></i></a>"; ?>
-														<?php echo "<a data-bs-toggle='modal' data-bs-target='#update-$complaintID'><i class='align-middle fas fa-fw fa-pen'></i></a>"; ?>
-														<?php echo "<a data-bs-toggle='modal' data-bs-target='#delete-$complaintID'><i class='align-middle fas fa-fw fa-trash'></i></a>"; ?>
+														<?php echo "<a data-bs-toggle='modal' data-bs-target='#view-$id'><i class='align-middle fas fa-fw fa-file'></i></a>"; ?>
+														<?php echo "<a data-bs-toggle='modal' data-bs-target='#update-$id'><i class='align-middle fas fa-fw fa-pen'></i></a>"; ?>
+														<?php echo "<a data-bs-toggle='modal' data-bs-target='#delete-$id'><i class='align-middle fas fa-fw fa-trash'></i></a>"; ?>
 
 
 													</td>
 												</tr>
 												<!-- Modal View -->
-												<div class="modal fade" id="view-<?php echo $complaintID; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+												<div class="modal fade" id="view-<?php echo $id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
 													<div class="modal-dialog" role="document">
 														<div class="modal-content">
 															<div class="modal-header">
@@ -233,7 +166,7 @@ require('../Module1/database.php');
 												</div>
 												<!-- end Modal View -->
 												<!--Modal Kemaskini-->
-												<div class="modal fade" id="update-<?php echo $complaintID; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+												<div class="modal fade" id="update-<?php echo $id; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 													<div class="modal-dialog modal-dialog-scrollable">
 														<div class="modal-content">
 															<div class="modal-header">
@@ -242,7 +175,7 @@ require('../Module1/database.php');
 															<div class="modal-body">
 																<div class="card-body">
 																	<form method="POST" action="testing.php">
-																		<input type="hidden" name="complaintID" value="<?php echo $complaintID; ?>">
+																		<input type="hidden" name="id" value="<?php echo $id; ?>">
 
 																		<div class="row">
 																			<div class="mb-3 col-md-6">
@@ -282,11 +215,12 @@ require('../Module1/database.php');
 															</div>
 														</div>
 													</div>
+
 												</div>
 												<!-- end Modal Kemaskini -->
 
 												<!-- Start Modal Delete -->
-												<div class="modal fade" id="delete-<?php echo $complaintID; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+												<div class="modal fade" id="delete-<?php echo $id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
 													<div class="modal-dialog modal-dialog-centered" role="document">
 														<div class="modal-content">
 															<div class="modal-header">
@@ -294,7 +228,7 @@ require('../Module1/database.php');
 															</div>
 															<div class="modal-body m-3">
 																<form method="POST" action="testing.php">
-																	<input type="hidden" name="complaintID" value="<?php echo $complaintID; ?>">
+																	<input type="hidden" name="id" value="<?php echo $id; ?>">
 																	<div class="drop" style="width:150px; height:150px; background-color:#fff2f2; display:flex; justify-content:center; align-items:center; border-radius: 50%; margin: -25px 0 20px 200px; position:relative; box-shadow: inset 2px 7px 6px rgba(0,0,0,0.1);">
 																		<i class="align-middle fas fa-fw fa-trash-alt" style="font-size: 65px; color: #D90000;"></i>
 																	</div>
