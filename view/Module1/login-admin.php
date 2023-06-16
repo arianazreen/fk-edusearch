@@ -1,5 +1,4 @@
 <?php
-
 	$error = false; 
 
    	if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -22,11 +21,11 @@
 		{
 			session_start();
 			$_SESSION['username'] = $username;
-			echo "<script>alert('Logged in as an Admin.'); window.location='manage-user.php'</script>";
+			echo "<script>alert('Logged in as an Admin.'); window.location='manage-genUser.php'</script>";
 		}
 		else
 		{
-			echo "<script>alert('Invalid username or password.'); window.location='login.php'</script>";
+			echo "<script>alert('Invalid username or password.'); window.location='login-admin.php'</script>";
 		}
 	}
 ?>
@@ -78,7 +77,7 @@
                                         <b><h1>ADMIN LOGIN</h1></b>
                                     </div>
                                     <div class="spacing"></div>
-									<form method="post" action="login.php">
+									<form method="post" action="login-admin.php">
 										<div class="mb-3">
 												<i class="align-middle me-1 fa fa-fw fa-user" style="margin-left: 10px;"></i>
 												<input class="form-input" type="text" name="username" placeholder="USERNAME"/>
