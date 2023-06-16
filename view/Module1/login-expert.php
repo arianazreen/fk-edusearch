@@ -11,7 +11,7 @@
 		$username = mysqli_real_escape_string($conn,$_POST['username']);
 		$password = mysqli_real_escape_string($conn,$_POST['password']); 
 		
-		$sql = "SELECT * FROM generaluser WHERE userID = '$username' AND userPass = '$password'";
+		$sql = "SELECT * FROM expert WHERE expertID = '$username' AND expertPass = '$password'";
 		$result = mysqli_query($conn,$sql);
 		$row = mysqli_fetch_array($result);
 
@@ -21,11 +21,11 @@
 		{
 			session_start();
 			$_SESSION['username'] = $username;
-			echo "<script>alert('Logged in as a General User.'); window.location='../Module2/#'</script>";
+			echo "<script>alert('Logged in as an Expert.'); window.location='../Module3/#'</script>";
 		}
 		else
 		{
-			echo "<script>alert('Invalid username or password.'); window.location='login-genUser.php'</script>";
+			echo "<script>alert('Invalid username or password.'); window.location='login-expert.php'</script>";
 		}
 	}
 ?>
@@ -94,7 +94,7 @@
                                         <b><h1>LOGIN</h1></b>
                                     </div>
                                     <div class="spacing"></div>
-									<form method="post" action="login-genUser.php">
+									<form method="post" action="login-expert.php">
 										<div class="mb-3">
 												<i class="align-middle me-1 fa fa-fw fa-user" style="margin-left: 10px;"></i>
 												<input class="form-input" type="text" name="username" placeholder="USERNAME"/>
