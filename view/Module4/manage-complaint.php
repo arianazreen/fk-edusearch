@@ -97,21 +97,17 @@
 
 			<main class="content">
 				<div class="container-fluid">
-
-					 <!-- echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>'; -->
-
-
-					<div class="header">
-						<h1 class="header-title">
+					<div class="header" style="margin-bottom: 80px;">
+					<h1 class="header-title">
 							Manage Complaint
 						</h1>
 					</div>
 					<div class="row">
 						<div class="col-12">
-							<div class="card">
-								<table class="table table-bordered">
+						<div class="card" style="padding: 40px 30px 20px;">
+								<table id="datatables-basic" class="table table-striped">
 									<thead>
-										<tr class="table-header">
+										<tr>
 											<th >Matric No.</th>
 											<th >Name</th>
 											<th class="d-none d-md-table-cell" >Date</th>
@@ -148,15 +144,15 @@
 										?>
 										
 
-										<tr style="text-align: center;">
+										<tr>
 											<td> <?php echo $userID ?> </td>
-											<td style="text-align: left;"> <?php echo $username ?> </td>
-											<td class="d-none d-md-table-cell"> <?php echo $complaintDate ?> </td>
+											<td> <?php echo $username ?> </td>
+											<td> <?php echo $complaintDate ?> </td>
 											<td> <?php echo $complaintType ?> </td>
-											<td style="text-align: left;"><i class="fas fa-fw fa-check-circle" style="color:#35B421;"></i>  <?php echo $complaintStatus ?> </td>
+											<td><i class="fas fa-fw fa-check-circle" style="color:#35B421;"></i> <?php echo $complaintStatus ?> </td>
 											<td class="table-action">
 										
-											<?php echo "<a href='view-details.php? user_ID=$userID'><i class='align-middle fas fa-fw fa-search' style='margin-right:10px;  color:#000;'></i></a>"?>
+											<?php echo "<a href='view-details.php? user_ID=$userID'><i class='align-middle fas fa-fw fa-eye' style='margin-right:10px;  color:#000;'></i></a>"?>
 												
 
 												<!-- Update modal -->
@@ -317,6 +313,23 @@
 		</defs>
 	</svg>
 	<script src="../../dist/js/app.js"></script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Datatables basic
+			$('#datatables-basic').DataTable({
+				responsive: true
+			});
+			// Datatables with Buttons
+			var datatablesButtons = $('#datatables-buttons').DataTable({
+				lengthChange: !1,
+				buttons: ["copy", "print"],
+				responsive: true
+			});
+			datatablesButtons.buttons().container().appendTo("#datatables-buttons_wrapper .col-md-6:eq(0)")
+		});
+	</script>
+
 
 </body>
 
