@@ -1,3 +1,8 @@
+<!--databse file from M1 -->
+<?php
+  require ('../Module1/database.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -47,11 +52,11 @@
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <!--Nav - Home -->
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#">Home</a>
+                  <a class="nav-link" aria-current="page" href="M2-user_homepage.php">Home</a>
                 </li>
                 <!--Nav - MY Question -->
                 <li class="nav-item">
-                  <a class="nav-link" href="#">My Questions</a>
+                  <a class="nav-link" href="M2-my_questions.php">My Questions</a>
                 </li>
                 <!--Nav - Complaint -->
                 <li class="nav-item dropdown ms-lg-2">
@@ -155,7 +160,7 @@
                 >
                   <a class="dropdown-item"></a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="/Profile"
+                  <a class="dropdown-item" href="../Module2/M2-manage-user-profile.php"
                     ><i class="align-middle me-1 fas fa-fw fa-user"></i> My
                     Profile</a
                   >
@@ -184,7 +189,7 @@
 
           <div class="container-fluid">
               <div class="header">
-                <h1 class="header-title"> HOMEPAGE </h1>
+                <h1 class="header-title"> Homepage </h1>
               </div>
                <div class="row">
                  <div class="col-12">
@@ -193,10 +198,12 @@
                        <h2 class="card-title"> </h2>
                        <!-- Search Area-->
                        <div class="search-container">
-                            <div class="search-box">
-                                <input type="text" placeholder="Search...">
-                                <button type="submit">Submit</button>
-                            </div>
+                          <div class="search-box">
+                            <input type="text" id="search-input" placeholder="Search...">
+                            <button type="submit" id="search-button" class="search-icon">
+                              <i class="fa fa-search"></i>
+                            </button>
+                          </div>
                         </div>
                          <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
                           
@@ -335,6 +342,40 @@
       </defs>
     </svg>
     <script src="../../dist/js/app.js"></script>
+    <!--script for search function-->
+    <script>
+            // Get the input field and search button
+          var input = document.getElementById('search-input');
+          var button = document.getElementById('search-button');
+
+          // Add click event listener to the search button
+          button.addEventListener('click', function() {
+            search();
+          });
+
+          // Add keypress event listener to the input field
+          input.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+              search();
+            }
+          });
+
+          // Define the search function
+          function search() {
+            var searchTerm = input.value.trim();
+
+            if (searchTerm !== '') {
+              // Perform the search operation
+              alert('Searching for: ' + searchTerm);
+              // You can replace the alert with your own search logic
+            } else {
+              alert('Please enter the keyword to search');
+            }
+
+            // Clear the input field after the search
+            input.value = '';
+          }
+    </script>
 
 
    <!--css-->
@@ -367,6 +408,7 @@
             display: flex;
             align-items: center;
             width: 550px;
+            position: relative;
         }
 
         .search-box input[type="text"] {
@@ -375,20 +417,27 @@
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            padding-right: 40px;
         }
 
-        .search-box button {
-            padding: 10px 20px;
-            background-color: #BBE3E5;
-            color: #fff;
+        .search-box .search-icon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 100%;
+            background-color: transparent;
             border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
 
-        .search-box button:hover {
-            background-color: #45a049;
-        }
+          /* Styling for the search icon */
+          .search-box .search-icon i {
+            font-size: 18px;
+            color: #888;
+          }
         .post-box {
             position: relative;
             display: flex;

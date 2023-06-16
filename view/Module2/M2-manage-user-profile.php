@@ -1,3 +1,12 @@
+<!--databse file from M1 -->
+<?php
+  require ('../Module1/database.php');
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -47,11 +56,11 @@
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <!--Nav - Home -->
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#">Home</a>
+                  <a class="nav-link" aria-current="page" href="M2-user_homepage.php">Home</a>
                 </li>
                 <!--Nav - MY Question -->
                 <li class="nav-item">
-                  <a class="nav-link" href="#">My Questions</a>
+                  <a class="nav-link" href="M2-my_questions.php">My Questions</a>
                 </li>
                 <!--Nav - Complaint -->
                 <li class="nav-item dropdown ms-lg-2">
@@ -155,7 +164,7 @@
                 >
                   <a class="dropdown-item"></a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="/Profile"
+                  <a class="dropdown-item" href="M2-manage-user-profile.php"
                     ><i class="align-middle me-1 fas fa-fw fa-user"></i> My
                     Profile</a
                   >
@@ -184,14 +193,70 @@
 
           <div class="container-fluid">
               <div class="header">
-                <h1 class="header-title"> MANAGE USER PROFILE </h1>
+                <h1 class="header-title"> Manage User Profile </h1>
               </div>
               <div class="post-box">
                 <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
             <div class="post-info">
                     <div class="name"> Nurul Najwa </div>
-                    <div class="date"> Student | Edit Profile </div>
+                    <div class="date"> Student | Major in Computer System & Networking (BCN) </div>
+                    <div class="right-align">
+                    
+                    <i id="editProfileForm" class="fa fa-pencil-square-o" aria-hidden="true" style="color: #BBE3E5; font-size:medium;" 
+                    data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile </i>
+                     
+                    <!--Edit Profile Modal -->
+                          <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <form id="editProfileForm" method="POST">
+                                    
+                                    <div class="form-group">
+                                      <label for="name">Name:</label>
+                                      <input type="text" class="form-control" id="name" name="name" required>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="email">Email:</label>
+                                      <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="major">Major:</label>
+                                            <select id="major" name="major" class="form-control">
+                                            <option value="major1">Choose major...</option>
+                                            <option value="major2">Major in Computer System & Networking</option>
+                                            <option value="major3">Major in Software Engineering</option>
+                                            <option value="major4">Major in Multimedia & Graphics</option>
+                                          </select>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="department">Department:</label>
+                                            <select id="department" name="department" class="form-control">
+                                                <option value="depart1">Choose department...</option>
+                                                <option value="depart2">Computer System & Networking (BCN)</option>
+                                                <option value="depart3">Software Engineering (BCS)</option>
+                                                <option value="depart4">Multimedia & Graphics (BCG)</option>
+                                            </select>
+                                      
+                                    </div>
+                                    
+                                    
+                                    <div class="modal-footer">
+                                      <button type="submit" class="btn btn-primary">Save Changes</button>
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #B2B2B4;">Cancel</button>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>`
+                    <!-- end of modal -->
                   </div>
+                    </div>
                 </div>
 
                <div class="row">
@@ -217,7 +282,7 @@
                           <h2 class="card-title mb-0"> Related Topic Research </h2>
                           <p>
                             <ul>
-                            <li> Emeging Trends in Computer System Security. </li>
+                            <li> Emerging Trends in Computer System Security. </li>
                             <li> Virtual Reality (VR) and Augmented Reality (AR) application. </li>
                           </ul>
                           </p>
@@ -238,23 +303,33 @@
                     <div class="card-body d-flex">
                       <div class="align-self-center w-100">
                         <div class="py-3">
-                          <div class="chart chart-xs">
-                            <canvas id="chartjs-dashboard-pie"></canvas>
-                          </div>
+                          
+                            <table class="table mb-0">
+                                <tr>
+                                  <td><div class="chart chart-xs">
+                                    <canvas id="chartjs-dashboard-pie"></canvas>
+                                    </div>
+                                    </td>
+                                  <td><strong><h2> Total Post : </h2></strong></td>
+                                  <td class="text-end"><strong><h2> 36 </h2></strong></td> 
+                                </tr>
+                            </table>
+                            
                           <table class="table mb-0">
                             
                               <tr>
-                                <td><i class="fas fa-circle text-primary fa-fw" style="color:#43BCAE"></i> Networking</td>
+                                <td><i class="fas fa-circle fa-fw" style="color:#43BCAE"></i> Networking</td>
                                 <td class="text-end"> 15 </td>
                               </tr>
                               <tr>
-                                <td><i class="fas fa-circle text-warning fa-fw" style="color:#BBE3E5"></i> Software Engineering </td>
+                                <td><i class="fas fa-circle fa-fw" style="color:#BBE3E5"></i> Software Engineering </td>
                                 <td class="text-end"> 7 </td>
                               </tr>
                               <tr>
-                                <td><i class="fas fa-circle text-danger fa-fw" style="color:#1A5D55"></i> Multimedia and Graphics </td>
+                                <td><i class="fas fa-circle fa-fw" style="color:#1A5D55"></i> Multimedia and Graphics </td>
                                 <td class="text-end"> 14 </td>
                               </tr>
+                              
                             
                           </table>
                         </div>
@@ -273,26 +348,26 @@
                        <li> Bachelor in Computer System </li>
                      </ul>
                      </p>
+                     <h2 class="card-title mb-0"> Department </h2>
+                     <p>
+                       <ul>
+                       <li> Computer System & Networking (BCN) </li>
+                     </ul>
+                     </p>
                  </div>
                </div>
-           </div>
-         </div>
-
-         <!--3rd Row-->
-              <div class="row">
-                <div class="col-12 col-lg-8">
-                  
-              </div>
-              <div class="col-6 col-lg-4">
-                  <div class="card flex-fill w-100">
+               <div class="card flex-fill w-100">
                     <div class="card-header">
                         <h2 class="card-title mb-0"> Social Media Account </h2>
                         <i class="fa fa-linkedin-square" aria-hidden="true"></i>
                        <p> nurul_najwa </p> 
                     </div>
                   </div>
-              </div>
-            </div>
+           </div>
+         </div>
+
+         <!--3rd Row-->
+              
          </div>
          </div>
          </div>
@@ -355,11 +430,54 @@
 				}
 			});
 		});
+      //js code for edit profile
+          $(document).ready(function() {
+        // Retrieve existing profile data and populate the form
+        $.ajax({
+          url: 'M2-manage-user-profile.php', // PHP script to fetch profile data from the server
+          type: 'GET',
+          dataType: 'json',
+          success: function(data) {
+            $('#name').val(data.name);
+            $('#email').val(data.email);
+            // Set values for other form fields as needed
+          },
+          error: function() {
+            alert('Failed to retrieve profile data.');
+          }
+        });
+
+        // Handle form submission
+        $('#editProfileForm').submit(function(e) {
+          e.preventDefault();
+
+          // Serialize form data
+          var formData = $(this).serialize();
+
+          // Send the updated profile data to the server
+          $.ajax({
+            url: 'M2-manage-user-profile.php', // PHP script to update the profile data
+            type: 'POST',
+            data: formData,
+            success: function(response) {
+              // Handle success response, e.g., show a success message, refresh the page, etc.
+              alert('Profile updated successfully.');
+              location.reload();
+            },
+            error: function() {
+              alert('Failed to update profile.');
+            }
+          });
+        });
+      });
 	</script>
 
      <!--css-->
 
      <style>
+      .right-align{
+        text-align: right;
+      }
       
       .search-container {
             display: flex;
