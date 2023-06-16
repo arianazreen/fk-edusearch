@@ -36,7 +36,7 @@
 	<div class="wrapper">
 		<!-- NAVIGATION SIDE BAR -->
 		<?php
-			include_once('../standardize/admin-navbar.php');
+			include_once('navbar.php');
 		?>
 
 		<!-- CONTENT -->
