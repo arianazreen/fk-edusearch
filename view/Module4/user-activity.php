@@ -1,3 +1,11 @@
+<?php
+	require("../Module1/database.php");
+?>
+
+<?php
+	include_once '../Module1/session-check-admin.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +17,7 @@
 	<meta name="author" content="Bootlab">
 
 	<title>User Activity</title>
-	<link rel="stylesheet" href="../../dist/css/modern.css">
+	<link rel="stylesheet" href="../../dist/css/style.css">
 	
 	<style>
 		body {
@@ -92,8 +100,6 @@
 
 			<main class="content">
 				<div class="container-fluid">
-
-					<!-- echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>'; -->
 
 					<div class="header">
 						<h1 class="header-title">

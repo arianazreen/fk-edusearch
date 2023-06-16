@@ -1,3 +1,7 @@
+<?php
+	include_once '../Module1/session-check-admin.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +14,7 @@
 
 	<title>Manage Complaint</title>
 
-	<link href="../../dist/css/modern.css" rel="stylesheet">
+	<link href="../../dist/css/style.css" rel="stylesheet">
 	
 	<style>
 		body {
@@ -107,7 +111,7 @@
 							<div class="card">
 								<table class="table table-bordered">
 									<thead>
-										<tr style="background-color: rgb(12, 13, 61); color: white; text-align: center;">
+										<tr class="table-header">
 											<th >Matric No.</th>
 											<th >Name</th>
 											<th class="d-none d-md-table-cell" >Date</th>
@@ -124,7 +128,7 @@
 
 											// to view complaint details
 											
-											$sql= "SELECT generaluser.userID, generaluser.matricNum, generaluser.username, complaint.complaintID, complaint.complaintDate, complaint.complaintTime, complaint.complaintType, complaint.complaintDesc, complaint.complaintStatus 
+											$sql= "SELECT generaluser.userID, generaluser.userName, complaint.complaintID, complaint.complaintDate, complaint.complaintTime, complaint.complaintType, complaint.complaintDesc, complaint.complaintStatus 
 												   FROM generaluser INNER JOIN complaint ON generaluser.userID=complaint.userID";
 											$result = mysqli_query($conn,$sql);
 											
@@ -134,8 +138,8 @@
 												{
 													$userID = $row['userID'];
 													$complaintID = $row['complaintID'];
-													$matricNum = $row['matricNum'];
-													$username = $row['username'];
+													$matricNum = $row['userID'];
+													$username = $row['userName'];
 													$complaintDate = $row['complaintDate'];
 													$complaintTime = $row['complaintTime'];
 													$complaintType = $row['complaintType'];
@@ -145,7 +149,7 @@
 										
 
 										<tr style="text-align: center;">
-											<td> <?php echo $matricNum ?> </td>
+											<td> <?php echo $userID ?> </td>
 											<td style="text-align: left;"> <?php echo $username ?> </td>
 											<td class="d-none d-md-table-cell"> <?php echo $complaintDate ?> </td>
 											<td> <?php echo $complaintType ?> </td>
@@ -175,18 +179,18 @@
 
 																<div class="card-body row">
 																	<div class="form-floating col-sm-4">
-																		<input class="form-control" type="text" placeholder="Matric Number" value="<?php echo $matricNum; ?>" readonly>
+																		<input class="form-control" type="text" placeholder="" value="<?php echo $matricNum; ?>" readonly>
 																		<label for="userID">Matric Number</label>
 																	</div>
 																	<div class="form-floating col-sm-8">
-																		<input class="form-control" type="text" placeholder="Name" value="<?php echo $username; ?>" readonly>
+																		<input class="form-control" type="text" placeholder="" value="<?php echo $username; ?>" readonly>
 																		<label for="uName">Name</label>
 																	</div>
 																</div>
 																	
 																<div class="card-body row">
 																	<div class="form-floating col-sm-6">
-																		<input class="form-control" type="date" placeholder="Date" value="<?php echo $complaintDate; ?>" readonly>
+																		<input class="form-control" type="date" placeholder="" value="<?php echo $complaintDate; ?>" readonly>
 																		<label for="cDate">Date</label>
 																	</div>
 																	<div class="form-floating col-sm-6">

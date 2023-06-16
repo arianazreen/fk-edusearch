@@ -1,3 +1,7 @@
+<?php
+	include_once '../Module1/session-check-admin.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +14,7 @@
 
 	<title>View Complaint Details</title>
 
-	<link href="../../dist/css/modern.css" rel="stylesheet">
+	<link href="../../dist/css/style.css" rel="stylesheet">
 
 	<style>
 		body {
@@ -148,14 +152,14 @@
 												<div class="form-group row">
 													<label for="userID" class="col-sm-5 col-form-label" style="font-size:15px;">MATRIC NUMBER</label>
 													<div class="col-sm-7">
-														<input style="font-size:15px;" type="text" readonly class="form-control-plaintext" id="matricNum" value=":  <?php echo $matricNum; ?>">
+														<input style="font-size:15px;" type="text" readonly class="form-control-plaintext" id="userID" value=":  <?php echo $userID; ?>">
 													</div>
 												</div>
 
 												<div class="form-group row">
 													<label for="uName" class="col-sm-5 col-form-label" style="font-size:15px;">NAME</label>
 													<div class="col-sm-7">
-														<input style="font-size:15px;" type="text" readonly class="form-control-plaintext" id="username" value=":  <?php echo $username; ?>">
+														<input style="font-size:15px;" type="text" readonly class="form-control-plaintext" id="userName" value=":  <?php echo $userName; ?>">
 													</div>
 												</div>
 
