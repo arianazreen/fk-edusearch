@@ -1,8 +1,3 @@
-<?php
-	//declare database
-	require('../Module1/database.php');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -114,8 +109,13 @@
 									<tbody>
 
 										<?php
+											// connect to the database
+											include("../Module1/database.php");
+
+											// to view complaint details
 											
-											$sql= "SELECT generaluser.userID, generaluser.matricNum, generaluser.username, complaint.complaintDate, complaint.complaintType, complaint.complaintStatus FROM generaluser INNER JOIN complaint ON generaluser.userID=complaint.userID";
+											$sql= "SELECT generaluser.userID, generaluser.matricNum, generaluser.username, complaint.complaintID, complaint.complaintDate, complaint.complaintTime, complaint.complaintType, complaint.complaintDesc, complaint.complaintStatus 
+												   FROM generaluser INNER JOIN complaint ON generaluser.userID=complaint.userID";
 											$result = mysqli_query($conn,$sql);
 											
 											if(mysqli_num_rows($result)>0)
@@ -123,10 +123,13 @@
 												while($row = mysqli_fetch_assoc($result))
 												{
 													$userID = $row['userID'];
+													$complaintID = $row['complaintID'];
 													$matricNum = $row['matricNum'];
 													$username = $row['username'];
 													$complaintDate = $row['complaintDate'];
+													$complaintTime = $row['complaintTime'];
 													$complaintType = $row['complaintType'];
+													$complaintDesc = $row['complaintDesc'];
 													$complaintStatus = $row['complaintStatus'];
 										?>
 										
@@ -138,16 +141,16 @@
 											<td> <?php echo $complaintType ?> </td>
 											<td style="text-align: left;"><i class="fas fa-fw fa-check-circle" style="color:#35B421;"></i>  <?php echo $complaintStatus ?> </td>
 											<td class="table-action">
-
-												<a href="view-details.php? id=<?php echo $row['userID'] ?>"><i class="align-middle fas fa-fw fa-search" style="margin-right:10px;  color:#000;"></i></a>
+										
+											<?php echo "<a href='view-details.php? user_ID=$userID'><i class='align-middle fas fa-fw fa-search' style='margin-right:10px;  color:#000;'></i></a>"?>
 												
 
 												<!-- Update modal -->
 
 													<!-- BEGIN  modal -->
-													<a href="#sizedModalLg"><i class="align-middle fas fa-fw fa-edit" style="margin-right:10px; color:#0039D7;" data-bs-toggle="modal" data-bs-target="#sizedModalLg"></i></a>
+													<?php echo "<a href='#sizedModalLg-$userID'><i class='align-middle fas fa-fw fa-edit' style='margin-right:10px; color:#0039D7;'data-bs-toggle='modal' data-bs-target='#sizedModalLg-$userID'></i></a>"?>
 
-													<div class="modal fade" id="sizedModalLg" tabindex="-1" role="dialog" aria-hidden="true">
+													<div class="modal fade" id="sizedModalLg-<?php echo $userID; ?>" tabindex="-1" role="dialog" aria-hidden="true">
 														<div class="modal-dialog modal-lg" role="document">
 															<div class="modal-content">
 																<div class="modal-header">
@@ -157,41 +160,41 @@
 																<div class="modal-body m-3">
 
 																	
-																<form method="POST" action="../Module4/manage-complaint.php">
+																<form method="POST" action="manage-complaint.php">
 																
 
 																<div class="card-body row">
 																	<div class="form-floating col-sm-4">
-																		<input class="form-control" type="text" placeholder="Matric Number" value="CB19021" readonly>
+																		<input class="form-control" type="text" placeholder="Matric Number" value="<?php echo $matricNum; ?>" readonly>
 																		<label for="userID">Matric Number</label>
 																	</div>
 																	<div class="form-floating col-sm-8">
-																		<input class="form-control" type="text" placeholder="Name" value="NUR MAISARAH BINTI JAILANI" readonly>
+																		<input class="form-control" type="text" placeholder="Name" value="<?php echo $username; ?>" readonly>
 																		<label for="uName">Name</label>
 																	</div>
 																</div>
 																	
 																<div class="card-body row">
 																	<div class="form-floating col-sm-6">
-																		<input class="form-control" type="date" placeholder="Date" value="10 January 2023" readonly>
+																		<input class="form-control" type="date" placeholder="Date" value="<?php echo $complaintDate; ?>" readonly>
 																		<label for="cDate">Date</label>
 																	</div>
 																	<div class="form-floating col-sm-6">
-																		<input class="form-control" type="time" placeholder="" value="10:23 PM" readonly>
+																		<input class="form-control" type="time" placeholder="" value="<?php echo $complaintTime; ?>" readonly>
 																		<label for="cTime">Time</label>
 																	</div>
 																</div>
 
 																<div class="card-body row">
 																	<div class="form-floating">
-																		<input class="form-control" type="text" placeholder="Complain Type" value="Unsatisfied Expert's Feedback" readonly>
+																		<input class="form-control" type="text" placeholder="Complain Type" value="<?php echo $complaintType; ?>" readonly>
 																		<label for="cType">Complain Type</label>
 																	</div>
 																</div>
 
 																<div class="card-body row">
 																	<div class="form-floating">
-																		<textarea class="form-control" rows="7"readonly>The experts ....</textarea>
+																		<textarea class="form-control" rows="7"readonly><?php echo $complaintDesc; ?></textarea>
 																		<label for="cDesc">Complain Description</label>
 																	</div>
 																</div>
@@ -204,6 +207,7 @@
 																		<option>In Investigation</option>
 																		<option>Resolved</option>
 																	</select>
+																	
 																		<label for="cStatus">Status</label>
 																	</div>
 																</div>
@@ -255,37 +259,13 @@
 
 											</td>
 										</tr>
-
-										<!-- <tr style="text-align: center;">
-											<td>CA21124</td>
-											<td style="text-align: left;">AHMAD RIDUAN BIN ABU</td>
-											<td class="d-none d-md-table-cell">23 Jan 2023</td>
-											<td>Unsatisfied Expert's Feedback</td>
-											<td style="text-align: left;"><i class="fas fa-fw fa-clock" style="color:#DCDB02;"></i>  In Investigation</td>
-											<td class="table-action">
-												<a href="view-details.php"><i class="align-middle fas fa-fw fa-search" style="margin-right:10px; color:#000;"></i></a>
-												<a href="#"><i class="align-middle fas fa-fw fa-edit" style="margin-right:10px; color:#0039D7;"></i></a>
-												<a href="#"><i class="align-middle fas fa-fw fa-trash" style="color:#D00000;"></i></a>
-											</td>
-										</tr> -->
-
-										<!-- <tr style="text-align: center;">
-											<td>CD19976</td>
-											<td style="text-align: left;">KIM MINGYU</td>
-											<td class="d-none d-md-table-cell">6 April 2023</td>
-											<td>Unsatisfied Expert's Feedback</td>
-											<td style="text-align: left;"><i class="fas fa-fw fa-exclamation-circle" style="color:#F90105;"></i>  On Hold</td>
-											<td class="table-action">
-												<a href="view-details.php"><i class="align-middle fas fa-fw fa-search" style="margin-right:10px; color:#000;"></i></a>
-												<a href="#"><i class="align-middle fas fa-fw fa-edit" style="margin-right:10px; color:#0039D7;"></i></a>
-												<a href="#"><i class="align-middle fas fa-fw fa-trash" style="color:#D00000;"></i></a>
-											</td>
-										</tr> -->
 										
 										<?php
 											}
 												
 										}
+											//close database connection
+    										mysqli_close($conn);
 										?>
 
 									</tbody>
