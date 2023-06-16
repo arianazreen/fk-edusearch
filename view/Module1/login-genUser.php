@@ -25,7 +25,7 @@
 		}
 		else
 		{
-			echo "<script>alert('Invalid username or password.'); window.location='login-genUser.php'</script>";
+			echo "<script>alert('Invalid username or password.'); window.location='../Module1/login-genUser.php'</script>";
 		}
 	}
 ?>
@@ -94,7 +94,7 @@
                                         <b><h1>LOGIN</h1></b>
                                     </div>
                                     <div class="spacing"></div>
-									<form method="post" action="login-genUser.php">
+									<form method="post" action="../Module1/login-genUser.php">
 										<div class="mb-3">
 												<i class="align-middle me-1 fa fa-fw fa-user" style="margin-left: 10px;"></i>
 												<input class="form-input" type="text" name="username" placeholder="USERNAME"/>

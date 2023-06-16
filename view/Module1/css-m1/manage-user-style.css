@@ -35,6 +35,14 @@
     box-shadow: 2px 4px 2px lightgray;
 }
 
+#button-create {
+    margin-top: 10px; 
+    margin-right: 5px; 
+    padding: 5px 40px; 
+    background-color: #1D2F3A; 
+    box-shadow: 2px 4px 2px lightgray;
+}
+
 #button-submit:hover, #button-cancel:hover{
     opacity: 0.85;
 }

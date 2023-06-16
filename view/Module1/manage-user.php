@@ -3,7 +3,7 @@
 
 	//If session is not set, then redirect to Login Page
 	if(!isset($_SESSION['username'])) {
-		echo "<script>alert('Your session has timed out. Please log in again.'); window.location='login.php'</script>";
+		echo "<script>alert('Your session has timed out. Please log in again.'); window.location='login-admin.php'</script>";
 	}
 ?>
 
@@ -30,6 +30,7 @@
 			opacity: 0;
 		}
 	</style>
+	
 	<script src="../../dist/js/settings.js"></script>
 </head>
 

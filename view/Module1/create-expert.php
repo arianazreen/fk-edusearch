@@ -13,7 +13,7 @@
 	<meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
 	<meta name="author" content="Bootlab">
 
-	<title>Create General User</title>
+	<title>Create Expert</title>
 	<link rel="shortcut icon" href="../../dist/img/logo/fk-edusearch-border.png" type="image/x-icon">
 
 	<!-- Link to CSS file -->
@@ -51,78 +51,48 @@
 					<!-- HEADER -->
 					<div class="header" style="margin-bottom: 80px;">
 						<h1 class="header-title" style="color: black; border: none; border-left: 14px solid #1D2F3A; padding-left: 10px;">
-							Create General User
+							Create Expert
 						</h1>
 					</div>
 					<div class="row">
 						<div class="col-12">
 							<div class="card" style="padding: 50px 40px 140px; border-radius: 20px; box-shadow: 5px 8px 5px lightgray;">
-                                <!-- FORM CREATE GEN USER-->
+                                <!-- FORM CREATE EXPERT	-->
                                 <form method="POST" action="crud.php">
 									<div class="row">
-                                        <div class="mb-3 col-md-4">
-											<label>User Role</label>
-											<select class="form-select" name="userRole" value="userRole" aria-label="Default select example">
-												<option hidden="">Please Select</option>
-												<option value="Student">Student</option>
-												<option value="Staff">Staff</option>
-											</select>
-										</div>
-										<div class="mb-3 col-md-8">
+										<div class="mb-3 col-md-7">
 											<label>Course</label>
-											<select class="form-select" name="userCourse" value="userCourse" aria-label="Default select example">
+											<select class="form-select" name="expertCourse" value="expertCourse" aria-label="Default select example">
 												<option hidden="">Please Select</option>
 												<option value="BCS">BCS - Software Engineering</option>
 												<option value="BCN">BCN - Computer Systems & Networking</option>
 												<option value="BCG">BCG - Graphics & Multimedia Technology</option>
 											</select>
 										</div>
-                                        <div class="mb-3 col-md-4">
-											<label>Matric ID</label>
-											<input type="text" class="form-control" name="userID">
+                                        <div class="mb-3 col-md-5">
+											<label>Expert ID</label>
+											<input type="text" class="form-control" name="expertID">
 										</div>
-										<div class="mb-3 col-md-8">
+										<div class="mb-3 col-md-7">
 											<label>Name</label>
-											<input type="text" class="form-control" name="userName">
+											<input type="text" class="form-control" name="expertName">
 										</div>
-                                        <div class="mb-3 col-md-7">
+                                        <div class="mb-3 col-md-5">
 											<label>Email</label>
-											<input type="email" class="form-control" name="userEmail">
+											<input type="email" class="form-control" name="expertEmail">
+										</div>
+										<div class="mb-3 col-md-7">
+											<label>Phone No.</label>
+											<input type="text" class="form-control" name="expertPhoneNo">
 										</div>
 										<div class="mb-3 col-md-5">
-											<label>Phone No.</label>
-											<input type="text" class="form-control" name="userPhoneNo">
-										</div>
-										<div class="mb-3 col-md-4">
 											<label>Password</label>
-											<input type="password" class="form-control" name="userPass">
-										</div>
-										<div class="mb-3 col-md-8">
-											<label>Assigned Expert</label>
-											<?php
-												include ("database.php");
-
-												$query = "SELECT * FROM expert";
-												$result2 = mysqli_query($conn,$query);
-												$optionList = "";
-
-												while ($row2 = mysqli_fetch_array($result2)) {
-													$expertID = $row2["expertID"];
-													$expertName = $row2["expertName"];
-
-													$optionList = $optionList."<option value='$expertID - $expertName'>$expertID - $expertName</option>";
-													// $options = $options."<option value='$row2[1]'>$row2[1] - $row2[2]</option>";
-												}
-											?>
-											<select class="form-select" name ="assignedExpert" aria-label="Default select example">
-												<option hidden="" value="Unassigned">Please Select</option>
-												<?php echo $optionList; ?>
-											</select>
+											<input type="password" class="form-control" name="expertPass">
 										</div>
                                         <div class="position-relative">
                                             <div class="position-absolute top-100 start-50 translate-middle" style="margin-top: 80px;">
                                                 <div class="mb-3">
-                                                    <input id="button-submit" type="submit" name="create-genUser" value="SUBMIT">
+                                                    <input id="button-submit" type="submit" name="create-expert" value="SUBMIT">
                                                     <input id="button-cancel" type="button" value="CANCEL" onclick="history.back()">
                                                 </div>
                                             </div>
