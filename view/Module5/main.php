@@ -1,6 +1,7 @@
 <?php
 //check session
 include_once('../Module1/session-check-genUser.php');
+$id = $_SESSION['username'];
 ?>
 <?php
 // <!-- declaration database -->
@@ -73,12 +74,12 @@ require('../Module1/database.php');
 										// <!-- declaration database -->
 										require('../Module1/database.php');
 
-										$sql = "SELECT * FROM complaint";
+										$sql = "SELECT * FROM complaint WHERE userID = '$id'";
 										$result = mysqli_query($conn, $sql);
 										if (mysqli_num_rows($result) > 0) {
 											$count = 1;
 											while ($row = mysqli_fetch_assoc($result)) {
-												$id = $row['id'];
+												$complaintID = $row['id'];
 												$complaintDate = $row['complaintDate'];
 												$complaintTime = $row['complaintTime'];
 												$complaintType = $row['complaintType'];
@@ -104,77 +105,24 @@ require('../Module1/database.php');
 															echo "<i class='fas fa-fw fa-exclamation-circle' style='color: #EA030B;'></i>On Hold";
 														elseif ($complaintStatus == "Resolved"):
 															echo "<i class='fas fa-fw fa-check-circle' style='color: #32A377;'></i>Resolved";
+															elseif ($complaintStatus == "Submitted"):
+																echo "<i class='fas fa-fw fa-arrow-alt-circle-up' style='color: blue;'></i>Submitted";
 														else :
-															echo "<i class='fas fa-fw fa-clock' style='color: #ECC707;'></i>Investigation";
+															echo "<i class='fas fa-fw fa-clock' style='color: #ECC707;'></i>In Investigation";
 														 endif; ?>
 
 													<td>
 
-														<?php echo "<a data-bs-toggle='modal' data-bs-target='#view-$id'><i class='align-middle fas fa-fw fa-eye' style='color: black; '></i></a>"; ?>
-														<?php echo "<a data-bs-toggle='modal' data-bs-target='#update-$id'><i class='align-middle fas fa-fw fa-edit' style='color: #008080; '></i></a>"; ?>
-														<?php echo "<a data-bs-toggle='modal' data-bs-target='#delete-$id'><i class='align-middle fas fa-fw fa-trash' style='color: red; '></i></a>"; ?>
+														<?php echo "<a href='view.php'><i class='align-middle fas fa-fw fa-eye' style='color: black; '></i></a>"; ?>
+														<?php echo "<a data-bs-toggle='modal' data-bs-target='#update-$complaintID'><i class='align-middle fas fa-fw fa-edit' style='color: #008080; '></i></a>"; ?>
+														<?php echo "<a data-bs-toggle='modal' data-bs-target='#delete-$complaintID'><i class='align-middle fas fa-fw fa-trash' style='color: red; '></i></a>"; ?>
 
 
 													</td>
 												</tr>
-												<!-- Modal View -->
-												<div class="modal fade" id="view-<?php echo $id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
-													<div class="modal-dialog" role="document">
-														<div class="modal-content">
-															<div class="modal-header">
-																<h5 class="modal-title">Complaint Application</h5>
-																<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-															</div>
-															<div class="modal-body m-3">
-																<div class="row mt-3">
-																	<div class="col-3">
-																		<h5 class="text-muted">Complaint Status: </h5>
-																	</div>
-																	<div class="col-3">
-
-																		<h5><?php echo "$complaintStatus"; ?> </h5>
-																	</div>
-
-																	<div class="col-3">
-																		<h5 class="text-muted">Complaint Type: </h5>
-																	</div>
-																	<div class="col-3">
-																		<h5><?php echo "$complaintType"; ?> </h5>
-																	</div>
-																</div>
-																<div class="row mt-3">
-																	<div class="col-3">
-																		<h5 class="text-muted">Complaint Date: </h5>
-																	</div>
-																	<div class="col-3">
-																		<h5><?php echo "$complaintDate"; ?> </h5>
-																	</div>
-																	<div class="col-3">
-																		<h5 class="text-muted">Complaint Time: </h5>
-																	</div>
-																	<div class="col-3">
-																		<h5><?php echo "$complaintTime"; ?> </h5>
-																	</div>
-																</div>
-																<div class="row mt-3">
-																	<div class="col-4">
-																		<h5 class="text-muted">Complaint Description: </h5>
-																	</div>
-																	<div class="col-5">
-																		<h5><?php echo "$complaintDesc"; ?> </h5>
-																	</div>
-																</div>
-															</div>
-															<div class="modal-footer">
-																<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-															</div>
-														</div>
-													</div>
-
-												</div>
-												<!-- end Modal View -->
+												
 												<!--Modal Kemaskini-->
-												<div class="modal fade" id="update-<?php echo $id; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+												<div class="modal fade" id="update-<?php echo $complaintID; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 													<div class="modal-dialog modal-dialog-scrollable">
 														<div class="modal-content">
 															<div class="modal-header">
@@ -183,7 +131,7 @@ require('../Module1/database.php');
 															<div class="modal-body">
 																<div class="card-body">
 																	<form method="POST" action="testing.php">
-																		<input type="hidden" name="id" value="<?php echo $id; ?>">
+																		<input type="hidden" name="id" value="<?php echo $complaintID; ?>">
 
 																		<div class="row">
 																			<div class="mb-3 col-md-6">
@@ -203,7 +151,7 @@ require('../Module1/database.php');
 																			<div class="mb-3 col-md-12">
 																				<label for="complain">Post Title</label>
 																				<select class="form-select" name="postID" aria-label="Default select example" disabled>
-																					<option disabled selected><?php echo $postID; ?></option>
+																					<option disabled selected></option>
 																				</select>
 																			</div>
 
@@ -228,7 +176,7 @@ require('../Module1/database.php');
 												<!-- end Modal Kemaskini -->
 
 												<!-- Start Modal Delete -->
-												<div class="modal fade" id="delete-<?php echo $id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+												<div class="modal fade" id="delete-<?php echo $complaintID; ?>" tabindex="-1" role="dialog" aria-hidden="true">
 													<div class="modal-dialog modal-dialog-centered" role="document">
 														<div class="modal-content">
 															<div class="modal-header">
@@ -236,7 +184,7 @@ require('../Module1/database.php');
 															</div>
 															<div class="modal-body m-3">
 																<form method="POST" action="testing.php">
-																	<input type="hidden" name="id" value="<?php echo $id; ?>">
+																	<input type="hidden" name="id" value="<?php echo $complaintID; ?>">
 																	<div class="drop" style="width:150px; height:150px; background-color:#fff2f2; display:flex; justify-content:center; align-items:center; border-radius: 50%; margin: -25px 0 20px 200px; position:relative; box-shadow: inset 2px 7px 6px rgba(0,0,0,0.1);">
 																		<i class="align-middle fas fa-fw fa-trash-alt" style="font-size: 65px; color: #D90000;"></i>
 																	</div>
