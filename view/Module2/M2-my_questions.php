@@ -1,15 +1,12 @@
 <!--retrieve file database from M1-->
-<?php 
-
-    // session_start();
-
-    // //If session is not set, then redirect to Login Page
-    // if(!isset($_SESSION['username'])) {
-    //   echo "<script>alert('Your session has timed out. Please log in again.'); window.location='../Module1/login-genUser.php'</script>";
-    // }
-
-  require("../Module1/database.php");
+<?php
+require("../Module1/database.php");
 ?>
+<!--check session from M1 -->
+<?php
+include_once('../Module1/session-check-genUser.php');
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,74 +72,6 @@
             </ul>
           </div>
 
-          <!--Nav - Notification -->
-          <div class="navbar-collapse collapse">
-            <ul class="navbar-nav ms-auto mt-2">
-              <li class="nav-item dropdown ms-lg-2">
-                <a class="nav-link dropdown-toggle position-relative" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
-                  <i class="align-middle fas fa-bell"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
-                  <div class="dropdown-menu-header">4 New Notifications</div>
-                  <div class="list-group">
-                    <a href="#" class="list-group-item">
-                      <div class="row g-0 align-items-center">
-                        <div class="col-2">
-                          <i class="ms-1 text-success fas fa-fw fa-bell-slash"></i>
-                        </div>
-                        <div class="col-10">
-                          <div class="text-dark">New connection</div>
-                          <div class="text-muted small mt-1">
-                            Anna accepted your request.
-                          </div>
-                          <div class="text-muted small mt-1">12h ago</div>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="dropdown-menu-footer">
-                    <a href="#" class="text-muted">Show all notifications</a>
-                  </div>
-                </div>
-              </li>
-
-              <!--Nav- Profile 
-              <div class="post-box border-0">
-                        <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image" 
-                         style="width: 35px; height: 25px;" >
-                         <h6>Nurul Najwa</h6>
-                         <p>Student</p>          
-              </div>-->
-
-              <div class="row mt-3 mx-2">
-                <div class="col-sm-4">
-                  <img class="profile-img rounded-circle" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image" style="width: 35px; height: 35px;">
-                </div>
-                <div class="col-sm-8">
-                  <h6 class="mb-0" style="color: #fff;">Nurul Najwa</h6>
-                  <p style="color: #BBE3E5;">Student</p>
-                </div>
-              </div>
-
-              <!--Nav - Dropdown Setting -->
-              <li class="nav-item dropdown ms-lg-2">
-                <a class="nav-link dropdown-toggle position-relative" href="#" id="userDropdown" data-bs-toggle="dropdown">
-                  <i class="align-middle fas fa-cog"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                  <a class="dropdown-item"></a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="../Module2/M2-manage-user-profile.php"><i class="align-middle me-1 fas fa-fw fa-user"></i> My
-                    Profile</a>
-                  <a class="dropdown-item" href="#"><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Account
-                    Setting</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="../Module1/logout.php" class="align-middle me-1 fas fa-fw fa-arrow-alt-circle-right"></i>
-                    Sign out</a>
-                </div>
-              </li>
-            </ul>
-          </div>
         </div>
 
       </nav>
@@ -150,470 +79,190 @@
       <!--Content -->
       <main class="content">
         <!--1st Row-->
-
         <div class="container-fluid">
-        <!-- <?php
-          echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';
-        ?> -->
           <div class="header">
             <h1 class="header-title"> My Questions</h1>
           </div>
-
-
           <div class="row">
             <div class="col-12 col-lg-8">
-              <div class="card flex-fill w-100">
-                <div class="card-header">
+              <?php
+              $sql = "SELECT * FROM post";
+              $result = mysqli_query($conn, $sql);
+              if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                  $id = $row['id'];
+                  $postDate = $row['postDate'];
+                  $postTime = $row['postTime'];
+                  $postTitle = $row['postTitle'];
+                  $postCategory = $row['postCategory'];
+                  $postKeyword = $row['postKeyword'];
+                  $postContent = $row['postContent'];
+                  $postLikes = $row['postLikes'];
+                  $postComments = $row['postComments'];
+                  $postComments = $row['postComments'];
+                  $postStatus = $row['postStatus'];
 
-                  <div class="post-box">
-                    <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
-                    <div class="post-info">
-                      <div class="name"> Nurul Najwa</div>
-                      <div class="date"> Article | 14 May 2023 </div>
-                      <div class="container-box">
-                        <h3>How are computer systems evolving to handle the increasing complexity
-                          of virtual reality (VR) and augmented reality (AR) applications?</h3>
-                        <div class="line"></div>
+              ?>
+                  <div class="card flex-fill w-100">
+                    <div class="card-header">
+                      <div class="post-box">
+                        <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
+                        <div class="post-info">
+                          <div class="name"> Nurul Najwa</div>
+                          <div class="date"><?php echo "$postDate"; ?> | <?php echo "$postTime"; ?></div>
+                          <div class="container-box">
+                            <h3><?php echo "$postTitle"; ?></h3>
+                            <div class="line"></div>
 
-                        <p>Is the Augmented Reality and Virtual Reality closely related to 3D printing?</p>
-                      </div>
+                            <p><?php echo "$postContent"; ?></p>
+                          </div>
 
-                      <div class="actions" style="color:#888">
-                        <div class="icon-container">
-                          <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</a>
-                          <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>0</a>
-                          <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>0</a>
-                          <div class="icon-container right">
-                              <!--  UPDATE modal-->
-                                 <a href="#updateModal" data-bs-toggle="modal"><i class="align-middle fas fa-fw fa-edit" class="trigger-btn" data-bs-target="#centeredModalDanger" style="color: grey;"></i></a>
-
-                                    <div class="modal fade" id="updateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-scrollable">
+                          <div class="actions" style="color:#888">
+                            <div class="icon-container">
+                              <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</a>
+                              <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>0</a>
+                              <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>0</a>
+                              <div class="icon-container right" style="margin-left: 30px;">
+                                <!-- Edit Button -->
+                                <?php echo "<a href='#updateModal-$id' data-bs-toggle='modal'><i class='align-middle fas fa-fw fa-edit' style='color: blue;'></i></a> "; ?>
+                                <!-- UPDATE modal -->
+                                <div class="modal fade" id="updateModal-<?php echo $id; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-scrollable">
                                     <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="staticBackdropLabel">Update Post</h5>
-                                    </div>
-                                    <div class="modal-body">
-                                      <div class="card-body">
-                                        <form method="POST" action="process_post.php">
-                                          <input type="hidden" name="postID" value="">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Update Post</h5>
+                                      </div>
+                                      <div class="modal-body">
+                                        <div class="card-body">
+                                          <form method="POST" action="process_post.php">
+                                            <input type="hidden" name="id" value="<?php echo $id; ?>">
 
-                                          <div class="row">
-                                            <div class="mb-3 col-md-6">
-                                              <label for="PostTilte">Post Tilte: </label>
-                                              <input type="text" class="form-control" name="postTitle" id="postTitle" value="">
-                                            </div>
-                                            <div class="mb-3 col-md-6">
-                                              <label for="PostCategory">Post Category : </label>
-                                              <select class="form-select" id="postCategory" name="postCategory">
-                                                <option selected>Choose major...</option>
-                                                <option value="BCN">BCN</option>
-                                                <option value="BCS">BCS</option>
-                                                <option value="BCG">BCG</option>
-                                              </select>
-                                            </div>
-                                            <div class="mb-3 col-md-12">
-                                              <label for="PostKeyword">Post Keyword :</label>
-                                              <div class="checkbox">
-                                                <label><input type="checkbox" id="php" name="postKeyword[]" value="PHP"> PHP</label>
-                                                <label><input type="checkbox" id="html" name="postKeyword[]" value="HTML"> HTML</label>
-                                                <label><input type="checkbox" id="js" name="postKeyword[]" value="JavaScript"> JavaScript</label>
-                                                <label><input type="checkbox" id="ai" name="postKeyword[]" value="Artificial Intelligence"> Artificial Intelligence</label>
+                                            <div class="row">
+                                              <div class="mb-3 col-md-6">
+                                                <label for="PostTilte">Post Tilte: </label>
+                                                <input type="text" class="form-control" name="postTitle" id="postTitle" value="<?php echo $postTitle; ?>">
                                               </div>
-                                                      
-                                            </div>
-                                            <div class="mb-3">
-                                              <label>Post Content</label>
-                                              <textarea class="form-control" rows="5" name="postContent"></textarea>
-                                            </div>
-                                          </div>
-                                          <br>
+                                              <div class="mb-3 col-md-6">
+                                                <label for="PostCategory">Post Category : </label>
+                                                <select class="form-select" id="postCategory" name="postCategory" disabled>
+                                                  <option disabled selected><?php echo $postCategory; ?></option>
+                                                </select>
+                                              </div>
+                                              <div class="mb-3 col-md-12">
+                                                <label for="PostKeyword">Post Keyword :</label>
+                                                <div class="checkbox">
+                                                  <label><input type="checkbox" id="php" name="postKeyword[]" value="PHP" disabled>PHP</label>
+                                                  <label><input type="checkbox" id="html" name="postKeyword[]" value="HTML" disabled> HTML</label>
+                                                  <label><input type="checkbox" id="js" name="postKeyword[]" value="JavaScript" disabled> JavaScript</label>
+                                                  <label><input type="checkbox" id="ai" name="postKeyword[]" value="Artificial Intelligence" disabled> Artificial Intelligence</label>
+                                                </div>
 
-                                          <input type="hidden" name="update" value="true">
-                                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-                                          <button type="submit" class="btn btn-primary">Save Changes</button>
+                                              </div>
+                                              <div class="mb-3">
+                                                <label>Post Content</label>
+                                                <textarea class="form-control" rows="5" name="postContent"><?php echo $postContent; ?></textarea>
+                                              </div>
+                                            </div>
+                                            <br>
+
+                                            <input type="hidden" name="update_post" value="true">
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- Closing  UPDATE Modal-->
+
+                                <?php echo "<a href='#deleteModal-$id' data-bs-toggle='modal'><i class='align-middle fas fa-fw fa-trash' style='color: #DA3131;'></i></a> "; ?>
+                                <!--Delete Modal-->
+                                <div class="modal fade" id="deleteModal-<?php echo $id; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title">Confirmation</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                      </div>
+                                      <div class="modal-body m-3">
+                                        <form method="POST" action="process_post.php">
+                                          <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                          <div class="drop" style="width:150px; height:150px; right: 50px; background-color:#fff2f2; display:flex; justify-content:center; align-items:center; border-radius: 50%; margin: -25px 0 20px 200px; position:relative; box-shadow: inset 2px 7px 6px rgba(0,0,0,0.1);">
+                                            <i class="align-middle fas fa-fw fa-trash-alt" style="font-size: 65px; color: #D90000;"></i>
+                                          </div>
+                                          <p class="mb-0" style="font-weight: 450; font-size: 18px;"> Are you sure wish to delete this data. <br> Are you sure?</p>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <input type="hidden" name="delete_post" value="true">
+                                        <button type="submit" class="btn btn-primary">Delete</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                         </form>
                                       </div>
                                     </div>
-                                    </div>
-                                    </div>
-                                    </div>
-                              <!-- Closing  UPDATE-->
-                          <!--Delete Modal-->
-
-                            <a href="#deleteModal" data-bs-toggle="modal"><i class="align-middle fas fa-fw fa-trash" class="trigger-btn" data-bs-target="#centeredModalDanger" style="color: #DA3131;"></i></a>
-
-                            <!-- Modal HTML -->
-                            <div id="deleteModal" class="modal fade" tabindex="-1">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h5 class="modal-title">Confirmation</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                  </div>
-                                  <div class="modal-body m-3">
-
-									<div class="drop" style="width:150px; height:150px; right: 50px; background-color:#fff2f2; display:flex; justify-content:center; align-items:center; border-radius: 50%; margin: -25px 0 20px 200px; position:relative; box-shadow: inset 2px 7px 6px rgba(0,0,0,0.1);">
-										<i class="align-middle fas fa-fw fa-trash-alt" style="font-size: 65px; color: #D90000;"></i>
-								    </div>						    
-									<p class="mb-0" style="font-weight: 450; font-size: 18px;">You are about to delete a data <br> Are you sure?</p>
-									</div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary">DELETE</button>
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    
                                   </div>
                                 </div>
+                                <!--Closing Delete Modal-->
                               </div>
                             </div>
-
-                            <!--Closing Delete Modal-->
-
-                          </div>
-                        </div>
-                        <div class="status">Revised</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-              </div>
-              <div class="card flex-fill w-100">
-                <div class="card-header">
-                <?php
-										$sql = "SELECT * FROM post";
-										$result = mysqli_query($conn, $sql);
-										if (mysqli_num_rows($result) > 0) {
-											$count = 1;
-											while ($row = mysqli_fetch_assoc($result)) {
-                        $postID = $_POST["postID"];
-                        $postTitle = $row["postTitle"];
-                        $postCategory = $row["postCategory"];
-                        $postKeyword = $row["postKeyword"];
-                        $postContent = $_row["postContent"];
-										?>
-												<tr>
-													<td>
-														<?php echo " $postID"; ?>
-													</td>
-													<td>
-														<?php echo "$postTitle"; ?>
-													</td>
-													<td>
-														<?php echo "$postCategory"; ?>
-													</td>
-													<td>
-														<?php echo "$postKeyword"; ?>
-													</td>
-													<td>
-														<?php echo "$postContent"; ?>
-													</td>
-													<td>
-
-														<?php echo "<a data-bs-toggle='modal' data-bs-target='#view-$postID'><i class='align-middle fas fa-fw fa-file'></i></a>"; ?>
-														<?php echo "<a data-bs-toggle='modal' data-bs-target='#update-$postID'><i class='align-middle fas fa-fw fa-pen'></i></a>"; ?>
-														<?php echo "<a data-bs-toggle='modal' data-bs-target='#delete-$postID'><i class='align-middle fas fa-fw fa-trash'></i></a>"; ?>
-
-
-													</td>
-												</tr>
-                        <?php
-												$count++; // Increment the count by 1
-											}
-										} else {
-											echo "<tr><td colspan='6'>No complaints found</td></tr>";
-										}
-										?>
-
-                  <div class="post-box">
-                    <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
-                    <div class="post-info">
-                      <div class="name"> Nurul Najwa</div>
-                      <div class="date"> Article | 14 May 2023 </div>
-                      <div class="container-box">
-                        <h3>What are the emerging trends in computer system security?</h3>
-                        <div class="line"></div>
-
-                        <p>How can vulnerabilities in IoT devices impact overall system security?</p>
-                      </div>
-
-                      <div class="actions" style="color:#888">
-                        <div class="icon-container" style="float: right;">
-                          <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>211</a>
-                          <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>65</a>
-                          <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>3</a>
-                          <div class="icon-container right" style="float: right;">
-                           <!--  UPDATE modal-->
-                           <a href="#updateModal" data-bs-toggle="modal"><i class="align-middle fas fa-fw fa-edit" class="trigger-btn" data-bs-target="#centeredModalDanger" style="color: grey;"></i></a>
-                              <div class="modal fade" id="updateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                              <div class="modal-dialog modal-dialog-scrollable">
-                              <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Update Post</h5>
-                              </div>
-                              <div class="modal-body">
-                                <div class="card-body">
-                                  <form method="POST" action="process_post.php">
-                                    <input type="hidden" name="postID" value="">
-
-                                    <div class="row">
-                                      <div class="mb-3 col-md-6">
-                                        <label for="PostTilte">Post Tilte: </label>
-                                        <input type="text" class="form-control" name="postTitle" id="postTitle" value="">
-                                      </div>
-                                      <div class="mb-3 col-md-6">
-                                        <label for="PostCategory">Post Category : </label>
-                                        <select class="form-select" id="postCategory" name="postCategory">
-                                          <option selected>Choose major...</option>
-                                          <option value="BCN">BCN</option>
-                                          <option value="BCS">BCS</option>
-                                          <option value="BCG">BCG</option>
-                                        </select>
-                                      </div>
-                                      <div class="mb-3 col-md-12">
-                                        <label for="PostKeyword">Post Keyword :</label>
-                                        <div class="checkbox">
-                                          <label><input type="checkbox" id="php" name="postKeyword[]" value="PHP"> PHP</label>
-                                          <label><input type="checkbox" id="html" name="postKeyword[]" value="HTML"> HTML</label>
-                                          <label><input type="checkbox" id="js" name="postKeyword[]" value="JavaScript"> JavaScript</label>
-                                          <label><input type="checkbox" id="ai" name="postKeyword[]" value="Artificial Intelligence"> Artificial Intelligence</label>
-                                        </div>
-                                                
-                                      </div>
-                                      <div class="mb-3">
-                                        <label>Post Content</label>
-                                        <textarea class="form-control" rows="5" name="postContent"></textarea>
-                                      </div>
-                                    </div>
-                                    <br>
-
-                                    <input type="hidden" name="update" value="true">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                                  </form>
-                                </div>
-                              </div>
-                              </div>
-                              </div>
-                              </div>
-                              <!-- Closing  UPDATE-->
-
-                            <!--Delete Modal-->
-
-                            <a href="#deleteModal" data-bs-toggle="modal"><i class="align-middle fas fa-fw fa-trash" class="trigger-btn" data-bs-target="#centeredModalDanger" style="color: #DA3131;"></i></a>
-
-                            <!-- Modal HTML -->
-                            <div id="deleteModal" class="modal fade" tabindex="-1">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title">Confirmation</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                </div>
-                                <div class="modal-body m-3">
-									<div class="drop" style="width:150px; height:150px; right: 50px; background-color:#fff2f2; display:flex; justify-content:center; align-items:center; border-radius: 50%; margin: -25px 0 20px 200px; position:relative; box-shadow: inset 2px 7px 6px rgba(0,0,0,0.1);">
-										<i class="align-middle fas fa-fw fa-trash-alt" style="font-size: 65px; color: #D90000;"></i>
-								    </div>						    
-									    <p class="mb-0" style="font-weight: 450; font-size: 18px;">You are about to delete a data <br> Are you sure?</p>
-								</div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-primary">DELETE</button>
-                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                </div>
-                              </div>
-                            </div>
-                            </div>
-
-                            <!--Closing Delete Modal-->
+                            <div class="status"><?php echo "$postStatus"; ?></div>
                           </div>
                         </div>
                       </div>
-                      <div class="status">Completed</div>
-
                     </div>
+
                   </div>
-                </div>
-              </div>
+              <?php
+                }
+              }
+              ?>
             </div>
             <!--End of the 1st row 1'column-->
-          
-        
+
+            <!-- Form fields for post title and content -->
             <div class="col-6 col-lg-4">
               <div class="card flex-fill w-100">
                 <div class="card-header">
-                    
-
                   <h2 class="card-title mb-0" style="font-size: 1.5em;"> Post Question </h2>
                   <div class="container">
                     <form method="POST" action="process_post.php">
-                              <!-- Form fields for post title and content -->
-                              <input type="hidden" name="userID" value="">
-
-                              <input type="text" name="postTitle" placeholder="Post Title" required>
-                                    <div class="form-group">
-                                      <select id="postCategory" name="postCategory">
-                                        <option selected>Choose major...</option>
-                                        <option value="BCN">BCN</option>
-                                        <option value="BCS">BCS</option>
-                                        <option value="BCG">BCG</option>
-                                      </select>
-                                    </div>
-                                    <div class="mb-3 col-md-12">
-                                      <label for="PostKeyword">Post Keyword :</label>
-                                        <div class="checkbox">
-                                          <label><input type="checkbox" id="php" name="postKeyword[]" value="PHP"> PHP</label>
-                                          <label><input type="checkbox" id="html" name="postKeyword[]" value="HTML"> HTML</label>
-                                          <label><input type="checkbox" id="js" name="postKeyword[]" value="JavaScript"> JavaScript</label>
-                                          <label><input type="checkbox" id="ai" name="postKeyword[]" value="Artificial Intelligence"> Artificial Intelligence</label>
-                                        </div>
-                                    </div>
-
-                              
-                              <textarea name="postContent" placeholder="Post Content" required></textarea>
-                              
-                              <div class="buttons">
-                              <!-- Create button -->
-                              <button type="submit" name="create_post">Create</button>
-                              <!-- Reset button -->
-                              <button type="reset" name="reset">Reset</button>
-                              </div> <!--closing button-->
-                        </div><!--closing container-->
-                    </form> 
-                </div>
-              </div>
-            </div>
-          </div>
-           <!--closing row-->
-
-
-          <!--2nd Row-->
-
-          <div class="row">
-            <div class="col-12 col-lg-8">
-              <div class="card flex-fill w-100">
-                <div class="card-header">
-
-                  <div class="post-box">
-                    <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
-                    <div class="post-info">
-                      <div class="name"> Nurul Najwa</div>
-                      <div class="date"> Article | 14 May 2023 </div>
-                      <div class="container-box">
-                        <h3>What are the emerging trends in computer system security?</h3>
-                        <div class="line"></div>
-
-                        <p>How can vulnerabilities in IoT devices impact overall system security?</p>
+                      <input type="hidden" name="userID" value="">
+                      <input type="text" name="postTitle" placeholder="Post Title" required>
+                      <div class="form-group">
+                        <select id="postCategory" name="postCategory">
+                          <option selected>Choose major...</option>
+                          <option value="BCN">BCN</option>
+                          <option value="BCS">BCS</option>
+                          <option value="BCG">BCG</option>
+                        </select>
                       </div>
-
-                      <div class="actions" style="color:#888">
-                        <div class="icon-container">
-                          <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>211</a>
-                          <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>65</a>
-                          <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>3</a>
-                          <div class="icon-container right">
-                           <!--  UPDATE modal-->
-                            <a href="#updateModal" data-bs-toggle="modal"><i class="align-middle fas fa-fw fa-edit" class="trigger-btn" data-bs-target="#centeredModalDanger" style="color: grey;"></i></a>
-
-                            <div class="modal fade" id="updateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-scrollable">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="staticBackdropLabel">Update Post</h5>
-                            </div>
-                            <div class="modal-body">
-                              <div class="card-body">
-                                <form method="POST" action="process_post.php">
-                                  <input type="hidden" name="postID" value="">
-
-                                  <div class="row">
-                                    <div class="mb-3 col-md-6">
-                                      <label for="PostTilte">Post Tilte: </label>
-                                      <input type="text" class="form-control" name="postTitle" id="postTitle" value="">
-                                    </div>
-                                    <div class="mb-3 col-md-6">
-                                      <label for="PostCategory">Post Category : </label>
-                                      <select class="form-select" id="postCategory" name="postCategory">
-                                        <option selected>Choose major...</option>
-                                        <option value="BCN">BCN</option>
-                                        <option value="BCS">BCS</option>
-                                        <option value="BCG">BCG</option>
-                                      </select>
-                                    </div>
-                                    <div class="mb-3 col-md-12">
-                                      <label for="PostKeyword">Post Keyword :</label>
-                                      <div class="checkbox">
-                                        <label><input type="checkbox" id="php" name="postKeyword[]" value="PHP"> PHP</label>
-                                        <label><input type="checkbox" id="html" name="postKeyword[]" value="HTML"> HTML</label>
-                                        <label><input type="checkbox" id="js" name="postKeyword[]" value="JavaScript"> JavaScript</label>
-                                        <label><input type="checkbox" id="ai" name="postKeyword[]" value="Artificial Intelligence"> Artificial Intelligence</label>
-                                      </div>
-                                              
-                                    </div>
-                                    <div class="mb-3">
-                                      <label>Post Content</label>
-                                      <textarea class="form-control" rows="5" name="postContent"></textarea>
-                                    </div>
-                                  </div>
-                                  <br>
-
-                                  <input type="hidden" name="update" value="true">
-                                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-                                  <button type="submit" class="btn btn-primary">Save Changes</button>
-                                </form>
-                              </div>
-                            </div>
-                            </div>
-                            </div>
-                            </div>
-                            <!-- Closing  UPDATE-->
-
-                          <!--Delete Modal-->
-
-                            <a href="#deleteModal" data-bs-toggle="modal"><i class="align-middle fas fa-fw fa-trash" class="trigger-btn" data-bs-target="#centeredModalDanger" style="color: #DA3131;"></i></a>
-
-                            <!-- Modal HTML -->
-                            <div id="deleteModal" class="modal fade" tabindex="-1">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h5 class="modal-title">Confirmation</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                  </div>
-                                    <div class="modal-body m-3">
-									    <div class="drop" style="width:150px; height:150px; right: 50px; background-color:#fff2f2; display:flex; justify-content:center; align-items:center; border-radius: 50%; margin: -25px 0 20px 200px; position:relative; box-shadow: inset 2px 7px 6px rgba(0,0,0,0.1);">
-										    <i class="align-middle fas fa-fw fa-trash-alt" style="font-size: 65px; color: #D90000;"></i>
-								        </div>						    
-									    <p class="mb-0" style="font-weight: 450; font-size: 18px;">You are about to delete a data <br> Are you sure?</p>
-								    </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="button" class="btn btn-primary">DELETE</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-
-                            <!--Closing Delete Modal-->
-                          </div>
+                      <div class="mb-3 col-md-12">
+                        <label for="PostKeyword">Post Keyword :</label>
+                        <div class="checkbox">
+                          <label><input type="checkbox" id="php" name="postKeyword[]" value="PHP"> PHP</label>
+                          <label><input type="checkbox" id="html" name="postKeyword[]" value="HTML"> HTML</label>
+                          <label><input type="checkbox" id="js" name="postKeyword[]" value="JavaScript"> JavaScript</label>
+                          <label><input type="checkbox" id="ai" name="postKeyword[]" value="Artificial Intelligence"> Artificial Intelligence</label>
                         </div>
                       </div>
-                      <div class="status">Completed</div>
 
-                    </div>
-                  </div>
+
+                      <textarea name="postContent" placeholder="Post Content" required></textarea>
+
+                      <div class="buttons">
+                        <!-- Create button -->
+                        <button type="submit" name="create_post" href="M2-my_questions.php">Create</button>
+                        <!-- Reset button -->
+                        <button type="reset" name="reset">Reset</button>
+                      </div> <!--closing button-->
+                  </div><!--closing container-->
+                  </form>
                 </div>
               </div>
             </div>
-
-          </div>
-          <!-- end of 2nd row-->
-
+          </div> <!--closing row-->
         </div> <!-- closing container-->
-
       </main>
-
-
-
 
       <!--Footer-->
       <footer class="footer">
@@ -843,7 +492,8 @@
       justify-content: flex-start;
       align-items: center;
     }
-    .right-align{
+
+    .right-align {
       margin-left: 10px;
       justify-content: flex-end;
       align-items: center;
