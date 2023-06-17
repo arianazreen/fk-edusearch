@@ -167,7 +167,7 @@ include_once '../Module1/session-check-admin.php';
 
 														<!-- Update modal -->
 
-														<!-- BEGIN  modal -->
+														<!-- BEGIN  update modal -->
 														<?php echo "<a href='#sizedModalLg-$id'><i class='align-middle fas fa-fw fa-edit' style='margin-right:10px; color:#0039D7;'data-bs-toggle='modal' data-bs-target='#sizedModalLg-$id'></i></a>" ?>
 
 														<div class="modal fade" id="sizedModalLg-<?php echo $id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
@@ -263,36 +263,40 @@ include_once '../Module1/session-check-admin.php';
 																</div>
 															</div>
 														</div>
-														<!-- END  modal -->
+														<!-- END update modal -->
+
 
 														<!-- Delete Modal -->
 
-														<!-- BEGIN danger modal -->
+														<!-- BEGIN delete modal -->
 
-														<a href="#centeredModalDanger"><i class="align-middle fas fa-fw fa-trash" class="trigger-btn" data-bs-toggle="modal" data-bs-target="#centeredModalDanger" style="color:#D00000;"></i></a>
+														<?php echo "<a href='#centeredModalDanger-$id'><i class='align-middle fas fa-fw fa-trash' class='trigger-btn' data-bs-toggle='modal' data-bs-target='#centeredModalDanger-$id' style='color:#D00000;'></i></a>" ?>
 
-														<div class="modal fade" id="centeredModalDanger" tabindex="-1" role="dialog" aria-hidden="true">
+														<div class="modal fade" id="centeredModalDanger-<?php echo $id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
 															<div class="modal-dialog modal-dialog-centered" role="document">
 																<div class="modal-content">
 																	<div class="modal-header">
 																		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 																	</div>
 																	<div class="modal-body m-3">
+																		<form method="POST" action="complaintDB.php">
+																			<input type="hidden" name="id" value="<?php echo $id; ?>">
+																			<div class="drop" style="width:150px; height:150px; background-color:#fff2f2; display:flex; justify-content:center; align-items:center; border-radius: 50%; margin: -25px 0 20px 200px; position:relative; box-shadow: inset 2px 7px 6px rgba(0,0,0,0.1);">
+																				<i class="align-middle fas fa-fw fa-trash-alt" style="font-size: 65px; color: #D90000;"></i>
+																			</div>
 
-																		<div class="drop" style="width:150px; height:150px; background-color:#fff2f2; display:flex; justify-content:center; align-items:center; border-radius: 50%; margin: -25px 0 20px 200px; position:relative; box-shadow: inset 2px 7px 6px rgba(0,0,0,0.1);">
-																			<i class="align-middle fas fa-fw fa-trash-alt" style="font-size: 65px; color: #D90000;"></i>
+																			<p class="mb-0" style="font-weight: 450; font-size: 18px; text-align:center;">Are you sure you wish to delete this data ?<br> This process cannot be undone.</p>
+																	</div>
+																		<div class="modal-footer">
+																			<button type="submit" class="btn" name="delete" style="color: #fff; position:absolute; right: 300px; background-color: #DA3131; font-weight: 400; border-radius: 7px; width: 80px;">Delete</button>
+																			<button type="button" class="btn" data-bs-dismiss="modal" style=" color: #000; position:relative; right: 180px; background-color: #B2B2B4; font-weight: 400; border-radius: 7px; width: 80px;">Cancel</button>
 																		</div>
-
-																		<p class="mb-0" style="font-weight: 450; font-size: 18px;">You are about to delete a data <br> Are you sure?</p>
-																	</div>
-																	<div class="modal-footer">
-																		<button type="button" class="btn" style=" color: #fff; position:absolute; right: 300px; background-color: #DA3131; font-weight: 400; border-radius: 7px; width: 80px;">Delete</button>
-																		<button type="button" class="btn" data-bs-dismiss="modal" style=" color: #000; position:relative; right: 180px; background-color: #B2B2B4; font-weight: 400; border-radius: 7px; width: 80px;">Cancel</button>
-																	</div>
+																	</form>
 																</div>
 															</div>
 														</div>
-														<!-- END danger modal -->
+
+														<!-- END delete modal -->
 
 													</td>
 												</tr>
