@@ -34,11 +34,14 @@
 
 	// to view complaint details
 
-	if (isset($_GET['user_ID'])) {
-		$sql = "SELECT generaluser.userID, generaluser.matricNum, generaluser.username, complaint.complaintID, complaint.complaintDate, complaint.complaintTime, complaint.complaintType, complaint.complaintDesc, complaint.complaintStatus 
-        FROM generaluser 
-        INNER JOIN complaint ON generaluser.userID = complaint.userID 
-        WHERE generaluser.userID = " . $_REQUEST['user_ID'] . ";";
+	if (isset($_GET['user'])) {
+
+		$userID = $_GET['user'];
+
+		$sql= "SELECT generaluser.userID, generaluser.userName, complaint.complaintID, complaint.complaintDate, complaint.complaintTime, complaint.complaintType, complaint.complaintDesc, complaint.complaintStatus 
+				FROM generaluser INNER JOIN complaint ON generaluser.userID=complaint.userID
+				WHERE generaluser.userID = '$userID'";
+
 		$result = mysqli_query($conn, $sql);
 
 		if (!$result) {
@@ -46,10 +49,11 @@
 		}
  
 		while ($row = mysqli_fetch_array($result)) {
-			$userID = $row['userID'];
+
+			// $id = $row['id'];
 			$complaintID = $row['complaintID'];
-			$matricNum = $row['matricNum'];
-			$username = $row['username'];
+			$userID = $row['userID'];
+			$userName = $row['userName'];
 			$complaintDate = $row['complaintDate'];
 			$complaintTime = $row['complaintTime'];
 			$complaintType = $row['complaintType'];
@@ -129,8 +133,6 @@
 					<main class="content" id="<?php echo $userID; ?>">
 						<div class="container-fluid">
 
-							<!-- echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>'; -->
-
 							<div class="header">
 								<h1 class="header-title">
 									Manage Complaint
@@ -145,21 +147,20 @@
 									<div class="card-form-body">
 
 										<form method="POST" action="../Module4/manage-complaint.php">
-											<!-- <input type="hidden" name="userID" value=""> -->
 
 											<div class="row">
 
 												<div class="form-group row">
-													<label for="userID" class="col-sm-5 col-form-label" style="font-size:15px;">MATRIC NUMBER</label>
+													<label for="userID" class="col-sm-5 col-form-label" style="font-size:15px;">USER ID</label>
 													<div class="col-sm-7">
-														<input style="font-size:15px;" type="text" readonly class="form-control-plaintext" id="userID" value=":  <?php echo $userID; ?>">
+														<input style="font-size:15px;" type="text" readonly class="form-control-plaintext" id="userID" value="<?php echo $userID; ?>">
 													</div>
 												</div>
 
 												<div class="form-group row">
 													<label for="uName" class="col-sm-5 col-form-label" style="font-size:15px;">NAME</label>
 													<div class="col-sm-7">
-														<input style="font-size:15px;" type="text" readonly class="form-control-plaintext" id="userName" value=":  <?php echo $userName; ?>">
+														<input style="font-size:15px;" type="text" readonly class="form-control-plaintext" id="userName" value="<?php echo $userName; ?>">
 													</div>
 												</div>
 
@@ -170,35 +171,35 @@
 												<div class="form-group row">
 													<label for="complaintType" class="col-sm-5 col-form-label" style="font-size:15px;">COMPLAINT TYPE</label>
 													<div class="col-sm-7">
-														<input style="font-size:15px;" type="text" readonly class="form-control-plaintext" id="complaintType" value=": <?php echo $complaintType;  ?>">
+														<input style="font-size:15px;" type="text" readonly class="form-control-plaintext" id="complaintType" value="<?php echo $complaintType;  ?>">
 													</div>
 												</div>
 
 												<div class="form-group row">
 													<label for="cDate" class="col-sm-5 col-form-label" style="font-size:15px;">DATE</label>
 													<div class="col-sm-7">
-														<input style="font-size:15px;" type="text" readonly class="form-control-plaintext" id="complaintDate" value=": <?php echo $complaintDate; ?>">
+														<input class="form-control-plaintext" type="date" value="<?php echo $complaintDate; ?>" readonly>
 													</div>
 												</div>
 
 												<div class="form-group row">
 													<label for="cTime" class="col-sm-5 col-form-label" style="font-size:15px;">TIME</label>
 													<div class="col-sm-7">
-														<input style="font-size:15px;" type="text" readonly class="form-control-plaintext" id="complaintTime" value=": <?php echo $complaintTime; ?>">
+													<input class="form-control-plaintext" type="time" value="<?php echo $complaintTime; ?>" readonly>
 													</div>
 												</div>
 
 												<div class="form-group row">
 													<label for="cDesc" class="col-sm-5 col-form-label" style="font-size:15px;">DESCRIPTION</label>
 													<div class="col-sm-7">
-														<textarea style="font-size:15px;" type="text" class="form-control-plaintext" id="complaintDesc" rows="3" readonly>: <?php echo $complaintDesc; ?></textarea>
+														<textarea style="font-size:15px;" type="text" class="form-control-plaintext" id="complaintDesc" rows="3" readonly><?php echo $complaintDesc; ?></textarea>
 													</div>
 												</div>
 
 												<div class="form-group row">
 													<label for="cStatus" class="col-sm-5 col-form-label" style="font-size:15px;">STATUS</label>
 													<div class="col-sm-7">
-														<input style="font-size:15px;" type="text" readonly class="form-control-plaintext" id="complaintStatus" value=": <?php echo $complaintStatus; ?>">
+														<input style="font-size:15px;" type="text" readonly class="form-control-plaintext" id="complaintStatus" value="<?php echo $complaintStatus; ?>">
 													</div>
 												</div>
 
