@@ -5,6 +5,7 @@ require("../Module1/database.php");
 <!--check session from M1 -->
 <?php
 include_once('../Module1/session-check-genUser.php');
+$id = $_SESSION['username'];
 ?>
 
 
@@ -86,7 +87,7 @@ include_once('../Module1/session-check-genUser.php');
           <div class="row">
             <div class="col-12 col-lg-8">
               <?php
-              $sql = "SELECT * FROM post";
+              $sql = "SELECT * FROM post WHERE userID = '$id' ORDER BY postDate DESC, postTime DESC";
               $result = mysqli_query($conn, $sql);
               if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {

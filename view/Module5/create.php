@@ -62,15 +62,15 @@ include_once('../Module1/session-check-genUser.php');
 											<label for="complain">Choose Post</label>
 											<select class="form-select" name="postID" value="postID" aria-label="Default select example">
 												<option hidden="">Please Select</option>
-												<option value="Energy-efficient computer systems">Energy-efficient computer systemsd</option>
-												<option value="Machine learning and artificial intelligence in computer systems">Machine learning and artificial intelligence in computer systemsed</option>
+												<option value="Energy-efficient computer systems">Energy-efficient computer system</option>
+												<option value="Machine learning and artificial intelligence in computer systems">Machine learning and artificial intelligence in computer systems</option>
 												<option value="Virtualization and containerization">Virtualization and containerization</option>
 											</select>
 										</div>
 										<div class="mb-3 col-md-12">
 											<label for="complain">Complaint Type</label>
 											<select class="form-select" name="complaintType" value="complaintType" aria-label="Default select example">
-												<option hidden="">Please Select</option>
+												<option hidden>Please Select</option>
 												<option value="Unsatisfied Expert’s Feedback">Unsatisfied Expert’s Feedback</option>
 												<option value="Unanswered Question">Unanswered Question</option>
 												<option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>

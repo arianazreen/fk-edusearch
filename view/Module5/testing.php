@@ -32,9 +32,8 @@ if (isset($_POST['submit'])) {
 
     // 3) check statement successfull or not
     if ($result) {
-        header("Location: main.php");
-        echo "<script>alert('The Form has been Submitted.')</script>";
         
+        echo "<script>alert('The Form has been Submitted.');window.location='main.php'</script>";
         // echo "<script>alert('The Form has been Submitted.')</script>";
     } else {
         echo "<script>alert('Error Inserting Data: " . mysqli_error($conn) . "')</script>";
@@ -85,7 +84,7 @@ if (isset($_POST['delete'])) {
     if ($result) {
         //to close database connection
         mysqli_close($conn);
-        header("Location: main.php");
+        echo "<script>alert('The Complaint has been deleted.');window.location='main.php'</script>";
         exit();
     } else {
         mysqli_close($conn);

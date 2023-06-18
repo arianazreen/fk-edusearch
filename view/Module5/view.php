@@ -9,6 +9,7 @@ require('../Module1/database.php');
 include_once('../Module1/session-check-genUser.php');
 $id = $_SESSION['username'];
 
+//declare join table
 $sql = "SELECT * FROM complaint A JOIN generalUser B ON A.userID = B.userID WHERE A.userID = '$id'";
 $result = mysqli_query($conn, $sql);
 $complaint = mysqli_fetch_assoc($result);
@@ -63,9 +64,11 @@ $complaint = mysqli_fetch_assoc($result);
 									<!-- <span>Fields marked with</span><span style="color: red;"> (*) </span><span>are mandatory</span> -->
 							</div>
 							<div class="card-body">
+								
 								<form>
 									
 									<div class="row">
+										
 										<div class="mb-3 col-md-6">
 											<label for="complain">Name</label>
 											<input type="text" class="form-control"readonly value="<?php echo $complaint['userName']; ?>">
@@ -97,7 +100,7 @@ $complaint = mysqli_fetch_assoc($result);
 											<textarea class="form-control" rows="5" name="complaintDesc" readonly> <?php echo  $complaint['complaintDesc']; ?></textarea>
 										</div>
 										<div class="mb-3"><br>
-											<button type="button" onclick="history.back()" class="btn" style=" color: white; position: absolute; right:55%; background-color: #07A492; font-weight: 400;">BACK</button>
+											<button type="button" onclick="history.back()" class="btn" style=" color: white; width:10%; position: absolute; right:45%; background-color: #07A492; font-weight: 400;">BACK</button>
 										</div>
 										<br><br><br>
 									</div>
