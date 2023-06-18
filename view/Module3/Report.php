@@ -68,8 +68,8 @@
                             <!-- Initial Document Box -->
                                       <?php
                                 // Retrieve publications data from the database
-                                $query = "SELECT * FROM publications";
-                                $result = mysqli_query($connection, $query);
+                                $sql = "SELECT * FROM publications";
+                                $result = mysqli_query($conn, $sql);
 
                                 // Check if the query was successful
                                 if ($result) {
@@ -83,11 +83,11 @@
                                   }
                                 } else {
                                   // Display an error message if the query fails
-                                  echo "Error executing SQL query: " . mysqli_error($connection);
+                                  echo "Error executing SQL query: " . mysqli_error($conn);
                                 }
 
                                 // Close the database connection
-                                mysqli_close($connection);
+                                mysqli_close($conn);
                                 ?>
                             </div>
                             </div>

@@ -17,8 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
   // Perform necessary validations on the data
 
-  $query = "INSERT INTO publications (no, date, time, name) VALUES ('$no', '$date', '$time', '$name')";
-  mysqli_query($connection, $query);
+  $sql = "INSERT INTO publications (no, date, time, name) VALUES ('$no', '$date', '$time', '$name')";
+  mysqli_query($conn, $sql);
 
   // Redirect back to the page where the publication list is displayed
   header("Location: ManageExpertProfile.php");

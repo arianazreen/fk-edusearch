@@ -13,7 +13,7 @@ $comment = $_POST['comment'];
 
 // Example code for inserting the comment into the database
 $sql = "INSERT INTO comment VALUES ('$comment')";
-$result = mysqli_query($your_database_connection, $sql);
+$result = mysqli_query($conn,$sql);
 
 // Send a response back to the client
 if ($result) {

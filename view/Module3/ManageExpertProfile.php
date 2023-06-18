@@ -98,8 +98,8 @@
                                 <tbody>
                                 <?php
                               
-                                      $query = "SELECT * FROM publications";
-                                      $result = mysqli_query($connection, $query);
+                                      $sql = "SELECT * FROM publications";
+                                      $result = mysqli_query($connection, $sql);
 
                                       while ($row = mysqli_fetch_assoc($result)) {
                                         echo "<tr>";
@@ -243,8 +243,7 @@
      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
  
     // function deletePublication(id) {
-      // Replace 'your_connection' with your actual database connection
-      var connection = mysqli_connect("localhost", "username", "password", "your_database");
+      
       var confirmDelete = confirm("Are you sure you want to delete this publication?");
       if (confirmDelete) {
         $.ajax({
