@@ -1,6 +1,7 @@
 <!-- declaration database -->
 <?php
 require('../Module1/database.php');
+
 ?>
 
 <?php
@@ -40,7 +41,6 @@ include_once('../Module1/session-check-genUser.php');
 			?>
 			<main class="content">
 				<div class="container-fluid">
-
 					<div class="header">
 						<h1 class="header-title">
 							Complaint Application
@@ -84,6 +84,7 @@ include_once('../Module1/session-check-genUser.php');
 										<div class="mb-3"><br>
 											<button type="submit" name="submit" class="btn" style=" color: white; position: absolute; right:55%; background-color: #07A492; font-weight: 400;">SUBMIT</button>
 											<button type="button" onclick="history.back()" class="btn" style="color: white; position: absolute; right:45%; background-color: #ADDCD7; font-weight: 400;">CANCEL</button>
+
 										</div>
 										<br><br><br>
 									</div>

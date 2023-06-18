@@ -1,8 +1,12 @@
 <!--databse file from M1 -->
 <?php
   require ('../Module1/database.php');
-
 ?>
+<!--check session from M1 -->
+<?php
+  include_once('../Module1/session-check-genUser.php');
+?>
+
 
 
 

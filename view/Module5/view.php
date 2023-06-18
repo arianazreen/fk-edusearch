@@ -1,11 +1,18 @@
 <!-- declaration database -->
 <?php
 require('../Module1/database.php');
+
 ?>
 
 <?php
 //check session
 include_once('../Module1/session-check-genUser.php');
+$id = $_SESSION['username'];
+
+$sql = "SELECT * FROM complaint A JOIN generalUser B ON A.userID = B.userID WHERE A.userID = '$id'";
+$result = mysqli_query($conn, $sql);
+$complaint = mysqli_fetch_assoc($result);
+
 ?>
 
 <!DOCTYPE html>
@@ -35,14 +42,11 @@ include_once('../Module1/session-check-genUser.php');
 	<div class="wrapper">
 		<!-- CONTENT -->
 		<div class="main">
-        <?php
+			<?php
 			include_once('navbarUser.php');
 			?>
 			<main class="content">
 				<div class="container-fluid">
-				<?php
-	echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';
-?>
 					<div class="header">
 						<h1 class="header-title">
 							Complaint Application
@@ -52,48 +56,48 @@ include_once('../Module1/session-check-genUser.php');
 						<div class="card">
 
 							<br>
-							<h2 style="float:none;margin:auto;">We are Here to Help You!</h2>
+							<h2 style="float:none;margin:auto;">Details Complaint</h2>
 
 							<div class="card-header" style="float:none;margin:auto;">
 								<h6 class="card-subtitle">
-									<span>Fields marked with</span><span style="color: red;"> (*) </span><span>are mandatory</span>
+									<!-- <span>Fields marked with</span><span style="color: red;"> (*) </span><span>are mandatory</span> -->
 							</div>
 							<div class="card-body">
-								<form method="post" action="testing.php">
+								<form>
+									
 									<div class="row">
-										<div class="mb-3 col-md-12">
-											<label for="complain">Complaint Type</label>
-											<select class="form-select" name="complaintType" value="complaintType" aria-label="Default select example">
-												<option hidden="">Please Select</option>
-												<option value="Unsatisfied Expert’s Feedback">Unsatisfied Expert’s Feedback</option>
-												<option value="Unanswered Question">Unanswered Question</option>
-												<option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
+										<div class="mb-3 col-md-6">
+											<label for="complain">Name</label>
+											<input type="text" class="form-control"readonly value="<?php echo $complaint['userName']; ?>">
+										</div>
+										<div class="mb-3 col-md-6">
+											<label for="complain">Course</label>
+											<input type="text" class="form-control" name="userCourse" id="userCourse" readonly value="<?php echo $complaint['userCourse']; ?>">
+										</div>
+										<div class="mb-3 col-md-6">
+											<label for="complain">Post Title</label>
+											<select class="form-select" name="postID" aria-label="Default select example" readonly >
+												<option disabled selected></option>
 											</select>
+										</div>
+										<div class="mb-3 col-md-6">
+											<label for="complain">Complaint Type</label>
+											<input type="text" class="form-control" name="complaintType" id="complaintType" readonly value="<?php echo $complaint['complaintType']; ?>">
 										</div>
 										<div class="mb-3 col-md-6">
 											<label for="DateComplaint">Date Complaint</label>
-											<input type="date" class="form-control" name="complaintDate" id="complaintDate">
+											<input type="date" class="form-control" name="complaintDate" id="complaintDate" readonly value="<?php echo $complaint['complaintDate']; ?>">
 										</div>
 										<div class="mb-3 col-md-6">
 											<label for="TimeComplaint">Time Complaint</label>
-											<input type="time" class="form-control" name="complaintTime" id="complaintTime">
+											<input type="time" class="form-control" name="complaintTime" id="complaintTime" readonly value="<?php echo $complaint['complaintTime']; ?>">
 										</div>
-										<!-- <div class="mb-3 col-md-12">
-											<label for="complain">Choose Post</label>
-											<select class="form-select" name="postID" value="postID" aria-label="Default select example">
-												<option hidden="">Please Select</option>
-												<option value="Energy-efficient computer systems">Energy-efficient computer systemsd</option>
-												<option value="Machine learning and artificial intelligence in computer systems">Machine learning and artificial intelligence in computer systemsed</option>
-												<option value="Virtualization and containerization">Virtualization and containerization</option>
-											</select>
-										</div> -->
 										<div class="mb-3">
 											<label>Complaint Description</label>
-											<textarea class="form-control" id=" " name="complaintDesc" rows="3"></textarea>
+											<textarea class="form-control" rows="5" name="complaintDesc" readonly> <?php echo  $complaint['complaintDesc']; ?></textarea>
 										</div>
 										<div class="mb-3"><br>
-											<button type="submit" name="submit" class="btn" style=" color: white; position: absolute; right:55%; background-color: #07A492; font-weight: 400;">SUBMIT</button>
-											<button onclick="history.back()" class="btn" style=" color: white; position: absolute; right:45%; background-color: #ADDCD7; font-weight: 400;">CANCEL</button>
+											<button type="button" onclick="history.back()" class="btn" style=" color: white; position: absolute; right:55%; background-color: #07A492; font-weight: 400;">BACK</button>
 										</div>
 										<br><br><br>
 									</div>

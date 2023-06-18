@@ -1,9 +1,17 @@
 <?php
-	require("../Module1/database.php");
+	include_once ("../Module1/session-check-admin.php");
 ?>
 
 <?php
-	include_once '../Module1/session-check-admin.php';
+	include ("../Module1/database.php");
+
+	$totalBCS = mysqli_query($conn, "SELECT * FROM generaluser WHERE userCourse = 'BCS'"); 
+									 
+	$totalBCN = mysqli_query($conn, "SELECT * FROM generaluser WHERE userCourse = 'BCN'"); 
+									
+	$totalBCG = mysqli_query($conn, "SELECT * FROM generaluser WHERE userCourse = 'BCG'"); 
+									
+
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +37,7 @@
 </head>
 
 <body>
+
 	<div class="splash active">
 		<div class="splash-icon"></div>
 	</div>
@@ -119,7 +128,14 @@
 											<div class="card-divider"></div>
 										</div>
 									</div>
-									<h1 class="display-5 mt-1 mb-3">12,978</h1>
+
+									<?php
+                                    $sql = "SELECT COUNT(postTitle) AS posts FROM post";
+                                    $result = mysqli_query($conn, $sql);
+                                    $row = mysqli_fetch_assoc($result);
+                                    ?>
+
+									<h1 class="display-5 mt-1 mb-3"><?php echo $row['posts']; ?></h1>
 									<div class="mb-0">
 									<span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> +15% </span>
 										than last month 10,235
@@ -137,7 +153,13 @@
 										</div>
 									</div>
 
-									<h1 class="display-5 mt-1 mb-3">34,045</h1>
+									<?php
+                                    $sql = "SELECT SUM(postComments) AS comment FROM post";
+                                    $result = mysqli_query($conn, $sql);
+                                    $row = mysqli_fetch_assoc($result);
+                                    ?>
+
+									<h1 class="display-5 mt-1 mb-3"><?php echo $row['comment']; ?></h1>
 									<div class="mb-0">
 										<span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> +10% </span>
 										than last month 32,000
@@ -155,7 +177,13 @@
 										</div>
 									</div>
 
-									<h1 class="display-5 mt-1 mb-3">5,480</h1>
+									<?php
+                                    $sql = "SELECT SUM(postLikes) AS likes FROM post";
+                                    $result = mysqli_query($conn, $sql);
+                                    $row = mysqli_fetch_assoc($result);
+                                    ?>
+
+									<h1 class="display-5 mt-1 mb-3"><?php echo $row['likes']; ?></h1>
 									<div class="mb-0">
 										<span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -2% </span>
 										than last month 6,790
@@ -200,15 +228,15 @@
 											<tbody>
 												<tr>
 													<td><i class="fas fa-circle text-primary fa-fw"></i> Software Engineering</td>
-													<td class="text-end">4401</td>
+													<td class="text-end"><?php echo mysqli_num_rows($totalBCS);?></td>
 												</tr>
 												<tr>
 													<td><i class="fas fa-circle text-warning fa-fw"></i> Network & Security</td>
-													<td class="text-end">4003</td>
+													<td class="text-end"><?php echo mysqli_num_rows($totalBCN);?></td>
 												</tr>
 												<tr>
 													<td><i class="fas fa-circle text-info fa-fw"></i> Graphic & Multimedia</td>
-													<td class="text-end">1589</td>
+													<td class="text-end"><?php echo mysqli_num_rows($totalBCG);?></td>
 												</tr>
 											</tbody>
 										</table>
@@ -314,14 +342,15 @@
 			new Chart(document.getElementById("chartjs-dashboard-pie"), {
 				type: 'pie',
 				data: {
-					labels: ["Software Engineering", "Network & Security", "Graphic & Multimedia", "Cybersecurity"],
+					labels: ["Software Engineering", "Network & Security", "Graphic & Multimedia"],
 					datasets: [{
-						data: [4401, 4003, 1589],
+						data: [<?php echo mysqli_num_rows($totalBCS);?>, 
+							   <?php echo mysqli_num_rows($totalBCN);?>,
+							   <?php echo mysqli_num_rows($totalBCG);?>],
 						backgroundColor: [
 							"#051925",
 							"#25506b",
-							"#bcbcbc",
-							"#E8EAED"
+							"#bcbcbc"
 						],
 						borderColor: "transparent"
 					}]

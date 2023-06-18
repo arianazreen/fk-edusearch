@@ -11,8 +11,10 @@ function getLatestComplaintId($conn) {
 
     return (int) $lastId;
 }
-// 1)
+session_start();
 if (isset($_POST['submit'])) {
+    $id = $_SESSION['username'];
+    // $userID = $_GET[]
     date_default_timezone_set("Asia/Kuala_Lumpur");
     $latestId = getLatestComplaintId($conn);
     $complaintID = 'C' . sprintf("%04d", $latestId + 1);
@@ -22,7 +24,7 @@ if (isset($_POST['submit'])) {
     // 'App_no' => 'KN/' . date("Y") . '/' . sprintf("%'.05d\n", $consultation + 1),
     $complaintDesc =  $_POST['complaintDesc'];
     // $complaintStatus =  $_POST['complaintStatus'];
-    $sql = "INSERT INTO complaint ( complaintID, complaintDate, complaintTime, complaintType, complaintDesc, complaintStatus) VALUES ( '$complaintID','$complaintDate', '$complaintTime', '$complaintType', '$complaintDesc', 'Submitted')";
+    $sql = "INSERT INTO complaint (  complaintID ,userID, complaintDate, complaintTime, complaintType, complaintDesc, complaintStatus) VALUES ( '$complaintID','$id','$complaintDate', '$complaintTime', '$complaintType', '$complaintDesc', 'Submitted')";
     $result = mysqli_query($conn, $sql);
 
 
@@ -32,6 +34,7 @@ if (isset($_POST['submit'])) {
     if ($result) {
         header("Location: main.php");
         echo "<script>alert('The Form has been Submitted.')</script>";
+        
         // echo "<script>alert('The Form has been Submitted.')</script>";
     } else {
         echo "<script>alert('Error Inserting Data: " . mysqli_error($conn) . "')</script>";
