@@ -31,6 +31,12 @@ if (isset($_POST['create_post'])) {
     } else {
         echo "<script>alert('Error posting your content.');</script>" . mysqli_error($conn);
     }
+    if (hasPostLimitReached()) {
+        echo "<script>alert('You have been reached the limit post per session. Please Login Again.');
+                      window.location.href='../Module/login-genUser.php'</script>";
+        exit();
+    } else {
+    }
 
     mysqli_close($conn);
 }
@@ -115,6 +121,30 @@ if (isset($_POST['delete_post'])) {
 
     mysqli_close($conn);
 }
+
+
+//post comment
+
+
+if (isset($_POST['submit_comment'])) {
+    $postId = $_POST['post_id'];
+    $commentContent = $_POST['comment_content'];
+
+    // Insert the comment into the database
+    $insertCommentSql = "INSERT INTO comments (postID, commentContent) VALUES ('$postID', '$commentContent')";
+    mysqli_query($conn, $insertCommentSql);
+
+    // Increment the comment count for the post
+    $postComments++;
+    // Update the postComments column in the database
+    $updateCommentsSql = "UPDATE post SET postComments = $postComments WHERE id = $postID";
+    mysqli_query($conn, $updateCommentsSql);
+}
+
+
+
+
+
 
 // if (isset($_GET['keyword'])) {
 //     // Retrieve the search keyword from the query parameter

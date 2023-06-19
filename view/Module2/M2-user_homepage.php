@@ -63,10 +63,12 @@ include_once('../Module1/session-check-genUser.php');
               <div class="col-12 col-lg-10">
                 <?php
                 $sql = "SELECT post.id, generaluser.userID, generaluser.userName, post.postDate, post.postTime, post.postTitle, post.postCategory, post.postKeyword,
-                  post.postContent, post.postStatus, post.postLikes, post.postComments, post.postDate
-                  FROM post
-                  INNER JOIN generaluser ON post.userID = generaluser.userID
-                  ORDER BY post.postDate DESC, post.postTime DESC";
+               post.postContent, post.postStatus, post.postLikes, post.postComments, post.postDate
+               FROM post
+               INNER JOIN generaluser ON post.userID = generaluser.userID
+               WHERE post.postStatus = 'COMPLETED' 
+               ORDER BY post.postDate DESC, post.postTime DESC";
+
                 $result = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($result) > 0) {
                   while ($row = mysqli_fetch_assoc($result)) {
@@ -117,6 +119,7 @@ include_once('../Module1/session-check-genUser.php');
                                 <form method="POST">
                                   <button type="submit" name="like_<?php echo $id; ?>"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i><?php echo $postLikes; ?></button>
                                   <button type="submit" name="comment_<?php echo $id; ?>"><i class="fa fa-comment-o" aria-hidden="true"></i><?php echo $postComments; ?></button>
+
                                 </form>
                               </div>
                               <div class="status"><?php echo "$postStatus"; ?></div>
@@ -196,6 +199,20 @@ include_once('../Module1/session-check-genUser.php');
       // Clear the input field after the search
       input.value = '';
     }
+
+    var commentToggleButtons = document.getElementsByClassName('comment-toggle');
+    Array.from(commentToggleButtons).forEach(function(button) {
+      button.addEventListener('click', function() {
+        // Find the corresponding comments section
+        var commentsSection = this.nextElementSibling;
+        // Toggle the visibility of the comments section
+        if (commentsSection.style.display === 'none') {
+          commentsSection.style.display = 'block';
+        } else {
+          commentsSection.style.display = 'none';
+        }
+      });
+    });
   </script>
 
 

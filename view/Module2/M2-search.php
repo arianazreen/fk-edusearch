@@ -5,6 +5,7 @@ require('../Module1/database.php');
 <!--check session from M1 -->
 <?php
 include_once('../Module1/session-check-genUser.php');
+include_once('post_limit.php');
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +64,7 @@ include_once('../Module1/session-check-genUser.php');
                 // Construct the SQL query
                 $sql = "SELECT post.id, generaluser.userID, generaluser.userName, post.postDate, post.postTime, post.postTitle, post.postCategory, post.postKeyword,
             post.postContent, post.postStatus, post.postDate, post.postLikes, post.postComments FROM post INNER JOIN generaluser ON post.userID = generaluser.userID 
-            WHERE post.postKeyword LIKE '%$searchKeyword%'
+            WHERE post.postKeyword  LIKE '%$searchKeyword%'
             ORDER BY post.postDate DESC, post.postTime DESC";
 
                 // Execute the query
