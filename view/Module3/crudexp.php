@@ -21,6 +21,7 @@ if (isset($_POST['submit'])) {
     else {
         echo "Error : " . $query ."<br>" . mysqli_error($conn);
     }
+}
 ?>
 
 <!-- DELETE  INSIDE THE DATABASE -->
