@@ -136,6 +136,44 @@
     }
 ?>
 
+<?php
+    include('database.php');
+
+    if (isset($_POST['update-genUserStatus']))
+    {
+        $id=$_POST['id'];
+        $upValidationStatus = $_POST['upValidationStatus'];
+
+        $query = mysqli_query($conn,"UPDATE userprofile SET upValidationStatus='$upValidationStatus' WHERE id='$id'");
+
+        if($query) {
+            echo "<script>alert('Update Successful.'); window.location='validate-genUserProfile.php'</script>";
+        }
+        else {
+            echo "<script>alert('Error : " . mysqli_error($conn) . "')</script>";
+        }
+    }
+?>
+
+<?php
+    include('database.php');
+
+    if (isset($_POST['update-expertStatus']))
+    {
+        $id=$_POST['id'];
+        $epValidationStatus = $_POST['epValidationStatus'];
+
+        $query = mysqli_query($conn,"UPDATE expertise SET epValidationStatus='$epValidationStatus' WHERE id='$id'");
+
+        if($query) {
+            echo "<script>alert('Update Successful.'); window.location='validate-expertProfile.php'</script>";
+        }
+        else {
+            echo "<script>alert('Error : " . mysqli_error($conn) . "')</script>";
+        }
+    }
+?>
+
 <!-- DELETE -->
 <?php
     include ("database.php");
