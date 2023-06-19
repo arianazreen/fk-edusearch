@@ -28,12 +28,7 @@
                         <a class="dropdown-item" href="../Module5/report.php">Report</a>
                     </div>
                 </li>
-                <form class="d-none d-sm-inline-block" method="GET" action="../Module2/process_post.php" style=" align-items: center;">
-
-                    <div class="d-flex pt-3"><input class="form-control form-control-lite" type="text" name="keyword" placeholder="Search projects...">
-                        <button class="btn btn-primary" type="submit">Search</button>
-                    </div>
-                </form>
+                
 
             </ul>
 

@@ -1,28 +1,30 @@
 <?php
 include("../Module1/database.php");
 
-
-//update post
+session_start();
+//update profile
 
 if (isset($_POST['update_profile'])) {
 
-    $id = $_POST["id"];
-    // $userID = $_GET["userID"];
-    $postTitle = $_POST["postTitle"];
-    // $postCategory = $_POST["postCategory"];
-    // $postKeyword = implode(",", $_POST["postKeyword"]);
-    $postContent = $_POST["postContent"];
 
-    // $checkbox=implode(",", $postKeyword);
-    //echo $alldata;
+    $id = $_SESSION['username'];
+    $id = $_POST['id'];
+    // $userID = $_POST['userID'];
+    $userName = $_POST['userName'];
+    $userEmail = $_POST['userEmail'];
+    $userRole = $_POST['userRole'];
+    $userPhoneNo = $_POST['userPhoneNo'];
+    $userPass = $_POST['userPass'];
+    // $userSocMedia = $_POST['userSocMedia'];
+    // $userCourse = $_POST['userCourse'];
 
-    $sql = "UPDATE post SET  postTitle = '$postTitle', postContent = '$postContent'
-                    WHERE id = '$id'";
+    $sql = "UPDATE generaluser SET  userName = '$userName', userEmail = '$userEmail', userPhoneNo = '$userPhoneNo', 
+            userPass = '$userPass' WHERE id = '$id'";
 
 
     if (mysqli_query($conn, $sql)) {
         echo "<script>alert('Your profile has been updated.');
-                      window.location.href='M2-my_questions.php'</script>";
+                      window.location.href='M2-manage-user-profile.php'</script>";
         exit();
     } else {
         echo "<script>alert('Error updating your profile.');</script>" . mysqli_error($conn);
@@ -32,21 +34,19 @@ if (isset($_POST['update_profile'])) {
 }
 
 //view the updates
-if (isset($_POST['view_post'])) {
+if (isset($_POST['view_update'])) {
     //$row = stored the data
 
-    $postID = $_POST["postID"];
-    // $userID = $_GET["userID"];
+    $id = $_POST['id'];
+    $userID = $_POST['userID'];
+    $userName = $_POST['userName'];
+    $userEmail = $_POST['userEmail'];
+    $userRole = $_POST['userRole'];
+    $userPhoneNo = $_POST['userPhoneNo'];
+    $userPass = $_POST['userPass'];
+    $userSocMedia = $_POST['userSocMedia'];
 
-    $postTitle = $row["postTitle"];
-    $postCategory = $row["postCategory"];
-    $postKeyword = $row["postKeyword"];
-    $postContent = $_row["postContent"];
-
-    $checkbox = implode(",", $postKeyword);
-    //echo $alldata;
-
-    $sql = "SELECT * post";
+    $sql = "SELECT * generaluser";
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
@@ -54,7 +54,7 @@ if (isset($_POST['view_post'])) {
             echo "ID: " . $row["id"] . "Name: " . $row["name"] . "<br>";
         }
         echo "<script>alert('Your sharing content has been posted.');
-                    window.location.href='M2-my_questions.php'</script>";
+                    window.location.href='M2-manage_user_profile.php'</script>";
         exit();
     } else {
         echo "<script>alert('Error updating your content.');</script>" . mysqli_error($conn);
@@ -64,33 +64,30 @@ if (isset($_POST['view_post'])) {
 }
 
 
-//Search funtion for homepage (by keyword)
-if (isset($_GET['search_keyword'])) {
-    $searchKeyword = $_GET["search_keyword"];
+// //Search funtion for homepage (by keyword)
+// if (isset($_GET['search_keyword'])) {
+//     $searchKeyword = $_GET["search_keyword"];
 
-    $sql = "SELECT * FROM post WHERE postKeyword LIKE '%$searchKeyword%' ORDER BY postKeyword OR postCategory";
-    $result = mysqli_query($conn, $sql);
+//     $sql = "SELECT * FROM post WHERE postKeyword LIKE '%$searchKeyword%' ORDER BY postKeyword OR postCategory";
+//     $result = mysqli_query($conn, $sql);
 
-    if ($result) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "Post ID: " . $row["postID"] . "<br>";
-            echo "Post Title: " . $row["postTitle"] . "<br>";
-            echo "Post Category: " . $row["postCategory"] . "<br>";
-            echo "Post Keyword: " . $row["postKeyword"] . "<br>";
-            echo "Post Content: " . $row["postContent"] . "<br>";
-            echo "<hr>";
+//     if ($result) {
+//         while ($row = mysqli_fetch_assoc($result)) {
+//             echo "Post ID: " . $row["postID"] . "<br>";
+//             echo "Post Title: " . $row["postTitle"] . "<br>";
+//             echo "Post Category: " . $row["postCategory"] . "<br>";
+//             echo "Post Keyword: " . $row["postKeyword"] . "<br>";
+//             echo "Post Content: " . $row["postContent"] . "<br>";
+//             echo "<hr>";
 
-            exit();
-        }
-    } else {
-        echo "<script>alert('No suitable data.');</script>" . mysqli_error($conn);
-    }
+//             exit();
+//         }
+//     } else {
+//         echo "<script>alert('No suitable data.');</script>" . mysqli_error($conn);
+//     }
 
-    mysqli_close($conn);
-} else {
-    header("Location: M2-user_homepage.php");
-    exit();
-}
-
-
-
+//     mysqli_close($conn);
+// } else {
+//     header("Location: M2-user_homepage.php");
+//     exit();
+// }

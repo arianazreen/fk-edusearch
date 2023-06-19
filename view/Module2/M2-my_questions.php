@@ -58,7 +58,7 @@ $id = $_SESSION['username'];
 
               // $sql = "SELECT * FROM post WHERE userID = '$id' ORDER BY postDate DESC, postTime DESC";
               $sql = "SELECT post.id, generaluser.userID, generaluser.userName, post.postDate, post.postTime, post.postTitle, post.postCategory, post.postKeyword,
-              post.postContent, post.postStatus, post.postDate
+              post.postContent, post.postStatus, post.postDate, post.postLikes, post.postComments
               FROM post
               INNER JOIN generaluser ON post.userID = generaluser.userID
               WHERE generaluser.userID = '$id'
@@ -76,8 +76,8 @@ $id = $_SESSION['username'];
                   $postCategory = $row['postCategory'];
                   $postKeyword = $row['postKeyword'];
                   $postContent = $row['postContent'];
-                  // $postLikes = $row['postLikes'];
-                  // $postComments = $row['postComments'];
+                  $postLikes = $row['postLikes'];
+                  $postComments = $row['postComments'];
                   // $postComments = $row['postComments'];
                   $postStatus = $row['postStatus'];
 
@@ -99,8 +99,10 @@ $id = $_SESSION['username'];
 
                           <div class="actions" style="color:#888">
                             <div class="icon-container">
-                              <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</a>
-                              <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>0</a>
+                              <form method="POST">
+                                <button type="submit" name="like_<?php echo $id; ?>"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i><?php echo $postLikes; ?></button>
+                                <button type="submit" name="comment_<?php echo $id; ?>"><i class="fa fa-comment-o" aria-hidden="true"></i><?php echo $postComments; ?></button>
+                              </form>
                               <!-- <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>0</a> -->
                               <div class="icon-container right" style="margin-left: 30px;">
                                 <!-- Edit Button -->
@@ -144,10 +146,12 @@ $id = $_SESSION['username'];
                                               </div>
                                             </div>
                                             <br>
+                                            <div class="modal-footer">
+                                              <input type="hidden" name="update_post" value="true">
+                                              <button type="submit" class="btn btn-primary">Save Changes</button>
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
 
-                                            <input type="hidden" name="update_post" value="true">
-                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                                            </div>
                                           </form>
                                         </div>
                                       </div>
@@ -171,14 +175,15 @@ $id = $_SESSION['username'];
                                           <div class="drop" style="width:150px; height:150px; right: 50px; background-color:#fff2f2; display:flex; justify-content:center; align-items:center; border-radius: 50%; margin: -25px 0 20px 200px; position:relative; box-shadow: inset 2px 7px 6px rgba(0,0,0,0.1);">
                                             <i class="align-middle fas fa-fw fa-trash-alt" style="font-size: 65px; color: #D90000;"></i>
                                           </div>
-                                          <p class="mb-0" style="font-weight: 450; font-size: 18px;"> Are you sure wish to delete this data. <br> Are you sure?</p>
+                                          <p class="mb-0" style="font-weight: 450; font-size: 18px;"> Are you sure wish to delete this data. <br> This is process cannot be undo.</p>
                                       </div>
                                       <div class="modal-footer">
                                         <input type="hidden" name="delete_post" value="true">
-                                        <button type="submit" class="btn btn-primary">Delete</button>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        </form>
+
                                       </div>
+                                      </form>
                                     </div>
                                   </div>
                                 </div>

@@ -1,15 +1,26 @@
 <!--databse file from M1 -->
 <?php
-require('../Module1/database.php');
+include_once('../Module1/session-check-genUser.php');
 ?>
 <!--check session from M1 -->
 <?php
-include_once('../Module1/session-check-genUser.php');
+
+include("../Module1/database.php");
+
+// Calculate total posts for each postKeyword
+$postNetwork = mysqli_query($conn, "SELECT COUNT(*) AS total FROM post WHERE postKeyword = 'Network'");
+$postSoftware = mysqli_query($conn, "SELECT COUNT(*) AS total FROM post WHERE postKeyword = 'Software'");
+$postGraphics = mysqli_query($conn, "SELECT COUNT(*) AS total FROM post WHERE postKeyword = 'Graphics'");
+
+// Retrieve the total counts
+$postNetworkCount = mysqli_fetch_assoc($postNetwork)['total'];
+$postSoftwareCount = mysqli_fetch_assoc($postSoftware)['total'];
+$postGraphicsCount = mysqli_fetch_assoc($postGraphics)['total'];
+
+// Calculate overall total posts
+$overallTotal = $postNetworkCount + $postSoftwareCount + $postGraphicsCount;
+
 ?>
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,254 +59,245 @@ include_once('../Module1/session-check-genUser.php');
 
       <!--Content -->
       <main class="content">
-        <!--1st Row-->
+        <!-- 1st Row -->
         <div class="container-fluid">
           <div class="header">
-            <h1 class="header-title"> Manage User Profile </h1>
+            <h1 class="header-title">Manage User Profile</h1>
           </div>
-          <div class="post-box">
-            <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
-            <div class="post-info">
-              <div class="name"><?php echo $userName ?></div>
-              <div class="role"><?php echo $userRole ?>|<?php echo $userCourse ?> </div>
-              <div class="right-align">
+          <div>
 
-                <!-- Edit Button -->
-                <?php echo "<a href='#updateModal-$id' data-bs-toggle='modal'><i class='align-middle fas fa-fw fa-edit' style='color: blue;'></i></a> "; ?>
-                <!-- UPDATE modal -->
-                <div class="modal fade" id="updateModal-<?php echo $id; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-scrollable">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Update Profile</h5>
-                      </div>
-                      <div class="modal-body">
-                        <div class="card-body">
-                          <form method="POST" action="process_profile.php">
-                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <?php
 
-                            <div class="row">
-                              <div class="mb-3 col-md-6">
-                                <label for="userID"> User ID: </label>
-                                <input type="text" class="form-control" name="postTitle" id="postTitle" value="<?php echo $userID; ?>" disabled>
-                              </div>
-                              <div class="mb-3 col-md-6">
-                                <label for="userRole"> User Role: </label>
-                                <input type="text" class="form-control" name="userRole" id="userRole" value="<?php echo $userRole; ?>" disabled>
-                              </div>
-                              <div class="mb-3 col-md-6">
-                                <label for="userName"> Name: </label>
-                                <input type="text" class="form-control" name="userName" id="userName" value="<?php echo $userName; ?>">
-                              </div>
-                              <div class="mb-3 col-md-6">
-                                <label for="userEmail"> Email: </label>
-                                <input type="text" class="form-control" name="userEmail" id="userEmail" value="<?php echo $userEmail; ?>">
-                              </div>
-                              <div class="mb-3 col-md-6">
-                                <label for="userPhoneNo"> Phone Number: </label>
-                                <input type="number" class="form-control" name="userPhoneNo" id="userPhoneNo" value="<?php echo $userPhoneNo; ?>">
-                              </div>
-                              <div class="mb-3 col-md-6">
-                                <label for="userPass"> Password: </label>
-                                <input type="password" class="form-control" name="userPass" id="userPass" value="<?php echo $userPass; ?>">
-                              </div>
-                              <div class="mb-3 col-md-6">
-                                <label for="userCourse"> Course: </label>
-                                <input type="text" class="form-control" name="userCourse" id="userCourse" value="<?php echo $userCourse; ?>" disabled>
-                              </div>
-                              <div class="mb-3 col-md-6">
-                                <label for="assignedExpert"> Assigned Expert: </label>
-                                <input type="text" class="form-control" name="assignedExpert" id="assignedExpert" value="<?php echo $assignedExpert; ?>" disabled>
-                              </div>
-                              <br>
+            if (session_status() === PHP_SESSION_NONE) {
+              session_start();
+            }
 
-                              <input type="hidden" name="update_post" value="true">
-                              <button type="reset" class="btn btn-danger" data-bs-dismiss="modal" style="color: grey;">Cancel</button>
-                              <button type="submit" class="btn btn-primary" style="background-color: #07A492;">Save Changes</button>
-                          </form>
+
+            include("../Module1/database.php");
+
+            if (isset($_SESSION['username'])) {
+
+              $id = $_SESSION['username'];
+
+              // Prepare and execute the SQL query
+              $sql = "SELECT generaluser.id, generaluser.userID, generaluser.userName, generaluser.userEmail, generaluser.userCourse, 
+                      generaluser.userRole, generaluser.userPhoneNo, generaluser.userPass, userprofile.userSocMedia
+                      FROM generaluser
+                      INNER JOIN userprofile ON generaluser.userID = userprofile.userID
+                      WHERE generaluser.userID = '$id'";
+
+              $result = mysqli_query($conn, $sql);
+
+              if (!$result) {
+                die("Query error: " . mysqli_error($conn));
+              }
+
+              // Check if any rows were returned
+              if (mysqli_num_rows($result) > 0) {
+                // Loop through the result set and fetch data
+                while ($row = mysqli_fetch_assoc($result)) {
+                  $id = $row['id'];
+                  $userID = $row['userID'];
+                  $userName = $row['userName'];
+                  $userEmail = $row['userEmail'];
+                  $userRole = $row['userRole'];
+                  $userPhoneNo = $row['userPhoneNo'];
+                  $userPass = $row['userPass'];
+                  $userSocMedia = $row['userSocMedia'];
+                  $userCourse = $row['userCourse'];
+                  // $assignedExpert = $row['assignedExpert'];
+
+            ?>
+
+                  <div class="post-box">
+                    <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
+                    <div class="post-info">
+                      <div class="name"><?php echo $userName ?></div>
+                      <div class="role"><?php echo $userRole ?> | <?php echo $userCourse ?></div>
+                    </div>
+
+                    <!-- Edit Button -->
+                    <?php echo "<a href='#updateModal-$id' data-bs-toggle='modal'><i class='align-middle fas fa-fw fa-edit' style='color: blue;'></i></a> "; ?>
+                    <!-- UPDATE modal -->
+                    <div class="modal fade" id="updateModal-<?php echo $id; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Update Profile</h5>
+                          </div>
+                          <div class="modal-body">
+                            <div class="card-body">
+                              <form method="POST" action="process_profile.php">
+                                <input type="hidden" name="id" value="<?php echo $id; ?>">
+
+                                <div class="row">
+                                  <div class="mb-3 col-md-6">
+                                    <label for="userRole">User Role:</label>
+                                    <input type="text" class="form-control" name="userRole" id="userRole" value="<?php echo $userRole; ?>" disabled>
+                                  </div>
+                                  <div class="mb-3 ">
+                                    <label for="userName">Name:</label>
+                                    <input type="text" class="form-control" name="userName" id="userName" value="<?php echo $userName; ?>">
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="userEmail">Email:</label>
+                                    <input type="text" class="form-control" name="userEmail" id="userEmail" value="<?php echo $userEmail; ?>">
+                                  </div>
+                                  <div class="mb-3 col-md-6">
+                                    <label for="userPhoneNo">Phone Number:</label>
+                                    <input type="text" class="form-control" name="userPhoneNo" id="userPhoneNo" value="<?php echo $userPhoneNo; ?>">
+                                  </div>
+                                  <div class="mb-3 col-md-6">
+                                    <label for="userPass">Password:</label>
+                                    <input type="password" class="form-control" name="userPass" id="userPass" value="<?php echo $userPass; ?>">
+                                  </div>
+
+                                  <br>
+                                  <div class="modal-footer">
+                                    <input type="hidden" name="update_profile" value="true">
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Cancel</button>
+
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
+                    <!-- Closing UPDATE Modal -->
+
+
+
                   </div>
-                </div>
-                <!-- Closing  UPDATE Modal-->
 
-                <!--Edit Profile Modal -->
-                <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <form id="editProfileForm" method="POST">
+          </div>
 
-                          <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
-                          </div>
-                          <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                          </div>
-                          <div class="form-group">
-                            <label for="major">Major:</label>
-                            <select id="major" name="major" class="form-control">
-                              <option value="major1">Choose major...</option>
-                              <option value="major2">Major in Computer System & Networking</option>
-                              <option value="major3">Major in Software Engineering</option>
-                              <option value="major4">Major in Multimedia & Graphics</option>
-                            </select>
-                          </div>
-                          <div class="form-group">
-                            <label for="department">Department:</label>
-                            <select id="department" name="department" class="form-control">
-                              <option value="depart1">Choose department...</option>
-                              <option value="depart2">Computer System & Networking (BCN)</option>
-                              <option value="depart3">Software Engineering (BCS)</option>
-                              <option value="depart4">Multimedia & Graphics (BCG)</option>
-                            </select>
+    <?php
+                }
+              }
+            }
 
-                          </div>
+            // Close the database connection
+            mysqli_close($conn);
+    ?>
 
 
-                          <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Save Changes</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="background-color: #B2B2B4;">Cancel</button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>`
-                <!-- end of modal -->
-              </div>
-            </div>
+    <!-- CLOSING DIC POST BOX 1ST ROW -->
 
-          </div> <!--CLOSING DIC POST BOX 1ST ROW-->
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        <div class="card flex-fill w-100">
+          <div class="card-header">
+            <h2 class="card-title">About Nurul Najwa</h2>
+            <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
+            <p>
+              Nurul Najwa Bt Husin studies at the Faculty of Computing in Universiti Malaysia Pahang. Does research in Educational Technology, Business Intelligence, Technology Adoption, E-Learning, Social Media Use for Learning and Higher Education.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-4">
+        <div class="card flex-fill w-100">
+          <div class="card-header">
+            <h2 class="card-title mb-0">Related Topic Research</h2>
+            <p>
+            <ul>
+              <li>Emerging Trends in Computer System Security.</li>
+              <li>Virtual Reality (VR) and Augmented Reality (AR) application.</li>
+            </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-          <div class="row">
-            <div class="col-12 col-lg-8">
-              <div class="card flex-fill w-100">
-                <div class="card-header">
-                  <h2 class="card-title"> About Nurul Najwa </h2>
-                  <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
-                  <p>
-                    Nurul Najwa Bt Husin studies at Faculty of Computing in
-                    Universiti Malaysia Pahang.<br />Does research in
-                    Educational Technology, Business Intelligence, Technology
-                    Adoption, E-Learning, Social Media Use for Learning and
-                    Higher Education.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 col-lg-4">
-              <div class="card flex-fill w-100">
-                <div class="card-header">
 
-                  <h2 class="card-title mb-0"> Related Topic Research </h2>
-                  <p>
-                  <ul>
-                    <li> Emerging Trends in Computer System Security. </li>
-                    <li> Virtual Reality (VR) and Augmented Reality (AR) application. </li>
-                  </ul>
-                  </p>
+    <!--2nd Row-->
+
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        <div class="card flex-fill w-100">
+          <div class="card-header">
+            <h2 class="card-title">Total Post</h2>
+            <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
+            <div class="card-body d-flex">
+              <div class="align-self-center w-100">
+                <div class="py-3">
+                  <table class="table mb-0">
+                    <tr>
+                      <td>
+                        <div class="chart chart-xs">
+                          <canvas id="chartjs-dashboard-pie"></canvas>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <table class="table mb-0">
+                    <tr>
+                      <td><i class="fas fa-circle fa-fw" style="color:#43BCAE"></i> Computer Sytems & Networking</td>
+                      <td class="text-end"><?php echo mysqli_num_rows($postNetwork); ?></td>
+                    </tr>
+                    <tr>
+                      <td><i class="fas fa-circle fa-fw" style="color:#BBE3E5"></i> Software Engineering</td>
+                      <td class="text-end"><?php echo mysqli_num_rows($postSoftware); ?></td>
+                    </tr>
+                    <tr>
+                      <td><i class="fas fa-circle fa-fw" style="color:#1A5D55"></i> Multimedia & Graphics</td>
+                      <td class="text-end"><?php echo mysqli_num_rows($postGraphics); ?></td>
+                    </tr>
+                    <tr>
+                      <td> Total Post </td>
+                      <td class="text-end"><?php echo $overallTotal; ?></td>
+                    </tr>
+                  </table>
                 </div>
               </div>
             </div>
           </div>
-
-
-          <!--2nd Row-->
-
-          <div class="row">
-            <div class="col-12 col-lg-8">
-              <div class="card flex-fill w-100">
-                <div class="card-header">
-                  <h2 class="card-title"> Total Post </h2>
-                  <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
-                  <div class="card-body d-flex">
-                    <div class="align-self-center w-100">
-                      <div class="py-3">
-
-                        <table class="table mb-0">
-                          <tr>
-                            <td>
-                              <div class="chart chart-xs">
-                                <canvas id="chartjs-dashboard-pie"></canvas>
-                              </div>
-                            </td>
-                            <td><strong>
-                                <h2> Total Post : </h2>
-                              </strong></td>
-                            <td class="text-end"><strong>
-                                <h2> 36 </h2>
-                              </strong></td>
-                          </tr>
-                        </table>
-
-                        <table class="table mb-0">
-
-                          <tr>
-                            <td><i class="fas fa-circle fa-fw" style="color:#43BCAE"></i> Networking</td>
-                            <td class="text-end"> 15 </td>
-                          </tr>
-                          <tr>
-                            <td><i class="fas fa-circle fa-fw" style="color:#BBE3E5"></i> Software Engineering </td>
-                            <td class="text-end"> 7 </td>
-                          </tr>
-                          <tr>
-                            <td><i class="fas fa-circle fa-fw" style="color:#1A5D55"></i> Multimedia and Graphics </td>
-                            <td class="text-end"> 14 </td>
-                          </tr>
-
-
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 col-lg-4">
-              <div class="card flex-fill w-100">
-                <div class="card-header">
-
-                  <h2 class="card-title mb-0"> Academic Qualifications </h2>
-                  <p>
-                  <ul>
-                    <li> Bachelor in Computer System </li>
-                  </ul>
-                  </p>
-                  <h2 class="card-title mb-0"> Department </h2>
-                  <p>
-                  <ul>
-                    <li> Computer System & Networking (BCN) </li>
-                  </ul>
-                  </p>
-                </div>
-              </div>
-              <div class="card flex-fill w-100">
-                <div class="card-header">
-                  <h2 class="card-title mb-0"> Social Media Account </h2>
-                  <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-                  <p> nurul_najwa </p>
-                </div>
-              </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-4">
+        <div class="card flex-fill w-100">
+          <div class="card-header">
+            <h2 class="card-title mb-0">Academic Qualifications</h2>
+            <p>
+            <ul>
+              <li>Bachelor in Software Engineering </li>
+            </ul>
+            </p>
+            <h2 class="card-title mb-0">Skills</h2>
+            <p>
+            <ul>
+              <li>Software Development</li>
+              <li>Web Design</li>
+            </ul>
+            </p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-12">
+          <div class="card flex-fill w-100">
+            <div class="card-header">
+              <h2 class="card-title mb-0">Social Media Account </h2>
+              <p>
+              <ul>
+                <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                <li><?php echo $userSocMedia; ?></li>
+              </ul>
+              </p>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+        </div>
+    </div>
 
-          <!--3rd Row-->
-
-        </div> <!--closing div container-->
-
-    </div> <!--closing div class main-->
-  </div> <!--closing div wrapper-->
-
-
-  </main>
+    </main>
+  </div>
+  </div>
 
   <!--Footer-->
   <footer class="footer">
@@ -308,8 +310,6 @@ include_once('../Module1/session-check-genUser.php');
       </div>
     </div>
   </footer>
-  </div>
-  </div>
 
   <svg width="0" height="0" style="position: absolute">
     <defs>
@@ -329,13 +329,16 @@ include_once('../Module1/session-check-genUser.php');
       new Chart(document.getElementById("chartjs-dashboard-pie"), {
         type: 'pie',
         data: {
-          labels: ["Networking", "Software Engineering", "Multimedia and Graphics"],
+          labels: ["Computer Sytems & Networking", "Software Engineering", "Multimedia and Graphics"],
           datasets: [{
-            data: [15, 7, 14],
+            data: [<?php echo mysqli_num_rows($postNetwork); ?>,
+              <?php echo mysqli_num_rows($postSoftware); ?>,
+              <?php echo mysqli_num_rows($postGraphics); ?>
+            ],
             backgroundColor: [
               "#43BCAE",
               "#BBE3E5",
-              "#1A5D55",
+              "#1A5D55"
             ],
             borderColor: "transparent"
           }]
@@ -348,46 +351,6 @@ include_once('../Module1/session-check-genUser.php');
           },
           cutoutPercentage: 75
         }
-      });
-    });
-    //js code for edit profile
-    $(document).ready(function() {
-      // Retrieve existing profile data and populate the form
-      $.ajax({
-        url: 'M2-manage-user-profile.php', // PHP script to fetch profile data from the server
-        type: 'GET',
-        dataType: 'json',
-        success: function(data) {
-          $('#name').val(data.name);
-          $('#email').val(data.email);
-          // Set values for other form fields as needed
-        },
-        error: function() {
-          alert('Failed to retrieve profile data.');
-        }
-      });
-
-      // Handle form submission
-      $('#editProfileForm').submit(function(e) {
-        e.preventDefault();
-
-        // Serialize form data
-        var formData = $(this).serialize();
-
-        // Send the updated profile data to the server
-        $.ajax({
-          url: 'M2-manage-user-profile.php', // PHP script to update the profile data
-          type: 'POST',
-          data: formData,
-          success: function(response) {
-            // Handle success response, e.g., show a success message, refresh the page, etc.
-            alert('Profile updated successfully.');
-            location.reload();
-          },
-          error: function() {
-            alert('Failed to update profile.');
-          }
-        });
       });
     });
   </script>
@@ -507,6 +470,80 @@ include_once('../Module1/session-check-genUser.php');
 
     .line {
       border-top: 1px solid #ccc;
+    }
+
+    .container post {
+      width: 400px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .container h2 {
+      margin-top: 0;
+    }
+
+    .container label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .container input[type="text"],
+    .container select,
+    .container textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      margin-bottom: 10px;
+    }
+
+    .container textarea {
+      height: 120px;
+    }
+
+    .container .form-group {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .container .form-group label {
+      flex-basis: 30%;
+    }
+
+    .container .buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .container .buttons button {
+      background-color: #07A492;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    .container .buttons button.cancel {
+      background-color: #07A492;
+    }
+
+    .actions {
+      margin-left: 10px;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .right-align {
+      margin-left: 10px;
+      justify-content: flex-end;
+      align-items: center;
+
     }
   </style>
 </body>
