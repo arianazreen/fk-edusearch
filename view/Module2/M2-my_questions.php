@@ -5,6 +5,7 @@ require("../Module1/database.php");
 <!--check session from M1 -->
 <?php
 include_once('../Module1/session-check-genUser.php');
+$id = $_SESSION['username'];
 ?>
 
 
@@ -20,6 +21,7 @@ include_once('../Module1/session-check-genUser.php');
 
   <title>My Questions</title>
   <link rel="stylesheet" href="../../dist/css/modern.css">
+  <link href="../../dist/css/modernModule5.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -38,43 +40,10 @@ include_once('../Module1/session-check-genUser.php');
   <div class="wrapper">
     <!-- CONTENT -->
     <div class="main">
-      <nav class="navbar navbar-expand navbar-theme">
-        <div class="container-fluid">
-          <!--Nav - Logo-->
-          <img src="../../dist/img/logo/fk-edusearch-border.png" style="width: 35px;" height="35px;" alt="FK-EduSearch Logo" />
-          <!--Nav - Home (name) -->
-          <a class="navbar-brand" href="#">FK-EDUSEARCH</a>&nbsp;
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <!--Nav - Home -->
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="../Module2/M2-user_homepage.php">Home</a>
-              </li>
-              <!--Nav - MY Question -->
-              <li class="nav-item">
-                <a class="nav-link" href="../Module2/M2-my_questions.php">My Questions</a>
-              </li>
-              <!--Nav - Complaint -->
-              <li class="nav-item dropdown ms-lg-2">
-                <a class="nav-link dropdown-toggle position-relative" href="#" id="userDropdown" data-bs-toggle="dropdown">Complaint</a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                  <a class="dropdown-item"></a>
-                  <a class="dropdown-item" href="../Module5/create.php">New Application</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">History</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Report</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-
-      </nav>
+      <!-- Navifation Bar -->
+      <?php
+      include_once('../Module5/navbarUser.php');
+      ?>
 
       <!--Content -->
       <main class="content">
@@ -86,21 +55,32 @@ include_once('../Module1/session-check-genUser.php');
           <div class="row">
             <div class="col-12 col-lg-8">
               <?php
-              $sql = "SELECT * FROM post";
+
+              // $sql = "SELECT * FROM post WHERE userID = '$id' ORDER BY postDate DESC, postTime DESC";
+              $sql = "SELECT post.id, generaluser.userID, generaluser.userName, post.postDate, post.postTime, post.postTitle, post.postCategory, post.postKeyword,
+              post.postContent, post.postStatus, post.postDate
+              FROM post
+              INNER JOIN generaluser ON post.userID = generaluser.userID
+              WHERE generaluser.userID = '$id'
+              ORDER BY post.postDate DESC, post.postTime DESC";
+
               $result = mysqli_query($conn, $sql);
               if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                   $id = $row['id'];
+                  $userID = $row['userID'];
+                  $userName = $row['userName'];
                   $postDate = $row['postDate'];
                   $postTime = $row['postTime'];
                   $postTitle = $row['postTitle'];
                   $postCategory = $row['postCategory'];
                   $postKeyword = $row['postKeyword'];
                   $postContent = $row['postContent'];
-                  $postLikes = $row['postLikes'];
-                  $postComments = $row['postComments'];
-                  $postComments = $row['postComments'];
+                  // $postLikes = $row['postLikes'];
+                  // $postComments = $row['postComments'];
+                  // $postComments = $row['postComments'];
                   $postStatus = $row['postStatus'];
+
 
               ?>
                   <div class="card flex-fill w-100">
@@ -108,7 +88,7 @@ include_once('../Module1/session-check-genUser.php');
                       <div class="post-box">
                         <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
                         <div class="post-info">
-                          <div class="name"> Nurul Najwa</div>
+                          <div class="name"><?php echo $userName ?></div>
                           <div class="date"><?php echo "$postDate"; ?> | <?php echo "$postTime"; ?></div>
                           <div class="container-box">
                             <h3><?php echo "$postTitle"; ?></h3>
@@ -121,7 +101,7 @@ include_once('../Module1/session-check-genUser.php');
                             <div class="icon-container">
                               <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</a>
                               <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>0</a>
-                              <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>0</a>
+                              <!-- <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>0</a> -->
                               <div class="icon-container right" style="margin-left: 30px;">
                                 <!-- Edit Button -->
                                 <?php echo "<a href='#updateModal-$id' data-bs-toggle='modal'><i class='align-middle fas fa-fw fa-edit' style='color: blue;'></i></a> "; ?>
@@ -139,7 +119,7 @@ include_once('../Module1/session-check-genUser.php');
 
                                             <div class="row">
                                               <div class="mb-3 col-md-6">
-                                                <label for="PostTilte">Post Tilte: </label>
+                                                <label for="PostTilte">Post Title: </label>
                                                 <input type="text" class="form-control" name="postTitle" id="postTitle" value="<?php echo $postTitle; ?>">
                                               </div>
                                               <div class="mb-3 col-md-6">
@@ -239,10 +219,22 @@ include_once('../Module1/session-check-genUser.php');
                       <div class="mb-3 col-md-12">
                         <label for="PostKeyword">Post Keyword :</label>
                         <div class="checkbox">
-                          <label><input type="checkbox" id="php" name="postKeyword[]" value="PHP"> PHP</label>
-                          <label><input type="checkbox" id="html" name="postKeyword[]" value="HTML"> HTML</label>
-                          <label><input type="checkbox" id="js" name="postKeyword[]" value="JavaScript"> JavaScript</label>
-                          <label><input type="checkbox" id="ai" name="postKeyword[]" value="Artificial Intelligence"> Artificial Intelligence</label>
+                          <div class="row">
+                            <div class="col">
+                              <label><input type="checkbox" id="php" name="postKeyword[]" value="PHP"> PHP</label>
+                              <label><input type="checkbox" id="html" name="postKeyword[]" value="HTML"> HTML</label>
+                              <label><input type="checkbox" id="js" name="postKeyword[]" value="JavaScript"> JavaScript</label>
+                              <label><input type="checkbox" id="ai" name="postKeyword[]" value="Artificial Intelligence"> Artificial Intelligence</label>
+                            </div>
+                            <div class="col">
+                              <label><input type="checkbox" id="network" name="postKeyword[]" value="Network"> Network </label>
+                              <label><input type="checkbox" id="graphics" name="postKeyword[]" value="Graphics"> Graphics </label>
+                              <label><input type="checkbox" id="software" name="postKeyword[]" value="Software"> Software </label>
+                              <label><input type="checkbox" id="iot" name="postKeyword[]" value="Software"> Internet of Things </label>
+                            </div>
+                          </div>
+
+
                         </div>
                       </div>
 

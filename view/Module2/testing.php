@@ -45,3 +45,26 @@
 													</div>
 												</div>
                                                
+
+												<?php
+            // $sql = "SELECT * FROM post WHERE userID = '$id' ORDER BY postDate DESC, postTime DESC";
+            $sql = "SELECT userprofile.id, generaluser.userID, generaluser.userRole, userprofile.userProfileID , generaluser.userName, generaluser.userEmail, generaluser.userPhoneNo,
+                        generaluser.userPass, generaluser.userCourse, generaluser.assignedExpert,  userprofile.userResearchArea, userprofile.userAcademicStatus, userprofile.userSocMedia
+                       FROM userprofile INNER JOIN generaluser ON userprofile.id = generaluser.id";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) > 0) {
+              while ($row = mysqli_fetch_assoc($result)) {
+                $id = $row['id'];
+                $userID = $row['userID'];
+                $userRole = $row['userRole'];
+                $userProfileID = $row['userProfileID'];
+                $userName = $row['userName'];
+                $userEmail = $row['userEmail'];
+                $userPhoneNo = $row['userPhoneNo'];
+                $userPass = $row['userPass'];
+                $userCourse = $row['userCourse'];
+                $assignedExpert = $row['assignedExpert'];
+                $userResearchArea = $row['userResearchArea'];
+                $userAcademicStatus = $row['userAcademicStatus'];
+                $userSocMedia = $row['userSocMedia'];
+            ?>

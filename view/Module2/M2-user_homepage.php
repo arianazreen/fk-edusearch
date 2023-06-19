@@ -19,6 +19,7 @@ include_once('../Module1/session-check-genUser.php');
 
   <title> Homepage </title>
   <link rel="stylesheet" href="../../dist/css/modern.css">
+  <link href="../../dist/css/modernModule5.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!--<link href="https://kit.fontawesome.com/a076d05399.js">-->
 
@@ -36,244 +37,95 @@ include_once('../Module1/session-check-genUser.php');
   <div class="wrapper">
     <!-- CONTENT -->
     <div class="main">
-      <nav class="navbar navbar-expand navbar-theme">
-        <div class="container-fluid">
-          <!--Nav - Logo-->
-          <img src="../../dist/img/logo/fk-edusearch-border.png" style="width: 35px;" height="35px;" alt="FK-EduSearch Logo" />
-          <!--Nav - Home (name) -->
-          <a class="navbar-brand" href="#">FK-EDUSEARCH</a>&nbsp;
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <!--Nav - Home -->
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="M2-user_homepage.php">Home</a>
-              </li>
-              <!--Nav - MY Question -->
-              <li class="nav-item">
-                <a class="nav-link" href="M2-my_questions.php">My Questions</a>
-              </li>
-              <!--Nav - Complaint -->
-              <li class="nav-item dropdown ms-lg-2">
-                <a class="nav-link dropdown-toggle position-relative" href="#" id="userDropdown" data-bs-toggle="dropdown">Complaint</a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                  <a class="dropdown-item"></a>
-                  <a class="dropdown-item" href="../Module5/create.php">New Application</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">History</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Report</a>
-                </div>
-              </li>
-            </ul>
-          </div>
+      <!-- Navifation Bar -->
+      <?php
+      include_once('../Module5/navbarUser.php');
+      ?>
 
-          <!--Nav - Notification -->
-          <div class="navbar-collapse collapse">
-            <ul class="navbar-nav ms-auto mt-2">
-              <li class="nav-item dropdown ms-lg-2">
-                <a class="nav-link dropdown-toggle position-relative" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
-                  <i class="align-middle fas fa-bell"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
-                  <div class="dropdown-menu-header">4 New Notifications</div>
-                  <div class="list-group">
-                    <a href="#" class="list-group-item">
-                      <div class="row g-0 align-items-center">
-                        <div class="col-2">
-                          <i class="ms-1 text-success fas fa-fw fa-bell-slash"></i>
-                        </div>
-                        <div class="col-10">
-                          <div class="text-dark">New connection</div>
-                          <div class="text-muted small mt-1">
-                            Anna accepted your request.
-                          </div>
-                          <div class="text-muted small mt-1">12h ago</div>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="dropdown-menu-footer">
-                    <a href="#" class="text-muted">Show all notifications</a>
-                  </div>
-                </div>
-              </li>
-
-              <!--Nav- Profile 
-              <div class="post-box border-0">
-                        <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image" 
-                         style="width: 35px; height: 25px;" >
-                         <h6>Nurul Najwa</h6>
-                         <p>Student</p>          
-              </div>-->
-
-              <div class="row mt-3 mx-2">
-                <div class="col-sm-4">
-                  <img class="profile-img rounded-circle" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image" style="width: 35px; height: 35px;">
-                </div>
-                <div class="col-sm-8">
-                  <h6 class="mb-0" style="color: #fff;">Nurul Najwa</h6>
-                  <p style="color: #BBE3E5;">Student</p>
-                </div>
-              </div>
-
-              <!--Nav - Dropdown Setting -->
-              <li class="nav-item dropdown ms-lg-2">
-                <a class="nav-link dropdown-toggle position-relative" href="#" id="userDropdown" data-bs-toggle="dropdown">
-                  <i class="align-middle fas fa-cog"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                  <a class="dropdown-item"></a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="../Module2/M2-manage-user-profile.php"><i class="align-middle me-1 fas fa-fw fa-user"></i> My
-                    Profile</a>
-                  <a class="dropdown-item" href="#"><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Account
-                    Setting</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="logout"><i class="align-middle me-1 fas fa-fw fa-arrow-alt-circle-right"></i>
-                    Sign out</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-      </nav>
 
       <!--Content -->
       <main class="content">
-        <!--1st Row-->
-
         <div class="container-fluid">
           <div class="header">
-            <h1 class="header-title"> Homepage </h1>
+            <h1 class="header-title">Homepage</h1>
           </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="card flex-fill w-100">
-                <div class="card-header">
-                  <h2 class="card-title"> </h2>
-                  <!-- Search Area-->
-
-                  <div class="search-container">
-                    <form method="GET" action="process_post.php">
-                      <div class="search-box">
-                        <input type="text" id="search-input" name="search_keyword" placeholder="Search...">
-                        <button type="submit" id="search-button" class="search-icon">
-                          <i class="fa fa-search"></i>
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                  <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
-
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <!--2nd Row-->
-
-          <!--1st Topic-->
           <div class="row">
             <div class="center">
-              <div class="card flex-fill w-100">
-                <div class="card-header">
+              <div class="col-12 col-lg-10">
+                <?php
+                $sql = "SELECT post.id, generaluser.userID, generaluser.userName, post.postDate, post.postTime, post.postTitle, post.postCategory, post.postKeyword,
+                  post.postContent, post.postStatus, post.postLikes, post.postComments, post.postDate
+                  FROM post
+                  INNER JOIN generaluser ON post.userID = generaluser.userID
+                  ORDER BY post.postDate DESC, post.postTime DESC";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                  while ($row = mysqli_fetch_assoc($result)) {
+                    $id = $row['id'];
+                    $userID = $row['userID'];
+                    $userName = $row['userName'];
+                    $postDate = $row['postDate'];
+                    $postTime = $row['postTime'];
+                    $postTitle = $row['postTitle'];
+                    $postCategory = $row['postCategory'];
+                    $postKeyword = $row['postKeyword'];
+                    $postContent = $row['postContent'];
+                    $postLikes = $row['postLikes'];
+                    $postComments = $row['postComments'];
+                    $postStatus = $row['postStatus'];
 
-                  <div class="post-box">
-                    <img class="profile-img" src="../../dist/img/avatars/avatar-2.jpg" alt="Profile Image">
-                    <div class="post-info">
-                      <div class="name"> AbdulRahman Abdullah </div>
-                      <div class="date"> Article | 01 January 2023 </div>
-                      <div class="container-box">
-                        <h3>Machine learning and artificial intelligence in computer systems.</h3>
-                        <div class="line"></div>
-                        <p>Artificial Intelligence will take over the human daily work.
-                          Is this statement can be proven as true facts or not?</p>
-                      </div>
-                      <div class="line"></div>
-                      <div class="actions" style="color:#888">
-                        <div class="icon-container">
-                          <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>257</a>
-                          <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>123</a>
-                          <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>78</a>
+                    // Handle like and comment actions
+                    if (isset($_POST['like_' . $id])) {
+                      // Increment the like count for the post
+                      $postLikes++;
+                      // Update the postLikes column in the database
+                      $updateLikesSql = "UPDATE post SET postLikes = $postLikes WHERE id = $id";
+                      mysqli_query($conn, $updateLikesSql);
+                    }
+
+                    if (isset($_POST['comment_' . $id])) {
+                      // Increment the comment count for the post
+                      $postComments++;
+                      // Update the postComments column in the database
+                      $updateCommentsSql = "UPDATE post SET postComments = $postComments WHERE id = $id";
+                      mysqli_query($conn, $updateCommentsSql);
+                    }
+                ?>
+                    <div class="card flex-fill w-100">
+                      <div class="card-header">
+                        <div class="post-box">
+                          <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
+                          <div class="post-info">
+                            <div class="name"><?php echo $userName ?></div>
+                            <div class="date"><?php echo "$postDate"; ?> | <?php echo "$postTime"; ?></div>
+                            <div class="container-box">
+                              <h3><?php echo "$postTitle"; ?></h3>
+                              <div class="line"></div>
+                              <p><?php echo "$postContent"; ?></p>
+                            </div>
+                            <div class="actions" style="color:#888">
+                              <div class="icon-container">
+                                <form method="POST">
+                                  <button type="submit" name="like_<?php echo $id; ?>"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i><?php echo $postLikes; ?></button>
+                                  <button type="submit" name="comment_<?php echo $id; ?>"><i class="fa fa-comment-o" aria-hidden="true"></i><?php echo $postComments; ?></button>
+                                </form>
+                              </div>
+                              <div class="status"><?php echo "$postStatus"; ?></div>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      <div class="status">Complete</div>
-
                     </div>
-                  </div>
-                </div>
+                <?php
+                  }
+                }
+                ?>
               </div>
             </div>
           </div>
-          <!--2nd Topic-->
-          <div class="row">
-            <div class="center">
-              <div class="card flex-fill w-100">
-                <div class="card-header">
+        </div>
+      </main>
 
-                  <div class="post-box">
-                    <img class="profile-img" src="../../dist/img/avatars/avatar-3.jpg" alt="Profile Image">
-                    <div class="post-info">
-                      <div class="name"> Sumayyah Yasir </div>
-                      <div class="date"> Article | 28 December 2022 </div>
-                      <div class="container-box">
-                        <h3>Virtual Reality (VR) and Augmented Reality (AR) application</h3>
-                        <div class="line"></div>
-                        <p>How can i implement AI into the Final Year Project i’m working on?</p>
-                      </div>
-                      <div class="line"></div>
-                      <div class="actions">
-                        <div class="icon-container">
-                          <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>333</a>
-                          <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>65</a>
-                          <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>41</a>
-                        </div>
-                      </div>
-                      <div class="status">Complete</div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--3rd Topic-->
-          <div class="row">
-            <div class="center">
-              <div class="card flex-fill w-100">
-                <div class="card-header">
-                  <div class="post-box">
-                    <img class="profile-img" src="../../dist/img/avatars/avatar-4.jpg" alt="Profile Image">
-                    <div class="post-info">
-                      <div class="name"> Melissa Anne </div>
-                      <div class="date"> Article | 14 November 2022 </div>
-                      <div class="container-box">
-                        <h3>Machine learning and artificial intelligence in computer systems.</h3>
-                        <div class="line"></div>
-                        <p>Artificial Intelligence will take over the human daily work.
-                          Is this statement can be proven as true facts or not?</p>
-                      </div>
-                      <div class="line"></div>
-                      <div class="actions">
-                        <div class="icon-container">
-                          <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>111</a>
-                          <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>53</a>
-                          <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>94</a>
-                        </div>
-                      </div>
-                      <div class="status">Complete</div>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
 
 
@@ -347,14 +199,19 @@ include_once('../Module1/session-check-genUser.php');
       justify-content: center;
     }
 
+    .icon-container :right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+    }
+
     .icon-container i {
       color: grey;
       font-size: 14px;
       margin: 10px;
       margin-bottom: 5px;
-      margin-top: 5px;
-      margin-left: 180px;
-      margin-right: 70px;
+
     }
 
     .search-container {
@@ -369,7 +226,6 @@ include_once('../Module1/session-check-genUser.php');
       display: flex;
       align-items: center;
       width: 550px;
-      position: relative;
     }
 
     .search-box input[type="text"] {
@@ -378,26 +234,31 @@ include_once('../Module1/session-check-genUser.php');
       font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 4px;
-      padding-right: 40px;
     }
 
-    .search-box .search-icon {
+    .search-box button {
+      padding: 7px 20px;
+      /* background-color: #BBE3E5; */
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+
+    .search-icon {
       position: absolute;
-      top: 0;
-      right: 0;
-      width: 40px;
-      height: 100%;
+      top: 24px;
+      right: 261px;
+      width: 30px;
+      height: 30px;
       background-color: transparent;
       border: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
-    /* Styling for the search icon */
-    .search-box .search-icon i {
-      font-size: 18px;
-      color: #888;
+    .fa-search {
+      color: #000;
+      /* Change the color of the search icon */
     }
 
     .post-box {
@@ -467,10 +328,91 @@ include_once('../Module1/session-check-genUser.php');
       border-radius: 4px;
       padding: 10px;
       margin-top: 10px;
+      width: 890px;
     }
 
     .line {
       border-top: 1px solid #ccc;
+    }
+
+    .container post {
+      width: 400px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .container h2 {
+      margin-top: 0;
+    }
+
+    .container label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .container input[type="text"],
+    .container select,
+    .container textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      margin-bottom: 10px;
+    }
+
+    .container textarea {
+      height: 120px;
+    }
+
+    .container .form-group {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .container .form-group label {
+      flex-basis: 30%;
+    }
+
+    .container .buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .container .buttons button {
+      background-color: #07A492;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    .container .buttons button.cancel {
+      background-color: #07A492;
+    }
+
+    .actions {
+      margin-left: 10px;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .right-align {
+      margin-left: 10px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .card-header-search {
+      background-color: #008080;
+      border-bottom: 0 solid rgba(0, 0, 0, 0.125);
+      margin-bottom: 0;
+      padding: 0.75rem 1.25rem;
     }
   </style>
 </body>

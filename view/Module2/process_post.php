@@ -1,10 +1,9 @@
 <?php
-
 include("../Module1/database.php");
-
-
 //create post
+session_start();
 if (isset($_POST['create_post'])) {
+    $id = $_SESSION['username'];
     date_default_timezone_set("Asia/Kuala_Lumpur");
     // $postID = $_POST["postID"];
     // $userID = $_GET["userID"];
@@ -18,8 +17,8 @@ if (isset($_POST['create_post'])) {
     $checkbox = implode(",", $postKeyword);
     //echo $alldata;
 
-    $sql = "INSERT INTO post (postDate, postTime, postTitle, postCategory, postKeyword, postContent, postStatus) 
-                    VALUES ('$postDate', '$postTime', '$postTitle', '$postCategory', '$checkbox', '$postContent', 'Submitted')";
+    $sql = "INSERT INTO post (userID, postDate, postTime, postTitle, postCategory, postKeyword, postContent, postStatus) 
+                    VALUES ('$id', '$postDate', '$postTime', '$postTitle', '$postCategory', '$checkbox', '$postContent', 'Submitted')";
 
     // $result = mysqli_query($conn, $sql);
 
@@ -117,33 +116,111 @@ if (isset($_POST['delete_post'])) {
     mysqli_close($conn);
 }
 
-//Search funtion for homepage (by keyword)
-if (isset($_GET['search_keyword'])) {
-    $searchKeyword = $_GET["search_keyword"];
 
-    $sql = "SELECT * FROM post WHERE postKeyword LIKE '%$searchKeyword%' ORDER BY postKeyword OR postCategory";
-    $result = mysqli_query($conn, $sql);
 
-    if ($result) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "Post ID: " . $row["postID"] . "<br>";
-            echo "Post Title: " . $row["postTitle"] . "<br>";
-            echo "Post Category: " . $row["postCategory"] . "<br>";
-            echo "Post Keyword: " . $row["postKeyword"] . "<br>";
-            echo "Post Content: " . $row["postContent"] . "<br>";
-            echo "<hr>";
+if (isset($_GET['keyword'])) {
+    // Retrieve the search keyword from the query parameter
+    $keyword = $_GET['keyword'];
 
-            exit();
-        }
-    } else {
-        echo "<script>alert('No suitable data.');</script>" . mysqli_error($conn);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
 
-    mysqli_close($conn);
-} else {
-    header("Location: M2-user_homepage.php");
-    exit();
+    // Sanitize the search keyword to prevent SQL injection
+    $searchKeyword = $conn->real_escape_string($keyword);
+
+    // Construct the SQL query
+    $sql = "SELECT post.id, generaluser.userID, generaluser.userName, post.postDate, post.postTime, post.postTitle, post.postCategory, post.postKeyword,
+            post.postContent, post.postStatus, post.postDate FROM post INNER JOIN generaluser ON post.userID = generaluser.userID 
+            WHERE post.postKeyword LIKE '%$searchKeyword%'
+            ORDER BY post.postDate DESC, post.postTime DESC";
+
+    // Execute the query
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Display the search results
+        echo '<div class="col-12 col-lg-10">';
+        while ($row = $result->fetch_assoc()) {
+            $id = $row['id'];
+            $userID = $row['userID'];
+            $userName = $row['userName'];
+            $postDate = $row['postDate'];
+            $postTime = $row['postTime'];
+            $postTitle = $row['postTitle'];
+            $postCategory = $row['postCategory'];
+            $postKeyword = $row['postKeyword'];
+            $postContent = $row['postContent'];
+            $postStatus = $row['postStatus'];
+
+            // Output the search results in the desired HTML format
+            echo '
+            <div class="card flex-fill w-100">
+              <div class="card-header">
+                <div class="post-box">
+                  <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image" style="width:30px; height:30px;">
+                  <div class="post-info">
+                    <div class="name">' . $userName . '</div>
+                    <div class="date">' . $postDate . ' | ' . $postTime . '</div>
+                    <div class="container-box">
+                      <h3>' . $postTitle . '</h3>
+                      <div class="line"></div>
+                      <p>' . $postContent . '</p>
+                    </div>
+                    <div class="actions" style="color:#888">
+                      <div class="icon-container">
+                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</a>
+                        <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>0</a>
+                      </div>
+                      <div class="status">' . $postStatus . '</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>';
+        }
+        echo '</div>';
+    } else {
+        echo "No results found.";
+    }
+
+    // Free the result set
+    $result->free_result();
+
+    // Close the database connection
+    $conn->close();
 }
+
+
+
+// //Search funtion for homepage (by keyword)
+// if (isset($_GET['search_keyword'])) {
+//     $searchKeyword = $_GET["search_keyword"];
+
+//     $sql = "SELECT * FROM post WHERE postKeyword LIKE '%$searchKeyword%' ORDER BY postKeyword OR postCategory";
+//     $result = mysqli_query($conn, $sql);
+
+//     if ($result) {
+//         while ($row = mysqli_fetch_assoc($result)) {
+//             echo "Post ID: " . $row["postID"] . "<br>";
+//             echo "Post Title: " . $row["postTitle"] . "<br>";
+//             echo "Post Category: " . $row["postCategory"] . "<br>";
+//             echo "Post Keyword: " . $row["postKeyword"] . "<br>";
+//             echo "Post Content: " . $row["postContent"] . "<br>";
+//             echo "<hr>";
+
+//             exit();
+//         }
+//     } else {
+//         echo "<script>alert('No suitable data.');</script>" . mysqli_error($conn);
+//     }
+
+//     mysqli_close($conn);
+// } else {
+//     header("Location: M2-user_homepage.php");
+//     exit();
+// }
 
 
 
