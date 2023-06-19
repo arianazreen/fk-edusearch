@@ -1,3 +1,13 @@
+<?php
+  require ('../Module1/database.php');
+?>
+
+<?php
+//check session
+include_once('../Module1/session-check-expert.php');
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>

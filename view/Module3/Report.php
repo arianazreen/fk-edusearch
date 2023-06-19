@@ -1,3 +1,12 @@
+<?php
+  require ('../Module1/database.php');
+?>
+
+<?php
+//check session
+include_once('../Module1/session-check-expert.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -66,29 +75,6 @@
                             <!-- Document Container -->
                             <div class="document-container" id="documentContainer">
                             <!-- Initial Document Box -->
-                                      <?php
-                                // Retrieve publications data from the database
-                                $sql = "SELECT * FROM publications";
-                                $result = mysqli_query($conn, $sql);
-
-                                // Check if the query was successful
-                                if ($result) {
-                                  // Iterate through the retrieved data
-                                  while ($row = mysqli_fetch_assoc($result)) {
-                                    echo "<div class='document-box'>";
-                                    echo "<div class='document-content'>";
-                                    echo $row['publication_title'];
-                                    echo "</div>";
-                                    echo "</div>";
-                                  }
-                                } else {
-                                  // Display an error message if the query fails
-                                  echo "Error executing SQL query: " . mysqli_error($conn);
-                                }
-
-                                // Close the database connection
-                                mysqli_close($conn);
-                                ?>
                             </div>
                             </div>
                         </div>
