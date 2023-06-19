@@ -18,7 +18,7 @@ if (isset($_POST['create_post'])) {
     //echo $alldata;
 
     $sql = "INSERT INTO post (userID, postDate, postTime, postTitle, postCategory, postKeyword, postContent, postStatus) 
-                    VALUES ('$id', '$postDate', '$postTime', '$postTitle', '$postCategory', '$checkbox', '$postContent', 'Submitted')";
+                 VALUES ('$id','$postDate', '$postTime', '$postTitle', '$postCategory', '$checkbox', '$postContent', 'Submitted')";
 
     // $result = mysqli_query($conn, $sql);
 
