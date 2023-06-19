@@ -1,3 +1,13 @@
+<?php
+  require ('../Module1/database.php');
+?>
+
+<?php
+//check session
+include_once('../Module1/session-check-expert.php');
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -53,8 +63,8 @@
                 <div class="col-6 col-lg-8">
                     <div class="card flex-fill w-100">
                       <div class="card-header">
-                          <h2 class="card-title mb-0"> What theoretical framework could be used to study the perception of pre-service teacher students about artificial intelligence?</h2>
-                          <p>Artificial intelligence (AI) refers to the theory and development of computer systems to perform tasks that normally require human intelligence. Because of the massive, often quite unintelligible publicity that it gets, artificial intelligence is almost completely misunderstood by individuals inside the field of Education. ....</p>
+                          <h2 class="card-title mb-0"> Developing an equivalent parallel computing system for comparison of optimization algorithms.</h2>
+                          <p>I am working on a research project in which we are doing a comparative analysis of reinforcement learning (RL) with evolutionary algorithms in solving a nonconvex and nondifferentiable optimization problem with respect....</p>
                           <div class="text-muted small mt-1">From: Nur Maisarah</div>
                           <a href="./Inbox(2).php" button type="accept" class="btn btn-primary" style=" color: white; position: left; background-color: #07A492; font-weight: 400;">Accept</a>
                           <div class="text-muted small mt-1 countdown">

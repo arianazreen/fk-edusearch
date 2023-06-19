@@ -20,7 +20,7 @@
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <!--Nav - Home -->
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="./M2-user_homepage.php">Home</a>
+                  <a class="nav-link" aria-current="page" href="../Module2/M2-user_homepage.php">Home</a>
                 </li>
               </ul>
             </div>
@@ -41,7 +41,7 @@
                   class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
                   aria-labelledby="alertsDropdown"
                 >
-                  <div class="dropdown-menu-header">2 New Notifications</div>
+                  <div class="dropdown-menu-header">1 New Notifications</div>
                   <div class="list-group">
                     <a href="#" class="list-group-item">
                       <div class="row g-0 align-items-center">
@@ -53,8 +53,8 @@
                         <div class="col-10">
                           <div class="text-dark">New Notifications</div>
                           <div class="text-muted small mt-1">
-                          <h2 class="card-title mb-0"> What theoretical framework could be used to study the perception of pre-service teacher students about artificial intelligence?</h2>
-                          <p>Artificial intelligence (AI) refers to the theory and development of computer systems to perform tasks that normally require human intelligence. Because of the massive, often quite unintelligible publicity that it gets, artificial intelligence is almost completely misunderstood by individuals inside the field of Education. ....</p>
+                          <h2 class="card-title mb-0"> Developing an equivalent parallel computing system for comparison of optimization algorithms.</h2>
+                          <p>I am working on a research project in which we are doing a comparative analysis of reinforcement learning (RL) with evolutionary algorithms in solving a nonconvex and nondifferentiable optimization problem with respect....</p>
                           </div>
                           <div class="text-muted small mt-1">4h ago</div>
                         </div>
@@ -92,7 +92,7 @@
                 >
                   <a class="dropdown-item"></a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="/Profile"
+                  <a class="dropdown-item" href="./ExpProfile.php"
                     ><i class="align-middle me-1 fas fa-fw fa-user"></i>
                     Profile</a
                   >
@@ -100,7 +100,7 @@
                     ><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Report </a
                   >
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="logout"
+                  <a class="dropdown-item" href="../Module1/logout-expert.php"
                     ><i
                       class="align-middle me-1 fas fa-fw fa-arrow-alt-circle-right"
                     ></i>

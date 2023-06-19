@@ -34,15 +34,20 @@
                         <i class="align-middle me-1 fas fa-fw fa-comments"></i> <span class="align-middle">Manage Complaint</span>
                     </a>
                 </li>
-                <!-- NOTIFICATIONS -->
+                <!-- VALIDATE USER -->
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="#">
-                        <i class="align-middle me-2 fas fa-fw fa-bell"></i> <span class="align-middle">Notifications</span>
+                    <a data-bs-target="#validate" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                        <i class="align-middle me-2 fas fa-fw fa-bell"></i> <span class="align-middle">Validate</span>
                     </a>
+                    <ul id="validate" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                        <li class="sidebar-item"><a class="sidebar-link" href="../Module1/validate-posts.php">Gen. User Posts</a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="../Module1/validate-genUserProfile.php">Gen. User Profile</a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="../Module1/validate-expertProfile.php">Expert Profile</a></li>
+                    </ul>
                 </li>
-                <!-- <div class="dropdown-divider"></div> -->
+                <!-- <div class="dropdown-divider" style="background-color: #4b5c96;"></div> -->
                 <!-- LOG OUT -->
-                <li class="sidebar-item" style="position: absolute; bottom: 10px; ">
+                <li class="sidebar-item" style="position: absolute; bottom: 10px;">
                     <a class="sidebar-link" href="../Module1/logout-admin.php">
                         <i class="align-middle me-2 fas fa-fw fa-sign-out-alt"></i> <span class="align-middle">Log Out</span>
                     </a>
