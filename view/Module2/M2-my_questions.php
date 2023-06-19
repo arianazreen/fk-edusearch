@@ -20,6 +20,7 @@ $id = $_SESSION['username'];
   <meta name="author" content="Bootlab">
 
   <title>My Questions</title>
+  <link rel="shortcut icon" href="../../dist/img/logo/fk-edusearch-border.png" type="image/x-icon">
   <link rel="stylesheet" href="../../dist/css/modern.css">
   <link href="../../dist/css/modernModule5.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -42,7 +43,7 @@ $id = $_SESSION['username'];
     <div class="main">
       <!-- Navifation Bar -->
       <?php
-      include_once('../Module5/navbarUser.php');
+      include_once('M2-navbarUser.php');
       ?>
 
       <!--Content -->
@@ -86,7 +87,7 @@ $id = $_SESSION['username'];
                   <div class="card flex-fill w-100">
                     <div class="card-header">
                       <div class="post-box">
-                        <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
+                        <img class="profile-img" src="../../dist/img/avatars/avatar-2.jpg" alt="Profile Image">
                         <div class="post-info">
                           <div class="name"><?php echo $userName ?></div>
                           <div class="date"><?php echo "$postDate"; ?> | <?php echo "$postTime"; ?></div>
@@ -148,9 +149,8 @@ $id = $_SESSION['username'];
                                             <br>
                                             <div class="modal-footer">
                                               <input type="hidden" name="update_post" value="true">
-                                              <button type="submit" class="btn btn-primary">Save Changes</button>
-                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-
+                                              <button type="button" class="btn" style="position:absolute; right: 328px; background-color: #ADDCD7; color: #000; font-weight: 400;" data-bs-dismiss="modal">Cancel</button>
+                                              <button type="submit" class="btn" style=" position:relative; right: 205px;  background-color: #07A492; color: white; font-weight: 400;">Save</button>
                                             </div>
                                           </form>
                                         </div>
@@ -175,13 +175,12 @@ $id = $_SESSION['username'];
                                           <div class="drop" style="width:150px; height:150px; right: 50px; background-color:#fff2f2; display:flex; justify-content:center; align-items:center; border-radius: 50%; margin: -25px 0 20px 200px; position:relative; box-shadow: inset 2px 7px 6px rgba(0,0,0,0.1);">
                                             <i class="align-middle fas fa-fw fa-trash-alt" style="font-size: 65px; color: #D90000;"></i>
                                           </div>
-                                          <p class="mb-0" style="font-weight: 450; font-size: 18px;"> Are you sure wish to delete this data. <br> This is process cannot be undo.</p>
+                                          <p class="mb-0" style="font-weight: 450; font-size: 18px; text-align:center;">Are you wish to delete this post ? <br> This process cannot be undone.</p>
                                       </div>
                                       <div class="modal-footer">
                                         <input type="hidden" name="delete_post" value="true">
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-
+                                        <button type="submit" class="btn" name="delete" style="color: #fff; position:absolute; right: 300px; background-color: #DA3131; font-weight: 400; border-radius: 7px; width: 80px;">Delete</button>
+                                        <button type="button" class="btn" data-bs-dismiss="modal" style=" color: #000; position:relative; right: 180px; background-color: #B2B2B4; font-weight: 400; border-radius: 7px; width: 80px;">Cancel</button>
                                       </div>
                                       </form>
                                     </div>

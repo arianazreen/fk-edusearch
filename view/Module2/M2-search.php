@@ -8,7 +8,7 @@ include_once('../Module1/session-check-genUser.php');
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <meta charset="utf-8">
@@ -17,7 +17,8 @@ include_once('../Module1/session-check-genUser.php');
   <meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
   <meta name="author" content="Bootlab">
 
-  <title> Search Post </title>
+  <title> Search </title>
+  <link rel="shortcut icon" href="../../dist/img/logo/fk-edusearch-border.png" type="image/x-icon">
   <link rel="stylesheet" href="../../dist/css/modern.css">
   <link href="../../dist/css/modernModule5.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -30,8 +31,8 @@ include_once('../Module1/session-check-genUser.php');
   </style>
   <script src="../../dist/js/settings.js"></script>
   <!-- END SETTINGS -->
-</head>
 
+</head>
 
 <body>
   <div class="wrapper">
@@ -39,28 +40,39 @@ include_once('../Module1/session-check-genUser.php');
     <div class="main">
       <!-- Navifation Bar -->
       <?php
-      include_once('../Module5/navbarUser.php');
+      include_once('M2-navbarUser.php');
       ?>
-
-
-      <!--Content -->
       <main class="content">
         <div class="container-fluid">
-          <div class="header">
-            <h1 class="header-title"> Searching <?php echo $postKeyword ?></h1>
-          </div>
           <div class="row">
-            <div class="center">
-              <div class="col-12 col-lg-10">
-                <?php
+
+            <div class="col-12 col-lg-10">
+              <?php
+              if (isset($_GET['keyword'])) {
+                // Retrieve the search keyword from the query parameter
+                $keyword = $_GET['keyword'];
+
+                // Check connection
+                if ($conn->connect_error) {
+                  die("Connection failed: " . $conn->connect_error);
+                }
+
+                // Sanitize the search keyword to prevent SQL injection
+                $searchKeyword = $conn->real_escape_string($keyword);
+
+                // Construct the SQL query
                 $sql = "SELECT post.id, generaluser.userID, generaluser.userName, post.postDate, post.postTime, post.postTitle, post.postCategory, post.postKeyword,
-                  post.postContent, post.postStatus, post.postLikes, post.postComments, post.postDate
-                  FROM post
-                  INNER JOIN generaluser ON post.userID = generaluser.userID
-                  ORDER BY post.postDate DESC, post.postTime DESC";
-                $result = mysqli_query($conn, $sql);
-                if (mysqli_num_rows($result) > 0) {
-                  while ($row = mysqli_fetch_assoc($result)) {
+            post.postContent, post.postStatus, post.postDate, post.postLikes, post.postComments FROM post INNER JOIN generaluser ON post.userID = generaluser.userID 
+            WHERE post.postKeyword LIKE '%$searchKeyword%'
+            ORDER BY post.postDate DESC, post.postTime DESC";
+
+                // Execute the query
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                  // Display the search results
+
+                  while ($row = $result->fetch_assoc()) {
                     $id = $row['id'];
                     $userID = $row['userID'];
                     $userName = $row['userName'];
@@ -90,11 +102,16 @@ include_once('../Module1/session-check-genUser.php');
                       $updateCommentsSql = "UPDATE post SET postComments = $postComments WHERE id = $id";
                       mysqli_query($conn, $updateCommentsSql);
                     }
-                ?>
+              ?>
+                    <div class="header">
+                      <h1 class="header-title">Searching for : <?php echo $postKeyword ?></h1>
+
+                    </div>
+
                     <div class="card flex-fill w-100">
                       <div class="card-header">
                         <div class="post-box">
-                          <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
+                          <img class="profile-img" src="../../dist/img/avatars/avatar-2.jpg" alt="Profile Image">
                           <div class="post-info">
                             <div class="name"><?php echo $userName ?></div>
                             <div class="date"><?php echo "$postDate"; ?> | <?php echo "$postTime"; ?></div>
@@ -116,34 +133,32 @@ include_once('../Module1/session-check-genUser.php');
                         </div>
                       </div>
                     </div>
-                <?php
+              <?php
                   }
                 }
-                ?>
-              </div>
+              }
+              ?>
             </div>
           </div>
         </div>
-      </main>
-
-
-
-
-
-      </main>
-
-      <!--Footer-->
-      <footer class="footer">
-        <div class="container-fluid">
-          <div class="row text-muted">
-            <div class="col-8 text-start"></div>
-            <div class="col-4 text-end">
-              <p class="mb-0">&copy; 2023 - UNIVERSITI MALAYSIA PAHANG</p>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
+  </div>
+  </div>
+  </div>
+  </main>
+
+  <!--Footer-->
+  <footer class="footer">
+    <div class="container-fluid">
+      <div class="row text-muted">
+        <div class="col-8 text-start"></div>
+        <div class="col-4 text-end">
+          <p class="mb-0">&copy; 2023 - UNIVERSITI MALAYSIA PAHANG</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </div>
   </div>
 
   <svg width="0" height="0" style="position: absolute">
@@ -188,11 +203,13 @@ include_once('../Module1/session-check-genUser.php');
       input.value = '';
     }
   </script>
-
-
-  <!--css-->
-
   <style>
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     .icon-container {
       display: flex;
       align-items: center;

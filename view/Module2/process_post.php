@@ -116,6 +116,44 @@ if (isset($_POST['delete_post'])) {
     mysqli_close($conn);
 }
 
+// if (isset($_GET['keyword'])) {
+//     // Retrieve the search keyword from the query parameter
+//     $keyword = $_GET['keyword'];
+
+//     // Check connection
+//     if ($conn->connect_error) {
+//         die("Connection failed: " . $conn->connect_error);
+//     }
+
+//     // Sanitize the search keyword to prevent SQL injection
+//     $searchKeyword = $conn->real_escape_string($keyword);
+
+//     // Construct the SQL query
+//     $sql = "SELECT post.id, generaluser.userID, generaluser.userName, post.postDate, post.postTime, post.postTitle, post.postCategory, post.postKeyword,
+//             post.postContent, post.postStatus, post.postDate FROM post INNER JOIN generaluser ON post.userID = generaluser.userID 
+//             WHERE post.postKeyword LIKE '%$searchKeyword%'
+//             ORDER BY post.postDate DESC, post.postTime DESC";
+
+//     // Execute the query
+//     $result = $conn->query($sql);
+
+//     if ($result->num_rows > 0) {
+//         // Store the search results in an array
+//         $searchResults = array();
+//         while ($row = $result->fetch_assoc()) {
+//             $searchResults[] = $row;
+//         }
+//     } else {
+//         $searchResults = array();
+//     }
+
+//     // Free the result set
+//     $result->free_result();
+
+//     // Close the database connection
+//     $conn->close();
+// }
+
 
 
 if (isset($_GET['keyword'])) {
@@ -159,7 +197,7 @@ if (isset($_GET['keyword'])) {
             <div class="card flex-fill w-100">
               <div class="card-header">
                 <div class="post-box">
-                  <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image" style="width:30px; height:30px;">
+                  <img class="profile-img" src="../../dist/img/avatars/avatar-2.jpg" alt="Profile Image" style="width:30px; height:30px;">
                   <div class="post-info">
                     <div class="name">' . $userName . '</div>
                     <div class="date">' . $postDate . ' | ' . $postTime . '</div>
@@ -191,36 +229,6 @@ if (isset($_GET['keyword'])) {
     // Close the database connection
     $conn->close();
 }
-
-
-
-// //Search funtion for homepage (by keyword)
-// if (isset($_GET['search_keyword'])) {
-//     $searchKeyword = $_GET["search_keyword"];
-
-//     $sql = "SELECT * FROM post WHERE postKeyword LIKE '%$searchKeyword%' ORDER BY postKeyword OR postCategory";
-//     $result = mysqli_query($conn, $sql);
-
-//     if ($result) {
-//         while ($row = mysqli_fetch_assoc($result)) {
-//             echo "Post ID: " . $row["postID"] . "<br>";
-//             echo "Post Title: " . $row["postTitle"] . "<br>";
-//             echo "Post Category: " . $row["postCategory"] . "<br>";
-//             echo "Post Keyword: " . $row["postKeyword"] . "<br>";
-//             echo "Post Content: " . $row["postContent"] . "<br>";
-//             echo "<hr>";
-
-//             exit();
-//         }
-//     } else {
-//         echo "<script>alert('No suitable data.');</script>" . mysqli_error($conn);
-//     }
-
-//     mysqli_close($conn);
-// } else {
-//     header("Location: M2-user_homepage.php");
-//     exit();
-// }
 
 
 

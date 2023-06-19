@@ -33,6 +33,7 @@ $overallTotal = $postNetworkCount + $postSoftwareCount + $postGraphicsCount;
   <meta name="author" content="Bootlab">
 
   <title>Manage User Profile</title>
+  <link rel="shortcut icon" href="../../dist/img/logo/fk-edusearch-border.png" type="image/x-icon">
   <link rel="stylesheet" href="../../dist/css/modern.css">
   <link href="../../dist/css/modernModule5.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -54,7 +55,7 @@ $overallTotal = $postNetworkCount + $postSoftwareCount + $postGraphicsCount;
     <div class="main">
       <!-- Navifation Bar -->
       <?php
-      include_once('../Module5/navbarUser.php');
+      include_once('M2-navbarUser.php');
       ?>
 
       <!--Content -->
@@ -110,7 +111,7 @@ $overallTotal = $postNetworkCount + $postSoftwareCount + $postGraphicsCount;
             ?>
 
                   <div class="post-box">
-                    <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
+                    <img class="profile-img" src="../../dist/img/avatars/avatar-2.jpg" alt="Profile Image">
                     <div class="post-info">
                       <div class="name"><?php echo $userName ?></div>
                       <div class="role"><?php echo $userRole ?> | <?php echo $userCourse ?></div>
@@ -155,9 +156,8 @@ $overallTotal = $postNetworkCount + $postSoftwareCount + $postGraphicsCount;
                                   <br>
                                   <div class="modal-footer">
                                     <input type="hidden" name="update_profile" value="true">
-                                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Cancel</button>
-
+                                    <button type="button" class="btn" style="position:absolute; right: 328px; background-color: #ADDCD7; color: #000; font-weight: 400;" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn" style=" position:relative; right: 205px;  background-color: #07A492; color: white; font-weight: 400;">Save</button>
                                   </div>
                                 </div>
                               </form>

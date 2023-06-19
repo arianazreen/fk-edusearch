@@ -12,7 +12,7 @@ if (isset($_POST['update_profile'])) {
     // $userID = $_POST['userID'];
     $userName = $_POST['userName'];
     $userEmail = $_POST['userEmail'];
-    $userRole = $_POST['userRole'];
+    // $userRole = $_POST['userRole'];
     $userPhoneNo = $_POST['userPhoneNo'];
     $userPass = $_POST['userPass'];
     // $userSocMedia = $_POST['userSocMedia'];

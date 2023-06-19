@@ -18,6 +18,7 @@ include_once('../Module1/session-check-genUser.php');
   <meta name="author" content="Bootlab">
 
   <title> Homepage </title>
+  <link rel="shortcut icon" href="../../dist/img/logo/fk-edusearch-border.png" type="image/x-icon">
   <link rel="stylesheet" href="../../dist/css/modern.css">
   <link href="../../dist/css/modernModule5.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -39,7 +40,7 @@ include_once('../Module1/session-check-genUser.php');
     <div class="main">
       <!-- Navifation Bar -->
       <?php
-      include_once('../Module5/navbarUser.php');
+      include_once('M2-navbarUser.php');
       ?>
 
 
