@@ -13,7 +13,7 @@
 	<meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
 	<meta name="author" content="Bootlab">
 
-	<title>Validate User Posts</title>
+	<title>Validate General User Profile</title>
 	<link rel="shortcut icon" href="../../dist/img/logo/fk-edusearch-border.png" type="image/x-icon">
 
 	<!-- Link to CSS file -->
@@ -58,7 +58,7 @@
 					<!-- HEADER -->
 					<div class="header" style="margin-bottom: 80px;">
 						<h1 class="header-title" style="color: black; border: none; border-left: 14px solid #1D2F3A; padding-left: 10px;">
-							Validate General User Posts
+							Validate General User Profile
 						</h1>
 					</div>
 					<div class="row">
@@ -69,8 +69,8 @@
 									<thead>
 										<tr>
 											<th>Date</th>
-											<th>Category</th>
-											<th>Title</th>
+											<th>User ID</th>
+											<th>User Name</th>
 											<th>Status</th>
 											<th style="text-align: center;">Actions</th>
 										</tr>
@@ -80,9 +80,10 @@
 											include ("database.php");
 
 											$query = "SELECT generaluser.id, generaluser.userID, generaluser.userName, 
-															post.id, post.postID, post.postDate, post.postTime, post.postTitle, post.postCategory, post.postKeyword, post.postContent, post.postStatus
+															userprofile.id, userprofile.userProfileID, userprofile.userResearchArea, userprofile.userAcademicStatus, userprofile.userSocMedia, 
+															userprofile.upValidationStatus, userprofile.upSubmitDate, userprofile.upSubmitTime
 												   FROM generaluser 
-												   INNER JOIN post ON generaluser.userID=post.userID";
+												   INNER JOIN userprofile ON generaluser.userID=userprofile.userID";
 
 											$result = mysqli_query($conn,$query);
 
@@ -90,30 +91,27 @@
 												$id = $row["id"];
 												$userID = $row["userID"];
 												$userName = $row["userName"];
-												$postID = $row["postID"];
-												$postDate = $row["postDate"];
-												$postTime = $row["postTime"];
-												$postTitle = $row["postTitle"];
-												$postCategory = $row["postCategory"];
-												$postKeyword = $row["postKeyword"];
-												$postContent = $row["postContent"];
-												$postStatus = $row["postStatus"];
+												$userProfileID = $row["userProfileID"];
+												$userResearchArea = $row["userResearchArea"];
+												$userAcademicStatus = $row["userAcademicStatus"];
+												$userSocMedia = $row["userSocMedia"];
+												$upValidationStatus = $row["upValidationStatus"];
+												$upSubmitDate = $row["upSubmitDate"];
+												$upSubmitTime = $row["upSubmitTime"];
 										?>
 
 										<tr>
-											<td style="width: 100px;"><?php echo $postDate; ?></td>
-											<td><?php echo $postCategory; ?></td>
-											<td><?php echo $postTitle; ?></td>
-											<td style="width: 140px;">
+											<td><?php echo $upSubmitDate; ?></td>
+											<td><?php echo $userID; ?></td>
+											<td><?php echo $userName; ?></td>
+											<td>
 												<?php
-													if ($postStatus == "Submitted") :
-														echo "<i class='fas fa-fw fa-clock' style='color: #ECC707;'></i>  Submitted";
-													elseif ($postStatus == "Pending") :
+													if ($upValidationStatus == "Approved") :
 														echo "<i class='fas fa-fw fa-check-circle' style='color: #32A377;'></i>  Approved";
-													elseif ($postStatus == "Disapproved") :
+													elseif ($upValidationStatus == "Disapproved") :
 														echo "<i class='fas fa-fw fa-times-circle' style='color: #EA030B;'></i>  Disapproved";
 													else :
-														echo "<i class='fas fa-fw fa-lock' style='color: lightgray;'></i> $postStatus";
+														echo "<i class='fas fa-fw fa-clock' style='color: #ECC707;'></i>  Pending";
 													endif;
 												?>
 											</td>
@@ -124,7 +122,7 @@
 													<i class='align-middle fas fa-fw fa-eye' style='color: black; margin-right: 12px;'></i></a>"; 
 												?>
 												<!-- BUTTON MODAL UPDATE -->
-												<?php if ($postStatus == "Submitted") : ?>
+												<?php if ($upValidationStatus == "Pending") : ?>
 													<?php echo "<a href='updateModal' data-bs-toggle='modal' data-bs-target='#ModalUpdate-$id'>
 														<i class='align-middle fas fa-fw fa-edit' style='color: blue; margin-right: 12px;'></i></a>"; 
 													?>
@@ -141,7 +139,7 @@
 											<div class="modal-dialog modal-dialog-centered" role="document">
 												<div class="modal-content">
 													<div class="modal-header">
-														<h3 class="modal-title" style="position: relative; left: 220px;">View Post</h3>
+														<h3 class="modal-title" style="position: relative; left: 210px;">View Profile</h3>
 														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 													</div>
 													<div class="modal-body m-3">
@@ -149,32 +147,28 @@
 															<input type="hidden" name="id" value="<?php echo $id; ?>"/>
 															<div class="row">
 															<div class="mb-3 col-md-4">
-																	<label>User ID</label>
+																<label>User ID</label>
 																	<input type="text" class="form-control" name="userID" value="<?php echo $userID; ?>" readonly>
 																</div>
 																<div class="mb-3 col-md-8">
 																	<label>User Name</label>
 																	<input type="text" class="form-control" name="userName" value="<?php echo $userName; ?>" readonly>
 																</div>
-																<div class="mb-3 col-md-4">
-																	<label>Post ID</label>
-																	<input type="text" class="form-control" name="postID" value="<?php echo $postID; ?>" readonly>
-																</div>
-																<div class="mb-3 col-md-8">
-																	<label>Keyword</label>
-																	<input type="text" class="form-control" name="postKeyword" value="<?php echo $postKeyword; ?>" readonly>
+																<div class="mb-3 col-md-12">
+																	<label>Research Area</label>
+																	<input type="text" class="form-control" name="userResearchArea" value="<?php echo $userResearchArea; ?>" readonly>
 																</div>
 																<div class="mb-3 col-md-12">
-																	<label>Title</label>
-																	<input type="text" class="form-control" name="postTitle" value="<?php echo $postTitle; ?>" readonly>
+																	<label>Academic Status</label>
+																	<input type="text" class="form-control" name="userAcademicStatus" value="<?php echo $userAcademicStatus; ?>" readonly>
 																</div>
 																<div class="mb-3 col-md-12">
-																	<label>Content</label>
-																	<textarea class="form-control" rows="3" name="postContent" readonly><?php echo $postContent; ?></textarea>
+																	<label>Social Media</label>
+																	<input type="text" class="form-control" name="userSocMedia" value="<?php echo $userSocMedia; ?>" readonly>
 																</div>
 																<div class="mb-3 col-md-12">
 																	<label>Status</label>
-																	<input type="text" class="form-control" name="postStatus" value="<?php echo $postStatus; ?>" readonly>
+																	<input type="text" class="form-control" name="upValidationStatus" value="<?php echo $upValidationStatus; ?>" readonly>
 																</div>
 															</div>
 													</div>
@@ -192,7 +186,7 @@
 											<div class="modal-dialog modal-dialog-centered" role="document">
 												<div class="modal-content">
 													<div class="modal-header">
-														<h3 class="modal-title" style="position: relative; left: 180px;">Update Post Status</h3>
+														<h3 class="modal-title" style="position: relative; left: 210px;">Update Status</h3>
 														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 													</div>
 													<div class="modal-body m-3">
@@ -208,30 +202,26 @@
 																	<label>User Name</label>
 																	<input type="text" class="form-control" name="userName" value="<?php echo $userName; ?>" readonly>
 																</div>
-																<div class="mb-3 col-md-4">
-																	<label>Post ID</label>
-																	<input type="text" class="form-control" name="postID" value="<?php echo $postID; ?>" readonly>
-																</div>
-																<div class="mb-3 col-md-8">
-																	<label>Keyword</label>
-																	<input type="text" class="form-control" name="postKeyword" value="<?php echo $postKeyword; ?>" readonly>
+																<div class="mb-3 col-md-12">
+																	<label>Research Area</label>
+																	<input type="text" class="form-control" name="userResearchArea" value="<?php echo $userResearchArea; ?>" readonly>
 																</div>
 																<div class="mb-3 col-md-12">
-																	<label>Title</label>
-																	<input type="text" class="form-control" name="postTitle" value="<?php echo $postTitle; ?>" readonly>
+																	<label>Academic Status</label>
+																	<input type="text" class="form-control" name="userAcademicStatus" value="<?php echo $userAcademicStatus; ?>" readonly>
 																</div>
 																<div class="mb-3 col-md-12">
-																	<label>Content</label>
-																	<textarea class="form-control" rows="3" name="postContent" readonly><?php echo $postContent; ?></textarea>
+																	<label>Social Media</label>
+																	<input type="text" class="form-control" name="userSocMedia" value="<?php echo $userSocMedia; ?>" readonly>
 																</div>
 																<div class="mb-3 col-md-12">
 																	<label>Status</label>
-																	<select class="form-select" name ="postStatus" aria-label="Default select example">
+																	<select class="form-select" name ="upValidationStatus" aria-label="Default select example">
 																		<?php
-																			if($postStatus == "Submitted") { 
+																			if($upValidationStatus == "Pending") { 
 																		?>
-																				<option hidden="" value="Submitted" selected>Submitted</option>
-																				<option value="Pending">Approved</option>
+																				<option hidden="" value="Pending" selected>Pending</option>
+																				<option value="Approved">Approved</option>
 																				<option value="Disapproved">Disapproved</option>
 																		<?php 
 																			}
@@ -243,7 +233,7 @@
 													</div>
 													<!-- end modal body -->
 													<div class="modal-footer">
-														<input id="button-submit" type="submit" name="update-postStatus" value="UPDATE" style="position: absolute; right: 280px;">
+														<input id="button-submit" type="submit" name="update-genUserStatus" value="UPDATE" style="position: absolute; right: 280px;">
 														<input id="button-cancel" type="button" value="CANCEL" data-bs-dismiss="modal" style="position: relative; right: 160px;">
 													</div>
 														</form>

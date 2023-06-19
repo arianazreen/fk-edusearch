@@ -26,6 +26,8 @@ $totalBCG = mysqli_query($conn, "SELECT * FROM generaluser WHERE userCourse = 'B
 
 	<title>User Activity</title>
 	<link rel="stylesheet" href="../../dist/css/style.css">
+	<link href="../../dist/css/modern-admin.css" rel="stylesheet">
+
 
 	<style>
 		body {
@@ -44,60 +46,9 @@ $totalBCG = mysqli_query($conn, "SELECT * FROM generaluser WHERE userCourse = 'B
 
 	<div class="wrapper">
 		<!-- NAVIGATION SIDE BAR -->
-		<nav id="sidebar" class="sidebar">
-			<div class="sidebar-content">
-				<div class="sidebar-user">
-					<img src="../../dist/img/logo/fk-edusearch-border.png" alt="FK-EduSearch Logo" />
-					<div class="fw-bold">FK-EDUSEARCH</div>
-				</div>
-
-				<ul class="sidebar-nav">
-					<div class="dropdown-divider"></div>
-
-					<!-- REPORT -->
-					<li class="sidebar-item">
-						<a data-bs-target="#report" data-bs-toggle="collapse" class="sidebar-link collapsed">
-							<i class="align-middle me-2 fas fa-fw fa-file-contract"></i> <span class="align-middle">Report</span>
-						</a>
-						<ul id="report" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link active" href="../Module4/user-activity.php">User Activity</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="../Module1/system-performance.php">System Performance</a></li>
-						</ul>
-					</li>
-
-					<!-- MANAGE USER PROFILE -->
-					<li class="sidebar-item">
-						<a data-bs-target="#manageuser" data-bs-toggle="collapse" class="sidebar-link collapsed">
-							<i class="align-middle me-2 fas fa-fw fa-users-cog"></i> <span class="align-middle">Manage User Profile</span>
-						</a>
-						<ul id="manageuser" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link" href="../Module1/manage-genUser.php">General User</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="../Module1/manage-expert.php">Expert</a></li>
-						</ul>
-					</li>
-
-					<!-- MANAGE COMPLAINT -->
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="../Module4/manage-complaint.php">
-							<i class="align-middle me-1 fas fa-fw fa-comments"></i> <span class="align-middle">Manage Complaint</span>
-						</a>
-					</li>
-					<!-- NOTIFICATIONS -->
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="#">
-							<i class="align-middle me-2 fas fa-fw fa-bell"></i> <span class="align-middle">Notifications</span>
-						</a>
-					</li>
-
-					<!-- LOG OUT -->
-					<li class="sidebar-item" style="position: absolute; bottom: 10px; ">
-						<a class="sidebar-link" href="../Module1/logout-admin.php">
-							<i class="align-middle me-2 fas fa-fw fa-sign-out-alt"></i> <span class="align-middle">Log Out</span>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
+		<?php
+		include_once('../Module1/navbar.php');
+		?>
 
 		<!-- CONTENT -->
 		<div class="main">
@@ -111,7 +62,7 @@ $totalBCG = mysqli_query($conn, "SELECT * FROM generaluser WHERE userCourse = 'B
 				<div class="container-fluid">
 
 					<div class="header">
-						<h1 class="header-title">
+						<h1 class="header-title" style="color:black;">
 							User Activity
 						</h1>
 					</div>
@@ -124,7 +75,7 @@ $totalBCG = mysqli_query($conn, "SELECT * FROM generaluser WHERE userCourse = 'B
 								<div class="card-body">
 									<div class="row">
 										<div class="col mt-0">
-											<h5 class="card-title">Posts</h5>
+											<h5 class="card-title" style="font-size: 20px;">Posts</h5>
 											<div class="card-divider"></div>
 										</div>
 									</div>
@@ -138,7 +89,7 @@ $totalBCG = mysqli_query($conn, "SELECT * FROM generaluser WHERE userCourse = 'B
 									$currentMonthPosts = $row['posts'];
 									?>
 
-									<h1 class="display-5 mt-1 mb-3"><?php echo $currentMonthPosts; ?></h1>
+									<h1 class="display-5 mt-1 mb-3" style="font-weight: 400;"><?php echo $currentMonthPosts; ?></h1>
 									<div class="mb-0">
 
 										<?php
@@ -187,7 +138,7 @@ $totalBCG = mysqli_query($conn, "SELECT * FROM generaluser WHERE userCourse = 'B
 								<div class="card-body">
 									<div class="row">
 										<div class="col mt-0">
-											<h5 class="card-title">Comments</h5>
+											<h5 class="card-title" style="font-size: 20px;">Comments</h5>
 											<div class="card-divider"></div>
 										</div>
 									</div>
@@ -201,7 +152,7 @@ $totalBCG = mysqli_query($conn, "SELECT * FROM generaluser WHERE userCourse = 'B
 									$currentMonthComments = $row['comment'];
 									?>
 
-									<h1 class="display-5 mt-1 mb-3"><?php echo $currentMonthComments; ?></h1>
+									<h1 class="display-5 mt-1 mb-3" style="font-weight: 400;"><?php echo $currentMonthComments; ?></h1>
 									<div class="mb-0">
 
 										<?php
@@ -247,7 +198,7 @@ $totalBCG = mysqli_query($conn, "SELECT * FROM generaluser WHERE userCourse = 'B
 								<div class="card-body">
 									<div class="row">
 										<div class="col mt-0">
-											<h5 class="card-title">Likes</h5>
+											<h5 class="card-title" style="font-size: 20px;">Likes</h5>
 											<div class="card-divider"></div>
 										</div>
 									</div>
@@ -260,7 +211,7 @@ $totalBCG = mysqli_query($conn, "SELECT * FROM generaluser WHERE userCourse = 'B
 									$currentMonthLikes = $row['likes'];
 									?>
 
-									<h1 class="display-5 mt-1 mb-3"><?php echo $currentMonthLikes; ?></h1>
+									<h1 class="display-5 mt-1 mb-3" style="font-weight: 400;"><?php echo $currentMonthLikes; ?></h1>
 									<div class="mb-0">
 
 										<?php
@@ -308,15 +259,29 @@ $totalBCG = mysqli_query($conn, "SELECT * FROM generaluser WHERE userCourse = 'B
 						<div class="col-12 col-lg-8">
 							<div class="card flex-fill w-100">
 								<div class="card-header">
-									<h5 class="card-title">Total Report </h5>
+									<h5 class="card-title" style="font-size: 20px;">Total Report </h5>
 
-									<label for="time-filter">Filter:</label>
+									<div style="display: flex; justify-content: flex-end;">
+										<label for="time-filter">Filter:</label> &nbsp;
 
-									<select id="time-filter" onchange="updateChart()">
-										<option value="day">Day</option>
-										<option value="week">Week</option>
-										<option value="month">Month</option>
-									</select>
+										<select id="time-filter" onchange="updateChart()">
+											<option value="day">Day</option>
+											<option value="week">Week</option>
+											<option value="month">Month</option>
+										</select>
+									</div>
+
+									<div style="display: flex; justify-content: center;">
+										<div>
+											<i class="fas fa-square fa-fw" style="color: #32434d;"></i> Posts &nbsp;
+										</div>
+										<div>
+											<i class="fas fa-square fa-fw" style="color: #00827f;"></i> Comments &nbsp;
+										</div>
+										<div>
+											<i class="fas fa-square fa-fw" style="color: #436b95;"></i> Likes &nbsp;
+										</div>
+									</div>
 
 								</div>
 
@@ -336,7 +301,7 @@ $totalBCG = mysqli_query($conn, "SELECT * FROM generaluser WHERE userCourse = 'B
 							<div class="card flex-fill w-100">
 								<div class="card-header">
 
-									<h5 class="card-title mb-0">Total User</h5>
+									<h5 class="card-title mb-0" style="font-size: 20px;">Total User</h5>
 
 								</div>
 								<div class="card-body d-flex">
@@ -350,15 +315,15 @@ $totalBCG = mysqli_query($conn, "SELECT * FROM generaluser WHERE userCourse = 'B
 										<table class="table mb-0">
 											<tbody>
 												<tr>
-													<td><i class="fas fa-circle text-primary fa-fw"></i> Software Engineering</td>
+													<td><i class="fas fa-circle fa-fw" style="color: #051925;"></i> Software Engineering</td>
 													<td class="text-end"><?php echo mysqli_num_rows($totalBCS); ?></td>
 												</tr>
 												<tr>
-													<td><i class="fas fa-circle text-warning fa-fw"></i> Network & Security</td>
+													<td><i class="fas fa-circle fa-fw" style="color: #25506b;"></i> Network & Security</td>
 													<td class="text-end"><?php echo mysqli_num_rows($totalBCN); ?></td>
 												</tr>
 												<tr>
-													<td><i class="fas fa-circle text-info fa-fw"></i> Graphic & Multimedia</td>
+													<td><i class="fas fa-circle fa-fw" style="color: #bcbcbc;"></i> Graphic & Multimedia</td>
 													<td class="text-end"><?php echo mysqli_num_rows($totalBCG); ?></td>
 												</tr>
 											</tbody>
@@ -406,21 +371,22 @@ $totalBCG = mysqli_query($conn, "SELECT * FROM generaluser WHERE userCourse = 'B
 						label: "Posts",
 						fill: true,
 						backgroundColor: "transparent",
-						borderColor: window.theme.primary,
+						borderColor: "#32434d",
 						data: []
 					}, {
 						label: "Comments",
 						fill: true,
 						backgroundColor: "transparent",
-						borderColor: window.theme.tertiary,
-						borderDash: [4, 4],
-						data: [958, 724, 629, 883, 915, 1214, 1476, 1212, 1554, 2128, 1466, 1827]
+						borderColor: "#00827f",
+						data: [56, 98, 67, 156, 276, 47, 69]
 					}, {
 						label: "Likes",
 						fill: true,
 						backgroundColor: "transparent",
-						borderColor: window.theme.secondary,
-						data: [700, 500, 200, 900, 1000, 2000, 2300, 1400, 560, 800, 990, 250]
+						borderColor: "#436b95",
+						data: [34, 76, 45, 21, 145, 178, 250, 98, 62, 109,
+							44, 32, 82, 198, 300, 43, 23, 77, 123, 76
+						]
 					}]
 				},
 				options: {
@@ -482,7 +448,7 @@ $totalBCG = mysqli_query($conn, "SELECT * FROM generaluser WHERE userCourse = 'B
 
 				if (dayOfWeek >= 1 && dayOfWeek <= 7) {
 					labels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-					data = [340, 1200, 3400, 400, 2132, 999, 768]; // Replace with actual data for each day
+					data = [123, 67, 45, 12, 87, 99, 35]; // Replace with actual data for each day
 				}
 			} else if (timeFilter === 'week') {
 				// Filter data by week
@@ -537,11 +503,8 @@ $totalBCG = mysqli_query($conn, "SELECT * FROM generaluser WHERE userCourse = 'B
 		}
 
 		function getDataForDay(date) {
-			// Replace this with your logic to fetch data for the given date
-			// You can make an API call or retrieve data from a database
 
-			// Example: Assuming you have an array of daily data values
-			var dailyData = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200];
+			var dailyData = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120];
 			var dayOfMonth = date.getDate();
 			var dataValue = dailyData[dayOfMonth - 1]; // Subtract 1 since array index is 0-based
 
@@ -591,24 +554,6 @@ $totalBCG = mysqli_query($conn, "SELECT * FROM generaluser WHERE userCourse = 'B
 			});
 		});
 	</script>
-
-	<!-- Js Active Sidebar Nav 
-	<script>
-
-		var nav = document.getElementById("sidebar");
-		var sidebar = nav.getElementByClassName("sidebar-link");
-
-		for(var i=0; i < sidebar.length; i++)
-		{
-			sidebar[i].addEventListener("click", function()
-			{
-				var current = document.getElementByClassName("active");
-				current[0].className = current[0].className.replace(" active", "");
-  				this.className += " active"; 
-			});
-		}
-
-	</script>-->
 
 </body>
 

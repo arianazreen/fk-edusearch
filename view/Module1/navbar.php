@@ -40,8 +40,8 @@
                         <i class="align-middle me-2 fas fa-fw fa-bell"></i> <span class="align-middle">Validate</span>
                     </a>
                     <ul id="validate" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-                        <li class="sidebar-item"><a class="sidebar-link" href="../Module1/validate-posts.php">Gen. User Posts</a></li>
-                        <li class="sidebar-item"><a class="sidebar-link" href="../Module1/validate-genUserProfile.php">Gen. User Profile</a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="../Module1/validate-posts.php">General User Posts</a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="../Module1/validate-genUserProfile.php">General User Profile</a></li>
                         <li class="sidebar-item"><a class="sidebar-link" href="../Module1/validate-expertProfile.php">Expert Profile</a></li>
                     </ul>
                 </li>
