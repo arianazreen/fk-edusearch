@@ -26,128 +26,9 @@
   <div class="wrapper">
       <!-- CONTENT -->
       <div class="main">
-        <nav class="navbar navbar-expand navbar-theme">
-          <div class="container-fluid">
-            <!--Nav - Logo-->
-            <img src="./imageM3/fk-edusearch-logo.png" alt="imageM3" style="width: 35px; height: 35px;" >
-            <!--Nav - Home (name) -->
-            <a class="navbar-brand" href="#">FK-EDUSEARCH</a>&nbsp;
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <!--Nav - Home -->
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="./M2-user_homepage.php">Home</a>
-                </li>
-              </ul>
-            </div>
-            
-          <!--Nav - Notification -->
-          <div class="navbar-collapse collapse">
-            <ul class="navbar-nav ms-auto mt-2">
-              <li class="nav-item dropdown ms-lg-2">
-                <a
-                  class="nav-link dropdown-toggle position-relative"
-                  href="#"
-                  id="alertsDropdown"
-                  data-bs-toggle="dropdown"
-                >
-                  <i class="align-middle fas fa-bell"></i>
-                </a>
-                <div
-                  class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
-                  aria-labelledby="alertsDropdown"
-                >
-                  <div class="dropdown-menu-header">2 New Notifications</div>
-                  <div class="list-group">
-                    <a href="#" class="list-group-item">
-                      <div class="row g-0 align-items-center">
-                        <div class="col-2">
-                          <i
-                            class="ms-1 text-success fas fa-fw fa-bell-slash"
-                          ></i>
-                        </div>
-                        <div class="col-10">
-                          <div class="text-dark">New Notifications</div>
-                          <div class="text-muted small mt-1">
-                          <h2 class="card-title mb-0"> What theoretical framework could be used to study the perception of pre-service teacher students about artificial intelligence?</h2>
-                          <p>Artificial intelligence (AI) refers to the theory and development of computer systems to perform tasks that normally require human intelligence. Because of the massive, often quite unintelligible publicity that it gets, artificial intelligence is almost completely misunderstood by individuals inside the field of Education. ....</p>
-                          </div>
-                          <div class="text-muted small mt-1">4h ago</div>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="dropdown-menu-footer">
-                    <a href="./Inbox.php" class="text-muted">Show all notifications</a>
-                  </div>
-                </div>
-              </li>
-
-              <!--Nav- Profile 
-              <div class="post-box border-0">
-                        <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image" 
-                         style="width: 35px; height: 25px;" >
-                         <h6>Nurul Najwa</h6>
-                         <p>Student</p>          
-              </div>-->
-
-              <div class="row mt-3 mx-2">
-                <div class="col-sm-4">
-                <img src="./imageM3/profilecirclenew.png" alt="imageM3" style="width: 35px; height: 35px;" >
-                </div>
-                <div class="col-sm-8">
-                      <h6 class="mb-0" style="color: #fff;">Dr.Muaz bin Rizal</h6>
-                      <p style="color: #BBE3E5;">Expert</p>
-                </div>
-              </div>
-
-              <!--Nav - Dropdown Setting -->
-              <li class="nav-item dropdown ms-lg-2">
-                <a
-                  class="nav-link dropdown-toggle position-relative"
-                  href="#"
-                  id="userDropdown"
-                  data-bs-toggle="dropdown"
-                >
-                  <i class="align-middle fas fa-cog"></i>
-                </a>
-                <div
-                  class="dropdown-menu dropdown-menu-end"
-                  aria-labelledby="userDropdown"
-                >
-                  <a class="dropdown-item"></a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="./ManageExpertProfile.php"
-                    ><i class="align-middle me-1 fas fa-fw fa-user"> Profile </i></a
-                  >
-                  <a class="dropdown-item" href="#"
-                    ><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Report </a
-                  >
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="logout"
-                    ><i
-                      class="align-middle me-1 fas fa-fw fa-arrow-alt-circle-right"
-                    ></i>
-                    Sign out</a
-                  >
-                </div>
-              </li>
-            </ul>
-          </div>
-          </div>
-
-        </nav>
+            <?php
+            include_once('navbarExp.php');
+            ?>
 
         <!--Content -->
         <main class="content">
@@ -185,10 +66,29 @@
                             <!-- Document Container -->
                             <div class="document-container" id="documentContainer">
                             <!-- Initial Document Box -->
-                            <div class="document-box">
-                                <div class="document-content">
-                                Document 1
-                                </div>
+                                      <?php
+                                // Retrieve publications data from the database
+                                $sql = "SELECT * FROM publications";
+                                $result = mysqli_query($conn, $sql);
+
+                                // Check if the query was successful
+                                if ($result) {
+                                  // Iterate through the retrieved data
+                                  while ($row = mysqli_fetch_assoc($result)) {
+                                    echo "<div class='document-box'>";
+                                    echo "<div class='document-content'>";
+                                    echo $row['publication_title'];
+                                    echo "</div>";
+                                    echo "</div>";
+                                  }
+                                } else {
+                                  // Display an error message if the query fails
+                                  echo "Error executing SQL query: " . mysqli_error($conn);
+                                }
+
+                                // Close the database connection
+                                mysqli_close($conn);
+                                ?>
                             </div>
                             </div>
                         </div>
@@ -213,20 +113,6 @@
                             <canvas id="chartjs-dashboard-pie"></canvas>
                           </div>
                           <table class="table mb-0">
-                            
-                              <tr>
-                                <td><i class="fas fa-circle text-primary fa-fw" style="color:#43BCAE"></i> Networking</td>
-                                <td class="text-end"> 15 </td>
-                              </tr>
-                              <tr>
-                                <td><i class="fas fa-circle text-warning fa-fw" style="color:#BBE3E5"></i> Software Engineering </td>
-                                <td class="text-end"> 7 </td>
-                              </tr>
-                              <tr>
-                                <td><i class="fas fa-circle text-danger fa-fw" style="color:#1A5D55"></i> Multimedia and Graphics </td>
-                                <td class="text-end"> 14 </td>
-                              </tr>
-                            
                           </table>
                         </div>
                         </div>

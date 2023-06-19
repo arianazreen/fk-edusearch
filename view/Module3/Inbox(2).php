@@ -26,111 +26,13 @@
     <div class="wrapper">
       <!-- CONTENT -->
       <div class="main">
-        <nav class="navbar navbar-expand navbar-theme">
-          <div class="container-fluid">
-            <!--Nav - Logo-->
-            <img src="./imageM3/fk-edusearch-logo.png" alt="imageM3" style="width: 35px; height: 35px;" >
-            <!--Nav - Home (name) -->
-            <a class="navbar-brand" href="#">FK-EDUSEARCH</a>&nbsp;
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <!--Nav - Home -->
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#">Home</a>
-                </li>
-              </ul>
-            </div>
-            
-          <!--Nav - Notification -->
-          <div class="navbar-collapse collapse">
-            <ul class="navbar-nav ms-auto mt-2">
-              <li class="nav-item dropdown ms-lg-2">
-                <a
-                  class="nav-link dropdown-toggle position-relative"
-                  href="#"
-                  id="alertsDropdown"
-                  data-bs-toggle="dropdown"
-                >
-                  <i class="align-middle fas fa-bell"></i>
-                </a>
-                <div
-                  class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
-                  aria-labelledby="alertsDropdown"
-                >
-                </div>
-              </li>
-
-              <!--Nav- Profile 
-              <div class="post-box border-0">
-                        <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image" 
-                         style="width: 35px; height: 25px;" >
-                         <h6>Nurul Najwa</h6>
-                         <p>Student</p>          
-              </div>-->
-
-              <div class="row mt-3 mx-2">
-                <div class="col-sm-4">
-                <img src="./imageM3/profilecirclenew.png" alt="imageM3" style="width: 35px; height: 35px;" >
-  
-                </div>
-                <div class="col-sm-8">
-                      <h6 class="mb-0" style="color: #fff;">Dr.Muaz bin Rizal</h6>
-                      <p style="color: #BBE3E5;">Expert</p>
-                </div>
-              </div>
-
-              <!--Nav - Dropdown Setting -->
-              <li class="nav-item dropdown ms-lg-2">
-                <a
-                  class="nav-link dropdown-toggle position-relative"
-                  href="#"
-                  id="userDropdown"
-                  data-bs-toggle="dropdown"
-                >
-                  <i class="align-middle fas fa-cog"></i>
-                </a>
-                <div
-                  class="dropdown-menu dropdown-menu-end"
-                  aria-labelledby="userDropdown"
-                >
-                  <a class="dropdown-item"></a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="./ManageExpertProfile.php"
-                    ><i class="align-middle me-1 fas fa-fw fa-user"> Profile </i></a
-                  >
-                  <a class="dropdown-item" href="./Report.php"
-                    ><i class="align-middle me-1 fas fa-fw fa-cogs"> Report </i></a
-                  >
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="logout"
-                    ><i
-                      class="align-middle me-1 fas fa-fw fa-arrow-alt-circle-right"
-                    ></i>
-                    Sign out</a
-                  >
-                </div>
-              </li>
-            </ul>
-          </div>
-          </div>
-
-        </nav>
+          <?php
+            include_once('navbarExp.php');
+            ?>
 
         <!--Content -->
         <main class="content">
             <!--1st Row-->
-
           <div class="container-fluid">
               <div class="header">
                 <h1 class="header-title"> INBOX </h1>
@@ -233,7 +135,35 @@
             document.getElementById("demo").innerHTML = "EXPIRED";
         }
         }, 1000);
-        </script>
+
+        $(".create-comment-btn").click(function() {
+    // Prompt the user to enter a comment
+    var comment = prompt("Enter your comment:");
+    if (comment !== null) {
+      // Send the comment to the server using AJAX
+      $.ajax({
+        url: "create_comment.php", // Replace with the actual server-side file to handle the request
+        method: "POST",
+        data: { comment: comment },
+        success: function(response) {
+          // Handle the server response
+          if (response.success) {
+            // Comment created successfully, update the UI or perform any other necessary action
+            console.log("Comment created successfully");
+          } else {
+            // Error occurred while creating the comment, display an error message or perform any other necessary action
+            console.log("Failed to create comment");
+          }
+        },
+        error: function() {
+          // Error occurred during the AJAX request, display an error message or perform any other necessary action
+          console.log("An error occurred");
+        }
+      });
+    }
+  });
+
+</script>
 
      <!--css-->
 

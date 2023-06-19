@@ -13,10 +13,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="#">Home</a>
+                <a class="nav-link " aria-current="page" href="../Module2/M2-user_homepage.php">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../Module2/M2-user_homepage.php">My Question</a>
+                <a class="nav-link" href="../Module2/M2-my_questions.php">My Question</a>
             </li>
             <li class="nav-item dropdown ms-lg-2">
                 <a class="nav-link dropdown-toggle position-relative" href="#" id="userDropdown" data-bs-toggle="dropdown">Complain</a>
@@ -69,7 +69,7 @@
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                 <a class="dropdown-item"></a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/Profile"><i class="align-middle me-1 fas fa-fw fa-user"></i> My Profile</a>
+                <a class="dropdown-item" href="../Module2/M2-manage-user-profile.php"><i class="align-middle me-1 fas fa-fw fa-user"></i> My Profile</a>
                 <a class="dropdown-item" href="#"><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Account Setting</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="../Module1/logout-genUser.php"><i class="align-middle me-1 fas fa-fw fa-arrow-alt-circle-right"></i> Sign out</a>

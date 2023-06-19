@@ -1,3 +1,7 @@
+<?php
+  require ('../Module1/database.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,145 +30,25 @@
     <div class="wrapper">
       <!-- CONTENT -->
       <div class="main">
-        <nav class="navbar navbar-expand navbar-theme">
-          <div class="container-fluid">
-            <!--Nav - Logo-->
-            <img src="./imageM3/fk-edusearch-logo.png" alt="imageM3" style="width: 35px; height: 35px;" >
-            <!--Nav - Home (name) -->
-            <a class="navbar-brand" href="#">FK-EDUSEARCH</a>&nbsp;
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <!--Nav - Home -->
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="./M2-user_homepage.php">Home</a>
-                </li>
-              </ul>
-            </div>
-            
-          <!--Nav - Notification -->
-          <div class="navbar-collapse collapse">
-            <ul class="navbar-nav ms-auto mt-2">
-              <li class="nav-item dropdown ms-lg-2">
-                <a
-                  class="nav-link dropdown-toggle position-relative"
-                  href="#"
-                  id="alertsDropdown"
-                  data-bs-toggle="dropdown"
-                >
-                  <i class="align-middle fas fa-bell"></i>
-                </a>
-                <div
-                  class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
-                  aria-labelledby="alertsDropdown"
-                >
-                  <div class="dropdown-menu-header">2 New Notifications</div>
-                  <div class="list-group">
-                    <a href="#" class="list-group-item">
-                      <div class="row g-0 align-items-center">
-                        <div class="col-2">
-                          <i
-                            class="ms-1 text-success fas fa-fw fa-bell-slash"
-                          ></i>
-                        </div>
-                        <div class="col-10">
-                          <div class="text-dark">New Notifications</div>
-                          <div class="text-muted small mt-1">
-                          <h2 class="card-title mb-0"> What theoretical framework could be used to study the perception of pre-service teacher students about artificial intelligence?</h2>
-                          <p>Artificial intelligence (AI) refers to the theory and development of computer systems to perform tasks that normally require human intelligence. Because of the massive, often quite unintelligible publicity that it gets, artificial intelligence is almost completely misunderstood by individuals inside the field of Education. ....</p>
-                          </div>
-                          <div class="text-muted small mt-1">4h ago</div>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="dropdown-menu-footer">
-                    <a href="./Inbox.php" class="text-muted">Show all notifications</a>
-                  </div>
-                </div>
-              </li>
-
-              <!--Nav- Profile 
-              <div class="post-box border-0">
-                        <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image" 
-                         style="width: 35px; height: 25px;" >
-                         <h6>Nurul Najwa</h6>
-                         <p>Student</p>          
-              </div>-->
-
-              <div class="row mt-3 mx-2">
-                <div class="col-sm-4">
-                <img src="./imageM3/profilecirclenew.png" alt="imageM3" style="width: 35px; height: 35px;" >
-                </div>
-                <div class="col-sm-8">
-                      <h6 class="mb-0" style="color: #fff;">Dr.Muaz bin Rizal</h6>
-                      <p style="color: #BBE3E5;">Expert</p>
-                </div>
-              </div>
-
-              <!--Nav - Dropdown Setting -->
-              <li class="nav-item dropdown ms-lg-2">
-                <a
-                  class="nav-link dropdown-toggle position-relative"
-                  href="#"
-                  id="userDropdown"
-                  data-bs-toggle="dropdown"
-                >
-                  <i class="align-middle fas fa-cog"></i>
-                </a>
-                <div
-                  class="dropdown-menu dropdown-menu-end"
-                  aria-labelledby="userDropdown"
-                >
-                  <a class="dropdown-item"></a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="/Profile"
-                    ><i class="align-middle me-1 fas fa-fw fa-user"></i>
-                    Profile</a
-                  >
-                  <a class="dropdown-item" href="./Report.php"
-                    ><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Report </a
-                  >
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="logout"
-                    ><i
-                      class="align-middle me-1 fas fa-fw fa-arrow-alt-circle-right"
-                    ></i>
-                    Sign out</a
-                  >
-                </div>
-              </li>
-            </ul>
-          </div>
-          </div>
-
-        </nav>
-
+          <?php
+          include_once('navbarExp.php');
+          ?>
         <!--Content -->
         <main class="content">
             <!--1st Row-->
 
-          <div class="container-fluid">
+            <div class="container-fluid">
               <div class="header">
                 <h1 class="header-title"> PROFILE </h1>
               </div>
               <div class="post-box">
-              <img src="./imageM3/profilecirclenew.png" alt="imageM3" style="width: 35px; height: 35px;" >
-            <div class="post-info">
-                    <div class="name"> Dr.Muaz bin Rizal </div>
-                    <div class="date"> Expert | Edit Profile </div>
-                  </div>
+                <img src="./imageM3/profilecirclenew.png" alt="imageM3" style="width: 35px; height: 35px;">
+                <div class="post-info">
+                  <div class="name"> Dr.Muaz bin Rizal </div>
+                  <div class="date"> Expert | Edit Profile </div>
                 </div>
+              </div>
+            </div>
 
                 
                <div class="row">
@@ -205,13 +89,31 @@
                             <table id="myTable">
                                 <thead>
                                   <tr>
-                                    <th>Publication Name</th>
+                                    <th>No</th>
                                     <th>Date</th>
                                     <th>Time</th>
-                                    <th>Column 4</th>
+                                    <th>Publication Name/th>
                                   </tr>
                                 </thead>
-                                <tbody></tbody>
+                                <tbody>
+                                <?php
+                              
+                                      $sql = "SELECT * FROM publications";
+                                      $result = mysqli_query($connection, $sql);
+
+                                      while ($row = mysqli_fetch_assoc($result)) {
+                                        echo "<tr>";
+                                        echo "<td>" . $row['no'] . "</td>";
+                                        echo "<td>" . $row['date'] . "</td>";
+                                        echo "<td>" . $row['time'] . "</td>";
+                                        echo "<td>" . $row['name'] . "</td>";
+                                        echo "<td>i class='fas fa-trash-alt delete-icon' onclick='deletePublication(" . $row['id'] . ")'></i>";
+                                        echo "</tr>";
+                                      }
+
+                                      mysqli_close($connection);
+                                      ?>
+                                </tbody>
                               </table>
                             </div>
                           </div>
@@ -234,9 +136,9 @@
                           <!-- Document Container -->
                           <div class="document-container">
                             <!-- Create new button -->
-                            <button class="create-button btn btn-primary" style=" color: white; position: absolute; left:70%; margin-top:-2%; background-color: #07A492; font-weight: 400;" onclick="createDocumentBox(this)">
+                            <a href="create.php" class="create-button btn btn-primary" style="color: white; position: absolute; left:70%; margin-top:-2%; background-color: #07A492; font-weight: 400;">
                               CREATE NEW
-                            </button>
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -340,82 +242,24 @@
 
      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
  
-    // Get reference to the document container and table
-    const documentContainer = document.querySelector(".document-container");
-    const table = document.getElementById("myTable");
-
-    // Function to create a new document box with buttons and add a row to the table
-    function createDocumentBox(button) {
-      const newDocumentBox = document.createElement("div");
-      newDocumentBox.classList.add("document-box");
-
-      const newButton = document.createElement("button");
-      newButton.classList.add("create-button", "btn", "btn-primary");
-      newButton.textContent = "CREATE NEW";
-      newButton.addEventListener("click", function() {
-        createDocumentBox(newButton);
-      });
-
-      const newButtonWrapper = document.createElement("div");
-      newButtonWrapper.appendChild(newButton);
-
-      const deleteIcon = document.createElement("i");
-      deleteIcon.classList.add("fas", "fa-trash-alt", "delete-icon");
-      deleteIcon.addEventListener("click", function() {
-        deleteDocumentBox(newDocumentBox);
-        if (table.rows.length > 1) {
-          table.deleteRow(newDocumentBox.dataset.rowIndex); // Delete the corresponding table row
-          updateRowNumbers(); // Update the row numbers
-        }
-      });
-
-      newDocumentBox.appendChild(newButtonWrapper);
-      newDocumentBox.appendChild(deleteIcon);
-      documentContainer.appendChild(newDocumentBox);
-
-      // Remove the button from the previous box
-      button.remove();
-
-      // Add a new row to the table
-      const rowCount = table.rows.length;
-      if (rowCount === 1 && table.rows[0].cells.length === 0) {
-        // Remove the empty row
-        table.deleteRow(0);
+    // function deletePublication(id) {
+      
+      var confirmDelete = confirm("Are you sure you want to delete this publication?");
+      if (confirmDelete) {
+        $.ajax({
+          url: "deletelist.php",
+          type: "POST",
+          data: { id: id },
+          success: function(response) {
+            if (response === "success") {
+              // Reload the page after successful deletion
+              location.reload();
+            } else {
+              alert("Failed to delete publication.");
+            }
+          }
+        });
       }
-      const newRow = table.insertRow(rowCount);
-      const cell1 = newRow.insertCell(0);
-      const cell2 = newRow.insertCell(1);
-      const cell3 = newRow.insertCell(2);
-      const cell4 = newRow.insertCell(3);
-
-      cell1.className = "row-number";
-      cell1.innerHTML = rowCount;
-      cell2.innerHTML = "New Row, Cell 2";
-      cell3.innerHTML = "New Row, Cell 3";
-      cell4.innerHTML = "New Row, Cell 4";
-
-      // Set the data-row-index attribute on the document box for deletion reference
-      newDocumentBox.dataset.rowIndex = rowCount;
-
-      // Scroll to the right
-      documentContainer.scrollLeft = documentContainer.scrollWidth;
-    }
-
-    // Function to delete a document box
-    function deleteDocumentBox(documentBox) {
-      documentBox.remove();
-    }
-
-    // Function to update the row numbers in the table
-    function updateRowNumbers() {
-      const rows = table.getElementsByTagName("tr");
-
-      for (let i = 1; i < rows.length; i++) {
-        const row = rows[i];
-        const cell = row.cells[0];
-        cell.innerHTML = i;
-      }
-    }
 	</script>
 
 
