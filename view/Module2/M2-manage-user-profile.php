@@ -1,5 +1,6 @@
 <!--databse file from M1 -->
 <?php
+<<<<<<< Updated upstream
 include_once('../Module1/session-check-genUser.php');
 ?>
 <!--check session from M1 -->
@@ -20,6 +21,13 @@ $postGraphicsCount = mysqli_fetch_assoc($postGraphics)['total'];
 // Calculate overall total posts
 $overallTotal = $postNetworkCount + $postSoftwareCount + $postGraphicsCount;
 
+=======
+require('../Module1/database.php');
+?>
+<!--check session from M1 -->
+<?php
+include_once('../Module1/session-check-genUser.php');
+>>>>>>> Stashed changes
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +39,7 @@ $overallTotal = $postNetworkCount + $postSoftwareCount + $postGraphicsCount;
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
   <meta name="author" content="Bootlab">
+<<<<<<< Updated upstream
 
   <title>Manage User Profile</title>
   <link rel="stylesheet" href="../../dist/css/modern.css">
@@ -124,6 +133,81 @@ $overallTotal = $postNetworkCount + $postSoftwareCount + $postGraphicsCount;
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title" id="staticBackdropLabel">Update Profile</h5>
+=======
+
+  <title>Manage User Profile</title>
+  <link rel="stylesheet" href="../../dist/css/modern.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <style>
+    body {
+      opacity: 0;
+    }
+  </style>
+  <script src="../../dist/js/settings.js"></script>
+  <!-- END SETTINGS -->
+</head>
+
+
+<body>
+  <div class="wrapper">
+    <!-- CONTENT -->
+    <div class="main">
+      <nav class="navbar navbar-expand navbar-theme">
+        <div class="container-fluid">
+          <!--Nav - Logo-->
+          <img src="../../dist/img/logo/fk-edusearch-border.png" style="width: 35px;" height="35px;" alt="FK-EduSearch Logo" />
+          <!--Nav - Home (name) -->
+          <a class="navbar-brand" href="#">FK-EDUSEARCH</a>&nbsp;
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <!--Nav - Home -->
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="M2-user_homepage.php">Home</a>
+              </li>
+              <!--Nav - MY Question -->
+              <li class="nav-item">
+                <a class="nav-link" href="M2-my_questions.php">My Questions</a>
+              </li>
+              <!--Nav - Complaint -->
+              <li class="nav-item dropdown ms-lg-2">
+                <a class="nav-link dropdown-toggle position-relative" href="#" id="userDropdown" data-bs-toggle="dropdown">Complaint</a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                  <a class="dropdown-item"></a>
+                  <a class="dropdown-item" href="../Module5/create.php">New Application</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">History</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Report</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!--Nav - Notification -->
+          <div class="navbar-collapse collapse">
+            <ul class="navbar-nav ms-auto mt-2">
+              <li class="nav-item dropdown ms-lg-2">
+                <a class="nav-link dropdown-toggle position-relative" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
+                  <i class="align-middle fas fa-bell"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
+                  <div class="dropdown-menu-header">4 New Notifications</div>
+                  <div class="list-group">
+                    <a href="#" class="list-group-item">
+                      <div class="row g-0 align-items-center">
+                        <div class="col-2">
+                          <i class="ms-1 text-success fas fa-fw fa-bell-slash"></i>
+                        </div>
+                        <div class="col-10">
+                          <div class="text-dark">New connection</div>
+                          <div class="text-muted small mt-1">
+                            Anna accepted your request.
+>>>>>>> Stashed changes
                           </div>
                           <div class="modal-body">
                             <div class="card-body">
@@ -152,6 +236,7 @@ $overallTotal = $postNetworkCount + $postSoftwareCount + $postGraphicsCount;
                                     <input type="password" class="form-control" name="userPass" id="userPass" value="<?php echo $userPass; ?>">
                                   </div>
 
+<<<<<<< Updated upstream
                                   <br>
                                   <div class="modal-footer">
                                     <input type="hidden" name="update_profile" value="true">
@@ -160,12 +245,130 @@ $overallTotal = $postNetworkCount + $postSoftwareCount + $postGraphicsCount;
 
                                   </div>
                                 </div>
+=======
+              <div class="row mt-3 mx-2">
+                <div class="col-sm-4">
+                  <img class="profile-img rounded-circle" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image" style="width: 35px; height: 35px;">
+                </div>
+                <div class="col-sm-8">
+                  <h6 class="mb-0" style="color: #fff;">Nurul Najwa</h6>
+                  <p style="color: #BBE3E5;">Student</p>
+                </div>
+              </div>
+
+              <!--Nav - Dropdown Setting -->
+              <li class="nav-item dropdown ms-lg-2">
+                <a class="nav-link dropdown-toggle position-relative" href="#" id="userDropdown" data-bs-toggle="dropdown">
+                  <i class="align-middle fas fa-cog"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                  <a class="dropdown-item"></a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="M2-manage-user-profile.php"><i class="align-middle me-1 fas fa-fw fa-user"></i> My
+                    Profile</a>
+                  <a class="dropdown-item" href="#"><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Account
+                    Setting</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="logout"><i class="align-middle me-1 fas fa-fw fa-arrow-alt-circle-right"></i>
+                    Sign out</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </nav>
+
+      <!--Content -->
+      <main class="content">
+        <!--1st Row-->
+
+        <div class="container-fluid">
+          <div class="header">
+            <h1 class="header-title"> Manage User Profile </h1>
+          </div>
+          <?php
+          $sql = "SELECT g.id, g.userRole, g.userName, g.userEmail, g.userPhoneNo,
+                      g.userPass, g.userCourse, e.expertName FROM generaluser g INNER JOIN expert e
+                      ON g.userID = e.userID";
+
+
+          $result = mysqli_query($conn, $sql);
+          if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+              $id = $row['id'];
+              $userRole = $row['userRole'];
+              $userName = $row['userName'];
+              $userEmail = $row['userEmail'];
+              $userPhoneNo = $row['userPhoneNo'];
+              $userPass = $row['userPass'];
+              $userCourse = $row['userCourse'];
+              $expertName = $row['expertName'];
+          ?>
+              <div class="post-box">
+                <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
+                <div class="post-info">
+                  <div class="name"> Nurul Najwa </div>
+                  <div class="date"> Student | Major in Computer System & Networking (BCN) </div>
+                  <div class="right-align">
+
+                    <?php echo "<a href='#updateModal-$id' data-bs-toggle='modal'><i class='align-middle fas fa-fw fa-edit' style='color: blue;'></i></a> "; ?>
+
+                    <!--Edit Profile Modal -->
+                    <div class="modal fade" id="updateModal-<?php echo $id; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Edit Profile</h5>
+                          </div>
+                          <div class="modal-body">
+                            <div class="card-body">
+                              <form method="POST" action="process_profile.php">
+                                <input type="hidden" name="id" value="<?php echo $id; ?>">
+
+                                <div class="row">
+                                  <div class="mb-3 col-md-6">
+                                    <label for="userID">ID : </label>
+                                    <input type="text" class="form-control" name="userID" id="userID" value="<?php echo $userID; ?>" disabled>
+                                  </div>
+                                  <div class="mb-3 col-md-6">
+                                    <label for="userRole">Role : </label>
+                                    <select class="form-select" id="userRole" name="userRole" disabled>
+                                      <option disabled selected><?php echo $userRole; ?></option>
+                                    </select>
+                                  </div>
+                                  <div class="mb-3 col-md-6">
+                                    <label for="userName">Name : </label>
+                                    <input type="text" class="form-control" name="userName" id="userName" value="<?php echo $userName; ?>">
+                                  </div>
+                                  <div class="mb-3 col-md-6">
+                                    <label for="userEmail">Email : </label>
+                                    <input type="text" class="form-control" name="userEmail" id="userEmail" value="<?php echo $userEmail; ?>">
+                                  </div>
+                                  <div class="mb-3 col-md-6">
+                                    <label for="userPass">Password : </label>
+                                    <input type="Password" class="form-control" name="userPass" id="userPass" value="<?php echo $userPass; ?>">
+                                  </div>
+                                  <div class="mb-3 col-md-6">
+                                    <label for="userCourse">Course : </label>
+                                    <select class="form-select" id="userCourse" name="userCourse" disabled>
+                                      <option disabled selected><?php echo $userCourse; ?></option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <br>
+
+                                <input type="hidden" name="update_profile" value="true">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+>>>>>>> Stashed changes
                               </form>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
+<<<<<<< Updated upstream
                     <!-- Closing UPDATE Modal -->
 
 
@@ -209,10 +412,153 @@ $overallTotal = $postNetworkCount + $postSoftwareCount + $postGraphicsCount;
             </ul>
             </p>
           </div>
+=======
+                    <!-- end of edit profilemodal -->
+                  </div>
+                </div>
+              </div>
+          <?php
+            }
+          }
+          ?>
+
+          <div class="row">
+            <div class="col-12 col-lg-8">
+              <div class="card flex-fill w-100">
+                <div class="card-header">
+                  <h2 class="card-title"> About Nurul Najwa </h2>
+                  <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
+                  <p>
+                    Nurul Najwa Bt Husin studies at Faculty of Computing in
+                    Universiti Malaysia Pahang.<br />Does research in
+                    Educational Technology, Business Intelligence, Technology
+                    Adoption, E-Learning, Social Media Use for Learning and
+                    Higher Education.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-lg-4">
+              <div class="card flex-fill w-100">
+                <div class="card-header">
+
+                  <h2 class="card-title mb-0"> Related Topic Research </h2>
+                  <p>
+                  <ul>
+                    <li> Emerging Trends in Computer System Security. </li>
+                    <li> Virtual Reality (VR) and Augmented Reality (AR) application. </li>
+                  </ul>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!--2nd Row-->
+
+          <div class="row">
+            <div class="col-12 col-lg-8">
+              <div class="card flex-fill w-100">
+                <div class="card-header">
+                  <h2 class="card-title"> Total Post </h2>
+                  <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
+                  <div class="card-body d-flex">
+                    <div class="align-self-center w-100">
+                      <div class="py-3">
+
+                        <table class="table mb-0">
+                          <tr>
+                            <td>
+                              <div class="chart chart-xs">
+                                <canvas id="chartjs-dashboard-pie"></canvas>
+                              </div>
+                            </td>
+                            <td><strong>
+                                <h2> Total Post : </h2>
+                              </strong></td>
+                            <td class="text-end"><strong>
+                                <h2> 36 </h2>
+                              </strong></td>
+                          </tr>
+                        </table>
+
+                        <table class="table mb-0">
+
+                          <tr>
+                            <td><i class="fas fa-circle fa-fw" style="color:#43BCAE"></i> Networking</td>
+                            <td class="text-end"> 15 </td>
+                          </tr>
+                          <tr>
+                            <td><i class="fas fa-circle fa-fw" style="color:#BBE3E5"></i> Software Engineering </td>
+                            <td class="text-end"> 7 </td>
+                          </tr>
+                          <tr>
+                            <td><i class="fas fa-circle fa-fw" style="color:#1A5D55"></i> Multimedia and Graphics </td>
+                            <td class="text-end"> 14 </td>
+                          </tr>
+
+
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-lg-4">
+              <div class="card flex-fill w-100">
+                <div class="card-header">
+
+                  <h2 class="card-title mb-0"> Academic Qualifications </h2>
+                  <p>
+                  <ul>
+                    <li> Bachelor in Computer System </li>
+                  </ul>
+                  </p>
+                  <h2 class="card-title mb-0"> Department </h2>
+                  <p>
+                  <ul>
+                    <li> Computer System & Networking (BCN) </li>
+                  </ul>
+                  </p>
+                </div>
+              </div>
+              <div class="card flex-fill w-100">
+                <div class="card-header">
+                  <h2 class="card-title mb-0"> Social Media Account </h2>
+                  <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                  <p> nurul_najwa </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--3rd Row-->
+
+        </div>
+    </div>
+  </div>
+
+
+  </main>
+
+  <!--Footer-->
+  <footer class="footer">
+    <div class="container-fluid">
+      <div class="row text-muted">
+        <div class="col-8 text-start"></div>
+        <div class="col-4 text-end">
+          <p class="mb-0">&copy; 2023 - UNIVERSITI MALAYSIA PAHANG</p>
+>>>>>>> Stashed changes
         </div>
       </div>
     </div>
+  </footer>
+  </div>
+  </div>
 
+<<<<<<< Updated upstream
 
     <!--2nd Row-->
 
@@ -311,6 +657,8 @@ $overallTotal = $postNetworkCount + $postSoftwareCount + $postGraphicsCount;
     </div>
   </footer>
 
+=======
+>>>>>>> Stashed changes
   <svg width="0" height="0" style="position: absolute">
     <defs>
       <symbol viewBox="0 0 512 512" id="ion-ios-pulse-strong">
@@ -329,6 +677,7 @@ $overallTotal = $postNetworkCount + $postSoftwareCount + $postGraphicsCount;
       new Chart(document.getElementById("chartjs-dashboard-pie"), {
         type: 'pie',
         data: {
+<<<<<<< Updated upstream
           labels: ["Computer Sytems & Networking", "Software Engineering", "Multimedia and Graphics"],
           datasets: [{
             data: [<?php echo mysqli_num_rows($postNetwork); ?>,
@@ -339,6 +688,15 @@ $overallTotal = $postNetworkCount + $postSoftwareCount + $postGraphicsCount;
               "#43BCAE",
               "#BBE3E5",
               "#1A5D55"
+=======
+          labels: ["Networking", "Software Engineering", "Multimedia and Graphics"],
+          datasets: [{
+            data: [15, 7, 14],
+            backgroundColor: [
+              "#43BCAE",
+              "#BBE3E5",
+              "#1A5D55",
+>>>>>>> Stashed changes
             ],
             borderColor: "transparent"
           }]
@@ -348,9 +706,55 @@ $overallTotal = $postNetworkCount + $postSoftwareCount + $postGraphicsCount;
           maintainAspectRatio: false,
           legend: {
             display: false
+<<<<<<< Updated upstream
           },
           cutoutPercentage: 75
         }
+=======
+          },
+          cutoutPercentage: 75
+        }
+      });
+    });
+    //js code for edit profile
+    $(document).ready(function() {
+      // Retrieve existing profile data and populate the form
+      $.ajax({
+        url: 'M2-manage-user-profile.php', // PHP script to fetch profile data from the server
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+          $('#name').val(data.name);
+          $('#email').val(data.email);
+          // Set values for other form fields as needed
+        },
+        error: function() {
+          alert('Failed to retrieve profile data.');
+        }
+      });
+
+      // Handle form submission
+      $('#editProfileForm').submit(function(e) {
+        e.preventDefault();
+
+        // Serialize form data
+        var formData = $(this).serialize();
+
+        // Send the updated profile data to the server
+        $.ajax({
+          url: 'M2-manage-user-profile.php', // PHP script to update the profile data
+          type: 'POST',
+          data: formData,
+          success: function(response) {
+            // Handle success response, e.g., show a success message, refresh the page, etc.
+            alert('Profile updated successfully.');
+            location.reload();
+          },
+          error: function() {
+            alert('Failed to update profile.');
+          }
+        });
+>>>>>>> Stashed changes
       });
     });
   </script>
@@ -471,6 +875,7 @@ $overallTotal = $postNetworkCount + $postSoftwareCount + $postGraphicsCount;
     .line {
       border-top: 1px solid #ccc;
     }
+<<<<<<< Updated upstream
 
     .container post {
       width: 400px;
@@ -545,6 +950,8 @@ $overallTotal = $postNetworkCount + $postSoftwareCount + $postGraphicsCount;
       align-items: center;
 
     }
+=======
+>>>>>>> Stashed changes
   </style>
 </body>
 

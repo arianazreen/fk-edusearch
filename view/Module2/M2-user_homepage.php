@@ -6,6 +6,10 @@ require('../Module1/database.php');
 <?php
 include_once('../Module1/session-check-genUser.php');
 ?>
+<!--check session from M1 -->
+<?php
+  include_once('../Module1/session-check-genUser.php');
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -101,6 +105,7 @@ include_once('../Module1/session-check-genUser.php');
                 ?>
                     <div class="card flex-fill w-100">
                       <div class="card-header">
+<<<<<<< Updated upstream
                         <div class="post-box">
                           <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
                           <div class="post-info">
@@ -120,7 +125,20 @@ include_once('../Module1/session-check-genUser.php');
                               </div>
                               <div class="status"><?php echo "$postStatus"; ?></div>
                             </div>
+=======
+                       <h2 class="card-title"> </h2>
+                       <!-- Search Area-->
+                       
+                       <div class="search-container">
+                        <form method="GET" action="process_post.php">
+                          <div class="search-box">
+                            <input type="text" id="search-input" name="search_keyword" placeholder="Search...">
+                            <button type="submit" id="search-button" class="search-icon">
+                              <i class="fa fa-search"></i>
+                            </button>
+>>>>>>> Stashed changes
                           </div>
+                          </form>
                         </div>
                       </div>
                     </div>
