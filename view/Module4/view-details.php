@@ -15,7 +15,7 @@
 	<title>View Complaint Details</title>
 
 	<link href="../../dist/css/style.css" rel="stylesheet">
-	<!-- <link href="../../dist/css/modern-admin.css" rel="stylesheet"> -->
+	<link href="../../dist/css/modern-admin.css" rel="stylesheet">
 
 	<style>
 		body {
