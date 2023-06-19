@@ -53,61 +53,6 @@ if (isset($_POST['update_post'])) {
                     WHERE id = '$id'";
 
 
-<<<<<<< Updated upstream
-=======
-//create post
-if (isset($_POST['create_post'])) {
-    date_default_timezone_set("Asia/Kuala_Lumpur");
-    // $postID = $_POST["postID"];
-    // $userID = $_GET["userID"];
-    $postDate = date("Y-m-d");
-    $postTime = date("H:i a");
-    $postTitle = $_POST["postTitle"];
-    $postCategory = $_POST["postCategory"];
-    $postKeyword = $_POST["postKeyword"];
-    $postContent = $_POST["postContent"];
-
-
-    $checkbox = implode(",", $postKeyword);
-    //echo $alldata;
-
-    $sql = "INSERT INTO post (postDate, postTime, postTitle, postCategory, postKeyword, postContent, postStatus) 
-                    VALUES ('$postDate', '$postTime', '$postTitle', '$postCategory', '$checkbox', '$postContent', 'Submitted')";
-
-    // $result = mysqli_query($conn, $sql);
-
-    if (mysqli_query($conn, $sql)) {
-        // echo "<script>alert('Your sharing content has been posted.');</script>";
-        //  header("Location: M2-my_questions.php");
-        echo "<script>alert('Your sharing content has been posted.');
-                      window.location.href='M2-my_questions.php'</script>";
-        exit();
-    } else {
-        echo "<script>alert('Error posting your content.');</script>" . mysqli_error($conn);
-    }
-
-    mysqli_close($conn);
-}
-
-//update post
-
-if (isset($_POST['update_post'])) {
-
-    $id = $_POST["id"];
-    // $userID = $_GET["userID"];
-    $postTitle = $_POST["postTitle"];
-    // $postCategory = $_POST["postCategory"];
-    // $postKeyword = implode(",", $_POST["postKeyword"]);
-    $postContent = $_POST["postContent"];
-
-    // $checkbox=implode(",", $postKeyword);
-    //echo $alldata;
-
-    $sql = "UPDATE post SET  postTitle = '$postTitle', postContent = '$postContent'
-                    WHERE id = '$id'";
-
-
->>>>>>> Stashed changes
     if (mysqli_query($conn, $sql)) {
         echo "<script>alert('Your sharing content has been updated.');
                       window.location.href='M2-my_questions.php'</script>";
@@ -171,7 +116,6 @@ if (isset($_POST['delete_post'])) {
     mysqli_close($conn);
 }
 
-<<<<<<< Updated upstream
 
 
 if (isset($_GET['keyword'])) {
@@ -277,35 +221,6 @@ if (isset($_GET['keyword'])) {
 //     header("Location: M2-user_homepage.php");
 //     exit();
 // }
-=======
-//Search funtion for homepage (by keyword)
-if (isset($_GET['search_keyword'])) {
-    $searchKeyword = $_GET["search_keyword"];
-
-    $sql = "SELECT * FROM post WHERE postKeyword LIKE '%$searchKeyword%' ORDER BY postKeyword OR postCategory";
-    $result = mysqli_query($conn, $sql);
-
-    if ($result) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "Post ID: " . $row["postID"] . "<br>";
-            echo "Post Title: " . $row["postTitle"] . "<br>";
-            echo "Post Category: " . $row["postCategory"] . "<br>";
-            echo "Post Keyword: " . $row["postKeyword"] . "<br>";
-            echo "Post Content: " . $row["postContent"] . "<br>";
-            echo "<hr>";
-
-            exit();
-        }
-    } else {
-        echo "<script>alert('No suitable data.');</script>" . mysqli_error($conn);
-    }
-
-    mysqli_close($conn);
-} else {
-    header("Location: M2-user_homepage.php");
-    exit();
-}
->>>>>>> Stashed changes
 
 
 

@@ -5,10 +5,7 @@ require("../Module1/database.php");
 <!--check session from M1 -->
 <?php
 include_once('../Module1/session-check-genUser.php');
-<<<<<<< Updated upstream
 $id = $_SESSION['username'];
-=======
->>>>>>> Stashed changes
 ?>
 
 
@@ -43,53 +40,13 @@ $id = $_SESSION['username'];
   <div class="wrapper">
     <!-- CONTENT -->
     <div class="main">
-<<<<<<< Updated upstream
       <!-- Navifation Bar -->
       <?php
       include_once('../Module5/navbarUser.php');
       ?>
-=======
-      <nav class="navbar navbar-expand navbar-theme">
-        <div class="container-fluid">
-          <!--Nav - Logo-->
-          <img src="../../dist/img/logo/fk-edusearch-border.png" style="width: 35px;" height="35px;" alt="FK-EduSearch Logo" />
-          <!--Nav - Home (name) -->
-          <a class="navbar-brand" href="#">FK-EDUSEARCH</a>&nbsp;
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <!--Nav - Home -->
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="../Module2/M2-user_homepage.php">Home</a>
-              </li>
-              <!--Nav - MY Question -->
-              <li class="nav-item">
-                <a class="nav-link" href="../Module2/M2-my_questions.php">My Questions</a>
-              </li>
-              <!--Nav - Complaint -->
-              <li class="nav-item dropdown ms-lg-2">
-                <a class="nav-link dropdown-toggle position-relative" href="#" id="userDropdown" data-bs-toggle="dropdown">Complaint</a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                  <a class="dropdown-item"></a>
-                  <a class="dropdown-item" href="../Module5/create.php">New Application</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">History</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Report</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-
-      </nav>
->>>>>>> Stashed changes
 
       <!--Content -->
-      <main class="content" id="<?php echo $userID; ?>">
+      <main class="content">
         <!--1st Row-->
         <div class="container-fluid">
           <div class="header">
@@ -98,7 +55,6 @@ $id = $_SESSION['username'];
           <div class="row">
             <div class="col-12 col-lg-8">
               <?php
-<<<<<<< Updated upstream
 
               // $sql = "SELECT * FROM post WHERE userID = '$id' ORDER BY postDate DESC, postTime DESC";
               $sql = "SELECT post.id, generaluser.userID, generaluser.userName, post.postDate, post.postTime, post.postTitle, post.postCategory, post.postKeyword,
@@ -107,29 +63,19 @@ $id = $_SESSION['username'];
               INNER JOIN generaluser ON post.userID = generaluser.userID
               WHERE generaluser.userID = '$id'
               ORDER BY post.postDate DESC, post.postTime DESC";
-=======
-              $sql = "SELECT p.id, p.postDate, p.postTime, p.postTitle, p.postCategory, p.postKeyword, p.postContent,
-                      p.postStatus, g.userName, g.userID FROM post p INNER JOIN generaluser g
-                      ON p.userID = g.userID";
-
->>>>>>> Stashed changes
 
               $result = mysqli_query($conn, $sql);
               if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                   $id = $row['id'];
-<<<<<<< Updated upstream
                   $userID = $row['userID'];
                   $userName = $row['userName'];
-=======
->>>>>>> Stashed changes
                   $postDate = $row['postDate'];
                   $postTime = $row['postTime'];
                   $postTitle = $row['postTitle'];
                   $postCategory = $row['postCategory'];
                   $postKeyword = $row['postKeyword'];
                   $postContent = $row['postContent'];
-<<<<<<< Updated upstream
                   $postLikes = $row['postLikes'];
                   $postComments = $row['postComments'];
                   // $postComments = $row['postComments'];
@@ -148,41 +94,16 @@ $id = $_SESSION['username'];
                             <h3><?php echo "$postTitle"; ?></h3>
                             <div class="line"></div>
 
-=======
-                  // $postLikes = $row['postLikes'];
-                  // $postComments = $row['postComments'];
-                  $postStatus = $row['postStatus'];
-                  $userName = $row['userName'];
-
-              ?>
-                  <div class="card flex-fill w-100">
-                    <div class="card-header">
-                      <div class="post-box">
-                        <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
-                        <div class="post-info">
-                          <div class="userName"> <?php echo "$userName"; ?></div>
-                          <div class="date"><?php echo "$postDate"; ?> | <?php echo "$postTime"; ?></div>
-                          <div class="container-box">
-                            <h3><?php echo "$postTitle"; ?></h3>
-                            <div class="line"></div>
-
->>>>>>> Stashed changes
                             <p><?php echo "$postContent"; ?></p>
                           </div>
 
                           <div class="actions" style="color:#888">
                             <div class="icon-container">
-<<<<<<< Updated upstream
                               <form method="POST">
                                 <button type="submit" name="like_<?php echo $id; ?>"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i><?php echo $postLikes; ?></button>
                                 <button type="submit" name="comment_<?php echo $id; ?>"><i class="fa fa-comment-o" aria-hidden="true"></i><?php echo $postComments; ?></button>
                               </form>
                               <!-- <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>0</a> -->
-=======
-                              <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0</a>
-                              <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i>0</a>
-                              <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>0</a>
->>>>>>> Stashed changes
                               <div class="icon-container right" style="margin-left: 30px;">
                                 <!-- Edit Button -->
                                 <?php echo "<a href='#updateModal-$id' data-bs-toggle='modal'><i class='align-middle fas fa-fw fa-edit' style='color: blue;'></i></a> "; ?>
@@ -200,7 +121,6 @@ $id = $_SESSION['username'];
 
                                             <div class="row">
                                               <div class="mb-3 col-md-6">
-<<<<<<< Updated upstream
                                                 <label for="PostTilte">Post Title: </label>
                                                 <input type="text" class="form-control" name="postTitle" id="postTitle" value="<?php echo $postTitle; ?>">
                                               </div>
@@ -232,37 +152,6 @@ $id = $_SESSION['username'];
                                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
 
                                             </div>
-=======
-                                                <label for="PostTilte">Post Tilte: </label>
-                                                <input type="text" class="form-control" name="postTitle" id="postTitle" value="<?php echo $postTitle; ?>">
-                                              </div>
-                                              <div class="mb-3 col-md-6">
-                                                <label for="PostCategory">Post Category : </label>
-                                                <select class="form-select" id="postCategory" name="postCategory" disabled>
-                                                  <option disabled selected><?php echo $postCategory; ?></option>
-                                                </select>
-                                              </div>
-                                              <div class="mb-3 col-md-12">
-                                                <label for="PostKeyword">Post Keyword :</label>
-                                                <div class="checkbox">
-                                                  <label><input type="checkbox" id="php" name="postKeyword[]" value="PHP" disabled>PHP</label>
-                                                  <label><input type="checkbox" id="html" name="postKeyword[]" value="HTML" disabled> HTML</label>
-                                                  <label><input type="checkbox" id="js" name="postKeyword[]" value="JavaScript" disabled> JavaScript</label>
-                                                  <label><input type="checkbox" id="ai" name="postKeyword[]" value="Artificial Intelligence" disabled> Artificial Intelligence</label>
-                                                </div>
-
-                                              </div>
-                                              <div class="mb-3">
-                                                <label>Post Content</label>
-                                                <textarea class="form-control" rows="5" name="postContent"><?php echo $postContent; ?></textarea>
-                                              </div>
-                                            </div>
-                                            <br>
-
-                                            <input type="hidden" name="update_post" value="true">
-                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="btn btn-primary">Save Changes</button>
->>>>>>> Stashed changes
                                           </form>
                                         </div>
                                       </div>
@@ -286,7 +175,6 @@ $id = $_SESSION['username'];
                                           <div class="drop" style="width:150px; height:150px; right: 50px; background-color:#fff2f2; display:flex; justify-content:center; align-items:center; border-radius: 50%; margin: -25px 0 20px 200px; position:relative; box-shadow: inset 2px 7px 6px rgba(0,0,0,0.1);">
                                             <i class="align-middle fas fa-fw fa-trash-alt" style="font-size: 65px; color: #D90000;"></i>
                                           </div>
-<<<<<<< Updated upstream
                                           <p class="mb-0" style="font-weight: 450; font-size: 18px;"> Are you sure wish to delete this data. <br> This is process cannot be undo.</p>
                                       </div>
                                       <div class="modal-footer">
@@ -296,16 +184,6 @@ $id = $_SESSION['username'];
 
                                       </div>
                                       </form>
-=======
-                                          <p class="mb-0" style="font-weight: 450; font-size: 18px;"> Are you sure wish to delete this data. <br> Are you sure?</p>
-                                      </div>
-                                      <div class="modal-footer">
-                                        <input type="hidden" name="delete_post" value="true">
-                                        <button type="submit" class="btn btn-primary">Delete</button>
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        </form>
-                                      </div>
->>>>>>> Stashed changes
                                     </div>
                                   </div>
                                 </div>
@@ -346,7 +224,6 @@ $id = $_SESSION['username'];
                       <div class="mb-3 col-md-12">
                         <label for="PostKeyword">Post Keyword :</label>
                         <div class="checkbox">
-<<<<<<< Updated upstream
                           <div class="row">
                             <div class="col">
                               <label><input type="checkbox" id="php" name="postKeyword[]" value="PHP"> PHP</label>
@@ -363,12 +240,6 @@ $id = $_SESSION['username'];
                           </div>
 
 
-=======
-                          <label><input type="checkbox" id="php" name="postKeyword[]" value="PHP"> PHP</label>
-                          <label><input type="checkbox" id="html" name="postKeyword[]" value="HTML"> HTML</label>
-                          <label><input type="checkbox" id="js" name="postKeyword[]" value="JavaScript"> JavaScript</label>
-                          <label><input type="checkbox" id="ai" name="postKeyword[]" value="Artificial Intelligence"> Artificial Intelligence</label>
->>>>>>> Stashed changes
                         </div>
                       </div>
 

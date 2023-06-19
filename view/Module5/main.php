@@ -19,6 +19,7 @@ require('../Module1/database.php');
 	<meta name="author" content="Bootlab">
 
 	<title>Complaint Dashboard</title>
+	<link rel="shortcut icon" href="../../dist/img/logo/fk-edusearch-border.png" type="image/x-icon">
 
 	<link href="../../dist/css/modernModule5.css" rel="stylesheet">
 
@@ -40,6 +41,7 @@ require('../Module1/database.php');
 			color: #fff;
 			z-index: 3;
 		}
+		
 	</style>
 	<script src="../../dist/js/settings.js"></script>
 	<!-- END SETTINGS -->
@@ -98,7 +100,7 @@ require('../Module1/database.php');
 												$complaintStatus = $row['complaintStatus'];
 												$complaintDesc = $row['complaintDesc'];
 												$postID = $row['postID'];
-												
+
 										?>
 												<tr>
 													<td>
@@ -161,7 +163,7 @@ require('../Module1/database.php');
 																			<div class="mb-3 col-md-12">
 																				<label for="complain">Post Title</label>
 																				<select class="form-select" name="postID" aria-label="Default select example" disabled>
-																				<option disabled selected><?php echo $postID; ?></option>
+																					<option disabled selected><?php echo $postID; ?></option>
 																				</select>
 																			</div>
 																			<div class="mb-3 col-md-12">
@@ -176,7 +178,7 @@ require('../Module1/database.php');
 																			</div>
 																		</div>
 																		<div class="modal-footer">
-																		<input type="hidden" name="update" value="true">
+																			<input type="hidden" name="update" value="true">
 																			<button type="button" class="btn" style="position:absolute; right: 328px; background-color: #ADDCD7; color: #000; font-weight: 400;" data-bs-dismiss="modal">Cancel</button>
 																			<button type="submit" class="btn" style=" position:relative; right: 205px;  background-color: #07A492; color: white; font-weight: 400;">Save</button>
 																		</div>
@@ -209,7 +211,7 @@ require('../Module1/database.php');
 															<div class="modal-footer">
 																<input type="hidden" name="delete" value="true">
 																<button type="submit" class="btn" name="delete" style="color: #fff; position:absolute; right: 300px; background-color: #DA3131; font-weight: 400; border-radius: 7px; width: 80px;">Delete</button>
-																			<button type="button" class="btn" data-bs-dismiss="modal" style=" color: #000; position:relative; right: 180px; background-color: #B2B2B4; font-weight: 400; border-radius: 7px; width: 80px;">Cancel</button>
+																<button type="button" class="btn" data-bs-dismiss="modal" style=" color: #000; position:relative; right: 180px; background-color: #B2B2B4; font-weight: 400; border-radius: 7px; width: 80px;">Cancel</button>
 															</div>
 															</form>
 														</div>
