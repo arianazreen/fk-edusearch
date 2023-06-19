@@ -15,7 +15,7 @@ include_once '../Module1/session-check-admin.php';
 	<title>Manage Complaint</title>
 
 	<link href="../../dist/css/style.css" rel="stylesheet">
-	<!-- <link href="../../dist/css/modern-admin.css" rel="stylesheet"> -->
+	<link href="../../dist/css/modern-admin.css" rel="stylesheet">
 
 	<style>
 		body {
