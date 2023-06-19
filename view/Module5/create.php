@@ -24,6 +24,7 @@ $result2 = mysqli_query($conn, $sql2) or die("Could not execute query in view");
 	<meta name="author" content="Bootlab">
 
 	<title>Create Complaint</title>
+	<link rel="shortcut icon" href="../../dist/img/logo/fk-edusearch-border.png" type="image/x-icon">
 
 	<link href="../../dist/css/modernModule5.css" rel="stylesheet">
 

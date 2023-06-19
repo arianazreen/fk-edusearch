@@ -30,6 +30,7 @@ $complaint = mysqli_fetch_assoc($result);
 	<meta name="author" content="Bootlab">
 
 	<title>View Complaint</title>
+	<link rel="shortcut icon" href="../../dist/img/logo/fk-edusearch-border.png" type="image/x-icon">
 
 	<link href="../../dist/css/modernModule5.css" rel="stylesheet">
 

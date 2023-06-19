@@ -19,6 +19,7 @@ require('../Module1/database.php');
 	<meta name="author" content="Bootlab">
 
 	<title>Complaint Dashboard</title>
+	<link rel="shortcut icon" href="../../dist/img/logo/fk-edusearch-border.png" type="image/x-icon">
 
 	<link href="../../dist/css/modernModule5.css" rel="stylesheet">
 
