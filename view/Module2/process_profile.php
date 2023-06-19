@@ -1,5 +1,4 @@
 <?php
-<<<<<<< Updated upstream
 include("../Module1/database.php");
 
 session_start();
@@ -21,36 +20,11 @@ if (isset($_POST['update_profile'])) {
 
     $sql = "UPDATE generaluser SET  userName = '$userName', userEmail = '$userEmail', userPhoneNo = '$userPhoneNo', 
             userPass = '$userPass' WHERE id = '$id'";
-=======
-include('../Module1/database.php');
-
-//edit profile
-if (isset($_POST['update_profile'])) {
-
-    $id = $_POST["id"];
-    $userID = $_POST['userID'];
-    $userRole = $_POST['userRole'];
-    $userName = $_POST['userName'];
-    $userEmail = $_POST['userEmail'];
-    $userPhoneNo = $_POST['userPhoneNo'];
-    $userPass = $_POST['userPass'];
-    $userCourse = $_POST['userCourse'];
-    $assignedExpert = $_POST['assignedExpert'];
-
-    $sql = "UPDATE generaluser SET  userID = '$userID', userRole = '$userRole', userName = '$userName', 
-                        userEmail = '$userEmail', userPhoneNo = '$userPhoneNo', userPass = '$userPass', userCourse = '$userCourse',
-                        assignedExpert = '$assignedExpert'
-                        WHERE id = '$id'";
->>>>>>> Stashed changes
 
 
     if (mysqli_query($conn, $sql)) {
         echo "<script>alert('Your profile has been updated.');
-<<<<<<< Updated upstream
                       window.location.href='M2-manage-user-profile.php'</script>";
-=======
-                        window.location.href='M2-my_questions.php'</script>";
->>>>>>> Stashed changes
         exit();
     } else {
         echo "<script>alert('Error updating your profile.');</script>" . mysqli_error($conn);
@@ -58,7 +32,6 @@ if (isset($_POST['update_profile'])) {
 
     mysqli_close($conn);
 }
-<<<<<<< Updated upstream
 
 //view the updates
 if (isset($_POST['view_update'])) {
@@ -118,5 +91,3 @@ if (isset($_POST['view_update'])) {
 //     header("Location: M2-user_homepage.php");
 //     exit();
 // }
-=======
->>>>>>> Stashed changes
