@@ -21,7 +21,7 @@
 		{
 			session_start();
 			$_SESSION['username'] = $username;
-			echo "<script>alert('Logged in as a General User.'); window.location='../Module2/#'</script>";
+			echo "<script>alert('Logged in as a General User.'); window.location='../Module2/M2-user_homepage.php'</script>";
 		}
 		else
 		{

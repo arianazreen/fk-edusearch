@@ -61,7 +61,7 @@
 						</a>
 						<ul id="report" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
 							<li class="sidebar-item"><a class="sidebar-link active" href="../Module4/user-activity.php">User Activity</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="../Module1/system-performance.php">User Satisfication</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="../Module1/system-performance.php">System Performance</a></li>
 						</ul>
 					</li>
 
@@ -130,16 +130,54 @@
 									</div>
 
 									<?php
-                                    $sql = "SELECT COUNT(postTitle) AS posts FROM post";
-									// mysql> select sum(Amount) from DemoTable1889 where MONTH(DueDate)=MONTH(curdate());
-                                    $result = mysqli_query($conn, $sql);
-                                    $row = mysqli_fetch_assoc($result);
+                                        //Display Total Post for Current Month
+                                        $sql = "SELECT Count(postTitle) AS posts FROM post WHERE MONTH(postDate) = MONTH(CURRENT_DATE)";
+                                        $result = mysqli_query($conn, $sql);
+                                        $row = mysqli_fetch_assoc($result);
+
+                                        $currentMonthPosts = $row['posts'];
                                     ?>
 
-									<h1 class="display-5 mt-1 mb-3"><?php echo $row['posts']; ?></h1>
+									<h1 class="display-5 mt-1 mb-3"><?php echo $currentMonthPosts; ?></h1>
 									<div class="mb-0">
-									<span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> +15% </span>
-										than last month 10,235
+
+                                    <?php
+
+                                        //Display Total Post for Prev Month
+
+                                        $sql = "SELECT Count(postTitle) AS prevPost FROM post 
+                                                WHERE MONTH(postDate) = MONTH(DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH))
+                                                AND YEAR(postDate) = YEAR(DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH))";
+                                        $result = mysqli_query($conn, $sql);
+                                        $row = mysqli_fetch_assoc($result);
+
+                                        $prevMonthPosts = $row['prevPost'];
+
+                                        //Calculate Retention Rate for Posts
+
+                                        $retentionRatePosts = $currentMonthPosts / $prevMonthPosts * 100;
+
+                                        //Change the color of percentage
+
+                                        if ($prevMonthPosts > $retentionRatePosts){
+
+                                        ?>
+            
+                                                    <span class="text-danger">
+                                                    <i class="mdi mdi-arrow-bottom-right"></i>
+                                                    <?php echo sprintf('%2d%%', $retentionRatePosts) ?>
+                                                    </span>
+            
+                                        <?php } else { ?>
+            
+                                                    <span class="text-success">
+                                                    <i class="mdi mdi-arrow-bottom-right"></i>
+                                                    <?php echo sprintf('%2d%%', $retentionRatePosts) ?>
+                                                    </span>
+            
+                                        <?php }
+                                        ?>
+										than last month <?php echo $prevMonthPosts ; ?>
 									</div>
 								</div>
 							</div>
@@ -155,15 +193,51 @@
 									</div>
 
 									<?php
-                                    $sql = "SELECT SUM(postComments) AS comment FROM post";
-                                    $result = mysqli_query($conn, $sql);
-                                    $row = mysqli_fetch_assoc($result);
+                                        //Display Total Comment for Current Month
+                                        $sql = "SELECT SUM(postComments) AS comment FROM post WHERE MONTH(postDate) = MONTH(CURRENT_DATE)";
+                                        $result = mysqli_query($conn, $sql);
+                                        $row = mysqli_fetch_assoc($result);
+
+                                        $currentMonthComments = $row['comment'];
                                     ?>
 
-									<h1 class="display-5 mt-1 mb-3"><?php echo $row['comment']; ?></h1>
+									<h1 class="display-5 mt-1 mb-3"><?php echo $currentMonthComments; ?></h1>
 									<div class="mb-0">
-										<span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> +10% </span>
-										than last month 32,000
+
+                                    <?php
+
+                                        //Display Total Comment for Prev Month
+                                        $sql = "SELECT SUM(postComments) AS prevComment FROM post 
+                                                WHERE MONTH(postDate) = MONTH(DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH))
+                                                AND YEAR(postDate) = YEAR(DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH))";
+                                        $result = mysqli_query($conn, $sql);
+                                        $row = mysqli_fetch_assoc($result);
+
+                                        $prevMonthComments = $row['prevComment'];
+
+                                        //Calculate Retention Rate for Comments
+                                        $retentionRateComments = $currentMonthComments / $prevMonthComments * 100;
+
+                                        //Change the color of percentage
+                                        if ($prevMonthComments > $currentMonthComments){
+
+                                        ?>
+        
+                                                <span class="text-danger">
+                                                <i class="mdi mdi-arrow-bottom-right"></i>
+                                                <?php echo sprintf('%2d%%', $retentionRateComments) ?>
+                                                </span>
+        
+                                        <?php } else { ?>
+        
+                                                <span class="text-success">
+                                                <i class="mdi mdi-arrow-bottom-right"></i>
+                                                <?php echo sprintf('%2d%%', $retentionRateComments) ?>
+                                                </span>
+        
+                                        <?php }
+                                        ?>
+										than last month <?php echo $prevMonthComments ; ?>
 									</div>
 								</div>
 							</div>
@@ -177,17 +251,51 @@
 											<div class="card-divider"></div>
 										</div>
 									</div>
+                                    <?php
+                                        //Display Total Likes for Current Month
+                                        $sql = "SELECT SUM(postLikes) AS likes FROM post WHERE MONTH(postDate) = MONTH(CURRENT_DATE)";
+                                        $result = mysqli_query($conn, $sql);
+                                        $row = mysqli_fetch_assoc($result);
 
-									<?php
-                                    $sql = "SELECT SUM(postLikes) AS likes FROM post";
-                                    $result = mysqli_query($conn, $sql);
-                                    $row = mysqli_fetch_assoc($result);
+                                        $currentMonthLikes = $row['likes'];
                                     ?>
 
-									<h1 class="display-5 mt-1 mb-3"><?php echo $row['likes']; ?></h1>
+									<h1 class="display-5 mt-1 mb-3"><?php echo $currentMonthLikes; ?></h1>
 									<div class="mb-0">
-										<span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -2% </span>
-										than last month 6,790
+
+                                    <?php
+                                        //Display Total Likes for Prev Month
+                                        $sql = "SELECT SUM(postLikes) AS prevLikes FROM post 
+                                                WHERE MONTH(postDate) = MONTH(DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH))
+                                                AND YEAR(postDate) = YEAR(DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH))";
+                                        $result = mysqli_query($conn, $sql);
+                                        $row = mysqli_fetch_assoc($result);
+
+                                        $prevMonthLikes = $row['prevLikes'];
+
+                                        //Calculate Retention Rate for Likes
+                                        $retentionRateLikes = $currentMonthLikes / $prevMonthLikes * 100;
+                                        
+                                        //Change the color of percentage
+                                        if ($prevMonthLikes > $currentMonthLikes){
+
+                                    ?>
+
+                                        <span class="text-danger">
+                                        <i class="mdi mdi-arrow-bottom-right"></i>
+                                        <?php echo sprintf('%2d%%', $retentionRateLikes) ?>
+                                        </span>
+
+                                        <?php } else { ?>
+
+                                        <span class="text-sucess">
+                                        <i class="mdi mdi-arrow-bottom-right"></i>
+                                        <?php echo sprintf('%2d%%', $retentionRateLikes) ?>
+                                        </span>
+
+                                        <?php }
+                                        ?>
+										than last month <?php echo $prevMonthLikes ; ?>
 									</div>
 								</div>
 							</div>
@@ -196,19 +304,33 @@
 
 					<!-- Chart -->
 					<div class="row">
-						<div class="col-12 col-lg-8">
+
+                        <div class="col-12 col-lg-8">
 							<div class="card flex-fill w-100">
 								<div class="card-header">
 									<h5 class="card-title">Total Report </h5>
-									<!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
+
+                                    <label for="time-filter">Filter:</label>
+
+                                    <select id="time-filter" onchange="updateChart()">
+                                        <option value="day">Day</option>
+                                        <option value="week">Week</option>
+                                        <option value="month">Month</option>
+                                    </select>
+
 								</div>
+
 								<div class="card-body">
 									<div class="chart">
 										<canvas id="chartjs-line"></canvas>
-									</div>
+								    </div>
+
 								</div>
+
 							</div>
-						</div>
+						</div> 
+
+                        
 
 						<div class="col-12 col-lg-4">
 							<div class="card flex-fill w-100">
@@ -275,66 +397,170 @@
 
 	<!-- Js Line Chart -->
 	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			// Line chart
-			new Chart(document.getElementById("chartjs-line"), {
-				type: "line",
-				data: {
-					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-					datasets: [{
-						label: "Sales ($)",
-						fill: true,
-						backgroundColor: "transparent",
-						borderColor: window.theme.primary,
-						data: [2115, 1562, 1584, 1892, 1487, 2223, 2966, 2448, 2905, 3838, 2917, 3327]
-					}, {
-						label: "Orders",
-						fill: true,
-						backgroundColor: "transparent",
-						borderColor: window.theme.tertiary,
-						borderDash: [4, 4],
-						data: [958, 724, 629, 883, 915, 1214, 1476, 1212, 1554, 2128, 1466, 1827]
-					}]
-				},
-				options: {
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					tooltips: {
-						intersect: false
-					},
-					hover: {
-						intersect: true
-					},
-					plugins: {
-						filler: {
-							propagate: false
-						}
-					},
-					scales: {
-						xAxes: [{
-							reverse: true,
-							gridLines: {
-								color: "rgba(0,0,0,0.05)"
-							}
-						}],
-						yAxes: [{
-							ticks: {
-								stepSize: 500
-							},
-							display: true,
-							borderDash: [5, 5],
-							gridLines: {
-								color: "rgba(0,0,0,0)",
-								fontColor: "#fff"
-							}
-						}]
-					}
-				}
-			});
-		});
-	</script>
+        document.addEventListener("DOMContentLoaded", function() {
+        // Initialize the chart
+        var chart = new Chart(document.getElementById('chartjs-line'), {
+            type: "line",
+            data: {
+                labels: [],
+                datasets: [{
+                    label: "Posts",
+                    fill: true,
+                    backgroundColor: "transparent",
+                    borderColor: window.theme.primary,
+                    data: []
+                }, {
+                    label: "Comments",
+                    fill: true,
+                    backgroundColor: "transparent",
+                    borderColor: window.theme.tertiary,
+                    borderDash: [4, 4],
+                    data: [958, 724, 629, 883, 915, 1214, 1476, 1212, 1554, 2128, 1466, 1827]
+                }, {
+                    label: "Likes",
+                    fill: true,
+                    backgroundColor: "transparent",
+                    borderColor: window.theme.secondary,
+                    data: [700, 500, 200, 900, 1000, 2000, 2300, 1400, 560, 800, 990, 250]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    intersect: false
+                },
+                hover: {
+                    intersect: true
+                },
+                plugins: {
+                    filler: {
+                        propagate: false
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        reverse: true,
+                        gridLines: {
+                            color: "rgba(0,0,0,0.05)"
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            stepSize: 500
+                        },
+                        display: true,
+                        borderDash: [5, 5],
+                        gridLines: {
+                            color: "rgba(0,0,0,0)",
+                            fontColor: "#fff"
+                        }
+                    }]
+                }
+            }
+        });
+
+        // Populate initial chart data
+        populateChart();
+
+        // Populate filters
+        populateFilters();
+    });
+
+    function populateChart() {
+        var timeFilter = document.getElementById('time-filter').value;
+        var currentDate = new Date();
+        var labels = [];
+        var data = [];
+
+        if (timeFilter === 'day') {
+            // Filter data by day
+            var currentDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            var dayOfWeek = currentDay.getDay();
+
+            if (dayOfWeek >= 1 && dayOfWeek <= 7) {
+                labels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+                data = [340, 1200, 3400, 400, 2132, 999, 768]; // Replace with actual data for each day
+            }
+        } else if (timeFilter === 'week') {
+            // Filter data by week
+            var firstDayOfWeek = getFirstDayOfWeek(currentDate);
+            var lastDayOfWeek = getLastDayOfWeek(currentDate);
+
+            var currentDatePointer = new Date(firstDayOfWeek);
+            while (currentDatePointer <= lastDayOfWeek) {
+                labels.push(getFormattedDate(currentDatePointer));
+                data.push(getDataForDay(currentDatePointer)); // Modify this logic to retrieve data for each day
+
+                currentDatePointer.setDate(currentDatePointer.getDate() + 1);
+            }
+        } else if (timeFilter === 'month') {
+            // Filter data by month
+            var firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            var lastDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+
+            var currentDatePointer = new Date(firstDayOfMonth);
+            while (currentDatePointer <= lastDayOfMonth) {
+                labels.push(getFormattedDate(currentDatePointer));
+                data.push(getDataForDay(currentDatePointer)); // Modify this logic to retrieve data for each day
+
+                currentDatePointer.setDate(currentDatePointer.getDate() + 1);
+            }
+        }
+
+        var chart = Chart.instances[0];
+        chart.data.labels = labels;
+        chart.data.datasets[0].data = data;
+        chart.update();
+    }
+
+    function getFirstDayOfWeek(date) {
+        var day = date.getDay();
+        var diff = date.getDate() - day + (day === 0 ? -6 : 1);
+        return new Date(date.getFullYear(), date.getMonth(), diff);
+    }
+
+    function getLastDayOfWeek(date) {
+        var firstDayOfWeek = getFirstDayOfWeek(date);
+        var lastDayOfWeek = new Date(firstDayOfWeek);
+        lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6);
+        return lastDayOfWeek;
+    }
+
+    function getFormattedDate(date) {
+        var year = date.getFullYear();
+        var month = String(date.getMonth() + 1).padStart(2, '0');
+        var day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
+    function getDataForDay(date) {
+    // Replace this with your logic to fetch data for the given date
+    // You can make an API call or retrieve data from a database
+
+    // Example: Assuming you have an array of daily data values
+    var dailyData = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200];
+    var dayOfMonth = date.getDate();
+    var dataValue = dailyData[dayOfMonth - 1]; // Subtract 1 since array index is 0-based
+
+    return dataValue;
+    }
+
+    function populateFilters() {
+        var timeFilterSelect = document.getElementById('time-filter');
+        timeFilterSelect.addEventListener('change', updateChart);
+    }
+
+    function updateChart() {
+        populateChart();
+    }
+
+
+    </script>
+
 
 	<!-- Js Pie Chart -->
 	<script>

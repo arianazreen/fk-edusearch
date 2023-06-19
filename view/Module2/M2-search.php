@@ -6,10 +6,6 @@ require('../Module1/database.php');
 <?php
 include_once('../Module1/session-check-genUser.php');
 ?>
-<!--check session from M1 -->
-<?php
-  include_once('../Module1/session-check-genUser.php');
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +17,7 @@ include_once('../Module1/session-check-genUser.php');
   <meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
   <meta name="author" content="Bootlab">
 
-  <title> Homepage </title>
+  <title> Search Post </title>
   <link rel="stylesheet" href="../../dist/css/modern.css">
   <link href="../../dist/css/modernModule5.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -51,17 +47,9 @@ include_once('../Module1/session-check-genUser.php');
       <main class="content">
         <div class="container-fluid">
           <div class="header">
-            <h1 class="header-title">Homepage</h1>
-            <br>
-            <form class="d-none d-sm-inline-block" method="GET" action="../Module2/M2-search.php" style=" align-items: center;">
-
-              <div class="d-flex pt-3"><input class="form-control form-control-lite" type="text" name="keyword" placeholder="Search projects...">
-                <button class="btn btn-primary" type="submit">Search</button>
-              </div>
-            </form>
+            <h1 class="header-title"> Searching <?php echo $postKeyword ?></h1>
           </div>
           <div class="row">
-
             <div class="center">
               <div class="col-12 col-lg-10">
                 <?php
@@ -105,7 +93,6 @@ include_once('../Module1/session-check-genUser.php');
                 ?>
                     <div class="card flex-fill w-100">
                       <div class="card-header">
-<<<<<<< Updated upstream
                         <div class="post-box">
                           <img class="profile-img" src="../../dist/img/avatars/nurul_najwa.jpg" alt="Profile Image">
                           <div class="post-info">
@@ -125,20 +112,7 @@ include_once('../Module1/session-check-genUser.php');
                               </div>
                               <div class="status"><?php echo "$postStatus"; ?></div>
                             </div>
-=======
-                       <h2 class="card-title"> </h2>
-                       <!-- Search Area-->
-                       
-                       <div class="search-container">
-                        <form method="GET" action="process_post.php">
-                          <div class="search-box">
-                            <input type="text" id="search-input" name="search_keyword" placeholder="Search...">
-                            <button type="submit" id="search-button" class="search-icon">
-                              <i class="fa fa-search"></i>
-                            </button>
->>>>>>> Stashed changes
                           </div>
-                          </form>
                         </div>
                       </div>
                     </div>
