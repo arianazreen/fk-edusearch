@@ -136,36 +136,36 @@ include_once '../Module1/session-check-admin.php';
 																			<div class="card-body row">
 																				<div class="form-floating col-sm-4">
 																					<input class="form-control" type="text" name="userID" value="<?php echo $userID; ?>" readonly>
-																					<label for="userID">User ID</label>
+																					<label for="userID" style="left: 10px;">User ID</label>
 																				</div>
 																				<div class="form-floating col-sm-8">
 																					<input class="form-control" type="text" name="userName" value="<?php echo $userName; ?>" readonly>
-																					<label for="uName">Name</label>
+																					<label for="uName" style="left: 10px;">Name</label>
 																				</div>
 																			</div>
 
 																			<div class="card-body row">
 																				<div class="form-floating col-sm-6">
 																					<input class="form-control" type="date" name="complaintDate" value="<?php echo $complaintDate; ?>" readonly>
-																					<label for="cDate">Date</label>
+																					<label for="cDate" style="left: 10px;">Date</label>
 																				</div>
 																				<div class="form-floating col-sm-6">
 																					<input class="form-control" type="time" name="complaintTime" value="<?php echo $complaintTime; ?>" readonly>
-																					<label for="cTime">Time</label>
+																					<label for="cTime" style="left: 10px;">Time</label>
 																				</div>
 																			</div>
 
 																			<div class="card-body row">
 																				<div class="form-floating">
 																					<input class="form-control" type="text" name="complaintType" value="<?php echo $complaintType; ?>" readonly>
-																					<label for="cType">Complain Type</label>
+																					<label for="cType" style="left: 10px;">Complain Type</label>
 																				</div>
 																			</div>
 
 																			<div class="card-body row">
 																				<div class="form-floating">
 																					<textarea class="form-control" rows="7" name="complaintDesc" readonly><?php echo $complaintDesc; ?></textarea>
-																					<label for="cDesc">Complain Description</label>
+																					<label for="cDesc" style="left: 10px;">Complain Description</label>
 																				</div>
 																			</div>
 
@@ -197,7 +197,7 @@ include_once '../Module1/session-check-admin.php';
 
 																					</select>
 
-																					<label for="cStatus">Status</label>
+																					<label for="cStatus" style="left: 10px;">Status</label>
 																				</div>
 																			</div>
 
