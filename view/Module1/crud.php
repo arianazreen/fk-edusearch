@@ -117,6 +117,25 @@
     }
 ?>
 
+<?php
+    include('database.php');
+
+    if (isset($_POST['update-postStatus']))
+    {
+        $id=$_POST['id'];
+        $postStatus = $_POST['postStatus'];
+
+        $query = mysqli_query($conn,"UPDATE post SET postStatus='$postStatus' WHERE id='$id'");
+
+        if($query) {
+            echo "<script>alert('Update Successful.'); window.location='validate-posts.php'</script>";
+        }
+        else {
+            echo "<script>alert('Error : " . mysqli_error($conn) . "')</script>";
+        }
+    }
+?>
+
 <!-- DELETE -->
 <?php
     include ("database.php");

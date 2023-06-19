@@ -4,7 +4,9 @@ include("../Module1/database.php");
 
 
 //create post
+session_start();
 if (isset($_POST['create_post'])) {
+    $id = $_SESSION['username'];
     date_default_timezone_set("Asia/Kuala_Lumpur");
     // $postID = $_POST["postID"];
     // $userID = $_GET["userID"];
@@ -18,8 +20,8 @@ if (isset($_POST['create_post'])) {
     $checkbox = implode(",", $postKeyword);
     //echo $alldata;
 
-    $sql = "INSERT INTO post (postDate, postTime, postTitle, postCategory, postKeyword, postContent, postStatus) 
-                    VALUES ('$postDate', '$postTime', '$postTitle', '$postCategory', '$checkbox', '$postContent', 'Submitted')";
+    $sql = "INSERT INTO post (userID, postDate, postTime, postTitle, postCategory, postKeyword, postContent, postStatus) 
+                    VALUES ('$id','$postDate', '$postTime', '$postTitle', '$postCategory', '$checkbox', '$postContent', 'Submitted')";
 
     // $result = mysqli_query($conn, $sql);
 

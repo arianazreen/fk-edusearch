@@ -7,6 +7,10 @@ require('../Module1/database.php');
 <?php
 //check session
 include_once('../Module1/session-check-genUser.php');
+$id = $_SESSION['username'];
+$sql2 = "SELECT * FROM post WHERE userID = '$id'";
+$result2 = mysqli_query($conn, $sql2) or die("Could not execute query in view"); 
+
 ?>
 
 <!DOCTYPE html>
@@ -59,18 +63,18 @@ include_once('../Module1/session-check-genUser.php');
 								<form method="post" action="testing.php">
 									<div class="row">
 										<div class="mb-3 col-md-12">
-											<label for="complain">Choose Post</label>
+											<label for="complain">Choose Post Title</label>
 											<select class="form-select" name="postID" value="postID" aria-label="Default select example">
 												<option hidden="">Please Select</option>
-												<option value="Energy-efficient computer systems">Energy-efficient computer systemsd</option>
-												<option value="Machine learning and artificial intelligence in computer systems">Machine learning and artificial intelligence in computer systemsed</option>
-												<option value="Virtualization and containerization">Virtualization and containerization</option>
+												<?php while ($row = mysqli_fetch_assoc($result2)){ ?>
+													<option value="<?php echo $row['postID']; ?>"><?php echo $row['postTitle']; ?></option>
+												<?php } ?>
 											</select>
 										</div>
 										<div class="mb-3 col-md-12">
 											<label for="complain">Complaint Type</label>
 											<select class="form-select" name="complaintType" value="complaintType" aria-label="Default select example">
-												<option hidden="">Please Select</option>
+												<option hidden>Please Select</option>
 												<option value="Unsatisfied Expert’s Feedback">Unsatisfied Expert’s Feedback</option>
 												<option value="Unanswered Question">Unanswered Question</option>
 												<option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
@@ -82,8 +86,8 @@ include_once('../Module1/session-check-genUser.php');
 											<textarea class="form-control" id=" " name="complaintDesc" rows="3"></textarea>
 										</div>
 										<div class="mb-3"><br>
-											<button type="submit" name="submit" class="btn" style=" color: white; position: absolute; right:55%; background-color: #07A492; font-weight: 400;">SUBMIT</button>
-											<button type="button" onclick="history.back()" class="btn" style="color: white; position: absolute; right:45%; background-color: #ADDCD7; font-weight: 400;">CANCEL</button>
+											<button type="submit" name="submit" class="btn" style=" color: white; position: absolute; right:50%; background-color: #07A492; font-weight: 400; width:10%;">Submit</button>
+											<button type="button" onclick="history.back()" class="btn" style="color: #000; position: absolute; right:40%; background-color: #ADDCD7; font-weight: 400;width:9%;">Back</button>
 
 										</div>
 										<br><br><br>

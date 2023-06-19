@@ -21,10 +21,9 @@ if (isset($_POST['submit'])) {
     $complaintDate =  date("Y-m-d");
     $complaintTime =  date("h:i");
     $complaintType =  $_POST['complaintType'];
-    // 'App_no' => 'KN/' . date("Y") . '/' . sprintf("%'.05d\n", $consultation + 1),
     $complaintDesc =  $_POST['complaintDesc'];
-    // $complaintStatus =  $_POST['complaintStatus'];
-    $sql = "INSERT INTO complaint (  complaintID ,userID, complaintDate, complaintTime, complaintType, complaintDesc, complaintStatus) VALUES ( '$complaintID','$id','$complaintDate', '$complaintTime', '$complaintType', '$complaintDesc', 'Submitted')";
+    $postID = $_POST['postID'];
+    $sql = "INSERT INTO complaint (  complaintID ,userID ,postID, complaintDate, complaintTime, complaintType, complaintDesc, complaintStatus) VALUES ( '$complaintID','$id','$postID','$complaintDate', '$complaintTime', '$complaintType', '$complaintDesc', 'Submitted')";
     $result = mysqli_query($conn, $sql);
 
 
@@ -32,9 +31,8 @@ if (isset($_POST['submit'])) {
 
     // 3) check statement successfull or not
     if ($result) {
-        header("Location: main.php");
-        echo "<script>alert('The Form has been Submitted.')</script>";
         
+        echo "<script>alert('The Form has been Submitted.');window.location='main.php'</script>";
         // echo "<script>alert('The Form has been Submitted.')</script>";
     } else {
         echo "<script>alert('Error Inserting Data: " . mysqli_error($conn) . "')</script>";
@@ -85,7 +83,7 @@ if (isset($_POST['delete'])) {
     if ($result) {
         //to close database connection
         mysqli_close($conn);
-        header("Location: main.php");
+        echo "<script>alert('The Complaint has been deleted.');window.location='main.php'</script>";
         exit();
     } else {
         mysqli_close($conn);

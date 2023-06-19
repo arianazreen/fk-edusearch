@@ -131,6 +131,7 @@
 
 									<?php
                                     $sql = "SELECT COUNT(postTitle) AS posts FROM post";
+									// mysql> select sum(Amount) from DemoTable1889 where MONTH(DueDate)=MONTH(curdate());
                                     $result = mysqli_query($conn, $sql);
                                     $row = mysqli_fetch_assoc($result);
                                     ?>

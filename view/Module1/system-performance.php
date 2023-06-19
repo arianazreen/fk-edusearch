@@ -2,6 +2,31 @@
 	include_once('../Module1/session-check-admin.php');
 ?>
 
+<?php
+	include ("database.php");
+
+	// USABILITY
+	$usaVGood = mysqli_query($conn, "SELECT usability FROM systemperformance WHERE usability = 'Very Good'");
+	$usaGood = mysqli_query($conn, "SELECT usability FROM systemperformance WHERE usability = 'Good'");
+	$usaAvg = mysqli_query($conn, "SELECT usability FROM systemperformance WHERE usability = 'Average'");
+	$usaBad = mysqli_query($conn, "SELECT usability FROM systemperformance WHERE usability = 'Bad'");
+	$usaVBad = mysqli_query($conn, "SELECT usability FROM systemperformance WHERE usability = 'Very Bad'");
+
+	// NAVIGATION
+	$navVGood = mysqli_query($conn, "SELECT navigation FROM systemperformance WHERE navigation = 'Very Good'");
+	$navGood = mysqli_query($conn, "SELECT navigation FROM systemperformance WHERE navigation = 'Good'");
+	$navAvg = mysqli_query($conn, "SELECT navigation FROM systemperformance WHERE navigation = 'Average'");
+	$navBad = mysqli_query($conn, "SELECT navigation FROM systemperformance WHERE navigation = 'Bad'");
+	$navVBad = mysqli_query($conn, "SELECT navigation FROM systemperformance WHERE navigation = 'Very Bad'");
+
+	// SECURITY
+	$secVGood = mysqli_query($conn, "SELECT security FROM systemperformance WHERE security = 'Very Good'");
+	$secGood = mysqli_query($conn, "SELECT security FROM systemperformance WHERE security = 'Good'");
+	$secAvg = mysqli_query($conn, "SELECT security FROM systemperformance WHERE security = 'Average'");
+	$secBad = mysqli_query($conn, "SELECT security FROM systemperformance WHERE security = 'Bad'");
+	$secVBad = mysqli_query($conn, "SELECT security FROM systemperformance WHERE security = 'Very Bad'");
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,28 +80,120 @@
 						</h1>
 					</div>
 					<div class="row">
-						<div class="col-12 col-lg-6">
-							<div class="card">
+						<!-- PIE CHART -->
+						<div class="col-12 col-lg-4">
+							<div class="card" style="height: 265px;">
 								<div class="card-header">
-									<h5 class="card-title">This month</h5>
-									<h6 class="card-subtitle text-muted">Pie charts are an instrumental visualization tool useful in expressing data and
-										information in terms of percentages, ratio.</h6>
+									<h5 class="card-title" style="font-size: 1.4em; border-bottom: 1px solid lightgray; padding: 5px;">Usability</h5>
+									<h6 class="card-subtitle text-muted"></h6>
 								</div>
-								<div class="card-body text-center">
-									<div class="chart">
-										<div id="apexcharts-pie" style="max-width: 440px;margin:auto;"></div>
+								<div class="card-body">
+									<div class="chart chart-xs">
+										<canvas id="chartjs-pie-usability" style="max-width: 150px; margin: auto; position: relative; bottom: 40px;"></canvas>
 									</div>
+									<p style="position: relative; bottom: 55px;">
+										72% vs last month
+										<span class="text-success"><i class="mdi mdi-arrow-bottom-right"></i> +2% </span>
+									</p>
 								</div>
 							</div>
 						</div>
+						<div class="col-12 col-lg-4">
+							<div class="card" style="height: 270px;">
+								<div class="card-header">
+									<h5 class="card-title" style="font-size: 1.4em; border-bottom: 1px solid lightgray; padding: 5px;">Navigation</h5>
+									<h6 class="card-subtitle text-muted"></h6>
+								</div>
+								<div class="card-body">
+									<div class="chart chart-xs">
+										<canvas id="chartjs-pie-navigation" style="max-width: 150px; margin: auto; position: relative; bottom: 40px;"></canvas>
+									</div>
+									<p style="position: relative; bottom: 50px;">
+										83% vs last month
+										<span class="text-success"><i class="mdi mdi-arrow-bottom-right"></i> +4% </span>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg-4">
+							<div class="card" style="height: 265px;">
+								<div class="card-header">
+									<h5 class="card-title" style="font-size: 1.4em; border-bottom: 1px solid lightgray; padding: 5px;">Security</h5>
+									<h6 class="card-subtitle text-muted"></h6>
+								</div>
+								<div class="card-body">
+									<div class="chart chart-xs">
+										<canvas id="chartjs-pie-security" style="max-width: 150px; margin: auto; position: relative; bottom: 40px;"></canvas>
+									</div>
+									<p style="position: relative; bottom: 55px;">
+										75% vs last month
+										<span class="text-danger"><i class="mdi mdi-arrow-bottom-right"></i> -1.7% </span>
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- end pie chart -->
 						
+						<!-- SYSTEM VULNERABILITY TABLE -->
+						<div class="col-12 col-lg-8 col-xxl-7 d-flex">
+							<div class="card flex-fill" style="padding: 30px 20px 10px;">
+							<table id="datatables-basic" class="table table-striped">
+									<thead>
+										<tr>
+											<th>Date</th>
+											<th>Category</th>
+											<th>Description</th>
+											<th style="text-align: center;">Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php
+											include ("database.php");
+
+											$query = "SELECT generaluser.id, generaluser.userID, generaluser.userName, 
+															systemvulnerability.id, systemvulnerability.svID, systemvulnerability.vulDate, systemvulnerability.vulTime, systemvulnerability.vulCategory, systemvulnerability.vulDescription
+													FROM generaluser 
+													INNER JOIN systemvulnerability ON generaluser.userID = systemvulnerability.userID";
+
+											$result = mysqli_query($conn,$query);
+
+											while ($row = mysqli_fetch_array($result)) {
+												$id = $row["id"];
+												$userID = $row["userID"];
+												$userName = $row["userName"];
+												$svID = $row["svID"];
+												$vulDate = $row["vulDate"];
+												$vulTime = $row["vulTime"];
+												$vulCategory = $row["vulCategory"];
+												$vulDescription = $row["vulDescription"];
+										?>
+
+										<tr>
+											<td style="width: 100px;"><?php echo $vulDate; ?></td>
+											<td><?php echo $vulCategory; ?></td>
+											<td><?php echo $vulDescription; ?></td>
+											<!-- ACTIONS -->
+											<td class="table-action" style="margin: auto; width: 70px; text-align: center;">
+												<?php echo "<a href='view-vulnerability.php? user=$userID'>
+													<i class='align-middle fas fa-fw fa-eye' style='color: black;'></i></a>" 
+												?>
+											</td>
+										</tr>
+											<?php
+												}
+											?>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- end performance table -->
+
 						<!-- BAR CHART -->
-						<div class="col-12 col-lg-6">
+						<div class="col-12 col-lg-5">
 							<div class="card">
 								<div class="card-header">
-									<h5 class="card-title">This year</h5>
-									<h6 class="card-subtitle text-muted">A column chart uses vertical bars to display data and is used to compare values across
-										categories.</h6>
+									<h5 class="card-title" style="font-size: 1.4em;">This year</h5>
+									<h6 class="card-subtitle text-muted">User satisfaction for the 1st half of the year.</h6>
 								</div>
 								<div class="card-body">
 									<div class="chart">
@@ -85,202 +202,10 @@
 								</div>
 							</div>
 						</div>
+						<!-- end bar chart -->
 
-						<div class="col-12 col-lg-8 col-xxl-9 d-flex">
-							<div class="card flex-fill">
-								<div class="card-header">
-									<div class="card-actions float-end">
-										<a href="#" class="me-1">
-											<i class="align-middle" data-feather="refresh-cw"></i>
-										</a>
-										<div class="d-inline-block dropdown show">
-											<a href="#" data-bs-toggle="dropdown" data-bs-display="static">
-												<i class="align-middle" data-feather="more-vertical"></i>
-											</a>
-
-											<div class="dropdown-menu dropdown-menu-end">
-												<a class="dropdown-item" href="#">Action</a>
-												<a class="dropdown-item" href="#">Another action</a>
-												<a class="dropdown-item" href="#">Something else here</a>
-											</div>
-										</div>
-									</div>
-									<h5 class="card-title mb-0">Latest Projects</h5>
-								</div>
-								<table id="datatables-dashboard-projects" class="table table-striped my-0">
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th class="d-none d-xl-table-cell">Start Date</th>
-											<th class="d-none d-xl-table-cell">End Date</th>
-											<th>Status</th>
-											<th class="d-none d-md-table-cell">Assignee</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Project Apollo</td>
-											<td class="d-none d-xl-table-cell">01/01/2021</td>
-											<td class="d-none d-xl-table-cell">31/06/2021</td>
-											<td><span class="badge bg-success">Done</span></td>
-											<td class="d-none d-md-table-cell">Carl Jenkins</td>
-										</tr>
-										<tr>
-											<td>Project Fireball</td>
-											<td class="d-none d-xl-table-cell">01/01/2021</td>
-											<td class="d-none d-xl-table-cell">31/06/2021</td>
-											<td><span class="badge bg-danger">Cancelled</span></td>
-											<td class="d-none d-md-table-cell">Bertha Martin</td>
-										</tr>
-										<tr>
-											<td>Project Hades</td>
-											<td class="d-none d-xl-table-cell">01/01/2021</td>
-											<td class="d-none d-xl-table-cell">31/06/2021</td>
-											<td><span class="badge bg-success">Done</span></td>
-											<td class="d-none d-md-table-cell">Stacie Hall</td>
-										</tr>
-										<tr>
-											<td>Project Nitro</td>
-											<td class="d-none d-xl-table-cell">01/01/2021</td>
-											<td class="d-none d-xl-table-cell">31/06/2021</td>
-											<td><span class="badge bg-warning">In progress</span></td>
-											<td class="d-none d-md-table-cell">Carl Jenkins</td>
-										</tr>
-										<tr>
-											<td>Project Phoenix</td>
-											<td class="d-none d-xl-table-cell">01/01/2021</td>
-											<td class="d-none d-xl-table-cell">31/06/2021</td>
-											<td><span class="badge bg-success">Done</span></td>
-											<td class="d-none d-md-table-cell">Bertha Martin</td>
-										</tr>
-										<tr>
-											<td>Project X</td>
-											<td class="d-none d-xl-table-cell">01/01/2021</td>
-											<td class="d-none d-xl-table-cell">31/06/2021</td>
-											<td><span class="badge bg-success">Done</span></td>
-											<td class="d-none d-md-table-cell">Stacie Hall</td>
-										</tr>
-										<tr>
-											<td>Project Romeo</td>
-											<td class="d-none d-xl-table-cell">01/01/2021</td>
-											<td class="d-none d-xl-table-cell">31/06/2021</td>
-											<td><span class="badge bg-success">Done</span></td>
-											<td class="d-none d-md-table-cell">Ashley Briggs</td>
-										</tr>
-										<tr>
-											<td>Project Wombat</td>
-											<td class="d-none d-xl-table-cell">01/01/2021</td>
-											<td class="d-none d-xl-table-cell">31/06/2021</td>
-											<td><span class="badge bg-warning">In progress</span></td>
-											<td class="d-none d-md-table-cell">Bertha Martin</td>
-										</tr>
-										<tr>
-											<td>Project Zircon</td>
-											<td class="d-none d-xl-table-cell">01/01/2021</td>
-											<td class="d-none d-xl-table-cell">31/06/2021</td>
-											<td><span class="badge bg-danger">Cancelled</span></td>
-											<td class="d-none d-md-table-cell">Stacie Hall</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-
-						<div class="col-12 col-md-12 col-xxl-4 d-flex">
-							<div class="card flex-fill w-100">
-								<div class="card-header">
-									<div class="card-actions float-end">
-										<a href="#" class="me-1">
-											<i class="align-middle" data-feather="refresh-cw"></i>
-										</a>
-										<div class="d-inline-block dropdown show">
-											<a href="#" data-bs-toggle="dropdown" data-bs-display="static">
-												<i class="align-middle" data-feather="more-vertical"></i>
-											</a>
-
-											<div class="dropdown-menu dropdown-menu-end">
-												<a class="dropdown-item" href="#">Action</a>
-												<a class="dropdown-item" href="#">Another action</a>
-												<a class="dropdown-item" href="#">Something else here</a>
-											</div>
-										</div>
-									</div>
-									<h5 class="card-title mb-0">Languages</h5>
-								</div>
-								<table class="table table-striped my-0">
-									<thead>
-										<tr>
-											<th>Language</th>
-											<th class="text-end">Users</th>
-											<th class="d-none d-xl-table-cell w-75">% Users</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>en-us</td>
-											<td class="text-end">735</td>
-											<td class="d-none d-xl-table-cell">
-												<div class="progress">
-													<div class="progress-bar bg-primary-dark" role="progressbar" style="width: 43%;" aria-valuenow="43"
-														aria-valuemin="0" aria-valuemax="100">43%</div>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>en-gb</td>
-											<td class="text-end">223</td>
-											<td class="d-none d-xl-table-cell">
-												<div class="progress">
-													<div class="progress-bar bg-primary-dark" role="progressbar" style="width: 27%;" aria-valuenow="27"
-														aria-valuemin="0" aria-valuemax="100">27%</div>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>fr-fr</td>
-											<td class="text-end">181</td>
-											<td class="d-none d-xl-table-cell">
-												<div class="progress">
-													<div class="progress-bar bg-primary-dark" role="progressbar" style="width: 22%;" aria-valuenow="22"
-														aria-valuemin="0" aria-valuemax="100">22%</div>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>es-es</td>
-											<td class="text-end">132</td>
-											<td class="d-none d-xl-table-cell">
-												<div class="progress">
-													<div class="progress-bar bg-primary-dark" role="progressbar" style="width: 16%;" aria-valuenow="16"
-														aria-valuemin="0" aria-valuemax="100">16%</div>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>de-de</td>
-											<td class="text-end">118</td>
-											<td class="d-none d-xl-table-cell">
-												<div class="progress">
-													<div class="progress-bar bg-primary-dark" role="progressbar" style="width: 15%;" aria-valuenow="15"
-														aria-valuemin="0" aria-valuemax="100">15%</div>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>ru-ru</td>
-											<td class="text-end">98</td>
-											<td class="d-none d-xl-table-cell">
-												<div class="progress">
-													<div class="progress-bar bg-primary-dark" role="progressbar" style="width: 13%;" aria-valuenow="13"
-														aria-valuemin="0" aria-valuemax="100">13%</div>
-												</div>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
 					</div>
+					<!-- end row -->
 				</div>
 			</main>
 			<!-- FOOTER -->
@@ -312,93 +237,127 @@
 
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
-			// Pie chart
-			var options = {
-				chart: {
-					height: 350,
-					type: "donut",
-				},
-				dataLabels: {
-					enabled: false
-				},
-				series: [44, 55, 13, 33]
-			}
-			var chart = new ApexCharts(
-				document.querySelector("#apexcharts-pie"),
-				options
-			);
-			chart.render();
+			// Datatables basic
+			$('#datatables-basic').DataTable({
+				responsive: true
+			});
+			// Datatables with Buttons
+			var datatablesButtons = $('#datatables-buttons').DataTable({
+				lengthChange: !1,
+				buttons: ["copy", "print"],
+				responsive: true
+			});
+			datatablesButtons.buttons().container().appendTo("#datatables-buttons_wrapper .col-md-6:eq(0)")
 		});
 	</script>
+
+	<!-- PIE CHART -->
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
-			// Bar chart
-			var options = {
-				chart: {
-					height: 350,
-					type: "bar",
-					stacked: true,
+			new Chart(document.getElementById("chartjs-pie-usability"), {
+				type: "pie",
+				data: {
+					labels: ["Very Good", "Good", "Average", "Bad", "Very Bad"],
+					datasets: [{
+						data: [
+							<?php echo mysqli_num_rows($usaVGood); ?>, 
+							<?php echo mysqli_num_rows($usaGood); ?>,
+							<?php echo mysqli_num_rows($usaAvg); ?>,
+							<?php echo mysqli_num_rows($usaBad); ?>,
+							<?php echo mysqli_num_rows($usaVBad); ?>
+							],
+						backgroundColor: [
+							window.theme.success,
+							"#50c878",
+							"#ffe135",
+							"#ff8c00",
+							"#dc143c",
+							"#E8EAED"
+						],
+						borderColor: "transparent"
+					}]
 				},
-				plotOptions: {
-					bar: {
-						horizontal: true,
-					},
-				},
-				stroke: {
-					width: 1,
-					colors: ["#fff"]
-				},
-				series: [{
-					name: "Yes",
-					data: [44, 55, 41, 37, 22, 43, 21]
-				}, {
-					name: "Maybe",
-					data: [53, 32, 33, 52, 13, 43, 32]
-				}, {
-					name: "No",
-					data: [12, 17, 11, 9, 15, 11, 20]
-				}],
-				xaxis: {
-					categories: [
-						"User-friendly", 2008, 2009, 2010, 2011, 2012, 2013, 2014
-					],
-					labels: {
-						formatter: function(val) {
-							return val + "K"
-						}
+				options: {
+					maintainAspectRatio: false,
+					legend: {
+						display: false
 					}
-				},
-				yaxis: {
-					title: {
-						text: undefined
-					},
-				},
-				tooltip: {
-					y: {
-						formatter: function(val) {
-							return val + "K"
-						}
-					}
-				},
-				fill: {
-					opacity: 1
-				},
-				legend: {
-					position: "top",
-					horizontalAlign: "left",
-					offsetX: 40
 				}
-			}
-			var chart = new ApexCharts(
-				document.querySelector("#apexcharts-bar"),
-				options
-			);
-			chart.render();
+			});
 		});
 	</script>
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
-			// Column chart
+			new Chart(document.getElementById("chartjs-pie-navigation"), {
+				type: "pie",
+				data: {
+					labels: ["Very Good", "Good", "Average", "Bad", "Very Bad"],
+					datasets: [{
+						data: [
+							<?php echo mysqli_num_rows($navVGood); ?>, 
+							<?php echo mysqli_num_rows($navGood); ?>,
+							<?php echo mysqli_num_rows($navAvg); ?>,
+							<?php echo mysqli_num_rows($navBad); ?>,
+							<?php echo mysqli_num_rows($navVBad); ?>
+							],
+						backgroundColor: [
+							window.theme.success,
+							"#50c878",
+							"#ffe135",
+							"#ff8c00",
+							"#dc143c",
+							"#E8EAED"
+						],
+						borderColor: "transparent"
+					}]
+				},
+				options: {
+					maintainAspectRatio: false,
+					legend: {
+						display: false
+					}
+				}
+			});
+		});
+	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			new Chart(document.getElementById("chartjs-pie-security"), {
+				type: "pie",
+				data: {
+					labels: ["Very Good", "Good", "Average", "Bad", "Very Bad"],
+					datasets: [{
+						data: [
+							<?php echo mysqli_num_rows($secVGood); ?>, 
+							<?php echo mysqli_num_rows($secGood); ?>,
+							<?php echo mysqli_num_rows($secAvg); ?>,
+							<?php echo mysqli_num_rows($secBad); ?>,
+							<?php echo mysqli_num_rows($secVBad); ?>
+							],
+						backgroundColor: [
+							window.theme.success,
+							"#50c878",
+							"#ffe135",
+							"#ff8c00",
+							"#dc143c",
+							"#E8EAED"
+						],
+						borderColor: "transparent"
+					}]
+				},
+				options: {
+					maintainAspectRatio: false,
+					legend: {
+						display: false
+					}
+				}
+			});
+		});
+	</script>
+
+	<!-- COLUMN CHART -->
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
 			var options = {
 				chart: {
 					height: 350,
@@ -420,21 +379,21 @@
 					colors: ["transparent"]
 				},
 				series: [{
-					name: "Net Profit",
-					data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+					name: "Student",
+					data: [44, 55, 57, 56, 61, 58]
 				}, {
-					name: "Revenue",
-					data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+					name: "Staff",
+					data: [76, 85, 101, 98, 87, 105]
 				}, {
-					name: "Free Cash Flow",
-					data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+					name: "Expert",
+					data: [35, 41, 36, 26, 45, 48]
 				}],
 				xaxis: {
-					categories: ["Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+					categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
 				},
 				yaxis: {
 					title: {
-						text: "$ (thousands)"
+						text: ""
 					}
 				},
 				fill: {
@@ -443,7 +402,7 @@
 				tooltip: {
 					y: {
 						formatter: function(val) {
-							return "$ " + val + " thousands"
+							return val + " satisfied"
 						}
 					}
 				}

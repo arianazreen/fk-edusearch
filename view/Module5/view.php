@@ -7,11 +7,15 @@ require('../Module1/database.php');
 <?php
 //check session
 include_once('../Module1/session-check-genUser.php');
+ $complaintID = $_GET['id'];
 $id = $_SESSION['username'];
 
-$sql = "SELECT * FROM complaint A JOIN generalUser B ON A.userID = B.userID WHERE A.userID = '$id'";
+
+//declare join table
+$sql = "SELECT * FROM complaint A JOIN generalUser B ON A.userID = B.userID JOIN post C ON a.postID = C.postID WHERE A.userID = '$id' AND A.id = '$complaintID'";
 $result = mysqli_query($conn, $sql);
 $complaint = mysqli_fetch_assoc($result);
+
 
 ?>
 
@@ -64,40 +68,45 @@ $complaint = mysqli_fetch_assoc($result);
 							</div>
 							<div class="card-body">
 								<form>
-									
 									<div class="row">
-										<div class="mb-3 col-md-6">
-											<label for="complain">Name</label>
-											<input type="text" class="form-control"readonly value="<?php echo $complaint['userName']; ?>">
+									<div class="mb-3 col-md-6">
+										<h5>Complaint No</h5>
+											<input type="text" class="form-control" readonly value="<?php echo $complaint['complaintID']; ?>">
 										</div>
 										<div class="mb-3 col-md-6">
-											<label for="complain">Course</label>
+										<h5>Post No</h5>
+										<input type="text" class="form-control" name="userCourse" id="userCourse" readonly value="<?php echo $complaint['postID']; ?>">
+										</div>
+										<div class="mb-3 col-md-12">
+										<h5>Post Title</h5>
+											<input type="text" class="form-control" readonly value="<?php echo $complaint['postTitle']; ?>">
+										</div>
+										<div class="mb-3 col-md-6">
+										<h5>Name</h5>
+											<input type="text" class="form-control" readonly value="<?php echo $complaint['userName']; ?>">
+										</div>
+										<div class="mb-3 col-md-6">
+										<h5>Course</h5>
 											<input type="text" class="form-control" name="userCourse" id="userCourse" readonly value="<?php echo $complaint['userCourse']; ?>">
 										</div>
-										<div class="mb-3 col-md-6">
-											<label for="complain">Post Title</label>
-											<select class="form-select" name="postID" aria-label="Default select example" readonly >
-												<option disabled selected></option>
-											</select>
-										</div>
-										<div class="mb-3 col-md-6">
-											<label for="complain">Complaint Type</label>
+										<div class="mb-3 col-md-12">
+										<h5>Complaint Type</h5>
 											<input type="text" class="form-control" name="complaintType" id="complaintType" readonly value="<?php echo $complaint['complaintType']; ?>">
 										</div>
 										<div class="mb-3 col-md-6">
-											<label for="DateComplaint">Date Complaint</label>
+										<h5>Date Complaint</h5>
 											<input type="date" class="form-control" name="complaintDate" id="complaintDate" readonly value="<?php echo $complaint['complaintDate']; ?>">
 										</div>
 										<div class="mb-3 col-md-6">
-											<label for="TimeComplaint">Time Complaint</label>
+										<h5>Time Complaint 	</h5>
 											<input type="time" class="form-control" name="complaintTime" id="complaintTime" readonly value="<?php echo $complaint['complaintTime']; ?>">
 										</div>
 										<div class="mb-3">
-											<label>Complaint Description</label>
+										<h5>Complaint Description</h5>
 											<textarea class="form-control" rows="5" name="complaintDesc" readonly> <?php echo  $complaint['complaintDesc']; ?></textarea>
 										</div>
 										<div class="mb-3"><br>
-											<button type="button" onclick="history.back()" class="btn" style=" color: white; position: absolute; right:55%; background-color: #07A492; font-weight: 400;">BACK</button>
+											<button type="button" onclick="history.back()" class="btn" style=" color: white; width:10%; position: absolute; right:45%; background-color: #07A492; font-weight: 400;">BACK</button>
 										</div>
 										<br><br><br>
 									</div>

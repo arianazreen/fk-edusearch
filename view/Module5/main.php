@@ -26,6 +26,20 @@ require('../Module1/database.php');
 		body {
 			opacity: 0;
 		}
+
+		/* disable button modal update */
+		.disabled-anchor {
+			pointer-events: none;
+			opacity: 0.5;
+			cursor: not-allowed;
+		}
+
+		.page-item.active .page-link {
+			background-color: #07A492;
+			border-color: #07A492;
+			color: #fff;
+			z-index: 3;
+		}
 	</style>
 	<script src="../../dist/js/settings.js"></script>
 	<!-- END SETTINGS -->
@@ -35,13 +49,11 @@ require('../Module1/database.php');
 	<div class="wrapper">
 		<!-- CONTENT -->
 		<div class="main">
-
 			<?php
 			include_once('navbarUser.php');
 			?>
 			<main class="content">
 				<div class="container-fluid">
-
 					<div class="header">
 						<h1 class="header-title">
 							Complain History
@@ -85,7 +97,8 @@ require('../Module1/database.php');
 												$complaintType = $row['complaintType'];
 												$complaintStatus = $row['complaintStatus'];
 												$complaintDesc = $row['complaintDesc'];
-												// $postID = $row['postID'];
+												$postID = $row['postID'];
+												
 										?>
 												<tr>
 													<td>
@@ -101,32 +114,35 @@ require('../Module1/database.php');
 														<?php echo "$complaintType"; ?>
 													</td>
 													<td>
-														<?php if ($complaintStatus == "On Hold") : 
-															echo "<i class='fas fa-fw fa-exclamation-circle' style='color: #EA030B;'></i>On Hold";
-														elseif ($complaintStatus == "Resolved"):
-															echo "<i class='fas fa-fw fa-check-circle' style='color: #32A377;'></i>Resolved";
-															elseif ($complaintStatus == "Submitted"):
-																echo "<i class='fas fa-fw fa-arrow-alt-circle-up' style='color: blue;'></i>Submitted";
-														else :
-															echo "<i class='fas fa-fw fa-clock' style='color: #ECC707;'></i>In Investigation";
-														 endif; ?>
-
+														<?php if ($complaintStatus == "On Hold") : ?>
+															<i class='fas fa-fw fa-exclamation-circle' style='color: #EA030B;'></i>On Hold
+														<?php elseif ($complaintStatus == "Resolved") : ?>
+															<i class='fas fa-fw fa-check-circle' style='color: #32A377;'></i>Resolved
+														<?php elseif ($complaintStatus == "Submitted") : ?>
+															<i class='fas fa-fw fa-arrow-alt-circle-up' style='color: blue;'></i>Submitted
+														<?php else : ?>
+															<i class='fas fa-fw fa-clock' style='color: #ECC707;'></i>In Investigation
+														<?php endif; ?>
+													</td>
 													<td>
-
-														<?php echo "<a href='view.php'><i class='align-middle fas fa-fw fa-eye' style='color: black; '></i></a>"; ?>
-														<?php echo "<a data-bs-toggle='modal' data-bs-target='#update-$complaintID'><i class='align-middle fas fa-fw fa-edit' style='color: #008080; '></i></a>"; ?>
-														<?php echo "<a data-bs-toggle='modal' data-bs-target='#delete-$complaintID'><i class='align-middle fas fa-fw fa-trash' style='color: red; '></i></a>"; ?>
-
-
+														<?php echo "<a href='view.php? id=$complaintID'><i class='align-middle fas fa-fw fa-eye' style='color: black;'></i></a>"; ?>
+														<?php if ($complaintStatus == "On Hold" || $complaintStatus == "Resolved" || $complaintStatus == "In Investigation") : ?>
+															<?php echo "<a class='disabled-anchor' data-bs-toggle='modal' data-bs-target='#update-$complaintID'><i class='align-middle fas fa-fw fa-edit' style='color: #008080;'></i></a>"; ?>
+															<?php echo "<a data-bs-toggle='modal' data-bs-target='#delete-$complaintID'><i class='align-middle fas fa-fw fa-trash' style='color: red;'></i></a>"; ?>
+														<?php else : ?>
+															<?php echo "<a data-bs-toggle='modal' data-bs-target='#update-$complaintID'><i class='align-middle fas fa-fw fa-edit' style='color: #008080;'></i></a>"; ?>
+															<?php echo "<a data-bs-toggle='modal' data-bs-target='#delete-$complaintID'><i class='align-middle fas fa-fw fa-trash' style='color: red;'></i></a>"; ?>
+														<?php endif; ?>
 													</td>
 												</tr>
-												
+
 												<!--Modal Kemaskini-->
 												<div class="modal fade" id="update-<?php echo $complaintID; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 													<div class="modal-dialog modal-dialog-scrollable">
 														<div class="modal-content">
 															<div class="modal-header">
 																<h5 class="modal-title" id="staticBackdropLabel">Update Complain</h5>
+																<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 															</div>
 															<div class="modal-body">
 																<div class="card-body">
@@ -143,29 +159,28 @@ require('../Module1/database.php');
 																				<input type="time" class="form-control" name="complaintTime" id="complaintTime" value="<?php echo $complaintTime; ?>" disabled>
 																			</div>
 																			<div class="mb-3 col-md-12">
+																				<label for="complain">Post Title</label>
+																				<select class="form-select" name="postID" aria-label="Default select example" disabled>
+																				<option disabled selected><?php echo $postID; ?></option>
+																				</select>
+																			</div>
+																			<div class="mb-3 col-md-12">
 																				<label for="complain">Complaint Type</label>
 																				<select class="form-select" name="complaintType" aria-label="Default select example" disabled>
 																					<option disabled selected><?php echo $complaintType; ?></option>
 																				</select>
 																			</div>
-																			<div class="mb-3 col-md-12">
-																				<label for="complain">Post Title</label>
-																				<select class="form-select" name="postID" aria-label="Default select example" disabled>
-																					<option disabled selected></option>
-																				</select>
-																			</div>
-
-
 																			<div class="mb-3">
 																				<label>Complaint Description</label>
 																				<textarea class="form-control" rows="5" name="complaintDesc"><?php echo $complaintDesc; ?></textarea>
 																			</div>
 																		</div>
-																		<br>
-
+																		<div class="modal-footer">
 																		<input type="hidden" name="update" value="true">
-																		<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-																		<button type="submit" class="btn btn-primary">Save</button>
+																			<button type="button" class="btn" style="position:absolute; right: 328px; background-color: #ADDCD7; color: #000; font-weight: 400;" data-bs-dismiss="modal">Cancel</button>
+																			<button type="submit" class="btn" style=" position:relative; right: 205px;  background-color: #07A492; color: white; font-weight: 400;">Save</button>
+																		</div>
+
 																	</form>
 																</div>
 															</div>
@@ -193,8 +208,8 @@ require('../Module1/database.php');
 															</div>
 															<div class="modal-footer">
 																<input type="hidden" name="delete" value="true">
-																<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-																<button type="submit" class="btn btn-primary">Delete</button>
+																<button type="submit" class="btn" name="delete" style="color: #fff; position:absolute; right: 300px; background-color: #DA3131; font-weight: 400; border-radius: 7px; width: 80px;">Delete</button>
+																			<button type="button" class="btn" data-bs-dismiss="modal" style=" color: #000; position:relative; right: 180px; background-color: #B2B2B4; font-weight: 400; border-radius: 7px; width: 80px;">Cancel</button>
 															</div>
 															</form>
 														</div>
