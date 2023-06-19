@@ -8,7 +8,7 @@ require('../Module1/database.php');
 //check session
 include_once('../Module1/session-check-genUser.php');
  $complaintID = $_GET['id'];
-$id = $_SESSION['username'];
+ $id = $_SESSION['username'];
 
 
 //declare join table

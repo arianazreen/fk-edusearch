@@ -101,6 +101,8 @@ include_once '../Module1/session-check-admin.php';
 														<?php
 														if ($complaintStatus == "On Hold") :
 															echo "<i class='fas fa-fw fa-exclamation-circle' style='color: #EA030B;'></i>  On Hold";
+														elseif ($complaintStatus == "Submitted") :
+															echo "<i class='fas fa-fw fa-arrow-alt-circle-up' style='color: blue;'></i>  Submitted";
 														elseif ($complaintStatus == "Resolved") :
 															echo "<i class='fas fa-fw fa-check-circle' style='color: #32A377;'></i>  Resolved";
 														else :
@@ -112,15 +114,15 @@ include_once '../Module1/session-check-admin.php';
 
 													<td class="table-action">
 
-														<?php echo "<a href='view-details.php? user=$userID'><i class='align-middle fas fa-fw fa-eye' style='margin-right:10px;  color:#000;'></i></a>" ?>
+													<?php echo "<a href='view-details.php?user=$userID&compID=$complaintID'><i class='align-middle fas fa-fw fa-eye' style='margin-right:10px; color:#000;'></i></a>" ?>
 
 
 														<!-- Update modal -->
 
 														<!-- BEGIN  update modal -->
-														<?php echo "<a href='#sizedModalLg-$id'><i class='align-middle fas fa-fw fa-edit' style='margin-right:10px; color:#0039D7;'data-bs-toggle='modal' data-bs-target='#sizedModalLg-$id'></i></a>" ?>
+														<?php echo "<a href='#sizedModalLg-$userID&compID=$complaintID'><i class='align-middle fas fa-fw fa-edit' style='margin-right:10px; color:#0039D7;' data-bs-toggle='modal' data-bs-target='#sizedModalLg-$userID-$complaintID'></i></a>" ?>
 
-														<div class="modal fade" id="sizedModalLg-<?php echo $id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+														<div class="modal fade" id="sizedModalLg-<?php echo $userID . '-' . $complaintID; ?>" tabindex="-1" role="dialog" aria-hidden="true">
 															<div class="modal-dialog modal-lg" role="document">
 																<div class="modal-content">
 																	<div class="modal-header">
@@ -131,7 +133,8 @@ include_once '../Module1/session-check-admin.php';
 
 
 																		<form method="POST" action="complaintDB.php">
-																			<input type="hidden" name="id" value="<?php echo $id; ?>" />
+																		<input type="hidden" name="compID" value="<?php echo $complaintID; ?>">
+
 
 																			<div class="card-body row">
 																				<div class="form-floating col-sm-4">
@@ -180,17 +183,24 @@ include_once '../Module1/session-check-admin.php';
 																							<option value="On Hold">On Hold</option>
 																							<option value="Resolved">Resolved</option>
 																						<?php
+																						} elseif ($complaintStatus == "Submitted") {
+																						?>
+																							<option value="Submitted" selected>Submitted</option>
+																							<option value="In Investigation">In Investigation</option>
+																							<option value="On Hold">On Hold</option>
+																							<option value="Resolved">Resolved</option>
+																							<?php
 																						} elseif ($complaintStatus == "On Hold") {
 																						?>
-																							<option value="In Investigation">In Investigation</option>
 																							<option value="On Hold" selected>On Hold</option>
+																							<option value="In Investigation">In Investigation</option>
 																							<option value="Resolved">Resolved</option>
 																						<?php
 																						} else {
 																						?>
+																							<option value="On Hold" selected>On Hold</option>
 																							<option value="In Investigation">In Investigation</option>
 																							<option value="On Hold">On Hold</option>
-																							<option value="Resolved" selected>Resolved</option>
 																						<?php
 																						}
 																						?>
@@ -220,9 +230,9 @@ include_once '../Module1/session-check-admin.php';
 
 														<!-- BEGIN delete modal -->
 
-														<?php echo "<a href='#centeredModalDanger-$id'><i class='align-middle fas fa-fw fa-trash' class='trigger-btn' data-bs-toggle='modal' data-bs-target='#centeredModalDanger-$id' style='color:#D00000;'></i></a>" ?>
+														<?php echo "<a href='#centeredModalDanger-$userID&compID=$complaintID'><i class='align-middle fas fa-fw fa-trash' class='trigger-btn' data-bs-toggle='modal' data-bs-target='#centeredModalDanger-$userID-$complaintID' style='color:#D00000;'></i></a>" ?>
 
-														<div class="modal fade" id="centeredModalDanger-<?php echo $id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+														<div class="modal fade" id="centeredModalDanger-<?php echo $userID . '-' . $complaintID;?>" tabindex="-1" role="dialog" aria-hidden="true">
 															<div class="modal-dialog modal-dialog-centered" role="document">
 																<div class="modal-content">
 																	<div class="modal-header">
@@ -230,7 +240,7 @@ include_once '../Module1/session-check-admin.php';
 																	</div>
 																	<div class="modal-body m-3">
 																		<form method="POST" action="complaintDB.php">
-																			<input type="hidden" name="id" value="<?php echo $id; ?>">
+																		<input type="hidden" name="compID" value="<?php echo $complaintID; ?>">
 																			<div class="drop" style="width:150px; height:150px; background-color:#fff2f2; display:flex; justify-content:center; align-items:center; border-radius: 50%; margin: -25px 0 20px 200px; position:relative; box-shadow: inset 2px 7px 6px rgba(0,0,0,0.1);">
 																				<i class="align-middle fas fa-fw fa-trash-alt" style="font-size: 65px; color: #D90000;"></i>
 																			</div>

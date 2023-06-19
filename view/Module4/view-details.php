@@ -38,10 +38,11 @@
 	if (isset($_GET['user'])) {
 
 		$userID = $_GET['user'];
-
+		$compID = $_GET['compID'];
+		
 		$sql= "SELECT generaluser.userID, generaluser.userName, complaint.complaintID, complaint.complaintDate, complaint.complaintTime, complaint.complaintType, complaint.complaintDesc, complaint.complaintStatus 
 				FROM generaluser INNER JOIN complaint ON generaluser.userID=complaint.userID
-				WHERE generaluser.userID = '$userID'";
+				WHERE generaluser.userID = '$userID' AND complaint.complaintID = '$compID'";
 
 		$result = mysqli_query($conn, $sql);
 
