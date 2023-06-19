@@ -21,10 +21,9 @@ if (isset($_POST['submit'])) {
     $complaintDate =  date("Y-m-d");
     $complaintTime =  date("h:i");
     $complaintType =  $_POST['complaintType'];
-    // 'App_no' => 'KN/' . date("Y") . '/' . sprintf("%'.05d\n", $consultation + 1),
     $complaintDesc =  $_POST['complaintDesc'];
-    // $complaintStatus =  $_POST['complaintStatus'];
-    $sql = "INSERT INTO complaint (  complaintID ,userID, complaintDate, complaintTime, complaintType, complaintDesc, complaintStatus) VALUES ( '$complaintID','$id','$complaintDate', '$complaintTime', '$complaintType', '$complaintDesc', 'Submitted')";
+    $postID = $_POST['postID'];
+    $sql = "INSERT INTO complaint (  complaintID ,userID ,postID, complaintDate, complaintTime, complaintType, complaintDesc, complaintStatus) VALUES ( '$complaintID','$id','$postID','$complaintDate', '$complaintTime', '$complaintType', '$complaintDesc', 'Submitted')";
     $result = mysqli_query($conn, $sql);
 
 
