@@ -14,8 +14,16 @@
                 <li class="nav-item">
                     <a class="nav-link " aria-current="page" href="../Module2/M2-user_homepage.php">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../Module2/M2-my_questions.php">My Question</a>
+                <li class="nav-item dropdown ms-lg-2">
+                    <a class="nav-link dropdown-toggle position-relative" href="#" id="userDropdown" data-bs-toggle="dropdown">My Questions</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item"></a>
+                        <a class="dropdown-item" href="../Module2/M2-my_questions.php">My Questions</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="../Module2/M2-feedback_form.php">System Performances Feedback Form</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="../Module2/M2-vulnerability.php">Vulnerability Form</a>
+                    </div>
                 </li>
                 <li class="nav-item dropdown ms-lg-2">
                     <a class="nav-link dropdown-toggle position-relative" href="#" id="userDropdown" data-bs-toggle="dropdown">Complain</a>

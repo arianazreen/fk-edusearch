@@ -1,0 +1,169 @@
+<!-- declaration database -->
+<?php
+require('../Module1/database.php');
+
+?>
+
+<?php
+//check session
+include_once('../Module1/session-check-genUser.php');
+$id = $_SESSION['username'];
+$sql2 = "SELECT * FROM post WHERE userID = '$id'";
+$result2 = mysqli_query($conn, $sql2) or die("Could not execute query in view");
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
+    <meta name="author" content="Bootlab">
+
+    <title>System Performances Feedback Form</title>
+    <link rel="shortcut icon" href="../../dist/img/logo/fk-edusearch-border.png" type="image/x-icon">
+
+    <link href="../../dist/css/modernModule5.css" rel="stylesheet">
+
+    <style>
+        body {
+            opacity: 0;
+        }
+    </style>
+    <script src="../../dist/js/settings.js"></script>
+    <!-- END SETTINGS -->
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- CONTENT -->
+        <div class="main">
+            <?php
+            include_once('M2-navbarUser.php');
+            ?>
+            <main class="content">
+                <div class="container-fluid">
+                    <div class="header">
+                        <h1 class="header-title">
+                            System Performances Feedback
+                        </h1>
+                    </div>
+                    <div class="col-md-10" style="float:none;margin:auto;">
+
+
+                        <div class="card">
+
+
+                            <br>
+                            <h2 style="float:none;margin:auto;">Write your feedback here!</h2>
+
+                            <div class="card-header" style="float:none;margin:auto;">
+                                <h6 class="card-subtitle">
+                                    <span>Feel free to share your feedback about our System Performances.</span>
+                            </div>
+                            <div class="card-body">
+                                <form method="POST" action="process_post.php">
+
+
+                                    <input type="hidden" name="userID" value="<?php echo $id; ?>">
+                                    <div class="row">
+                                        <div class="mb-3 col-md-12">
+                                    
+
+                                            <label for="userType">User Role</label>
+                                            <select class="form-select" name="userType" value="userType" aria-label="Default select example">
+                                                <option hidden>Please Select</option>
+                                                <option value="Student">Student</option>
+                                                <option value="Staff">Staff</option>
+                                                <option value="Expert">Expert</option>
+                                            </select>
+                                        </div>
+                                        <!-- Usability Type-->
+                                        <div class="mb-3 col-md-12">
+                                            <label for="usability">Usability Type</label>
+                                            <select class="form-select" name="usability" value="usability" aria-label="Default select example">
+                                                <option hidden>Please Select</option>
+                                                <option value="Very Bad">Very Bad</option>
+                                                <option value="Bad">Bad</option>
+                                                <option value="Average">Average</option>
+                                                <option value="Good">Good</option>
+                                                <option value="Very Good">Very Good</option>
+                                            </select>
+                                        </div>
+                                        <!-- Navigation Type-->
+                                        <div class="mb-3 col-md-12">
+                                            <label for="navigation">Usability Type</label>
+                                            <select class="form-select" name="navigation" value="navigation" aria-label="Default select example">
+                                                <option hidden>Please Select</option>
+                                                <option value="Very Bad">Very Bad</option>
+                                                <option value="Bad">Bad</option>
+                                                <option value="Average">Average</option>
+                                                <option value="Good">Good</option>
+                                                <option value="Very Good">Very Good</option>
+                                            </select>
+                                        </div>
+                                        <!-- Security Type-->
+                                        <div class="mb-3 col-md-12">
+                                            <label for="security">Usability Type</label>
+                                            <select class="form-select" name="security" value="security" aria-label="Default select example">
+                                                <option hidden>Please Select</option>
+                                                <option value="Very Bad">Very Bad</option>
+                                                <option value="Bad">Bad</option>
+                                                <option value="Average">Average</option>
+                                                <option value="Good">Good</option>
+                                                <option value="Very Good">Very Good</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3"><br>
+                                            <button type="submit" name="submit_systems_form" class="btn" style=" color: white; position: absolute; right:50%; background-color: #07A492; font-weight: 400; width:10%;">Submit</button>
+                                            <button type="button" onclick="history.back()" class="btn" style="color: #000; position: absolute; right:40%; background-color: #ADDCD7; font-weight: 400;width:9%;">Back</button>
+
+                                        </div>
+
+                                        <br><br><br>
+                                    </div>
+
+
+                                </form>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row text-muted">
+                        <div class="col-8 text-start"></div>
+                        <div class="col-4 text-end">
+                            <p class="mb-0">
+                                &copy; 2023 - UNIVERSITI MALAYSIA PAHANG
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+    </div>
+
+    <svg width="0" height="0" style="position:absolute">
+        <defs>
+            <symbol viewBox="0 0 512 512" id="ion-ios-pulse-strong">
+                <path d="M448 273.001c-21.27 0-39.296 13.999-45.596 32.999h-38.857l-28.361-85.417a15.999 15.999 0 0 0-15.183-10.956c-.112 0-.224 0-.335.004a15.997 15.997 0 0 0-15.049 11.588l-44.484 155.262-52.353-314.108C206.535 54.893 200.333 48 192 48s-13.693 5.776-15.525 13.135L115.496 306H16v31.999h112c7.348 0 13.75-5.003 15.525-12.134l45.368-182.177 51.324 307.94c1.229 7.377 7.397 11.92 14.864 12.344.308.018.614.028.919.028 7.097 0 13.406-3.701 15.381-10.594l49.744-173.617 15.689 47.252A16.001 16.001 0 0 0 352 337.999h51.108C409.973 355.999 427.477 369 448 369c26.511 0 48-22.492 48-49 0-26.509-21.489-46.999-48-46.999z">
+                </path>
+            </symbol>
+        </defs>
+    </svg>
+    <script src="../../dist/js/app.js"></script>
+
+</body>
+
+</html>

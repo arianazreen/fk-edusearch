@@ -143,6 +143,62 @@ if (isset($_POST['submit_comment'])) {
 
 
 
+//submit systems performances feedback 
+if (isset($_POST['submit_systems_form'])) {
+    $id = $_SESSION['username'];
+    $userID = $_POST["userID"];
+    $userType = $_POST["userType"];
+    $usability = $_POST["usability"];
+    $navigation = $_POST["navigation"];
+    $security = $_POST["security"];
+
+    $sql = "INSERT INTO systemperformance (userID, userType, usability, navigation, security) 
+                 VALUES ('$id','$userType', '$usability', '$navigation', '$security')";
+
+    // $result = mysqli_query($conn, $sql);
+
+    if (mysqli_query($conn, $sql)) {
+        // echo "<script>alert('Your sharing content has been posted.');</script>";
+        //  header("Location: M2-my_questions.php");
+        echo "<script>alert('Your system performance feedback has been submit.');
+                      window.location.href='M2-my_questions.php'</script>";
+        exit();
+    } else {
+        echo "<script>alert('Error submitting your feedback.');</script>" . mysqli_error($conn);
+    }
+
+    mysqli_close($conn);
+}
+
+
+//submit systems vulnerability feedback 
+if (isset($_POST['submit_vul_form'])) {
+    $id = $_SESSION['username'];
+    date_default_timezone_set("Asia/Kuala_Lumpur");
+    $vulDate = date("Y-m-d");
+    $vulTime = date("H:i:s");
+    $vulCategory = $_POST["vulCategory"];
+    $vulDescription = $_POST["vulDescription"];
+
+
+    $sql = "INSERT INTO systemvulnerability (userID, vulDate, vulTime, vulCategory, vulDescription) 
+                 VALUES ('$id','$vulDate', '$vulTime', '$vulCategory', '$vulDescription')";
+
+    // $result = mysqli_query($conn, $sql);
+
+    if (mysqli_query($conn, $sql)) {
+        // echo "<script>alert('Your sharing content has been posted.');</script>";
+        //  header("Location: M2-my_questions.php");
+        echo "<script>alert('Your system vulnerability feedback has been submit.');
+                      window.location.href='M2-user_homepage.php'</script>";
+        exit();
+    } else {
+        echo "<script>alert('Error submitting your feedback.');</script>" . mysqli_error($conn);
+    }
+
+    mysqli_close($conn);
+}
+
 
 
 
