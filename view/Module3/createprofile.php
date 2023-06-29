@@ -43,7 +43,7 @@ include_once('../Module1/session-check-expert.php');
             <!--1st Row-->
             <div class="container-fluid">
             <div class="header">
-                <h1 class="header-title"> Edit Profile </h1>
+                <h1 class="header-title"> Edit </h1>
               </div>
               <div class="row">
 						<div class="col-12">
@@ -52,24 +52,16 @@ include_once('../Module1/session-check-expert.php');
                                 <form method="POST" action="crudexp.php">
                                     <div class="row">
                                     <div class="mb-3 col-md-4">
-                                        <label>Research Name</label>
+                                        <label>Date</label>
                                         <input type="text" class="form-control" name="expertResearchArea">
                                       </div>
                                       <div class="mb-3 col-md-8">
-                                        <label>Publications</label>
+                                        <label>Time</label>
                                         <input type="text" class="form-control" name="expertPublications">
                                       </div>
                                         <div class="mb-3 col-md-7">
-                                        <label>CVLink</label>
+                                        <label>Publication Name</label>
                                         <input type="text" class="form-control" name="expertCV">
-                                      </div>
-                                      <div class="mb-3 col-md-5">
-                                        <label>Social media</label>
-                                        <input type="text" class="form-control" name="expertSocMed">
-                                      </div>
-                                      <div class="mb-3 col-md-8">
-                                        <label>Academic Status</label>
-                                        <input type="text" class="form-control" name="expertAcademicStatus">
                                       </div>
                                         <div class="position-relative">
                                             <div class="position-absolute top-100 start-50 translate-middle" style="margin-top: 80px;">

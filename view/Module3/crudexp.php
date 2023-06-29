@@ -6,20 +6,18 @@ require('../Module1/database.php');
 session_start();
 if (isset($_POST['submit'])) {
     // $userID = $_GET[]
-    $expertResearchName = $_POST['expertResearchName'];
-    $expertPublications = $_POST['expertPublications'];
-    $expertAcademicStatus = $_POST['expertAcademicStatus'];
-    $expertCV = $_POST['expertCV'];
-    $expertSocMed = $_POST['eexpertSocMed'];
+    $Date = $_POST['Date'];
+    $Time = $_POST['Time'];
+    $PublicationName = $_POST['Publication Name'];
 
-    $query = "INSERT INTO expertise (expertResearchName,expertPublications,expertAcademicStatus,expertCV,expertSocMed) 
-                VALUES ('$expertResearchName','$expertPublications','$expertAcademicStatus','$expertCV','$expertSocMed')";
+    $sql = "INSERT INTO publications (Date,Time,Publication Name) 
+                VALUES ('$Date','$Time','$PublicationName','submit')";
     
-    if (mysqli_query($conn, $query)) {
+    if (mysqli_query($conn, $sql)) {
         echo "<script>alert('Updated profile successfully.'); window.location='ExpProfile.php'</script>";
     } 
     else {
-        echo "Error : " . $query ."<br>" . mysqli_error($conn);
+        echo "<script>alert('Error Inserting Data: " . mysqli_error($conn) . "')</script>";
     }
 }
 ?>
@@ -30,16 +28,16 @@ if (isset($_POST['submit'])) {
 require('../Module1/database.php');
 
 if (isset($_POST['delete'])) {
-    $id = $_POST['id'];
+    $No = $_POST['No'];
 
-    $sql = "DELETE FROM expertise WHERE id = $id";
+    $sql = "DELETE FROM publications WHERE No = $No";
     $result = mysqli_query($conn, $sql);
 
 
     if ($result) {
         //to close database connection
         mysqli_close($conn);
-        header("Location: ExpProfile.php");
+        echo "<script>alert('The data has been deleted.');window.location='ExpProfile.php'</script>";
         exit();
     } else {
         mysqli_close($conn);

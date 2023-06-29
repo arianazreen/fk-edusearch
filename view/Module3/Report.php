@@ -43,54 +43,40 @@ include_once('../Module1/session-check-expert.php');
         <main class="content">
             <!--1st Row-->
 
-          <div class="container-fluid">
+            <div class="container-fluid d-flex align-items-center justify-content-center">
               <div class="header">
-                <h1 class="header-title"> REPORT </h1>
+                <h1 class="header-title">REPORT</h1>
               </div>
-          </div>
+            </div>
 
-               <div class="row">
-                 <div class="col-12 col-lg-7">
-                   <div class="card flex-fill w-100">
-                      <div class="card-header">
-                      <img src="./imageM3/profilecirclenew.png" alt="imageM3" style="width: 200px; height: 200px;" >
-                       <h2 class="card-title"> Dr.Muaz bin Rizal </h2>
-                       <span class="rating">4.3/5.0</span>
-                        <div class="rating">
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="half">&#9733;</span>
-                            <span class="empty">&#9733;</span>
-                        <div class="text-muted small mt-1 countdown">171 ratings</div>
-                        </div>
-                      </div>
+            <div class="row justify-content-center">
+              <div class="col-12 col-lg-7">
+                <div class="card flex-fill w-100">
+                  <div class="card-header  text-center">
+                    <img src="./imageM3/profilecirclenew.png" alt="imageM3" style="width: 200px; height: 200px;">
+                    <h2 class="card-title">Dr. Muaz bin Rizal</h2>
+                    <span class="rating">4.3/5.0</span>
+                    <div class="rating">
+                      <span class="star">&#9733;</span>
+                      <span class="star">&#9733;</span>
+                      <span class="star">&#9733;</span>
+                      <span class="half">&#9733;</span>
+                      <span class="empty">&#9733;</span>
+                      <div class="text-muted small mt-1 countdown">130 ratings</div>
+                    </div>
                   </div>
                 </div>
-                <div class="col-6 col-lg-5">
-                    <div class="card flex-fill w-100">
-                      <div class="card-header">
-                          <h2 class="card-title mb-0"> Publications </h2>
-                            <div class="document-wrapper">
-                            <!-- Document Container -->
-                            <div class="document-container" id="documentContainer">
-                            <!-- Initial Document Box -->
-                            </div>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                </div>
               </div>
-             
+            </div>
+                        
   
            <!--2nd Row-->
 
-           <div class="row">
-            <div class="col-12 col-lg-7">
-              <div class="card flex-fill w-100">
-                 <div class="card-header">
-                  <h2 class="card-title"> Total Ratings </h2>
+           <div class="row justify-content-center">
+              <div class="col-12 col-lg-7">
+                <div class="card flex-fill w-100">
+                  <div class="card-header text-center">
+                    <h2 class="card-title">Total Ratings</h2>
                     <!--<h6 class="card-subtitle text-muted">A line chart is a way of plotting data points on a line.</h6>-->
                     <div class="card-body d-flex">
                       <div class="align-self-center w-100">
@@ -98,14 +84,43 @@ include_once('../Module1/session-check-expert.php');
                           <div class="chart chart-xs">
                             <canvas id="chartjs-dashboard-pie"></canvas>
                           </div>
-                          <table class="table mb-0">
+                          <table id="ratings-table" class="table mb-0">
+                            <thead>
+                              <tr>
+                                <th>Rating</th>
+                                <th>Count</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>5 Stars</td>
+                                <td>35</td>
+                              </tr>
+                              <tr>
+                                <td>4 Stars</td>
+                                <td>50</td>
+                              </tr>
+                              <tr>
+                                <td>3 Stars</td>
+                                <td>10</td>
+                              </tr>
+                              <tr>
+                                <td>2 Stars</td>
+                                <td>15</td>
+                              </tr>
+                              <tr>
+                                <td>1 Stars</td>
+                                <td>20</td>
+                              </tr>
+                            </tbody>
                           </table>
                         </div>
-                        </div>
+                      </div>
                     </div>
-                 </div>
-             </div>
-           </div>
+                  </div>
+                </div>
+              </div>
+            </div>
       
        </main>
 
@@ -138,55 +153,54 @@ include_once('../Module1/session-check-expert.php');
     <!--Script-->
     	<!-- Js Pie Chart -->
 	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			// Pie chart
-			new Chart(document.getElementById("chartjs-dashboard-pie"), {
-				type: 'pie',
-				data: {
-					labels: ["5 Star", "4 star", "3 star","2 star","1 star"],
-					datasets: [{
-						data: [30, 52, 25, 20, 15],
-						backgroundColor: [
-							"#5D8B86",
-							"#467C75",
-							"#46BDAF",
-                            "#81D3C9",
-                            "#97D6CF",
-						],
-						borderColor: "transparent"
-					}]
-				},
-				options: {
-					responsive: !window.MSInputMethodContext,
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					cutoutPercentage: 75
-				}
-			});
-		});
+      src="https://cdn.jsdelivr.net/npm/chart.js"
 
-         // Get reference to the document container
-            const documentContainer = document.querySelector("#documentContainer");
+        document.addEventListener('DOMContentLoaded', function() {
+    // Get the canvas element
+    var canvas = document.getElementById('chartjs-dashboard-pie');
 
-        // Function to create a new document box
-        function createDocumentBox() {
-        const newDocumentBox = document.createElement("div");
-        newDocumentBox.classList.add("document-box");
+    if (canvas) {
+      // Get the rating values from the table
+      var ratingsTable = document.getElementById('ratings-table');
+      var ratingLabels = [];
+      var ratingCounts = [];
 
-        const newDocumentContent = document.createElement("div");
-        newDocumentContent.textContent = "New Document";
+      // Extract the rating labels and counts from the table
+      var rows = ratingsTable.getElementsByTagName('tr');
+      for (var i = 1; i < rows.length; i++) { // Start from index 1 to skip the table header
+        var cells = rows[i].getElementsByTagName('td');
+        ratingLabels.push(cells[0].textContent.trim());
+        ratingCounts.push(parseInt(cells[1].textContent.trim()));
+      }
 
-        newDocumentBox.appendChild(newDocumentContent);
-        documentContainer.appendChild(newDocumentBox);
-
-        // Scroll to the bottom
-        documentContainer.scrollTop = documentContainer.scrollHeight;
+      // Create the pie chart
+      new Chart(canvas, {
+        type: 'pie',
+        data: {
+          labels: ratingLabels,
+          datasets: [{
+            data: ratingCounts,
+            backgroundColor: ['#5D8B86', '#467C75', '#467C75', '#81D3C9', '#97D6CF']
+          }]
+        },
+        options: {
+          responsive: true,
+          legend: {
+            display: true,
+            position: 'bottom'
+          },
+          title: {
+            display: false
+          },
+          animation: {
+            animateScale: true,
+            animateRotate: true
+          }
         }
+      });
+    }
+  });
 
-        // Call the createDocumentBox function initially
-        createDocumentBox();
 	</script>
 
      <!--css-->

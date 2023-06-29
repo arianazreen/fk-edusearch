@@ -83,7 +83,8 @@ include_once('../Module1/session-check-expert.php');
                 </div>
               </div>
              
-              <button type="submit" class="btn btn-primary" style=" color: white; position: absolute; right:1%; margin-top:-2%; background-color: #DA3131; font-weight: 400;">Close Post</a>
+              <a href="ExpProfile.php" class="btn btn-primary" style="color: white; position: absolute; right: 1%; margin-top: -2%; background-color: #DA3131; font-weight: 400;">Close Post</a>
+
 
   
        </main>

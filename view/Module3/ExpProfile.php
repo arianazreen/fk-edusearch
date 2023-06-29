@@ -55,7 +55,7 @@ include_once('../Module1/session-check-expert.php');
                     <div class="date"> Expert | Computer System </div>
                     <div class="right-align">
                     <a href='createprofile.php'> <i class="fa fa-pencil-square-o" aria-hidden="true" style="color: #BBE3E5; font-size:medium;" 
-                    data-bs-toggle="modal" >Edit Profile </i></a>
+                    data-bs-toggle="modal" >Edit</i></a>
                   
 
 					<div class="row">
@@ -70,11 +70,9 @@ include_once('../Module1/session-check-expert.php');
 									<thead>
 										<tr>
 											<th>No</th>
-											<th>Research Name</th>
-											<th>Publications Name</th>
-											<th>Academic Status</th>
-											<th>Expert CV</th>
-											<th>Social Media</th>
+											<th>Date</th>
+											<th>Time</th>
+											<th>Publication Name</th>
 											<th style="text-align: center;">Actions</th>
 										</tr>
 									</thead>
@@ -82,17 +80,15 @@ include_once('../Module1/session-check-expert.php');
 										<?php
 											require ('../Module1/database.php');
 
-											$sql = "SELECT * FROM expertise";
+											$sql = "SELECT * FROM publications";
 											$result = mysqli_query($conn,$sql);
 											if (mysqli_num_rows($result) > 0) {
 												$count = 1;
 											while ($row = mysqli_fetch_array($result)) {
-												$id = $row["id"];
-												$expertResearchName = $_POST['expertResearchName'];
-												$expertPublications = $_POST['expertPublications'];
-												$expertAcademicStatus = $_POST['expertAcademicStatus'];
-												$expertCV = $_POST['expertCV'];
-												$expertSocMed = $_POST['eexpertSocMed'];
+												$No = $row["No"];
+												$Date = $row['Date'];
+												$Time = $row['Time'];
+												$PublicationName = $row['Publication Name'];
 																	
 										?>
 
@@ -101,38 +97,32 @@ include_once('../Module1/session-check-expert.php');
 														<?php echo "$count"; ?>
 													</td>
 													<td>
-														<?php echo "$expertResearchName"; ?>
+														<?php echo "$Date"; ?>
 													</td>
 													<td>
-														<?php echo "$expertPublications"; ?>
+														<?php echo "$Time"; ?>
 													</td>
 													<td>
-														<?php echo "$expertAcademicStatus"; ?>
-													</td>
-													<td>
-														<?php echo "$expertCV"; ?>
-													</td>
-													<td>
-														<?php echo "$expertSocMed"; ?>
+														<?php echo "$PublicationName"; ?>
 													</td>
 													
 													<td>
-														<?php echo "<a data-bs-toggle='modal' data-bs-target='#delete-$id'><i class='align-middle fas fa-fw fa-trash' style='color: red; '></i></a>"; ?>
+														<?php echo "<a data-bs-toggle='modal' data-bs-target='#delete-$No'><i class='align-middle fas fa-fw fa-trash' style='color: red; '></i></a>"; ?>
 
 
 													</td>
 												</tr>
 
 										<!-- Start Modal Delete -->
-										<div class="modal fade" id="delete-<?php echo $id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+										<div class="modal fade" id="delete-<?php echo $No; ?>" tabindex="-1" role="dialog" aria-hidden="true">
 													<div class="modal-dialog modal-dialog-centered" role="document">
 														<div class="modal-content">
 															<div class="modal-header">
 																<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 															</div>
 															<div class="modal-body m-3">
-																<form method="POST" action="crud.php">
-																	<input type="hidden" name="id" value="<?php echo $id; ?>">
+																<form method="POST" action="crudexp.php">
+																	<input type="hidden" name="id" value="<?php echo $No; ?>">
 																	<div class="drop" style="width:150px; height:150px; background-color:#fff2f2; display:flex; justify-content:center; align-items:center; border-radius: 50%; margin: -25px 0 20px 200px; position:relative; box-shadow: inset 2px 7px 6px rgba(0,0,0,0.1);">
 																		<i class="align-middle fas fa-fw fa-trash-alt" style="font-size: 65px; color: #D90000;"></i>
 																	</div>
