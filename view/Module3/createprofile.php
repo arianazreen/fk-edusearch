@@ -61,7 +61,7 @@ include_once('../Module1/session-check-expert.php');
                                       </div>
                                         <div class="mb-3 col-md-7">
                                         <label>Publication Name</label>
-                                        <input type="text" class="form-control" name="Publication Nme">
+                                        <input type="text" class="form-control" name="Publication Name">
                                       </div>
                                         <div class="position-relative">
                                             <div class="position-absolute top-100 start-50 translate-middle" style="margin-top: 80px;">
