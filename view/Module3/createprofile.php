@@ -48,20 +48,20 @@ include_once('../Module1/session-check-expert.php');
               <div class="row">
 						<div class="col-12">
 							<div class="card" style="padding: 50px 40px 140px; border-radius: 20px; box-shadow: 5px 8px 5px lightgray;">
-                                <!-- FORM CREATE GEN USER-->
+                
                                 <form method="POST" action="crudexp.php">
                                     <div class="row">
                                     <div class="mb-3 col-md-4">
                                         <label>Date</label>
-                                        <input type="text" class="form-control" name="expertResearchArea">
+                                        <input type="text" class="form-control" name="Date">
                                       </div>
                                       <div class="mb-3 col-md-8">
                                         <label>Time</label>
-                                        <input type="text" class="form-control" name="expertPublications">
+                                        <input type="text" class="form-control" name="Time">
                                       </div>
                                         <div class="mb-3 col-md-7">
                                         <label>Publication Name</label>
-                                        <input type="text" class="form-control" name="expertCV">
+                                        <input type="text" class="form-control" name="Publication Nme">
                                       </div>
                                         <div class="position-relative">
                                             <div class="position-absolute top-100 start-50 translate-middle" style="margin-top: 80px;">

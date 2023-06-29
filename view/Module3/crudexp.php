@@ -5,7 +5,7 @@ require('../Module1/database.php');
 
 session_start();
 if (isset($_POST['submit'])) {
-    // $userID = $_GET[]
+
     $Date = $_POST['Date'];
     $Time = $_POST['Time'];
     $PublicationName = $_POST['Publication Name'];
