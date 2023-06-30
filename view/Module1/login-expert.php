@@ -21,7 +21,7 @@
 		{
 			session_start();
 			$_SESSION['username'] = $username;
-			echo "<script>alert('Logged in as an Expert.'); window.location='../Module3/#'</script>";
+			echo "<script>alert('Logged in as an Expert.'); window.location='../Module3/ExpProfile.php'</script>";
 		}
 		else
 		{

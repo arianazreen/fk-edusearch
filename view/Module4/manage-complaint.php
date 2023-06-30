@@ -21,6 +21,13 @@ include_once '../Module1/session-check-admin.php';
 		body {
 			opacity: 0;
 		}
+
+		/* disable button modal update */
+		.disabled-anchor {
+			pointer-events: none;
+			opacity: 0.5;
+			cursor: not-allowed;
+		}
 	</style>
 	<script src="../../dist/js/settings.js"></script>
 	<!-- END SETTINGS -->
@@ -120,7 +127,11 @@ include_once '../Module1/session-check-admin.php';
 														<!-- Update modal -->
 
 														<!-- BEGIN  update modal -->
-														<?php echo "<a href='#sizedModalLg-$userID&compID=$complaintID'><i class='align-middle fas fa-fw fa-edit' style='margin-right:10px; color:#0039D7;' data-bs-toggle='modal' data-bs-target='#sizedModalLg-$userID-$complaintID'></i></a>" ?>
+														<?php if ($complaintStatus == "Resolved") : ?>
+															<?php echo "<a class='disabled-anchor' href='#sizedModalLg-$userID&compID=$complaintID'><i class='align-middle fas fa-fw fa-edit' style='margin-right:10px; color:#0039D7;' data-bs-toggle='modal' data-bs-target='#sizedModalLg-$userID-$complaintID'></i></a>" ?>
+														<?php else : ?>
+															<?php echo "<a href='#sizedModalLg-$userID&compID=$complaintID'><i class='align-middle fas fa-fw fa-edit' style='margin-right:10px; color:#0039D7;' data-bs-toggle='modal' data-bs-target='#sizedModalLg-$userID-$complaintID'></i></a>" ?>
+														<?php endif; ?>
 
 														<div class="modal fade" id="sizedModalLg-<?php echo $userID . '-' . $complaintID; ?>" tabindex="-1" role="dialog" aria-hidden="true">
 															<div class="modal-dialog modal-lg" role="document">

@@ -99,7 +99,7 @@
 							</div>
 						</div>
 						<div class="col-12 col-lg-4">
-							<div class="card" style="height: 270px;">
+							<div class="card" style="height: 265px;">
 								<div class="card-header">
 									<h5 class="card-title" style="font-size: 1.4em; border-bottom: 1px solid lightgray; padding: 5px;">Navigation</h5>
 									<h6 class="card-subtitle text-muted"></h6>
@@ -193,7 +193,7 @@
 							<div class="card">
 								<div class="card-header">
 									<h5 class="card-title" style="font-size: 1.4em;">This year</h5>
-									<h6 class="card-subtitle text-muted">User satisfaction for the 1st half of the year.</h6>
+									<h6 class="card-subtitle text-muted">System Performance for the 1st half of the year.</h6>
 								</div>
 								<div class="card-body">
 									<div class="chart">
@@ -379,13 +379,13 @@
 					colors: ["transparent"]
 				},
 				series: [{
-					name: "Student",
+					name: "Usability",
 					data: [44, 55, 57, 56, 61, 58]
 				}, {
-					name: "Staff",
+					name: "Navigation",
 					data: [76, 85, 101, 98, 87, 105]
 				}, {
-					name: "Expert",
+					name: "Security",
 					data: [35, 41, 36, 26, 45, 48]
 				}],
 				xaxis: {
