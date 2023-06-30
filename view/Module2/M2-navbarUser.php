@@ -14,15 +14,13 @@
                 <li class="nav-item">
                     <a class="nav-link " aria-current="page" href="../Module2/M2-user_homepage.php">Home</a>
                 </li>
-                <li class="nav-item dropdown ms-lg-2">
+                <li class="nav-item dropdown md-log-2">
                     <a class="nav-link dropdown-toggle position-relative" href="#" id="userDropdown" data-bs-toggle="dropdown">My Questions</a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item"></a>
-                        <a class="dropdown-item" href="../Module2/M2-my_questions.php">My Questions</a>
+                        <a class="dropdown-item" href="M2-my_questions.php">My Questions</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="../Module2/M2-feedback_form.php">System Performances Feedback Form</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="../Module2/M2-vulnerability.php">Vulnerability Form</a>
+                        <a class="dropdown-item" href="M2-feedback_form.php">System Performance Feedback</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown ms-lg-2">
@@ -77,7 +75,7 @@
                     <a class="dropdown-item"></a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="../Module2/M2-manage-user-profile.php"><i class="align-middle me-1 fas fa-fw fa-user"></i> My Profile</a>
-                    <a class="dropdown-item" href="#"><i class="align-middle me-1 fas fa-fw fa-cogs"></i> Account Setting</a>
+                    <a class="dropdown-item" href="M2-vulnerability.php"><i class="align-middle me-1 fa fa-sticky-note"></i> Vulnerability Form</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="../Module1/logout-genUser.php"><i class="align-middle me-1 fas fa-fw fa-arrow-alt-circle-right"></i> Sign out</a>
                 </div>

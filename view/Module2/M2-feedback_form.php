@@ -72,7 +72,7 @@ $result2 = mysqli_query($conn, $sql2) or die("Could not execute query in view");
                                     <input type="hidden" name="userID" value="<?php echo $id; ?>">
                                     <div class="row">
                                         <div class="mb-3 col-md-12">
-                                    
+
 
                                             <label for="userType">User Role</label>
                                             <select class="form-select" name="userType" value="userType" aria-label="Default select example">
@@ -96,7 +96,7 @@ $result2 = mysqli_query($conn, $sql2) or die("Could not execute query in view");
                                         </div>
                                         <!-- Navigation Type-->
                                         <div class="mb-3 col-md-12">
-                                            <label for="navigation">Usability Type</label>
+                                            <label for="navigation">Navigation Type</label>
                                             <select class="form-select" name="navigation" value="navigation" aria-label="Default select example">
                                                 <option hidden>Please Select</option>
                                                 <option value="Very Bad">Very Bad</option>
@@ -108,7 +108,7 @@ $result2 = mysqli_query($conn, $sql2) or die("Could not execute query in view");
                                         </div>
                                         <!-- Security Type-->
                                         <div class="mb-3 col-md-12">
-                                            <label for="security">Usability Type</label>
+                                            <label for="security">Security Type</label>
                                             <select class="form-select" name="security" value="security" aria-label="Default select example">
                                                 <option hidden>Please Select</option>
                                                 <option value="Very Bad">Very Bad</option>

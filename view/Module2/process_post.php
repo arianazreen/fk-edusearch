@@ -31,40 +31,25 @@ if (isset($_POST['create_post'])) {
     } else {
         echo "<script>alert('Error posting your content.');</script>" . mysqli_error($conn);
     }
-    if (hasPostLimitReached()) {
-        echo "<script>alert('You have been reached the limit post per session. Please Login Again.');
-                      window.location.href='../Module/login-genUser.php'</script>";
-        exit();
-    } else {
-    }
+
 
     mysqli_close($conn);
 }
 
-//update post
+//rate post
 
-if (isset($_POST['update_post'])) {
-
+if (isset($_POST['rate_post'])) {
     $id = $_POST["id"];
-    // $userID = $_GET["userID"];
-    $postTitle = $_POST["postTitle"];
-    // $postCategory = $_POST["postCategory"];
-    // $postKeyword = implode(",", $_POST["postKeyword"]);
-    $postContent = $_POST["postContent"];
+    $postRating = $_POST["postRating"];
+    $postFeedback = $_POST["postFeedback"];
 
-    // $checkbox=implode(",", $postKeyword);
-    //echo $alldata;
-
-    $sql = "UPDATE post SET  postTitle = '$postTitle', postContent = '$postContent'
-                    WHERE id = '$id'";
-
+    $sql = "UPDATE post SET postRating = '$postRating', postFeedback = '$postFeedback' WHERE id = '$id'";
 
     if (mysqli_query($conn, $sql)) {
-        echo "<script>alert('Your sharing content has been updated.');
-                      window.location.href='M2-my_questions.php'</script>";
+        echo "<script>alert('Your post rating has been updated.'); window.location.href='M2-my_questions.php'</script>";
         exit();
     } else {
-        echo "<script>alert('Error updating your content.');</script>" . mysqli_error($conn);
+        echo "<script>alert('Error updating your post rating: " . mysqli_error($conn) . "');</script>";
     }
 
     mysqli_close($conn);
@@ -122,6 +107,35 @@ if (isset($_POST['delete_post'])) {
     mysqli_close($conn);
 }
 
+
+//update post
+
+if (isset($_POST['update_post'])) {
+
+    $id = $_POST["id"];
+    // $userID = $_GET["userID"];
+    $postTitle = $_POST["postTitle"];
+    // $postCategory = $_POST["postCategory"];
+    // $postKeyword = implode(",", $_POST["postKeyword"]);
+    $postContent = $_POST["postContent"];
+
+    // $checkbox=implode(",", $postKeyword);
+    //echo $alldata;
+
+    $sql = "UPDATE post SET  postTitle = '$postTitle', postContent = '$postContent'
+                    WHERE id = '$id'";
+
+
+    if (mysqli_query($conn, $sql)) {
+        echo "<script>alert('Your sharing content has been updated.');
+                      window.location.href='M2-my_questions.php'</script>";
+        exit();
+    } else {
+        echo "<script>alert('Error updating your content.');</script>" . mysqli_error($conn);
+    }
+
+    mysqli_close($conn);
+}
 
 //post comment
 

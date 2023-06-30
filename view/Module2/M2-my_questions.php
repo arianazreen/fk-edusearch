@@ -59,7 +59,7 @@ $id = $_SESSION['username'];
 
               // $sql = "SELECT * FROM post WHERE userID = '$id' ORDER BY postDate DESC, postTime DESC";
               $sql = "SELECT post.id, generaluser.userID, generaluser.userName, post.postDate, post.postTime, post.postTitle, post.postCategory, post.postKeyword,
-              post.postContent, post.postStatus, post.postDate, post.postLikes, post.postComments
+              post.postContent, post.postStatus, post.postDate, post.postLikes, post.postComments, post.postRating, post.postFeedback, generaluser.assignedExpert
               FROM post
               INNER JOIN generaluser ON post.userID = generaluser.userID
               WHERE generaluser.userID = '$id'
@@ -79,8 +79,10 @@ $id = $_SESSION['username'];
                   $postContent = $row['postContent'];
                   $postLikes = $row['postLikes'];
                   $postComments = $row['postComments'];
-                  // $postComments = $row['postComments'];
                   $postStatus = $row['postStatus'];
+                  $postRating = $row['postRating'];
+                  $postFeedback = $row['postFeedback'];
+                  $assignedExpert = $row['assignedExpert'];
 
 
               ?>
@@ -106,6 +108,74 @@ $id = $_SESSION['username'];
                               </form>
                               <!-- <a href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>0</a> -->
                               <div class="icon-container right" style="margin-left: 30px;">
+                                <!-- Rates Button -->
+                                <?php echo "<a href='#rateModal-$id' data-bs-toggle='modal'><i class='align-middle fa fa-star-half-o' style='color: gold;'></i></a> "; ?>
+                                <!-- Rates modal -->
+                                <div class="modal fade" id="rateModal-<?php echo $id; ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Post Rating</h5>
+                                      </div>
+                                      <div class="modal-body">
+                                        <div class="card-body">
+                                          <form method="POST" action="process_post.php">
+                                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+
+                                            <div class="row">
+                                              <div class="mb-3">
+                                                <label for="PostTilte">Post Title: </label>
+                                                <input type="text" class="form-control" name="postTitle" id="postTitle" value="<?php echo $postTitle; ?>" disabled>
+                                              </div>
+                                              <div class="mb-3">
+                                                <label for="assignedExpert">Assigned Expert : </label>
+                                                <select class="form-select" id="assignedExpert" name="assignedExpert" disabled>
+                                                  <option disabled selected><?php echo $assignedExpert; ?></option>
+                                                </select>
+                                              </div>
+                                              <div class="mb-3 col-md-12">
+                                                <label for="PostKeyword">Post Keyword :</label>
+                                                <div class="checkbox">
+                                                  <label><input type="checkbox" id="php" name="postKeyword[]" value="PHP" disabled>PHP</label>
+                                                  <label><input type="checkbox" id="html" name="postKeyword[]" value="HTML" disabled> HTML</label>
+                                                  <label><input type="checkbox" id="js" name="postKeyword[]" value="JavaScript" disabled> JavaScript</label>
+                                                  <label><input type="checkbox" id="ai" name="postKeyword[]" value="Artificial Intelligence" disabled> Artificial Intelligence</label>
+                                                </div>
+
+                                              </div>
+                                              <div class="mb-3">
+                                                <label>Post Content</label>
+                                                <textarea class="form-control" rows="5" name="postContent" disabled><?php echo $postContent; ?></textarea>
+                                              </div>
+                                              <div class="mb-3 col-md-6">
+                                                <label for="postRating">Post Rating : </label>
+                                                <select class="form-select" name="postRating" value="postRating" aria-label="Default select example">
+                                                  <option hidden>Please select the value..</option>
+                                                  <option value="1">1</option>
+                                                  <option value="2">2</option>
+                                                  <option value="3">3</option>
+                                                  <option value="4">4</option>
+                                                  <option value="5">5</option>
+                                                </select>
+                                              </div>
+                                              <div class="mb-3">
+                                                <label>Post Content Feedback</label>
+                                                <textarea class="form-control" rows="5" name="postFeedback"><?php echo $postFeedback; ?></textarea>
+                                              </div>
+                                            </div>
+                                            <br>
+                                            <div class="modal-footer">
+                                              <input type="hidden" name="rate_post" value="true">
+                                              <button type="button" class="btn" style="position:absolute; right: 328px; background-color: #ADDCD7; color: #000; font-weight: 400;" data-bs-dismiss="modal">Cancel</button>
+                                              <button type="submit" class="btn" style=" position:relative; right: 205px;  background-color: #07A492; color: white; font-weight: 400;">Save</button>
+                                            </div>
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- Closing  Rates Modal-->
                                 <!-- Edit Button -->
                                 <?php echo "<a href='#updateModal-$id' data-bs-toggle='modal'><i class='align-middle fas fa-fw fa-edit' style='color: blue;'></i></a> "; ?>
                                 <!-- UPDATE modal -->
